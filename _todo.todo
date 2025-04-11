@@ -1,0 +1,25 @@
+#Rooms:
+    - glitch of gap
+
+#Export:
+    - Export Room assignments (1)
+    - Export Candidate assignments (1)
+
+#Proctor grading:
+    - Setup UI repo (1)
+    - Setup API repo (1)
+    - Breakdown into tasks
+    - Create tickets
+
+#Brainstorming: 
+    - Idea of group slots rather time time slice
+    - Brainstorming about Group Kirtan/Samvad participants
+
+#===== Logic =====:
+    - Remote center candidate with 1 skills: priority 1
+    - Remote center candidate with 2 skills: priority 2 : keep minumum gaps between
+    - Remote center candidate with 3 skills: priority 3 : keep minumum gaps between
+    - Host center candidate with 1 skills: priority 4
+    - Host center candidate with 2 skills: priority 5 : keep minumum gaps between
+    - Host center candidate with 3 skills: priority 6 : keep minumum gaps between
+    
