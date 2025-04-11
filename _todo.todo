@@ -1,25 +1,20 @@
-#Rooms:
-    - glitch of gap
+- Breakdown into tasks
+- Create tickets
+- Repo access
+- Repo restriction
 
-#Export:
-    - Export Room assignments (1)
-    - Export Candidate assignments (1)
-
-#Proctor grading:
-    - Setup UI repo (1)
-    - Setup API repo (1)
-    - Breakdown into tasks
-    - Create tickets
-
-#Brainstorming: 
-    - Idea of group slots rather time time slice
-    - Brainstorming about Group Kirtan/Samvad participants
-
-#===== Logic =====:
-    - Remote center candidate with 1 skills: priority 1
-    - Remote center candidate with 2 skills: priority 2 : keep minumum gaps between
-    - Remote center candidate with 3 skills: priority 3 : keep minumum gaps between
-    - Host center candidate with 1 skills: priority 4
-    - Host center candidate with 2 skills: priority 5 : keep minumum gaps between
-    - Host center candidate with 3 skills: priority 6 : keep minumum gaps between
-    
+Setup basic framework:
+    - Setup menu/modules
+        - Participants View Only
+        - Proctor Admins: CRUD
+        - Proctor: CRUD
+        - Events: CRUD
+        - Grading Topics: CRUD
+        - Grading Participants:
+            - Search Candidate by proctor
+            - Grade Candidate skills by proctor
+            - View list of graded candidite
+            
+Cross cutting:
+    - Login
+    - Authentication
