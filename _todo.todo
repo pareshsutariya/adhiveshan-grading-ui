@@ -17,32 +17,50 @@
     - DB: Schema
     - UI: Add / Edit 
     - API: Add / Edit 
+    - Note:
+        - National Admin: Manage through DB, will be managed proctors according of any genders
+        - Regional Proctor Admin: Manage through DB, will be managed proctors according to their gender
 
 # Proctors CRUD:
-    - DB: Schema
+    - DB: Schema : (BAPS ID, EVENTID, NAME, CENTER, Mandal, SKILLS, SKILL CATEGORIES)
     - UI: Add / Edit 
     - API: Add / Edit 
+    - Note: Proctor Admins can add proctors for a particular region and assign them to specific skill proctor types.
 
 # Events CRUD:
     - DB: Schema
     - UI: Add / Edit 
     - API: Add / Edit 
+    - Note: 
+        - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
+        - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
+        - During this period, only delegates from the selected centers will be allowed to participate.
 
 # Grading Topics CRUD:
-    - DB: Schema
+    - DB: Schema (Skill, Category, Topic, Round, Weightages, RequiredProctors)
     - UI: Add / Edit 
     - API: Add / Edit 
     - Access: 
 
 # Grading Participants CRUD:
+    - Display tabs according to the skills access to the proctor:
+        - UI
+        - API
     - Search Candidate by proctor
+        - UI : (A text input field and QR scan option, like the satsang mukhpath, will appear on the screen)
+        - API: (The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the proctor’s allowed access)
+    - Display list of topic based on selected skill for a candidate (Once proctor clicks start proctoring, the proctor will be shown a series of question topics)
         - UI
         - API
     - Grade Candidate skills by proctor
-        - DB: Schema
+        - DB: Schema : Candidate ID, ProctorId, Grading Topic Id, Weitage
         - UI
         - API
+        - Once event time is over, NO ONE should be able to change the grade
     - View list of graded candidite
+        - UI
+        - API
+    - Candidate Status: Return status of candidate's each skill competition status
         - UI
         - API
 
