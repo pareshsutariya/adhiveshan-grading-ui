@@ -1,20 +1,57 @@
-- Breakdown into tasks
-- Create tickets
-- Repo access
-- Repo restriction
+# =======================:
+    - Breakdown into tasks
+    - Create tickets
+    - Repo access
+    - Repo restriction
+    
+====== Modules =====:
+# Repo and basic framework:
+    - UI
+    - API
+# Participants:
+    - Import Participants data (DB)
+    - UI: Display Participants
+    - API: Display Participants
 
-Setup basic framework:
-    - Setup menu/modules
-        - Participants View Only
-        - Proctor Admins: CRUD
-        - Proctor: CRUD
-        - Events: CRUD
-        - Grading Topics: CRUD
-        - Grading Participants:
-            - Search Candidate by proctor
-            - Grade Candidate skills by proctor
-            - View list of graded candidite
-            
-Cross cutting:
-    - Login
-    - Authentication
+# Proctors Admins CRUD:
+    - DB: Schema
+    - UI: Add / Edit 
+    - API: Add / Edit 
+
+# Proctors CRUD:
+    - DB: Schema
+    - UI: Add / Edit 
+    - API: Add / Edit 
+
+# Events CRUD:
+    - DB: Schema
+    - UI: Add / Edit 
+    - API: Add / Edit 
+
+# Grading Topics CRUD:
+    - DB: Schema
+    - UI: Add / Edit 
+    - API: Add / Edit 
+    - Access: 
+
+# Grading Participants CRUD:
+    - Search Candidate by proctor
+        - UI
+        - API
+    - Grade Candidate skills by proctor
+        - DB: Schema
+        - UI
+        - API
+    - View list of graded candidite
+        - UI
+        - API
+
+===== Cross Cutting =====:
+# Login Users:
+    - DB: Schema
+    - UI: Add / Edit 
+    - API: Add / Edit 
+# Authentication (Login / Logout):
+    - UI 
+    - API 
+    - Check Access on each screen/menu based on permissions: 
