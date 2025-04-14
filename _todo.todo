@@ -6,41 +6,48 @@
     
 ====== Modules =====:
 # Repo and basic framework:
-    - UI
+    - UI 
     - API
+    - UI/API: Basic framework
+
 # Participants:
     - Import Participants data (DB)
+        - Additional fields: Participation center (can be different that center of candidate)
     - UI: Display Participants
     - API: Display Participants
 
 # Proctors Admins CRUD:
-    - DB: Schema
-    - UI: Add / Edit 
-    - API: Add / Edit 
+    - DB: Schema :  (BAPS ID, NAME, Regional, Mandals[], IsActive)
+    - UI: List / Add / Edit 
+    - API: List / Add / Edit 
     - Note:
         - National Admin: Manage through DB, will be managed proctors according of any genders
         - Regional Proctor Admin: Manage through DB, will be managed proctors according to their gender
 
-# Proctors CRUD:
-    - DB: Schema : (BAPS ID, EVENTID, NAME, CENTER, Mandal, SKILLS, SKILL CATEGORIES)
-    - UI: Add / Edit 
-    - API: Add / Edit 
-    - Note: Proctor Admins can add proctors for a particular region and assign them to specific skill proctor types.
-
 # Events CRUD:
-    - DB: Schema
-    - UI: Add / Edit 
-    - API: Add / Edit 
+    - DB: Schema: (Event Start Date Time, Event End Date Time, Regional, Centers[], IsActive)
+    - UI: List / Add / Edit 
+    - API: List / Add / Edit 
     - Note: 
         - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
         - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
         - During this period, only delegates from the selected centers will be allowed to participate.
 
-# Grading Topics CRUD:
-    - DB: Schema (Skill, Category, Topic, Round, Weightages, RequiredProctors)
+# SKILL and CATEGORIES Schema:
+    - UI: LIST
+    - API: LIST
+
+# Proctors CRUD:
+    - DB: Schema : (BAPS ID, NAME, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], IsActive)
     - UI: Add / Edit 
     - API: Add / Edit 
-    - Access: 
+    - TBD: 
+    - Note: Proctor Admins can add proctors for a particular region and assign them to specific skill proctor types.
+
+# Grading Topics CRUD:
+    - DB: Schema (SKILL CATEGORY ID, Topic Name, Decription, Round, Weightages[], RequiredProctors, IsActive)
+    - UI: List / Add / Edit 
+    - API: List / Add / Edit 
 
 # Grading Participants CRUD:
     - Display tabs according to the skills access to the proctor:
@@ -53,16 +60,22 @@
         - UI
         - API
     - Grade Candidate skills by proctor
-        - DB: Schema : Candidate ID, ProctorId, Grading Topic Id, Weitage
+        - DB: Schema : Candidate ID, ProctorId, SKILL CATEGORY ID, Grading Topic Id, Weitage)
         - UI
         - API
-        - Once event time is over, NO ONE should be able to change the grade
     - View list of graded candidite
         - UI
         - API
-    - Candidate Status: Return status of candidate's each skill competition status
+        - Allow edit option to change the grade
+        - Once event time is over, NO ONE should be able to change the grade
+        
+    - Candidate Status: Return status of candidate's each skill competition status (PENDING / COMPLETED)
         - UI
-        - API
+        - API : return COMPLETED if all the topic has been graded else PENDING
+    
+    - Participant BAPS ID authentication API using encode/decode BAPS ID
+
+    - TBD: at a time only x proctors should be able to access or grade the candidate
 
 ===== Cross Cutting =====:
 # Login Users:
