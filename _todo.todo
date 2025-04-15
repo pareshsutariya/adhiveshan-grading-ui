@@ -6,16 +6,26 @@
     
 ====== Modules =====:
 # Repo and basic framework:
-    - UI 
-    - API
-    - UI/API: Basic framework
+    ✔ UI @done(25-04-15 18:30)
+    ✔ API @done(25-04-15 18:30)
+    ✔ UI/API: Basic framework @done(25-04-15 18:30)
+    - separate out component HTML files
 
 # Participants:
     - Import Participants data (DB)
         - Additional fields: Participation center (can be different that center of candidate)
-    - UI: Display Participants
-    - API: Display Participants
+    ✔ UI: Display Participants @done(25-04-15 18:31)
+    ✔ API: Display Participants @done(25-04-15 18:31)
 
+# SKILL and CATEGORIES Schema:
+    - UI: LIST
+    - API: LIST
+
+# Grading Topics CRUD:
+    - DB: Schema (SKILL CATEGORY ID, Topic Name, Decription, Round, Weightages[], RequiredProctors, IsActive)
+    - UI: List / Add / Edit 
+    - API: List / Add / Edit 
+    
 # Proctors Admins CRUD:
     - DB: Schema :  (BAPS ID, NAME, Regional, Mandals[], IsActive)
     - UI: List / Add / Edit 
@@ -33,21 +43,12 @@
         - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
         - During this period, only delegates from the selected centers will be allowed to participate.
 
-# SKILL and CATEGORIES Schema:
-    - UI: LIST
-    - API: LIST
-
 # Proctors CRUD:
     - DB: Schema : (BAPS ID, NAME, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], IsActive)
     - UI: Add / Edit 
     - API: Add / Edit 
     - TBD: 
     - Note: Proctor Admins can add proctors for a particular region and assign them to specific skill proctor types.
-
-# Grading Topics CRUD:
-    - DB: Schema (SKILL CATEGORY ID, Topic Name, Decription, Round, Weightages[], RequiredProctors, IsActive)
-    - UI: List / Add / Edit 
-    - API: List / Add / Edit 
 
 # Grading Participants CRUD:
     - Display tabs according to the skills access to the proctor:
