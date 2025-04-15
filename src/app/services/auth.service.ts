@@ -115,7 +115,7 @@ export class AuthService {
     home.items?.push({ label: 'Dashboard', icon: 'fa-solid fa-house', routerLink: ['/'] });
 
     let participants: MenuItem = {label: 'Participants', items: []};
-    participants.items?.push({ label: 'Import / View', icon: 'pi pi-id-card', routerLink: ['/participants'] });
+    participants.items?.push({ label: 'Import / View', icon: 'pi pi-id-card', routerLink: ['/import-participants'] });
 
     let superAdmin: MenuItem = {label: 'Super Admin', items: []};
     //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
