@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AppMenuitem } from './app.menuitem';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-menu',
@@ -16,14 +17,15 @@ import { AppMenuitem } from './app.menuitem';
     </ul> `
 })
 export class AppMenu {
-    model: MenuItem[] = [];
+     //dashboard: MenuItem = {label: 'Dashboard', icon: 'fa-solid fa-house', routerLink: ['/'] };
 
-    ngOnInit() {
-        this.model = [
-            {
-                label: 'Home',
-                items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
-            },
-        ];
-    }
+     model: MenuItem[] = [];
+
+     constructor(private authService: AuthService) {
+         
+     }
+ 
+     ngOnInit() {
+         this.model = this.authService.GetMenus();
+     }
 }

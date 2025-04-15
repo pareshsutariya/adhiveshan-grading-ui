@@ -44,6 +44,7 @@ export class LayoutService {
 
     layoutState = signal<LayoutState>(this._state);
 
+    pageTitle = signal<string>("Parking");
     isDataLoading = signal<boolean>(false);
 
     private configUpdate = new Subject<layoutConfig>();

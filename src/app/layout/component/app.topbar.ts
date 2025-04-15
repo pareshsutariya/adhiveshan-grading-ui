@@ -21,6 +21,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
                 <!-- <img src="./public/images/AdhiveshanLogo_Color.png" width="35px" height="35px" /> -->
 
                 <span class="whitespace-nowrap">Adhiveshan Grading</span>
+                <!-- <span class="whitespace-nowrap">{{layoutService.pageTitle()}}</span> -->
             </a>
         </div>
     </div>
