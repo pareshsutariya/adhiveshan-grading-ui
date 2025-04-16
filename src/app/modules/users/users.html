@@ -50,18 +50,18 @@
     <!-- List View Data -->
     <ng-template #body let-item>
         <tr>
-            <td class="align-top">
+            <td>
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
                     (click)="openEdit(item)" />
             </td>
-            <td class="align-top whitespace-nowrap">{{ item.fullName }}</td>
-            <td class="align-top">{{ item.username }}</td>
+            <td class="whitespace-nowrap">{{ item.fullName }}</td>
+            <td>{{ item.username }}</td>
             <!-- <td class="align-top">{{ item.password }}</td> -->
-            <td class="align-top">
+            <td>
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
                     styleClass="dark:!bg-surface-900" />
             </td>
-            <td class="align-top">
+            <td>
                 <p-accordion>
                     <p-accordion-panel value="{{item.userId}}">
                         <p-accordion-header>Permissions</p-accordion-header>

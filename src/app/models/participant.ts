@@ -29,5 +29,6 @@ export interface Participant {
   gender: string;
 
   fullName?: string;
+  misId?: string;
   completed_Pushpo_Range_Title?: string;
 }

@@ -24,6 +24,8 @@
     [rowHover]="true">
     <ng-template #header>
         <tr>
+            <th class="whitespace-nowrap"></th>
+            <th class="whitespace-nowrap">Region</th>
             <th class="whitespace-nowrap">Center</th>
             <th class="whitespace-nowrap">MIS Id</th>
             <th class="whitespace-nowrap">Full Name</th>
@@ -35,10 +37,11 @@
             <th class="whitespace-nowrap">Ted Talk</th>
         </tr>
     </ng-template>
+
     <!-- Group Header -->
     <ng-template #groupheader let-item let-rowIndex="rowIndex" let-expanded="expanded">
         <tr pRowGroupHeader>
-            <td colspan="9">
+            <td colspan="11">
                 <button type="button" pButton pRipple text rounded plain class="mr-2" [pRowToggler]="item"
                     [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
                 </button>
@@ -50,8 +53,13 @@
     <!-- Expanded row -->
     <ng-template #expandedrow let-candidate>
         <tr>
+            <td>
+                <p-button icon="pi pi-eye" class="mr-2" [rounded]="true" [outlined]="true"
+                    (click)="openEdit(candidate)" />
+            </td>
+            <td class="no-wrap">{{candidate.region}}</td>
             <td class="no-wrap">{{candidate.center}}</td>
-            <td valign="top" style="padding-top:20px;">#{{candidate.misId}}</td>
+            <td>{{candidate.misId}}</td>
             <td>{{candidate.fullName}}</td>
             <td>{{candidate.gender}}</td>
             <td>{{candidate.sampark_Category}}</td>
@@ -62,3 +70,92 @@
         </tr>
     </ng-template>
 </p-table>
+
+<!-- View Dialog -->
+<p-dialog [(visible)]="dialog" [style]="{ width: '400px', height: 'auto' }" header="Participant Details" [modal]="true">
+    <ng-template #content>
+        <div class="flex flex-col gap-2">
+
+            <!-- Region -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="pi pi-map"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" id="fullName" [(ngModel)]="addOrEditItem.region" [readonly]="true"
+                    fluid />
+            </p-inputgroup>
+
+            <!-- Center -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="pi pi-building-columns"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" id="center" [(ngModel)]="addOrEditItem.center" [readonly]="true" fluid />
+            </p-inputgroup>
+
+            <!-- MIS ID -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-hashtag"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" [(ngModel)]="addOrEditItem.misId" [readonly]="true" fluid />
+            </p-inputgroup>
+
+            <!-- Full Name -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-id-card"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" id="fullName" [(ngModel)]="addOrEditItem.fullName" [readonly]="true"
+                    fluid />
+            </p-inputgroup>
+
+            <!-- Gender -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-person-half-dress mr-1"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" [(ngModel)]="addOrEditItem.gender" [readonly]="true" fluid />
+            </p-inputgroup>
+
+            <!-- Sampark Category -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-handshake mr-1"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" [(ngModel)]="addOrEditItem.sampark_Category" [readonly]="true" fluid />
+            </p-inputgroup>
+
+
+            <!-- Emcee Category -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-microphone mr-1"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" [(ngModel)]="addOrEditItem.emcee_Category" [readOnly]="true" fluid />
+            </p-inputgroup>
+
+            <!-- Speech Pravachan Category -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-users-viewfinder"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" [(ngModel)]="addOrEditItem.speech_Pravachan_Category" [readOnly]="true"
+                    fluid />
+            </p-inputgroup>
+
+            <!-- Vyaktigat Kirtan Gaan Category -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-music"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" [(ngModel)]="addOrEditItem.vyaktigat_Kirtan_Gaan_Category"
+                    [readOnly]="true" fluid />
+            </p-inputgroup>
+        </div>
+    </ng-template>
+
+    <ng-template #footer>
+        <p-button label="Cancel" icon="pi pi-times" text (click)="hideDialog()" />
+    </ng-template>
+</p-dialog>

@@ -6,17 +6,17 @@
     
 ====== Modules =====:
 # Repo and basic framework:
-    ✔ UI @done(25-04-15 18:30)
-    ✔ API @done(25-04-15 18:30)
-    ✔ UI/API: Basic framework @done(25-04-15 18:30)
-    - Separate out component HTML files @done
+    ✔ UI @done
+    ✔ API @done
+    ✔ UI/API: Basic framework @done
+    ✔ Separate out component HTML files @done
 
 # Participants:
     - Import Participants data (DB)
         - Additional fields: Participation center (can be different that center of candidate)
-    ✔ List view UI: Display Participants @done(25-04-15 18:31)
-    ✔ API: Display Participants @done(25-04-15 18:31)
-    - Detail view UI: Display Participants
+    ✔ List view UI: Display Participants @done
+    ✔ API: Display Participants @done
+    ✔ Detail view UI: Display Participants @done
 
 # SKILL and CATEGORIES Schema:
     - UI: LIST

@@ -20,6 +20,8 @@ export class ImportParticipants implements OnInit {
   globalSearchText: string = "";
   @ViewChild("dt") dt!: Table;
   data = signal<Participant[]>([]);
+  dialog: boolean = false;
+  addOrEditItem!: Participant;
 
   constructor(
     private service: ParticipantsService,
@@ -126,7 +128,6 @@ export class ImportParticipants implements OnInit {
     fileReader.readAsArrayBuffer(file);
   }
 
-
   calculateCenterCandidatesTotal(center: string) {
     let total = 0;
 
@@ -139,5 +140,14 @@ export class ImportParticipants implements OnInit {
     }
 
     return total;
+  }
+
+  openEdit(participant: Participant) {
+    this.addOrEditItem = { ...participant };
+    this.dialog = true;
+  }
+
+  hideDialog() {
+    this.dialog = false;
   }
 }
