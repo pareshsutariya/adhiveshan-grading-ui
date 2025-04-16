@@ -29,23 +29,23 @@ export class AppMenu {
          this.model = [];
 
          // HOME
-        let home: MenuItem = {label: 'Home', icon: 'fa-solid fa-house fa-xl', items: []};
+        let home: MenuItem = {label: 'Home', items: []};
         home.items?.push({ label: 'Dashboard', icon: 'fa-solid fa-chart-pie', routerLink: ['/'] });
 
         // PARTICIPANTS
-        let participants: MenuItem = {label: 'Participants', icon: 'fa-solid fa-user-graduate fa-xl',  items: []};
+        let participants: MenuItem = {label: 'Participants',  items: []};
         participants.items?.push({ label: 'Import / View', icon: 'fa-solid fa-upload', routerLink: ['/import-participants'] });
 
         // PROCTOR ADMIN
-        let proctorAdmin: MenuItem = {label: 'Proctor Admins', icon: 'fa-solid fa-users-gear fa-xl',items: []};
-        proctorAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
+        let proctorAdmin: MenuItem = {label: 'Proctor Admins', items: []};
         proctorAdmin.items?.push({ label: 'Proctors', icon: 'fa-solid fa-user-clock', routerLink: ['/proctors'] });
+        proctorAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
 
-        // SUPER ADMIN
-        let superAdmin: MenuItem = {label: 'Super Admin', icon: 'fa-solid fa-user-shield fa-xl',items: []};
-        superAdmin.items?.push({ label: 'Skill and Categories', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
-        superAdmin.items?.push({ label: 'Skill Grading Questions', icon: 'fa-solid fa-circle-question', routerLink: ['/skill-grading-questions'] });
-        superAdmin.items?.push({ label: 'Proctor Admins', icon: 'fa-solid fa-users-gear', routerLink: ['/proctor-admins'] });
+        // NATIONAL ADMIN
+        let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
+        nationalAdmin.items?.push({ label: 'Proctor Admins', icon: 'fa-solid fa-users-gear', routerLink: ['/proctor-admins'] });
+        nationalAdmin.items?.push({ label: 'Skill Grading Questions', icon: 'fa-solid fa-circle-question', routerLink: ['/skill-grading-questions'] });
+        nationalAdmin.items?.push({ label: 'Skill and Categories', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
 
         //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
         //superAdmin.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
@@ -59,7 +59,7 @@ export class AppMenu {
         if(proctorAdmin!.items!.length > 0)
             this.model.push(proctorAdmin);
 
-        if(superAdmin!.items!.length > 0)
-            this.model.push(superAdmin);
+        if(nationalAdmin!.items!.length > 0)
+            this.model.push(nationalAdmin);
     }
 }
