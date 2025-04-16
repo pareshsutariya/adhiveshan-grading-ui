@@ -106,30 +106,4 @@ export class AuthService {
       return this.http.get<User>(`${this.WebApiBaseUrl}/users/GetUserByUsernameAndPassword/${username}/${password}`);
     }
   }
-
-  GetMenus(){
-    let menus: MenuItem[] = [];
-    
-    // Home
-    let home: MenuItem = {label: 'Home', items: []};
-    home.items?.push({ label: 'Dashboard', icon: 'fa-solid fa-house', routerLink: ['/'] });
-
-    let participants: MenuItem = {label: 'Participants', items: []};
-    participants.items?.push({ label: 'Import / View', icon: 'pi pi-id-card', routerLink: ['/import-participants'] });
-
-    let superAdmin: MenuItem = {label: 'Super Admin', items: []};
-    //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
-    superAdmin.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
-
-    if(home!.items!.length > 0)
-      menus.push(home);
-
-    if(participants!.items!.length > 0)
-      menus.push(participants);
-
-    if(superAdmin!.items!.length > 0)
-      menus.push(superAdmin);
-
-    return menus;
-  }
 }
