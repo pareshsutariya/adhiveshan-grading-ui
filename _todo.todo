@@ -19,6 +19,7 @@
     ✔ Detail view UI: Display Participants @done
 
 # SKILL and CATEGORIES Schema:
+    - DB: Schema (Skill Category Id, SkillName, Category Name) 
     - UI: LIST
     - API: LIST
 
@@ -88,3 +89,10 @@
     - UI 
     - API 
     - Check Access on each screen/menu based on permissions: 
+# Audit fields:
+    - Audit field in all tables
+    - Set audit fields while add/edit
+# Activity tracking:
+    - DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
+    - API:
+    - UI:
