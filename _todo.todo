@@ -22,7 +22,7 @@
     - UI: LIST
     - API: LIST
 
-# Grading Topics CRUD:
+# Skill Grading Questions CRUD:
     - DB: Schema (SKILL CATEGORY ID, Topic Name, Decription, Round, Weightages[], RequiredProctors, IsActive)
     - UI: List / Add / Edit 
     - API: List / Add / Edit 

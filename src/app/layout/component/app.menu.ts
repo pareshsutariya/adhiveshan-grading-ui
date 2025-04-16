@@ -28,16 +28,27 @@ export class AppMenu {
      ngOnInit() {
          this.model = [];
 
-         // Home
-        let home: MenuItem = {label: 'Home', items: []};
-        home.items?.push({ label: 'Dashboard', icon: 'fa-solid fa-house', routerLink: ['/'] });
+         // HOME
+        let home: MenuItem = {label: 'Home', icon: 'fa-solid fa-house fa-xl', items: []};
+        home.items?.push({ label: 'Dashboard', icon: 'fa-solid fa-chart-pie', routerLink: ['/'] });
 
-        let participants: MenuItem = {label: 'Participants', items: []};
-        participants.items?.push({ label: 'Import / View', icon: 'pi pi-id-card', routerLink: ['/import-participants'] });
+        // PARTICIPANTS
+        let participants: MenuItem = {label: 'Participants', icon: 'fa-solid fa-user-graduate fa-xl',  items: []};
+        participants.items?.push({ label: 'Import / View', icon: 'fa-solid fa-upload', routerLink: ['/import-participants'] });
 
-        let superAdmin: MenuItem = {label: 'Super Admin', items: []};
+        // PROCTOR ADMIN
+        let proctorAdmin: MenuItem = {label: 'Proctor Admins', icon: 'fa-solid fa-users-gear fa-xl',items: []};
+        proctorAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
+        proctorAdmin.items?.push({ label: 'Proctors', icon: 'fa-solid fa-user-clock', routerLink: ['/proctors'] });
+
+        // SUPER ADMIN
+        let superAdmin: MenuItem = {label: 'Super Admin', icon: 'fa-solid fa-user-shield fa-xl',items: []};
+        superAdmin.items?.push({ label: 'Skill and Categories', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
+        superAdmin.items?.push({ label: 'Skill Grading Questions', icon: 'fa-solid fa-circle-question', routerLink: ['/skill-grading-questions'] });
+        superAdmin.items?.push({ label: 'Proctor Admins', icon: 'fa-solid fa-users-gear', routerLink: ['/proctor-admins'] });
+
         //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
-        superAdmin.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
+        //superAdmin.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
 
         if(home!.items!.length > 0)
             this.model.push(home);
@@ -45,8 +56,10 @@ export class AppMenu {
         if(participants!.items!.length > 0)
             this.model.push(participants);
 
+        if(proctorAdmin!.items!.length > 0)
+            this.model.push(proctorAdmin);
+
         if(superAdmin!.items!.length > 0)
             this.model.push(superAdmin);
-
     }
 }
