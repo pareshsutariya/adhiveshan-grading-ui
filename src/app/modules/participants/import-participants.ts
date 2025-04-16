@@ -14,78 +14,7 @@ import { ParticipantsService } from "../../services/participants.service";
   selector: "app-import-participants",
   imports: [AngularModules, PrimeNgModules],
   providers: [MessageService],
-  template: `
-    <p-toast />
-    <!-- Import -->
-    <p-toolbar styleClass="mb-2" >
-      <ng-template #start>
-          <input type="file" (change)="onFileChange($event)" />
-      </ng-template>
-    </p-toolbar>
-
-    <p-toolbar styleClass="mb-1" >
-      <ng-template #start>
-          <p-iconfield>
-            <p-inputicon styleClass="pi pi-search" />
-            <input pInputText type="text" placeholder="Search..." [(ngModel)]="globalSearchText" (input)="onGlobalFilter($event)" />
-          </p-iconfield>
-          <p-button icon="fa-solid fa-text-slash" class="ml-2 mr-2" [rounded]="true" [outlined]="true" [severity]="globalSearchText.length > 0 ? 'contrast' : 'secondary'"
-          (click)="clearGlobalFilter()" />
-      </ng-template>
-    </p-toolbar>
-    
-    <p-table #dt 
-        [value]="data()"
-        [globalFilterFields]="['center', 'misId', 'fullName', 'sampark_category', 'emcee_category', 'speech_pravachan_category', 'gender']"
-        rowGroupMode="subheader" groupRowsBy="center"
-        sortField="center" 
-
-        [scrollable]="true"
-
-        [paginator]="false"
-        [rowHover]="true">
-        <ng-template #header>
-          <tr>
-            <th class="whitespace-nowrap">Center</th>
-            <th class="whitespace-nowrap">MIS Id</th>
-            <th class="whitespace-nowrap">Full Name</th>
-            <th class="whitespace-nowrap">Gender</th>
-            <th class="whitespace-nowrap">Sampark</th>
-            <th class="whitespace-nowrap">Emcee</th>
-            <th class="whitespace-nowrap">Pravachan</th>
-            <th class="whitespace-nowrap">Kirtan</th>
-            <th class="whitespace-nowrap">Ted Talk</th>
-          </tr>
-        </ng-template>
-        <!-- Group Header -->
-        <ng-template #groupheader let-item let-rowIndex="rowIndex" let-expanded="expanded">
-            <tr pRowGroupHeader>
-                <td colspan="9">
-                  <button type="button" pButton pRipple text rounded plain class="mr-2"
-                      [pRowToggler]="item"
-                      [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
-                  </button>
-                  <span class="font-bold">{{ item.center }} (#{{calculateCenterCandidatesTotal(item.center)}})</span>
-                </td>
-            </tr>
-        </ng-template>
-
-        <!-- Expanded row -->
-        <ng-template #expandedrow let-candidate>
-          <tr>
-            <td class="no-wrap">{{candidate.center}}</td>
-            <td valign="top" style="padding-top:20px;">#{{candidate.misId}}</td>
-            <td>{{candidate.fullName}}</td>
-            <td>{{candidate.gender}}</td>
-            <td>{{candidate.sampark_Category}}</td>
-            <td>{{candidate.emcee_Category}}</td>
-            <td>{{candidate.speech_Pravachan_Category}}</td>
-            <td>{{candidate.vyaktigat_Kirtan_Gaan_Category}}</td>
-            <td>{{candidate.tedtalk_Category}}</td>
-          </tr>
-        </ng-template>
-    </p-table>
-    `,
+  templateUrl: "import-participants.html",
 })
 export class ImportParticipants implements OnInit {
   globalSearchText: string = "";

@@ -9,13 +9,14 @@
     ✔ UI @done(25-04-15 18:30)
     ✔ API @done(25-04-15 18:30)
     ✔ UI/API: Basic framework @done(25-04-15 18:30)
-    - separate out component HTML files
+    - Separate out component HTML files @done
 
 # Participants:
     - Import Participants data (DB)
         - Additional fields: Participation center (can be different that center of candidate)
-    ✔ UI: Display Participants @done(25-04-15 18:31)
+    ✔ List view UI: Display Participants @done(25-04-15 18:31)
     ✔ API: Display Participants @done(25-04-15 18:31)
+    - Detail view UI: Display Participants
 
 # SKILL and CATEGORIES Schema:
     - UI: LIST

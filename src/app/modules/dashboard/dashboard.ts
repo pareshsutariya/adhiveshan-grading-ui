@@ -21,10 +21,7 @@ import { ToastModule } from "primeng/toast";
     selector: 'app-dashboard',
     imports: [CommonModule, TabsModule, ToastModule, BadgeModule, AvatarModule, SelectButtonModule, FormsModule, ButtonModule, TableModule, ToolbarModule, InputTextModule, AccordionModule],
     providers: [MessageService],
-    template: `
-    
-   
-    `
+    templateUrl: "dashboard.html"
 })
 export class Dashboard implements OnInit, AfterViewInit {
     
