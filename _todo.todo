@@ -6,18 +6,25 @@
     
 ====== Modules =====:
 # Repo and basic framework:
-    ✔ UI @done
-    ✔ API @done
-    ✔ UI/API: Basic framework @done
-    ✔ Separate out component HTML files @done
+    ✔ UI 
+    ✔ API 
+    ✔ UI/API: Basic framework
+    ✔ Separate out component HTML files
 
 # Participants:
-    - Import Participants data (DB)
-        - Additional fields: Participation center (can be different that center of candidate)
+    ✔ Import Participants data (DB)
     ✔ List view UI: Display Participants @done
     ✔ API: Display Participants @done
     ✔ Detail view UI: Display Participants @done
+    - Additional fields: 
+        - BAPS ID: add this field once added to PBI
+        - Participation center (can be different that center of candidate)
 
+# Region and Centers Schema:
+    - DB: Schema (Skill Category Id, SkillName, Category Name) 
+    - UI: LIST
+    - API: LIST
+        
 # SKILL and CATEGORIES Schema:
     - DB: Schema (Skill Category Id, SkillName, Category Name) 
     - UI: LIST

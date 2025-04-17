@@ -12,6 +12,10 @@ export class ParticipantsService {
     return this.http.get<Array<Participant>>(Constants.WebApiBaseUrl + "/Participants");
   }
 
+  GetByMisId(misId: number): Observable<Participant> {
+    return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMisId/${misId}`);
+  }
+
   Import(items: Participant[]) {
     let headers = new HttpHeaders({ "Content-Type": "application/json" });
 

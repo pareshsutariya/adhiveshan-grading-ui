@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import moment, { Moment } from "moment";
+import { Center } from "../models/center";
 
 @Injectable({ providedIn: 'root' })
 export class Constants {
@@ -63,4 +64,14 @@ export enum PermissionsEnum {
   USERS_LIST = 'USERS_LIST',
   USERS_ADD = 'USERS_ADD',
   USERS_EDIT = 'USERS_EDIT',
+}
+
+export enum RegionsEnum {
+  Canada = 'Canada',
+  Midwest = 'Midwest',
+  Northeast = 'Northeast',
+  Southeast = 'Southeast',
+  Southwest = 'Southwest',
+  West = 'West',
+  Unknown = 'Unknown',
 }

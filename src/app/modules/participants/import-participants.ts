@@ -56,6 +56,29 @@ export class ImportParticipants implements OnInit {
     this.dt.filterGlobal("", "contains");
   }
 
+  calculateCenterCandidatesTotal(center: string) {
+    let total = 0;
+
+    if (this.data) {
+        for (let candidate of this.data()) {
+            if (candidate.center === center) {
+                total++;
+            }
+        }
+    }
+
+    return total;
+  }
+
+  openView(participant: Participant) {
+    this.addOrEditItem = { ...participant };
+    this.dialog = true;
+  }
+
+  hideDialog() {
+    this.dialog = false;
+  }
+
   onFileChange(event: any): void {
     const file = event.target.files[0];
     const fileReader = new FileReader();
@@ -126,28 +149,5 @@ export class ImportParticipants implements OnInit {
     };
 
     fileReader.readAsArrayBuffer(file);
-  }
-
-  calculateCenterCandidatesTotal(center: string) {
-    let total = 0;
-
-    if (this.data) {
-        for (let candidate of this.data()) {
-            if (candidate.center === center) {
-                total++;
-            }
-        }
-    }
-
-    return total;
-  }
-
-  openEdit(participant: Participant) {
-    this.addOrEditItem = { ...participant };
-    this.dialog = true;
-  }
-
-  hideDialog() {
-    this.dialog = false;
   }
 }
