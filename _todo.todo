@@ -22,23 +22,23 @@
 
 # Region and Centers Schema:
     - DB: Schema (Id, Region Name, Center Name) 
-    - UI: LIST
     - API: LIST
+    - UI: LIST
         
 # SKILL and CATEGORIES Schema:
     - DB: Schema (Id, SkillName, Category Name) 
-    - UI: LIST
     - API: LIST
+    - UI: LIST
 
 # Skill Grading Questions CRUD:
     - DB: Schema (Id, Topic Name, Decription, Round, Weightages[], RequiredProctors, IsActive)
-    - UI: List / Add / Edit 
     - API: List / Add / Edit 
+    - UI: List / Add / Edit 
 
 # Events CRUD:
     - DB: Schema: (Id, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
-    - UI: List / Add / Edit 
     - API: List / Add / Edit 
+    - UI: List / Add / Edit 
     - Note: 
         - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
         - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
@@ -48,34 +48,32 @@
     - Manage through DB, will be managed proctors according of ANY genders
 # Regional Admins CRUD:
     - DB: Schema :  (BAPS ID, NAME, Region, Mandals[], IsActive)
-    - UI: List / Add / Edit 
     - API: List / Add / Edit 
-    - Note:
-        - Regional Admin: Manage through DB, will be managed proctors according to THEIR gender
+    - UI: List / Add / Edit 
+    - Note: Regional Admin: Manage through DB, will be managed proctors according to THEIR gender
 # Proctor s CRUD:
-    - DB: Schema : (Id, BAPS ID, NAME, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], IsActive)
-    - UI: Add / Edit 
+    - DB: Schema : (Id, BAPS ID, NAME, Region, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], IsActive)
     - API: Add / Edit 
-    - TBD: 
+    - UI: Add / Edit 
     - Note: Proctor Admins can add proctors for a particular region and assign them to specific skill proctor types.
 
 # Grading Participants CRUD:
     - Display tabs according to the skills access to the proctor:
-        - UI
         - API
+        - UI
     - Search Candidate by proctor
-        - UI : (A text input field and QR scan option, like the satsang mukhpath, will appear on the screen)
         - API: (The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the proctor’s allowed access)
+        - UI : (A text input field and QR scan option, like the satsang mukhpath, will appear on the screen)
     - Display list of topic based on selected skill for a candidate (Once proctor clicks start proctoring, the proctor will be shown a series of question topics)
-        - UI
         - API
+        - UI
     - Grade Candidate skills by proctor
         - DB: Schema : Candidate ID, ProctorId, SKILL CATEGORY ID, Grading Topic Id, Weitage)
-        - UI
         - API
+        - UI
     - View list of graded candidite
-        - UI
         - API
+        - UI
         - Allow edit option to change the grade
         - Once event time is over, NO ONE should be able to change the grade
         
@@ -95,10 +93,24 @@
     - API: Get a schedule for a candidate (API can be called from mySatsangApp or Adhiveshan portal)
 
 ===== Cross Cutting =====:
-# Login Users:
-    - DB: Schema
-    - UI: Add / Edit 
+# Users:
+    - DB: Schema  (Id, BAPS ID, NAME, Roles[], Region, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], Password, IsActive)
+        - Note: Roles are National Admin / Regional Admin / Proctors
     - API: Add / Edit 
+    - UI: Add / Edit 
+# Roles and Permissions:
+    - 1. Role: National Admin User:
+        - CRUD Regional Admin Users
+        - CRUD Events 
+        - View Proctor Users
+        - CRUD Skill Grading Questions
+    - 2. Role: Regional Admin User:
+        - CRUD Proctor Users
+        - View Skill Grading Questions
+    - 3. Role: Proctor User:
+        - Search Participant
+        - Grade Participant
+
 # Authentication (Login / Logout):
     - UI 
     - API 
@@ -110,3 +122,5 @@
     - DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
     - API:
     - UI:
+# Export:
+    - Clustors / National Admins / Regional Admins / Proctors or Users / Events / Grading
