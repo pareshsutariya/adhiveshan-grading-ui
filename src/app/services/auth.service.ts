@@ -78,7 +78,7 @@ export class AuthService {
   }
 
   LoggedInUserPermissions(){
-    return this.GetLoginUser()  != null ? this.GetLoginUser().permissions : null;
+    return this.GetLoginUser()  != null ? this.GetLoginUser().roles : null;
   }
   
   logoutUser(): void{
@@ -98,7 +98,7 @@ export class AuthService {
         user.fullName = "Paresh";
         user.username = "vyom131313";
         user.status = "ACTIVE";
-        user.permissions = [];
+        user.roles = [];
         observable.next(user);
       });
     }

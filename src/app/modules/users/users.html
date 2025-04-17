@@ -42,7 +42,7 @@
                 <p-sortIcon field="status" />
             </th>
             <th>
-                Permissions
+                Roles
             </th>
         </tr>
     </ng-template>
@@ -64,10 +64,10 @@
             <td>
                 <p-accordion>
                     <p-accordion-panel value="{{item.userId}}">
-                        <p-accordion-header>Permissions</p-accordion-header>
+                        <p-accordion-header>Roles</p-accordion-header>
                         <p-accordion-content>
                             <ul>
-                                <li class="mb-2" *ngFor="let per of item.permissions"> <i class="fa-solid fa-key"></i>
+                                <li class="mb-2" *ngFor="let per of item.roles"> <i class="fa-solid fa-key"></i>
                                     {{per}}</li>
                             </ul>
                         </p-accordion-content>
@@ -123,39 +123,39 @@
             </p-inputgroup>
             <small class="text-red-500" *ngIf="submitted && !addOrEditItem.status">Status is required.</small>
 
-            <!-- Permissions -->
+            <!-- Roles -->
             <p-toolbar styleClass="mb-2">
                 <ng-template #start>
-                    <h5 class="m-0 mr-2">Permissions</h5>
+                    <h5 class="m-0 mr-2">Roles</h5>
                     <p-iconfield>
                         <p-inputicon styleClass="pi pi-search" />
                         <input pInputText type="text" placeholder="Search..."
-                            (input)="onPermissionsFilter(dtPermissions, $event)" />
+                            (input)="onRolesFilter(dtRoles, $event)" />
                     </p-iconfield>
                     <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true"
-                        severity="contrast" (click)="clearPermissionsFilter()" />
+                        severity="contrast" (click)="clearRolesFilter()" />
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dtPermissions [value]="permissions()" [(selection)]="addOrEditItem.permissions"
-                [globalFilterFields]="['label']" [rowHover]="true" [scrollable]="true" scrollHeight="300px">
+            <p-table #dtRoles [value]="roles()" [(selection)]="addOrEditItem.roles" [globalFilterFields]="['label']"
+                [rowHover]="true" [scrollable]="true" scrollHeight="300px">
 
                 <ng-template #header>
                     <tr>
                         <th style="width: 1rem"></th>
                         <th pSortableColumn="label" style="min-width:7rem">
-                            Permissions
+                            Roles
                             <p-sortIcon field="label" />
                         </th>
                     </tr>
                 </ng-template>
 
-                <ng-template #body let-permission>
-                    <tr [style]="{'color':permission.color}">
+                <ng-template #body let-role>
+                    <tr [style]="{'color':role.color}">
                         <td>
-                            <p-tableCheckbox ngDefaultControl [value]="permission.value" />
+                            <p-tableCheckbox ngDefaultControl [value]="role.value" />
                         </td>
-                        <td> <i class="{{permission.icon}}"></i> {{ permission.label }}</td>
+                        <td> <i class="{{role.icon}}"></i> {{ role.label }}</td>
                     </tr>
                 </ng-template>
             </p-table>

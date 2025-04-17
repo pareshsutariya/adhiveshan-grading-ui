@@ -22,11 +22,11 @@ import { User } from "../../models/user";
 })
 export class Users implements OnInit {
   @ViewChild("dt") dt!: Table;
-  @ViewChild("dtPermissions") dtPermissions!: Table;
+  @ViewChild("dtRoles") dtRoles!: Table;
 
   dialog: boolean = false;
   data = signal<User[]>([]);
-  permissions = signal<any[]>([]);
+  roles = signal<any[]>([]);
   addOrEditItem!: User;
   submitted: boolean = false;
 
@@ -42,7 +42,7 @@ export class Users implements OnInit {
   ngOnInit() {
     this.layoutService.pageTitle.set("Users");
 
-    this.permissions.set(this.constants.Permissions);
+    this.roles.set(this.constants.Roles);
     this.loadData();
   }
 
@@ -112,11 +112,11 @@ export class Users implements OnInit {
     this.dt.filterGlobal("", 'contains');
   }
 
-  onPermissionsFilter(table: Table, event: Event) {
+  onRolesFilter(table: Table, event: Event) {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
-  clearPermissionsFilter(){
-    this.dtPermissions.filterGlobal("", 'contains');
+  clearRolesFilter(){
+    this.dtRoles.filterGlobal("", 'contains');
   }
 }

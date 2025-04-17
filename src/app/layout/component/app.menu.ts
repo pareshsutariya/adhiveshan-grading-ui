@@ -48,7 +48,8 @@ export class AppMenu {
         nationalAdmin.items?.push({ label: 'Skill and Categories', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
 
         //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
-        //superAdmin.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
+        let accounts: MenuItem = {label: 'Accounts', items: []};
+        accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
 
         if(home!.items!.length > 0)
             this.model.push(home);
@@ -61,5 +62,8 @@ export class AppMenu {
 
         if(nationalAdmin!.items!.length > 0)
             this.model.push(nationalAdmin);
+
+        if(accounts!.items!.length > 0)
+            this.model.push(accounts);        
     }
 }
