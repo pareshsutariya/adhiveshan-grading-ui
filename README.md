@@ -2,13 +2,12 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
-# Prerequisite for Development server
+## Prerequisite for Development server: Install Node.js and npm:
 
-## Prerequisite: Install Node.js and npm:
+Angular requires Node.js and its package manager, npm.
+Download and install Node.js from the official website, which includes npm.
 
-Angular requires Node.js and its package manager, npm. Download and install Node.js from the official website, which includes npm.
-
-## Install Angular CLI:
+## Prerequisite for Development server: Install Angular CLI:
 
 Open a terminal or command prompt and install the Angular CLI globally using the command:
 
@@ -28,7 +27,7 @@ Install dependencies: Install the project's dependencies by running:
     npm install
 ```
 
-## Building
+## Prerequisite for Development server: Building
 
 To build the project run:
 
@@ -38,7 +37,7 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Development server
+## Start Development server
 
 To start a local development server, run:
 
