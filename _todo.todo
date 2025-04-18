@@ -18,7 +18,7 @@
     ✔ List view UI: Display Participants @done
     ✔ API: Display Participants @done
     ✔ Detail view UI: Display Participants @done
-    - Remove grouping
+    ✔ Remove grouping
     - Freeze column header
     - Provide search options e.g region / center / name
     - delete and report one by one for the matching BAPSId

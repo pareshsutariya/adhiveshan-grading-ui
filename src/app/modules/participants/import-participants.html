@@ -19,9 +19,10 @@
 </p-toolbar>
 
 <p-table #dt [value]="data()"
-    [globalFilterFields]="['center', 'misId', 'fullName', 'sampark_category', 'emcee_category', 'speech_pravachan_category', 'gender']"
-    rowGroupMode="subheader" groupRowsBy="center" sortField="center" [scrollable]="true" [paginator]="false"
-    [rowHover]="true">
+    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'sampark_category', 'emcee_category', 'speech_pravachan_category', 'gender']"
+    sortField="center" [scrollable]="true" [rowHover]="true" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users" [paginator]="true" [rows]="10"
+    [rowsPerPageOptions]="[10, 25, 50, 75, 100]">
     <ng-template #header>
         <tr>
             <th class="whitespace-nowrap"></th>
@@ -39,6 +40,7 @@
     </ng-template>
 
     <!-- Group Header -->
+    <!-- 
     <ng-template #groupheader let-item let-rowIndex="rowIndex" let-expanded="expanded">
         <tr pRowGroupHeader>
             <td colspan="11">
@@ -48,10 +50,11 @@
                 <span class="font-bold">{{ item.center }} (#{{calculateCenterCandidatesTotal(item.center)}})</span>
             </td>
         </tr>
-    </ng-template>
+    </ng-template> 
+    -->
 
     <!-- Expanded row -->
-    <ng-template #expandedrow let-candidate>
+    <ng-template #body let-candidate>
         <tr>
             <td>
                 <p-button icon="pi pi-eye" class="mr-2" [rounded]="true" [outlined]="true"

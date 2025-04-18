@@ -36,16 +36,20 @@ export class AppMenu {
         let participants: MenuItem = {label: 'Participants',  items: []};
         participants.items?.push({ label: 'Import / View', icon: 'fa-solid fa-upload', routerLink: ['/import-participants'] });
 
-        // PROCTOR ADMIN
-        let proctorAdmin: MenuItem = {label: 'Proctor Admins', items: []};
-        proctorAdmin.items?.push({ label: 'Proctors', icon: 'fa-solid fa-user-clock', routerLink: ['/proctors'] });
-        proctorAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
-
-        // NATIONAL ADMIN
+        // NATIONAL ADMINS
         let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
         nationalAdmin.items?.push({ label: 'Proctor Admins', icon: 'fa-solid fa-users-gear', routerLink: ['/proctor-admins'] });
         nationalAdmin.items?.push({ label: 'Skill Grading Questions', icon: 'fa-solid fa-circle-question', routerLink: ['/skill-grading-questions'] });
         nationalAdmin.items?.push({ label: 'Skill and Categories', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
+
+        // PROCTOR ADMINS
+        let proctorAdmin: MenuItem = {label: 'Proctor Admins', items: []};
+        proctorAdmin.items?.push({ label: 'Proctors', icon: 'fa-solid fa-user-clock', routerLink: ['/proctors'] });
+        proctorAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
+
+        // PROCTORS
+        let proctors: MenuItem = {label: 'Proctors', items: []};
+        proctors.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grade-participant'] });
 
         //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
         let accounts: MenuItem = {label: 'Accounts', items: []};
@@ -57,11 +61,14 @@ export class AppMenu {
         if(participants!.items!.length > 0)
             this.model.push(participants);
 
+        if(nationalAdmin!.items!.length > 0)
+            this.model.push(nationalAdmin);
+
         if(proctorAdmin!.items!.length > 0)
             this.model.push(proctorAdmin);
 
-        if(nationalAdmin!.items!.length > 0)
-            this.model.push(nationalAdmin);
+        if(proctors!.items!.length > 0)
+            this.model.push(proctors);
 
         if(accounts!.items!.length > 0)
             this.model.push(accounts);        
