@@ -2,8 +2,8 @@
 # Infrastructure:
     ✔ UI Repo and basic framework
     ✔ API Repo and basic framework
-    - Steps to run the projects
-    - Apply Repo restriction
+    ✔ Steps to run the projects
+    ✔ Apply Repo restriction
     - Code merging approach
     - Test Env setup in AWS
     - Prod Env setup in AWS
