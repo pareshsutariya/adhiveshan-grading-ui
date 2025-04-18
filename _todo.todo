@@ -2,15 +2,17 @@
 # Repo and framework:
     ✔ UI Repo and basic framework
     ✔ API Repo and basic framework
+    - Repo restriction
+    - Code merging approach
 
 # Create tickets:
     - Beakdown requirements into task @started
-    - Create tickets in Github
+    - Create tickets in Github @started
     
 # Deployment:
-    - Test Env
-    - Prod Env
-    - Repo restriction
+    - Test Env setup
+    - Prod Env setup
+    - DB Connection and Password protection
 ====== Modules =====:
 # Participants:
     ✔ Import Participants data (DB)
