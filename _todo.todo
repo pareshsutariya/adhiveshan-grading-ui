@@ -1,18 +1,16 @@
 # ========= Infrastructure ==============:
-# Repo and framework:
+# Infrastructure:
     ✔ UI Repo and basic framework
     ✔ API Repo and basic framework
-    - Repo restriction
+    - Apply Repo restriction
     - Code merging approach
+    - Test Env setup in AWS
+    - Prod Env setup in AWS
+    - DB Connection and Password protection/injection
 
 # Create tickets:
     - Beakdown requirements into task @started
-    - Create tickets in Github @started
-    
-# Deployment:
-    - Test Env setup
-    - Prod Env setup
-    - DB Connection and Password protection
+    - Create tickets in Github @started    
 ====== Modules =====:
 # Participants:
     ✔ Import Participants data (DB)
