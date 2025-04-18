@@ -1,128 +1,129 @@
-# ========= Infrastructure ==============:
-# Repo Setup:
-- [ ] UI Repo and basic framework
-- [ ] API Repo and basic framework
-- [ ] Steps to run the projects
-- [ ] Apply Repo restriction
-- [ ] Code merging approach
-- [ ] Test Env setup in AWS
-- [ ] Prod Env setup in AWS
-- [ ] DB Connection and Password protection/injection
+========= Infrastructure ==============:
+    
+    # Repo Setup:
+    - [ ] UI Repo and basic framework
+    - [ ] API Repo and basic framework
+    - [ ] Steps to run the projects
+    - [ ] Apply Repo restriction
+    - [ ] Code merging approach
+    - [ ] Test Env setup in AWS
+    - [ ] Prod Env setup in AWS
+    - [ ] DB Connection and Password protection/injection
 
-# Create tickets:
-- [ ] Beakdown requirements into task
-- [ ] Create tickets in Github    
+    # Create tickets:
+    - [ ] Beakdown requirements into task
+    - [ ] Create tickets in Github    
 
 ====== Participants =====:
+    
+    # Import Participants UI:
+    - [ ] Provide menu
+    - [ ] File import button
+    - [ ] Parse the imported file data, and post to API
 
-# Import Participants UI:
-- [ ] Provide menu
-- [ ] File import button
-- [ ] Parse the imported file data, and post to API
+    # Import Participants API:
+    - [ ] Implement an endpoint to Import Participants 
+    - [ ] For a given imported, for the given MIS ID, first delete the existing record from database, and then import the new record
 
-# Import Participants API:
-- [ ] Implement an endpoint to Import Participants 
-- [ ] For a given imported, for the given MIS ID, first delete the existing record from database, and then import the new record
+    # List Participants UI:
+    - [ ] List the participants in table by calling the endpoint
+    - [ ] Provide standard pagination / sorting / search 
+    - [ ] Provide multi column sorting
+    - [ ] Provide filter on each column
+    - [ ] Freeze the table header
 
-# List Participants UI:
-- [ ] List the participants in table by calling the endpoint
-- [ ] Provide standard pagination / sorting / search 
-- [ ] Provide multi column sorting
-- [ ] Provide filter on each column
-- [ ] Freeze the table header
+    # List Participants API:
+    - [ ] Implement an endpoint to get Participants 
 
-# List Participants API:
-- [ ] Implement an endpoint to get Participants 
+    # View a Participant detail UI:
+    - [ ] On clicking participant, display that participant detail in popup 
 
-# View a Participant detail UI:
-- [ ] On clicking participant, display that participant detail in popup 
-
-# Additional fields: 
-- [ ] BAPS ID: add this field once added to PBI
-- [ ] Participation center (can be different that center of candidate)
-- [ ] Checkin field
+    # Additional fields: 
+    - [ ] BAPS ID: add this field once added to PBI
+    - [ ] Participation center (can be different that center of candidate)
+    - [ ] Checkin field
 
 ====== Region Centers =====:
-
-# Region and Centers Schema:
-- [ ] API: "Center" table schema (Id, Region Name, Center Name) 
-- [ ] API: Implement an endpoint to return list centers from table "Centers"
-- [ ] UI: Add menu in navigation panel: "Region Centers"
-- [ ] UI: Make an API call and display list of region centers
-- [ ] UI: Apply standard sorting and searching on list view
+    
+    # Region and Centers Schema:
+    - [ ] API: "Center" table schema (Id, Region Name, Center Name) 
+    - [ ] API: Implement an endpoint to return list centers from table "Centers"
+    - [ ] UI: Add menu in navigation panel: "Region Centers"
+    - [ ] UI: Make an API call and display list of region centers
+    - [ ] UI: Apply standard sorting and searching on list view
 
 ====== Grading Topics =====:
+    
+    # Skill Categories:
+    - [ ] API: "SkillCategories" table Schema (Id, Skill Name, Category Name) 
+    - [ ] API: Implement an endpoint to return data from table SkillCategories
+    - [ ] UI: Menu: Add "Skill Categories" menu in navigation panel
+    - [ ] UI: List Page: Make an API call, and display data
+    - [ ] UI: List Page: Apply standard sorting and searching
 
-# Skill Categories:
-- [ ] API: "SkillCategories" table Schema (Id, Skill Name, Category Name) 
-- [ ] API: Implement an endpoint to return data from table SkillCategories
-- [ ] UI: Menu: Add "Skill Categories" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
-
-# Skill Grading Topics:
-- [ ] API: "GradingTopics" table Schema (Id, Topic Name, Description, Round, WeightageOptions[], RequiredProctors, IsActive) 
-- [ ] API: Implement an endpoint to return list of data
-- [ ] API: Implement an endpoint to Add record
-- [ ] API: Implement an endpoint to Edit record
-- [ ] UI: Menu: Add "Grading Topics" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
-- [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+    # Skill Grading Topics:
+    - [ ] API: "GradingTopics" table Schema (Id, Topic Name, Description, Round, WeightageOptions[], RequiredProctors, IsActive) 
+    - [ ] API: Implement an endpoint to return list of data
+    - [ ] API: Implement an endpoint to Add record
+    - [ ] API: Implement an endpoint to Edit record
+    - [ ] UI: Menu: Add "Grading Topics" menu in navigation panel
+    - [ ] UI: List Page: Make an API call, and display data
+    - [ ] UI: List Page: Apply standard sorting and searching
+    - [ ] UI: Add Page: Design UI to Add or Edit record, and call API
 
 ====== User Access Control =====:
+    
+    # Users:
+    - [ ] API: "Users" table Schema (Id, BAPS ID, FullName, Password, Region, Center, Roles[], EventIds[], Mandals[], SKILL CATEGORY IDs[], Checkin, IsActive)
+    - [ ] API: Implement an endpoint to return list of data
+    - [ ] API: Implement an endpoint to Add record
+    - [ ] API: Implement an endpoint to Update record
+    - [ ] UI: Menu: Add "Users" menu in navigation panel
+    - [ ] UI: List Page: Make an API call, and display data
+    - [ ] UI: List Page: Apply standard sorting and searching
+    - [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+    - Note:
+        - Roles are National Admin / Regional Admin / Proctors 
+        - National Admin: Can manage regional admin AND proctors of all region of ANY genders
+        - Regional Admin: Can manage proctors according to THEIR gender
+        - Proctor: Can search and grade participant of their ASSIGNED EVENTS and ASSIGNED SKILLS and ASSIGNED GENDERS only
 
-# Users:
-- [ ] API: "Users" table Schema (Id, BAPS ID, FullName, Password, Region, Center, Roles[], EventIds[], Mandals[], SKILL CATEGORY IDs[], Checkin, IsActive)
-- [ ] API: Implement an endpoint to return list of data
-- [ ] API: Implement an endpoint to Add record
-- [ ] API: Implement an endpoint to Update record
-- [ ] UI: Menu: Add "Users" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
-- [ ] UI: Add Page: Design UI to Add or Edit record, and call API
-- Note:
-    - Roles are National Admin / Regional Admin / Proctors 
-    - National Admin: Can manage regional admin AND proctors of all region of ANY genders
-    - Regional Admin: Can manage proctors according to THEIR gender
-    - Proctor: Can search and grade participant of their ASSIGNED EVENTS and ASSIGNED SKILLS and ASSIGNED GENDERS only
-
-# Role Permissions:
-- [ ] API: "RolePermissions" table Schema (Id, Name, Permission)
-- [ ] API: Implement an endpoint to return list of data
-- [ ] UI: Menu: Add "Roles" menu in navigation panel
-- Note:
-    1. Role: National Admin User:
-        - CRUD Regional Admin Users
-        - CRUD Events 
-        - View Proctor Users
-        - CRUD Skill Grading Questions
-    2. Role: Regional Admin User:
-        - CRUD Proctor Users
-        - View Skill Grading Questions
-    3. Role: Proctor User:
-        - Search Participant
-        - Grade Participant
+    # Role Permissions:
+    - [ ] API: "RolePermissions" table Schema (Id, Name, Permission)
+    - [ ] API: Implement an endpoint to return list of data
+    - [ ] UI: Menu: Add "Roles" menu in navigation panel
+    - Note:
+        1. Role: National Admin User:
+            - CRUD Regional Admin Users
+            - CRUD Events 
+            - View Proctor Users
+            - CRUD Skill Grading Questions
+        2. Role: Regional Admin User:
+            - CRUD Proctor Users
+            - View Skill Grading Questions
+        3. Role: Proctor User:
+            - Search Participant
+            - Grade Participant
 
 ====== Events =====:
-
-- [ ] API: "Events", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
-- [ ] API: Implement an endpoint to return list of data
-- [ ] API: Implement an endpoint to Add record
-- [ ] API: Implement an endpoint to Update record
-- [ ] UI: Menu: Add "Events" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
-- [ ] UI: Add Page: Design UI to Add or Edit record, and call API
-- Note: 
-    - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
-    - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
-    - During this period, only delegates from the selected centers will be allowed to participate.
-    - Regional admin can only change the time, but not the date
+    
+    - [ ] API: "Events", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
+    - [ ] API: Implement an endpoint to return list of data
+    - [ ] API: Implement an endpoint to Add record
+    - [ ] API: Implement an endpoint to Update record
+    - [ ] UI: Menu: Add "Events" menu in navigation panel
+    - [ ] UI: List Page: Make an API call, and display data
+    - [ ] UI: List Page: Apply standard sorting and searching
+    - [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+    - Note: 
+        - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
+        - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
+        - During this period, only delegates from the selected centers will be allowed to participate.
+        - Regional admin can only change the time, but not the date
 
 ====== Grading Participants =====:
-
-# Grading Participants CRUD:
+    
+    # Grading Participants CRUD:
     - Display tabs according to the skills access to the proctor:
         - API
         - UI
@@ -151,48 +152,48 @@
     - TBD: at a time only x proctors should be able to access or grade the candidate
 
 ====== Scheduling Participants =====:
-
-- [ ] Generate schedule for given cluster file
-- [ ] Save cluster schedule to database
-- [ ] View Saved cluster schedule
-- [ ] Export cluster schedule
-- [ ] API: Get a schedule for a candidate (API can be called from mySatsangApp or Adhiveshan portal)
+    
+    - [ ] Generate schedule for given cluster file
+    - [ ] Save cluster schedule to database
+    - [ ] View Saved cluster schedule
+    - [ ] Export cluster schedule
+    - [ ] API: Get a schedule for a candidate (API can be called from mySatsangApp or Adhiveshan portal)
 
 ====== CheckIn Proctor and Participants =====:
     
-- [ ] UI: Menu: Add "Check In" menu in navigation panel
-- [ ] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
-- [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
-- [ ] UI: Provide a button to check in for the found participant or proctor for the given MIS ID or BAPS ID
-- [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
+    - [ ] UI: Menu: Add "Check In" menu in navigation panel
+    - [ ] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
+    - [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
+    - [ ] UI: Provide a button to check in for the found participant or proctor for the given MIS ID or BAPS ID
+    - [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
     
 ====== Dashboard =====:
-
-- [ ] Events View
-    - In progress
-    - up coming
-- [ ] Skill Participants Count
-- [ ] Regional wise proctors count
-- [ ] Checked in Proctors
-- [ ] Checked in Participants
+    
+    - [ ] Events View
+        - In progress
+        - up coming
+    - [ ] Skill Participants Count
+    - [ ] Regional wise proctors count
+    - [ ] Checked in Proctors
+    - [ ] Checked in Participants
 
 ====== Export =====:
-
-- [ ] Export Users
-- [ ] Export Events
-- [ ] Export Grading Topics
-- [ ] Export Grading
+    
+    - [ ] Export Users
+    - [ ] Export Events
+    - [ ] Export Grading Topics
+    - [ ] Export Grading
 
 ===== Cross Cutting =====:
 
-# Authentication (Login / Logout):
-    - UI 
-    - API 
-    - Check Access on each screen/menu based on permissions: 
-# Audit fields:
-    - Audit field in all tables
-    - Set audit fields while add/edit
-# Activity tracking:
-    - DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
-    - API:
-    - UI:
+    # Authentication (Login / Logout):
+        - UI 
+        - API 
+        - Check Access on each screen/menu based on permissions: 
+    # Audit fields:
+        - Audit field in all tables
+        - Set audit fields while add/edit
+    # Activity tracking:
+        - DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
+        - API:
+        - UI:
