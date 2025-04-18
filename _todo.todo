@@ -2,6 +2,7 @@
 # Infrastructure:
     ✔ UI Repo and basic framework
     ✔ API Repo and basic framework
+    - Steps to run the projects
     - Apply Repo restriction
     - Code merging approach
     - Test Env setup in AWS
@@ -17,9 +18,14 @@
     ✔ List view UI: Display Participants @done
     ✔ API: Display Participants @done
     ✔ Detail view UI: Display Participants @done
+    - Remove grouping
+    - Freeze column header
+    - Provide search options e.g region / center / name
+    - delete and report one by one for the matching BAPSId
     - Additional fields: 
         - BAPS ID: add this field once added to PBI
         - Participation center (can be different that center of candidate)
+        - Checkin field
 
 # Region and Centers Schema:
     - DB: Schema (Id, Region Name, Center Name) 
@@ -37,26 +43,14 @@
     - UI: List / Add / Edit 
 
 # Events CRUD:
-    - DB: Schema: (Id, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
+    - DB: Schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
     - API: List / Add / Edit 
     - UI: List / Add / Edit 
     - Note: 
         - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
         - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
         - During this period, only delegates from the selected centers will be allowed to participate.
-
-# National Admins CRUD:
-    - Manage through DB, will be managed proctors according of ANY genders
-# Regional Admins CRUD:
-    - DB: Schema :  (BAPS ID, NAME, Region, Mandals[], IsActive)
-    - API: List / Add / Edit 
-    - UI: List / Add / Edit 
-    - Note: Regional Admin: Manage through DB, will be managed proctors according to THEIR gender
-# Proctor s CRUD:
-    - DB: Schema : (Id, BAPS ID, NAME, Region, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], IsActive)
-    - API: Add / Edit 
-    - UI: Add / Edit 
-    - Note: Proctor Admins can add proctors for a particular region and assign them to specific skill proctor types.
+        - Regional admin can only change the time, but not the date
 
 # Grading Participants CRUD:
     - Display tabs according to the skills access to the proctor:
@@ -95,13 +89,30 @@
 
 # Export:
     - Clustors / National Admins / Regional Admins / Proctors or Users / Events / Grading
-    
+# Dashboard:
+    - Events View
+        - In progress
+        - up coming
+    - Skill Participants Count
+    - Regional wise proctors count
+
+# Check In moduel:
+    - UI: Search by MIS ID or BAPS ID
+    - API: Search by MIS ID or BAPS ID from Participats AND Users
+    - UI: Check in for the MIS ID or BAPS ID
+    - API: Check in by MIS ID or BAPS ID in Participats AND Users
+
 ===== Cross Cutting =====:
 # Users:
-    - DB: Schema  (Id, BAPS ID, NAME, Roles[], Region, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], Password, IsActive)
-        - Note: Roles are National Admin / Regional Admin / Proctors
+    - DB: Schema  (Id, BAPS ID, NAME, Region, Center, Roles[], EventIds[], Mandals[], SKILL CATEGORY IDs[], Password, Checkin, IsActive)
     - API: Add / Edit 
     - UI: Add / Edit 
+    - Note:
+        - Roles are National Admin / Regional Admin / Proctors 
+        - National Admin: Can manage regional admin AND proctors of all region of ANY genders
+        - Regional Admin: Can manage proctors according to THEIR gender
+        - Proctor: Can search and grade participant of their ASSIGNED EVENTS and ASSIGNED SKILLS and ASSIGNED GENDERS only
+
 # Roles and Permissions:
     - 1. Role: National Admin User:
         - CRUD Regional Admin Users
