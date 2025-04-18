@@ -1,16 +1,17 @@
-# =======================:
-    - Breakdown into tasks
-    - Create tickets
-    - Repo access
-    - Repo restriction
-    
-====== Modules =====:
-# Repo and basic framework:
-    ✔ UI 
-    ✔ API 
-    ✔ UI/API: Basic framework
-    ✔ Separate out component HTML files
+# ========= Infrastructure ==============:
+# Repo and framework:
+    ✔ UI Repo and basic framework
+    ✔ API Repo and basic framework
 
+# Create tickets:
+    - Beakdown requirements into task @started
+    - Create tickets in Github
+    
+# Deployment:
+    - Test Env
+    - Prod Env
+    - Repo restriction
+====== Modules =====:
 # Participants:
     ✔ Import Participants data (DB)
     ✔ List view UI: Display Participants @done
@@ -92,6 +93,9 @@
     - Export cluster schedule
     - API: Get a schedule for a candidate (API can be called from mySatsangApp or Adhiveshan portal)
 
+# Export:
+    - Clustors / National Admins / Regional Admins / Proctors or Users / Events / Grading
+    
 ===== Cross Cutting =====:
 # Users:
     - DB: Schema  (Id, BAPS ID, NAME, Roles[], Region, CENTER, EventIds[], Mandals[], SKILL CATEGORY IDs[], Password, IsActive)
@@ -122,5 +126,3 @@
     - DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
     - API:
     - UI:
-# Export:
-    - Clustors / National Admins / Regional Admins / Proctors or Users / Events / Grading
