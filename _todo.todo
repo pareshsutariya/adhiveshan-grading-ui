@@ -158,25 +158,30 @@
 - [ ] Export cluster schedule
 - [ ] API: Get a schedule for a candidate (API can be called from mySatsangApp or Adhiveshan portal)
 
+====== CheckIn Proctor and Participants =====:
+    
+- [ ] UI: Menu: Add "Check In" menu in navigation panel
+- [ ] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
+- [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
+- [ ] UI: Provide a button to check in for the found participant or proctor for the given MIS ID or BAPS ID
+- [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
+    
 ====== Dashboard =====:
+
 - [ ] Events View
     - In progress
     - up coming
 - [ ] Skill Participants Count
 - [ ] Regional wise proctors count
+- [ ] Checked in Proctors
+- [ ] Checked in Participants
 
 ====== Export =====:
+
 - [ ] Export Users
 - [ ] Export Events
 - [ ] Export Grading Topics
 - [ ] Export Grading
-    
-====== CheckIn Proctor and Participants =====:
-
-- UI: Search by MIS ID or BAPS ID
-- API: Search by MIS ID or BAPS ID from Participats AND Users
-- UI: Check in for the MIS ID or BAPS ID
-- API: Check in by MIS ID or BAPS ID in Participats AND Users
 
 ===== Cross Cutting =====:
 
