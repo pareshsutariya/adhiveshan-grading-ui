@@ -105,6 +105,15 @@
             - Search Participant
             - Grade Participant
 
+    # Authentication / Logic:
+    - [ ] UI: Design Login screen
+    - [ ] API: Implement an endpoint to authenticate user for given username/password
+    - [ ] API: Implement Jwt token approach
+
+    # Authorization:
+        - [ ] API: Implement an endpoint to return roles/permissions for login user
+        - [ ] UI: Make the menu and action button available based on permissions
+        
 ====== Events =====:
     
     - [ ] API: "Events", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
@@ -153,7 +162,7 @@
             - Once event time is over, NO ONE should be able to change the grade
 
     # Candidate Status:
-    - API: Implement an endpoint to return status of candidate's each skill competition status (PENDING / COMPLETED)
+    - [ ] API: Implement an endpoint to return status of candidate's each skill competition status (PENDING / COMPLETED)
         - Note: return COMPLETED if all the topic has been graded else PENDING
     
     - Participant BAPS ID authentication API using encode/decode BAPS ID
