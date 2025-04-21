@@ -109,6 +109,7 @@
     - [ ] UI: Design Login screen
     - [ ] API: Implement an endpoint to authenticate user for given username/password
     - [ ] API: Implement Jwt token approach
+    - [ ] Participant BAPS ID authentication API using encode/decode BAPS ID
 
     # Authorization:
         - [ ] API: Implement an endpoint to return roles/permissions for login user
@@ -165,8 +166,6 @@
     - [ ] API: Implement an endpoint to return status of candidate's each skill competition status (PENDING / COMPLETED)
         - Note: return COMPLETED if all the topic has been graded else PENDING
     
-    - Participant BAPS ID authentication API using encode/decode BAPS ID
-
     - TBD: at a time only x proctors should be able to access or grade the candidate
 
 ====== Scheduling Participants =====:
