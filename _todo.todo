@@ -43,7 +43,7 @@
     - [ ] Participation center (can be different that center of candidate)
     - [ ] Checkin field
 
-====== Region Centers =====:
+====== Grading Topics =====:
     
     # Region and Centers Schema:
     - [ ] API: "Center" table schema (Id, Region Name, Center Name) 
@@ -52,7 +52,6 @@
     - [ ] UI: Make an API call and display list of region centers
     - [ ] UI: Apply standard sorting and searching on list view
 
-====== Grading Topics =====:
     
     # Skill Categories:
     - [ ] API: "SkillCategories" table Schema (Id, Skill Name, Category Name) 
@@ -70,6 +69,22 @@
     - [ ] UI: List Page: Make an API call, and display data
     - [ ] UI: List Page: Apply standard sorting and searching
     - [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+
+====== Events =====:
+
+    - [ ] API: "Events", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
+    - [ ] API: Implement an endpoint to return list of data
+    - [ ] API: Implement an endpoint to Add record
+    - [ ] API: Implement an endpoint to Update record
+    - [ ] UI: Menu: Add "Events" menu in navigation panel
+    - [ ] UI: List Page: Make an API call, and display data
+    - [ ] UI: List Page: Apply standard sorting and searching
+    - [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+    - Note: 
+        - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
+        - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
+        - During this period, only delegates from the selected centers will be allowed to participate.
+        - Regional admin can only change the time, but not the date
 
 ====== User Access Control =====:
     
@@ -119,22 +134,6 @@
     - [ ] API: Set audit fields while add/edit
     - [ ] UI: Display audit fields in List and detais page
         
-====== Events =====:
-    
-    - [ ] API: "Events", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
-    - [ ] API: Implement an endpoint to return list of data
-    - [ ] API: Implement an endpoint to Add record
-    - [ ] API: Implement an endpoint to Update record
-    - [ ] UI: Menu: Add "Events" menu in navigation panel
-    - [ ] UI: List Page: Make an API call, and display data
-    - [ ] UI: List Page: Apply standard sorting and searching
-    - [ ] UI: Add Page: Design UI to Add or Edit record, and call API
-    - Note: 
-        - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event. 
-        - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events. 
-        - During this period, only delegates from the selected centers will be allowed to participate.
-        - Regional admin can only change the time, but not the date
-
 ====== Grading the Participants =====:
     
     # Display tabs according to the skills access to the proctor:
