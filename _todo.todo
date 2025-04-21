@@ -121,31 +121,40 @@
         - During this period, only delegates from the selected centers will be allowed to participate.
         - Regional admin can only change the time, but not the date
 
-====== Grading Participants =====:
+====== Grading the Participants =====:
     
-    # Grading Participants CRUD:
-    - Display tabs according to the skills access to the proctor:
-        - API
-        - UI
-    - Search Candidate by proctor
-        - API: (The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the proctor’s allowed access)
-        - UI : (A text input field and QR scan option, like the satsang mukhpath, will appear on the screen)
-    - Display list of topic based on selected skill for a candidate (Once proctor clicks start proctoring, the proctor will be shown a series of question topics)
-        - API
-        - UI
-    - Grade Candidate skills by proctor
-        - DB: Schema : Candidate ID, ProctorId, SKILL CATEGORY ID, Grading Topic Id, Weitage)
-        - API
-        - UI
-    - View list of graded candidite
-        - API
-        - UI
-        - Allow edit option to change the grade
-        - Once event time is over, NO ONE should be able to change the grade
-        
-    - Candidate Status: Return status of candidate's each skill competition status (PENDING / COMPLETED)
-        - UI
-        - API : return COMPLETED if all the topic has been graded else PENDING
+    # Display tabs according to the skills access to the proctor:
+    - [ ] API: Implement an endpoint to return list of proctors skills
+    - [ ] UI: Design UI to display tabs according to the procotr's skills
+
+    # Search Candidate by proctor for BAPS ID and Skill Name:
+    - [ ] API: Implement an endpoint to search candidate for the given BAPS ID and Skill name
+        - Note: The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the proctor’s allowed access
+    - [ ] UI: Design UI to Search Candidate for BAPS ID and Skill Name
+        - Note: A text input field and QR scan option, like the satsang mukhpath, will appear on the screen
+
+    # Display list of skill topics to grade:
+    - [ ] API: Implement an endpoint to return skill topics for the give skill
+    - [ ] UI: Design UI to display list of topics for the givek skill
+        - Note: 
+            - Once proctor clicks start proctoring, the proctor will be shown a series of question topics
+            - Display topics along with weitage option to grade
+
+    # Grade candidate for list of skill topics:
+    - [ ] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
+    - [ ] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
+    - [ ] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
+
+    # View list of graded candidite for a proctor:
+    - [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
+    - [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
+        Note:
+            - Allow edit option to change the grade
+            - Once event time is over, NO ONE should be able to change the grade
+
+    # Candidate Status:
+    - API: Implement an endpoint to return status of candidate's each skill competition status (PENDING / COMPLETED)
+        - Note: return COMPLETED if all the topic has been graded else PENDING
     
     - Participant BAPS ID authentication API using encode/decode BAPS ID
 
