@@ -112,8 +112,12 @@
     - [ ] Participant BAPS ID authentication API using encode/decode BAPS ID
 
     # Authorization:
-        - [ ] API: Implement an endpoint to return roles/permissions for login user
-        - [ ] UI: Make the menu and action button available based on permissions
+    - [ ] API: Implement an endpoint to return roles/permissions for login user
+    - [ ] UI: Make the menu and action button available based on permissions
+
+    # Audit fields:
+    - [ ] API: Set audit fields while add/edit
+    - [ ] UI: Display audit fields in List and detais page
         
 ====== Events =====:
     
@@ -203,13 +207,6 @@
 
 ===== Cross Cutting =====:
 
-    # Authentication (Login / Logout):
-        - UI 
-        - API 
-        - Check Access on each screen/menu based on permissions: 
-    # Audit fields:
-        - Audit field in all tables
-        - Set audit fields while add/edit
     # Activity tracking:
         - DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
         - API:
