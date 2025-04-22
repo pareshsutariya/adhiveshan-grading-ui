@@ -1,28 +1,28 @@
 ====== Infrastructure ======:
     
     # Repo Setup:
-    - [ ] UI Repo and basic framework
-    - [ ] API Repo and basic framework
-    - [ ] Steps to run the projects
-    - [ ] Apply Repo restriction
+    - [x] UI Repo and basic framework
+    - [x] API Repo and basic framework
+    - [x] Steps to run the projects
+    - [x] Apply Repo restriction
     - [ ] Code merging approach
     - [ ] Test Env setup in AWS
     - [ ] Prod Env setup in AWS
     - [ ] DB Connection and Password protection/injection
 
     # Create tickets:
-    - [ ] Beakdown requirements into task
-    - [ ] Create tickets in Github    
+    - [x] Beakdown requirements into task
+    - [x] Create tickets in Github    
 
 ====== Participants =====:
     
     # Import Participants UI:
-    - [ ] Provide menu
-    - [ ] File import button
-    - [ ] Parse the imported file data, and post to API
+    - [x] Provide menu
+    - [x] File import button
+    - [x] Parse the imported file data, and post to API
 
     # Import Participants API:
-    - [ ] Implement an endpoint to Import Participants 
+    - [x] Implement an endpoint to Import Participants 
     - [ ] For a given imported, for the given MIS ID, first delete the existing record from database, and then import the new record
 
     # List Participants UI:
@@ -33,10 +33,10 @@
     - [ ] Freeze the table header
 
     # List Participants API:
-    - [ ] Implement an endpoint to get Participants 
+    - [x] Implement an endpoint to get Participants 
 
     # View a Participant detail UI:
-    - [ ] On clicking participant, display that participant detail in popup 
+    - [x] On clicking participant, display that participant detail in popup 
 
     # Additional fields: 
     - [ ] BAPS ID: add this field once added to PBI
