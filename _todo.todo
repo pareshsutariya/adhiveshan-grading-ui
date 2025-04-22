@@ -30,7 +30,7 @@
     - [x] Provide standard pagination / sorting / search 
     - [x] Provide multi column sorting
     - [x] Provide filter on each column
-    - [ ] Freeze the table header
+    - [x] Freeze the table header
 
     # List Participants API:
     - [x] Implement an endpoint to get Participants 

@@ -15,6 +15,21 @@ import { ParticipantsService } from "../../services/participants.service";
   imports: [AngularModules, PrimeNgModules],
   providers: [MessageService],
   templateUrl: "import-participants.html",
+  styles: [ 
+    ` 
+    :host ::ng-deep .p-datatable .p-datatable-thead > tr > th { 
+        position: -webkit-sticky; 
+        position: sticky; 
+        top: 0px; 
+    } 
+
+    @media screen and (max-width: 64em) { 
+        :host ::ng-deep .p-datatable .p-datatable-thead > tr > th { 
+            top: 0px; 
+        } 
+    } 
+`, 
+],
 })
 export class ImportParticipants implements OnInit {
   globalSearchText: string = "";
