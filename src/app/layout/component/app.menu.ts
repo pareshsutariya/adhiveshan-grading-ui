@@ -38,13 +38,11 @@ export class AppMenu {
 
         // NATIONAL ADMINS
         let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
-        nationalAdmin.items?.push({ label: 'Proctor Admins', icon: 'fa-solid fa-users-gear', routerLink: ['/proctor-admins'] });
         nationalAdmin.items?.push({ label: 'Skill Grading Questions', icon: 'fa-solid fa-circle-question', routerLink: ['/skill-grading-questions'] });
         nationalAdmin.items?.push({ label: 'Skill and Categories', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
 
         // PROCTOR ADMINS
         let proctorAdmin: MenuItem = {label: 'Proctor Admins', items: []};
-        proctorAdmin.items?.push({ label: 'Proctors', icon: 'fa-solid fa-user-clock', routerLink: ['/proctors'] });
         proctorAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
 
         // PROCTORS
