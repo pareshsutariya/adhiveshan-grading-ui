@@ -23,13 +23,13 @@
 
     # Import Participants API:
     - [x] Implement an endpoint to Import Participants 
-    - [ ] For a given imported, for the given MIS ID, first delete the existing record from database, and then import the new record
+    - [x] While importing, for the given MIS ID, first delete the existing record from database, and then import the new record
 
     # List Participants UI:
-    - [ ] List the participants in table by calling the endpoint
-    - [ ] Provide standard pagination / sorting / search 
-    - [ ] Provide multi column sorting
-    - [ ] Provide filter on each column
+    - [x] List the participants in table by calling the endpoint
+    - [x] Provide standard pagination / sorting / search 
+    - [x] Provide multi column sorting
+    - [x] Provide filter on each column
     - [ ] Freeze the table header
 
     # List Participants API:

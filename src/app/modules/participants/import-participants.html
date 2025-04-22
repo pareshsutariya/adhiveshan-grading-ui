@@ -19,23 +19,72 @@
 </p-toolbar>
 
 <p-table #dt [value]="data()"
-    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'sampark_category', 'emcee_category', 'speech_pravachan_category', 'gender']"
-    sortField="center" [scrollable]="true" [rowHover]="true" [showCurrentPageReport]="true"
+    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'sampark_Category', 'emcee_Category', 'speech_Pravachan_Category', 'vyaktigat_Kirtan_Gaan_Category', 'tedtalk_Category', 'gender']"
+    sortField="center" sortMode="multiple" [scrollable]="true" [showCurrentPageReport]="true" [rowHover]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users" [paginator]="true" [rows]="10"
     [rowsPerPageOptions]="[10, 25, 50, 75, 100]">
     <ng-template #header>
         <tr>
             <th class="whitespace-nowrap"></th>
-            <th class="whitespace-nowrap">Region</th>
-            <th class="whitespace-nowrap">Center</th>
-            <th class="whitespace-nowrap">MIS Id</th>
-            <th class="whitespace-nowrap">Full Name</th>
-            <th class="whitespace-nowrap">Gender</th>
-            <th class="whitespace-nowrap">Sampark</th>
-            <th class="whitespace-nowrap">Emcee</th>
-            <th class="whitespace-nowrap">Pravachan</th>
-            <th class="whitespace-nowrap">Kirtan</th>
-            <th class="whitespace-nowrap">Ted Talk</th>
+            <th class="whitespace-nowrap" pSortableColumn="region">Region <p-sortIcon field="region" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="center">Center <p-sortIcon field="center" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="misId">MIS Id <p-sortIcon field="misId" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="fullName">Full Name <p-sortIcon field="fullName" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="gender">Gender <p-sortIcon field="gender" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="sampark_Category">Sampark <p-sortIcon
+                    field="sampark_Category" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="emcee_Category">Emcee <p-sortIcon field="emcee_Category" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="speech_Pravachan_Category">Pravachan <p-sortIcon
+                    field="speech_Pravachan_Category" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="vyaktigat_Kirtan_Gaan_Category">Kirtan <p-sortIcon
+                    field="vyaktigat_Kirtan_Gaan_Category" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="tedtalk_Category">Ted Talk <p-sortIcon
+                    field="tedtalk_Category" /></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>
+                <p-columnFilter type="text" field="region" placeholder="Search by region"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="center" placeholder="Search by Center"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="misId" placeholder="Search by MIS ID"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="fullName" placeholder=" Search by Full Name"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="gender" placeholder=" Search by Gender"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="sampark_Category" placeholder=" Search by Sampark"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="emcee_Category" placeholder=" Search by Emcee"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="speech_Pravachan_Category" placeholder=" Search by Pravachan"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="vyaktigat_Kirtan_Gaan_Category" placeholder=" Search by Kirtan Gaan"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
+            <th>
+                <p-columnFilter type="text" field="tedtalk_Category" placeholder=" Search by TedTalk"
+                    ariaLabel="Filter Name"></p-columnFilter>
+            </th>
         </tr>
     </ng-template>
 
