@@ -75,8 +75,9 @@
                         <p-accordion-header>Roles</p-accordion-header>
                         <p-accordion-content>
                             <ul>
-                                <li class="mb-2" *ngFor="let per of item.assignedRoles"> <i class="fa-solid fa-key"></i>
-                                    {{per}}</li>
+                                <li class="mb-2" *ngFor="let role of item.assignedRoles"> <i
+                                        class="fa-solid fa-key"></i>
+                                    {{role}}</li>
                             </ul>
                         </p-accordion-content>
                     </p-accordion-panel>
@@ -133,8 +134,11 @@
                 <p-inputgroup-addon>
                     <i class="pi pi-building-columns"></i>
                 </p-inputgroup-addon>
-                <input pInputText type="text" id="center" [(ngModel)]="addOrEditItem.center" placeholder="Center"
-                    required autofocus fluid />
+                <!-- <input pInputText type="text" id="center" [(ngModel)]="addOrEditItem.center" placeholder="Center"
+                    required autofocus fluid /> -->
+                <p-select inputId="center" [options]="regionsService.GetCentersForRegion(addOrEditItem.region)"
+                    optionLabel="label" optionValue="value" [(ngModel)]="addOrEditItem.center"
+                    placeholder="Select a Center" fluid />
             </p-inputgroup>
             <small class="text-red-500" *ngIf="submitted && !addOrEditItem.center">Center is required.</small>
 
