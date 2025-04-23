@@ -33,10 +33,6 @@
                 Fullname
                 <p-sortIcon field="fullName" />
             </th>
-            <th pSortableColumn="misId" class="whitespace-nowrap">
-                MIS Id
-                <p-sortIcon field="misId" />
-            </th>
             <!-- <th pSortableColumn="password" class="whitespace-nowrap" >
           Password
           <p-sortIcon field="password" />
@@ -54,6 +50,9 @@
             <th>
                 Skills
             </th>
+            <th>
+                Events
+            </th>
         </tr>
     </ng-template>
 
@@ -65,54 +64,40 @@
                     (click)="openEdit(item)" />
             </td>
             <td class="whitespace-nowrap">{{ item.region }} - {{ item.center }}</td>
-            <td class="whitespace-nowrap">{{ item.fullName }}</td>
-            <td>{{ item.misId }}</td>
-            <!-- <td class="align-top">{{ item.password }}</td> -->
+            <td class="whitespace-nowrap">{{ item.fullName }} <br>
+                #{{ item.misId }}
+            </td>
             <td>
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
                     styleClass="dark:!bg-surface-900" />
             </td>
             <td>
-                <p-accordion>
-                    <p-accordion-panel value="{{item.userId}}">
-                        <p-accordion-header>Roles</p-accordion-header>
-                        <p-accordion-content>
-                            <ul>
-                                <li class="mb-2 whitespace-nowrap" *ngFor="let role of item.assignedRoles"> <i
-                                        class="fa-solid fa-key"></i>
-                                    {{role}}</li>
-                            </ul>
-                        </p-accordion-content>
-                    </p-accordion-panel>
-                </p-accordion>
+                <ul>
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let role of item.assignedRoles"> <i
+                            class="fa-solid fa-user-tie"></i>
+                        {{role}}</li>
+                </ul>
             </td>
             <td>
-                <p-accordion>
-                    <p-accordion-panel value="{{item.userId}}">
-                        <p-accordion-header>Mandals</p-accordion-header>
-                        <p-accordion-content>
-                            <ul>
-                                <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedMandals"> <i
-                                        class="fa-solid fa-users"></i>
-                                    {{item}}</li>
-                            </ul>
-                        </p-accordion-content>
-                    </p-accordion-panel>
-                </p-accordion>
+                <ul>
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedMandals"> <i
+                            class="fa-solid fa-users"></i>
+                        {{item}}</li>
+                </ul>
             </td>
             <td>
-                <p-accordion>
-                    <p-accordion-panel value="{{item.userId}}">
-                        <p-accordion-header>Skills</p-accordion-header>
-                        <p-accordion-content>
-                            <ul>
-                                <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedSkillCategories"> <i
-                                        class="fa-solid fa-users"></i>
-                                    {{item}}</li>
-                            </ul>
-                        </p-accordion-content>
-                    </p-accordion-panel>
-                </p-accordion>
+                <ul>
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedSkillCategories"> <i
+                            class="fa-solid fa-chalkboard-user"></i>
+                        {{item}}</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedEventIds"> <i
+                            class="fa-regular fa-calendar-days"></i>
+                        {{item}}</li>
+                </ul>
             </td>
         </tr>
     </ng-template>
