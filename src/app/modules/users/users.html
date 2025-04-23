@@ -119,191 +119,217 @@
 </p-table>
 
 <!-- Add/Edit Dialog -->
-<p-dialog [(visible)]="dialog" [style]="{ width: '400px', height: 'auto' }" header="User Details" [modal]="true">
+<p-dialog [(visible)]="dialog" [style]="{ width: '70%', height: 'auto' }" header="User Details" [modal]="true">
     <ng-template #content>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col md:flex-row gap-4">
 
-            <!-- Region -->
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <i class="pi pi-map"></i>
-                </p-inputgroup-addon>
-                <!-- <input pInputText type="text" id="region" [(ngModel)]="addOrEditItem.region" placeholder="Region"
-                    required autofocus fluid /> -->
-                <p-select inputId="region" [options]="regionsService.Regions" optionLabel="label" optionValue="value"
-                    [(ngModel)]="addOrEditItem.region" placeholder="Select a Region" fluid />
-            </p-inputgroup>
-            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is required.</small>
+            <div class="md:w-1/3">
 
-            <!-- Center -->
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <i class="pi pi-building-columns"></i>
-                </p-inputgroup-addon>
-                <p-select inputId="center" [options]="regionsService.GetCentersForRegion(addOrEditItem.region)"
-                    optionLabel="label" optionValue="value" [(ngModel)]="addOrEditItem.center"
-                    placeholder="Select a Center" fluid />
-            </p-inputgroup>
-            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.center">Center is required.</small>
+                <!-- Region -->
+                <div class="mb-2">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-map"></i>
+                        </p-inputgroup-addon>
+                        <p-select inputId="region" [options]="regionsService.Regions" optionLabel="label"
+                            optionValue="value" [(ngModel)]="addOrEditItem.region" placeholder="Select a Region"
+                            fluid />
+                    </p-inputgroup>
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is required.</small>
+                </div>
 
-            <!-- Full Name -->
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <i class="fa-solid fa-id-card"></i>
-                </p-inputgroup-addon>
-                <input pInputText type="text" id="fullName" [(ngModel)]="addOrEditItem.fullName" placeholder="Full Name"
-                    required autofocus fluid />
-            </p-inputgroup>
-            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.fullName">Fullname is required.</small>
+                <!-- Center -->
+                <div class="mb-2">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-building-columns"></i>
+                        </p-inputgroup-addon>
+                        <p-select inputId="center" [options]="regionsService.GetCentersForRegion(addOrEditItem.region)"
+                            optionLabel="label" optionValue="value" [(ngModel)]="addOrEditItem.center"
+                            placeholder="Select a Center" fluid />
+                    </p-inputgroup>
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.center">Center is required.</small>
+                </div>
 
-            <!-- MISId / Username -->
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <i class="fa-solid fa-hashtag"></i>
-                </p-inputgroup-addon>
-                <input pInputText type="text" id="misId" [(ngModel)]="addOrEditItem.misId" placeholder="MIS Id" required
-                    autofocus fluid />
-            </p-inputgroup>
-            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.misId">MIS Id is required.</small>
+                <!-- Full Name -->
+                <div class="mb-2">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="fa-solid fa-id-card"></i>
+                        </p-inputgroup-addon>
+                        <input pInputText type="text" id="fullName" [(ngModel)]="addOrEditItem.fullName"
+                            placeholder="Full Name" required autofocus fluid />
+                    </p-inputgroup>
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.fullName">Fullname is
+                        required.</small>
+                </div>
 
-            <!-- Password -->
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <i class="pi pi-lock"></i>
-                </p-inputgroup-addon>
-                <input pInputText type="password" id="password" [(ngModel)]="addOrEditItem.password"
-                    placeholder="Password" required fluid />
-            </p-inputgroup>
-            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.password">Password is required.</small>
+                <!-- MISId / Username -->
+                <div class="mb-2">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="fa-solid fa-hashtag"></i>
+                        </p-inputgroup-addon>
+                        <input pInputText type="text" id="misId" [(ngModel)]="addOrEditItem.misId" placeholder="MIS Id"
+                            required autofocus fluid />
+                    </p-inputgroup>
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.misId">MIS Id is required.</small>
+                </div>
 
-            <!-- Status -->
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                </p-inputgroup-addon>
-                <p-select inputId="status" [options]="constants.UserStatuses" optionLabel="label" optionValue="value"
-                    [(ngModel)]="addOrEditItem.status" placeholder="Select a Status" fluid />
-            </p-inputgroup>
-            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.status">Status is required.</small>
+                <!-- Password -->
+                <div class="mb-2">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="pi pi-lock"></i>
+                        </p-inputgroup-addon>
+                        <input pInputText type="password" id="password" [(ngModel)]="addOrEditItem.password"
+                            placeholder="Password" required fluid />
+                    </p-inputgroup>
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.password">Password is
+                        required.</small>
+                </div>
 
-            <!-- Roles -->
-            <p-table #dtRoles [value]="roles()" [(selection)]="addOrEditItem.assignedRoles" [rowHover]="true"
-                [scrollable]="true" scrollHeight="300px">
+                <!-- Status -->
+                <div class="mb-2">
+                    <p-inputgroup>
+                        <p-inputgroup-addon>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </p-inputgroup-addon>
+                        <p-select inputId="status" [options]="constants.UserStatuses" optionLabel="label"
+                            optionValue="value" [(ngModel)]="addOrEditItem.status" placeholder="Select a Status"
+                            fluid />
+                    </p-inputgroup>
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.status">Status is
+                        required.</small>
+                </div>
 
-                <ng-template #header>
-                    <tr>
-                        <th style="width: 1rem"><i class="fa fa-key"></i></th>
-                        <th pSortableColumn="label" style="min-width:7rem">
-                            Roles
-                            <p-sortIcon field="label" />
-                        </th>
-                    </tr>
-                </ng-template>
+                <!-- Roles -->
+                <p-table #dtRoles [value]="roles()" [(selection)]="addOrEditItem.assignedRoles" [rowHover]="true"
+                    [scrollable]="true" scrollHeight="300px">
 
-                <ng-template #body let-role>
-                    <tr [style]="{'color':role.color}">
-                        <td>
-                            <p-tableCheckbox ngDefaultControl [value]="role.value" />
-                        </td>
-                        <td> <i class="{{role.icon}}"></i> {{ role.label }}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
+                    <ng-template #header>
+                        <tr>
+                            <th style="width: 1rem"><i class="fa fa-key"></i></th>
+                            <th pSortableColumn="label" style="min-width:7rem">
+                                Roles
+                                <p-sortIcon field="label" />
+                            </th>
+                        </tr>
+                    </ng-template>
 
-            <!-- Mandal -->
-            <p-table #dtMandals [value]="mandals()" [(selection)]="addOrEditItem.assignedMandals" [rowHover]="true"
-                [scrollable]="true" scrollHeight="300px">
+                    <ng-template #body let-role>
+                        <tr [style]="{'color':role.color}">
+                            <td>
+                                <p-tableCheckbox ngDefaultControl [value]="role.value" />
+                            </td>
+                            <td> <i class="{{role.icon}}"></i> {{ role.label }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
 
-                <ng-template #header>
-                    <tr>
-                        <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
-                        <th pSortableColumn="label" style="min-width:7rem">
-                            Mandals
-                            <p-sortIcon field="label" />
-                        </th>
-                    </tr>
-                </ng-template>
+            <div class="md:w-1/4">
+                <!-- Mandal -->
+                <div class="mb-2">
+                    <p-table #dtMandals [value]="mandals()" [(selection)]="addOrEditItem.assignedMandals"
+                        [rowHover]="true" [scrollable]="true" scrollHeight="300px">
 
-                <ng-template #body let-mandal>
-                    <tr [style]="{'color':mandal.color}">
-                        <td>
-                            <p-tableCheckbox ngDefaultControl [value]="mandal.value" />
-                        </td>
-                        <td> <i class="{{mandal.icon}}"></i> {{ mandal.label }}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
+                        <ng-template #header>
+                            <tr>
+                                <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
+                                <th pSortableColumn="label" style="min-width:7rem">
+                                    Mandals
+                                    <p-sortIcon field="label" />
+                                </th>
+                            </tr>
+                        </ng-template>
 
+                        <ng-template #body let-mandal>
+                            <tr [style]="{'color':mandal.color}">
+                                <td>
+                                    <p-tableCheckbox ngDefaultControl [value]="mandal.value" />
+                                </td>
+                                <td> <i class="{{mandal.icon}}"></i> {{ mandal.label }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
 
-            <!-- Skill Categories -->
-            <p-table #dtSkills [value]="skillCategories()" [(selection)]="addOrEditItem.assignedSkillCategories"
-                [rowHover]="true" [scrollable]="true" scrollHeight="300px">
+                <!-- Skill Categories -->
+                <div class="mb-2">
+                    <p-table #dtSkills [value]="skillCategories()" [(selection)]="addOrEditItem.assignedSkillCategories"
+                        [rowHover]="true" [scrollable]="true" scrollHeight="300px">
 
-                <ng-template #header>
-                    <tr>
-                        <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
-                        <th pSortableColumn="label" style="min-width:7rem">
-                            Skills
-                            <p-sortIcon field="label" />
-                        </th>
-                    </tr>
-                </ng-template>
+                        <ng-template #header>
+                            <tr>
+                                <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
+                                <th pSortableColumn="label" style="min-width:7rem">
+                                    Skills
+                                    <p-sortIcon field="label" />
+                                </th>
+                            </tr>
+                        </ng-template>
 
-                <ng-template #body let-skill>
-                    <tr [style]="{'color':skill.color}">
-                        <td>
-                            <p-tableCheckbox ngDefaultControl [value]="skill.value" />
-                        </td>
-                        <td> <i class="{{skill.icon}}"></i> {{ skill.label }}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
+                        <ng-template #body let-skill>
+                            <tr [style]="{'color':skill.color}">
+                                <td>
+                                    <p-tableCheckbox ngDefaultControl [value]="skill.value" />
+                                </td>
+                                <td class="whitespace-nowrap"> <i class="{{skill.icon}}"></i> {{ skill.label }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
 
-            <!-- Events -->
-            <p-table #dtEvents [value]="events()" [(selection)]="addOrEditItem.assignedEventIds" [rowHover]="true"
-                [scrollable]="true" scrollHeight="300px">
+            <div class="md:w-1/2">
+                <!-- Events -->
+                <div class="mb-2">
+                    <p-table #dtEvents [value]="events()" [(selection)]="addOrEditItem.assignedEventIds"
+                        [rowHover]="true" [scrollable]="true" scrollHeight="300px">
 
-                <ng-template #header>
-                    <tr>
-                        <th style="width: 1rem"><i class="fa-regular fa-calendar-days"></i></th>
-                        <th pSortableColumn="region" style="min-width:7rem">
-                            Region
-                            <p-sortIcon field="region" />
-                        </th>
-                        <th pSortableColumn="eventStartDate" style="min-width:7rem">
-                            Event Date
-                            <p-sortIcon field="eventStartDate" />
-                        </th>
-                        <th pSortableColumn="eventStartDate" style="min-width:7rem">
-                            Centers
-                            <p-sortIcon field="eventStartDate" />
-                        </th>
-                        <th pSortableColumn="hostingCenter" style="min-width:7rem">
-                            Host
-                            <p-sortIcon field="hostingCenter" />
-                        </th>
-                    </tr>
-                </ng-template>
+                        <ng-template #header>
+                            <tr>
+                                <th style="width: 1rem"><i class="fa-regular fa-calendar-days"></i></th>
+                                <th pSortableColumn="region" style="min-width:7rem">
+                                    Region
+                                    <p-sortIcon field="region" />
+                                </th>
+                                <th pSortableColumn="eventStartDate" style="min-width:7rem">
+                                    Event Date
+                                    <p-sortIcon field="eventStartDate" />
+                                </th>
+                                <th pSortableColumn="eventStartDate" style="min-width:7rem">
+                                    Centers
+                                    <p-sortIcon field="eventStartDate" />
+                                </th>
+                                <th pSortableColumn="hostingCenter" style="min-width:7rem">
+                                    Host
+                                    <p-sortIcon field="hostingCenter" />
+                                </th>
+                            </tr>
+                        </ng-template>
 
-                <ng-template #body let-event>
-                    <tr>
-                        <td>
-                            <p-tableCheckbox ngDefaultControl [value]="event.value" />
-                        </td>
-                        <td>{{ event.region }}</td>
-                        <td>{{ event.eventStartDate }} - {{ event.eventEndDate }}</td>
-                        <td>
-                            <ul>
-                                <li class="mb-2 whitespace-nowrap" *ngFor="let center of event.centers">
-                                    <i class="fa-solid fa-key"></i>{{center}}
-                                </li>
-                            </ul>
-                        </td>
-                        <td>{{ event.hostingCenter }}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
-
+                        <ng-template #body let-event>
+                            <tr>
+                                <td>
+                                    <p-tableCheckbox ngDefaultControl [value]="event.value" />
+                                </td>
+                                <td>{{ event.region }}</td>
+                                <td>{{ event.eventStartDate }} - {{ event.eventEndDate }}</td>
+                                <td>
+                                    <ul>
+                                        <li class="mb-2 whitespace-nowrap" *ngFor="let center of event.centers">
+                                            <i class="fa-solid fa-key"></i>{{center}}
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>{{ event.hostingCenter }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
         </div>
     </ng-template>
 
