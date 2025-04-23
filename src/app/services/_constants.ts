@@ -54,4 +54,20 @@ export class Constants {
       { label: "Premvati", value: "Premvati", icon: "fa-solid fa-person-dress", color: "brown" },
     ];
   }
+
+  get SkillCategories(): any {
+    return [
+      { label: "Pravachan: Ghanshyam", value: "Pravachan: Ghanshyam", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Pravachan: Nilkanth", value: "Pravachan: Nilkanth", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Pravachan: Sahajanand", value: "Pravachan: Sahajanand", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Pravachan: Harikrishna", value: "Pravachan: Harikrishna", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Pravachan: Shri Hari", value: "Pravachan: Shri Hari", icon: "fa-solid fa-person", color: "navy" },
+      
+      { label: "Emcee: Ghanshyam", value: "Emcee: Ghanshyam", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Emcee: Nilkanth", value: "Emcee: Nilkanth", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Emcee: Sahajanand", value: "Emcee: Sahajanand", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Emcee: Harikrishna", value: "Emcee: Harikrishna", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Emcee: Shri Hari", value: "Emcee: Shri Hari", icon: "fa-solid fa-person", color: "navy" },
+    ]
+  }
 }

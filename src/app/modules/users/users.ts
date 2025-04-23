@@ -24,12 +24,12 @@ import { RolePermissionsService } from "../../services/rolePermissions.service";
 })
 export class Users implements OnInit {
   @ViewChild("dt") dt!: Table;
-  @ViewChild("dtRoles") dtRoles!: Table;
 
   dialog: boolean = false;
   data = signal<User[]>([]);
   roles = signal<any[]>([]);
   mandals = signal<any[]>([]);
+  skillCategories = signal<any[]>([]);
   addOrEditItem!: User;
   submitted: boolean = false;
 
@@ -49,6 +49,7 @@ export class Users implements OnInit {
 
     this.roles.set(this.rolePermissionsService.Roles);
     this.mandals.set(this.constants.Mandals);
+    this.skillCategories.set(this.constants.SkillCategories);
     this.loadData();
   }
 
@@ -127,11 +128,4 @@ export class Users implements OnInit {
     this.dt.filterGlobal("", 'contains');
   }
 
-  onRolesFilter(table: Table, event: Event) {
-    table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
-  }
-
-  clearRolesFilter(){
-    this.dtRoles.filterGlobal("", 'contains');
-  }
 }

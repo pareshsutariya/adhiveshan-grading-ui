@@ -118,24 +118,11 @@
             </p-inputgroup>
             <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is required.</small>
 
-            <!-- 
-            <div class="grid grid-cols-12 gap-2">
-                <label for="mandal" class="flex font-bold items-center col-span-4">Mandal*</label>
-                <div class="col-span-8">
-                    <p-select inputId="mandal" [options]="constants.Mandals" optionLabel="label" optionValue="value"
-                        [(ngModel)]="addOrEditItem.mandal" placeholder="Select a Mandal" fluid />
-                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.mandal">Mandal is required.</small>
-                </div>
-            </div>  
-            -->
-
             <!-- Center -->
             <p-inputgroup>
                 <p-inputgroup-addon>
                     <i class="pi pi-building-columns"></i>
                 </p-inputgroup-addon>
-                <!-- <input pInputText type="text" id="center" [(ngModel)]="addOrEditItem.center" placeholder="Center"
-                    required autofocus fluid /> -->
                 <p-select inputId="center" [options]="regionsService.GetCentersForRegion(addOrEditItem.region)"
                     optionLabel="label" optionValue="value" [(ngModel)]="addOrEditItem.center"
                     placeholder="Select a Center" fluid />
@@ -226,6 +213,31 @@
                             <p-tableCheckbox ngDefaultControl [value]="mandal.value" />
                         </td>
                         <td> <i class="{{mandal.icon}}"></i> {{ mandal.label }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+
+            <!-- Skill Categories -->
+            <p-table #dtSkills [value]="skillCategories()" [(selection)]="addOrEditItem.assignedSkillCategories"
+                [rowHover]="true" [scrollable]="true" scrollHeight="300px">
+
+                <ng-template #header>
+                    <tr>
+                        <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
+                        <th pSortableColumn="label" style="min-width:7rem">
+                            Skills
+                            <p-sortIcon field="label" />
+                        </th>
+                    </tr>
+                </ng-template>
+
+                <ng-template #body let-skill>
+                    <tr [style]="{'color':skill.color}">
+                        <td>
+                            <p-tableCheckbox ngDefaultControl [value]="skill.value" />
+                        </td>
+                        <td> <i class="{{skill.icon}}"></i> {{ skill.label }}</td>
                     </tr>
                 </ng-template>
             </p-table>
