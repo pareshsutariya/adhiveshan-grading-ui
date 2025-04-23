@@ -5,6 +5,7 @@ import { Users } from './app/modules/users/users';
 import { ImportParticipants } from './app/modules/participants/import-participants';
 import { Notfound } from './app/modules/auth/notfound';
 import { RolePermissionsList } from './app/modules/rolePermissions/rolePermissionsList';
+import { Events } from './app/modules/competitionEvents/events';
 
 export const appRoutes: Routes = [
     {
@@ -14,6 +15,7 @@ export const appRoutes: Routes = [
             { path: '', component: Dashboard },
             { path: 'import-participants', component: ImportParticipants },
             { path: 'users', component: Users },
+            { path: 'events', component: Events },
             { path: 'rolePermissions', component: RolePermissionsList },
             { path: '**', component: Notfound }
         ]

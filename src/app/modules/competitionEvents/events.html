@@ -1,0 +1,90 @@
+<!-- Toolbar -->
+<p-toolbar styleClass="mb-2">
+    <ng-template #start>
+        <p-button icon="fa-solid fa-home" class="mr-2" [rounded]="true" [outlined]="true" [severity]="'secondary'"
+            (onClick)="router.navigate(['/'])" />
+
+        <p-iconfield>
+            <p-inputicon styleClass="pi pi-search" />
+            <input pInputText type="text" placeholder="Search..." (input)="onGlobalFilter(dt, $event)" />
+        </p-iconfield>
+        <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
+            (click)="clearGlobalFilter()" />
+        <p-button icon="pi pi-plus" class="ml-4" [rounded]="true" [outlined]="true" severity="success"
+            (onClick)="openNew()" />
+    </ng-template>
+</p-toolbar>
+
+<!-- List View -->
+<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['region', 'hostCenter', 'name', 'centers']"
+    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" scrollHeight="450px"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Events"
+    [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30]">
+
+    <!-- List View Header -->
+    <ng-template #header>
+        <tr>
+            <th style="width: 1rem"></th>
+            <th pSortableColumn="region" class="whitespace-nowrap">
+                Region
+                <p-sortIcon field="region" />
+            </th>
+            <th pSortableColumn="hostCenter" class="whitespace-nowrap">
+                Host Center
+                <p-sortIcon field="hostCenter" />
+            </th>
+            <th pSortableColumn="name" class="whitespace-nowrap">
+                Name
+                <p-sortIcon field="name" />
+            </th>
+            <th pSortableColumn="startDate" class="whitespace-nowrap">
+                Date
+                <p-sortIcon field="startDate" />
+            </th>
+            <th class="whitespace-nowrap">
+                Centers
+            </th>
+            <th pSortableColumn="status" class="whitespace-nowrap">
+                Status
+                <p-sortIcon field="status" />
+            </th>
+        </tr>
+    </ng-template>
+
+    <!-- List View Data -->
+    <ng-template #body let-item>
+        <tr>
+            <td>
+                <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
+                    (click)="openEdit(item)" />
+            </td>
+            <td class="whitespace-nowrap">{{ item.region }}</td>
+            <td class="whitespace-nowrap">{{ item.hostCenter }}</td>
+            <td class="whitespace-nowrap">{{ item.name }}</td>
+            <td class="whitespace-nowrap">{{ item.startDate }} - {{ item.endDate }}</td>
+            <td>
+                <ul>
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let center of item.centers"> <i
+                            class="pi pi-building-columns"></i>
+                        {{center}}</li>
+                </ul>
+            </td>
+            <td>
+                <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
+                    styleClass="dark:!bg-surface-900" />
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<!-- Add/Edit Dialog -->
+<p-dialog [(visible)]="dialog" [style]="{ width: '70%', height: 'auto' }" header="Event Details" [modal]="true">
+    <ng-template #content>
+
+    </ng-template>
+
+    <ng-template #footer>
+        <p-button label="Cancel" icon="pi pi-times" text (click)="hideDialog()" />
+        <p-button label="Save" icon="pi pi-check" (click)="save()" />
+    </ng-template>
+</p-dialog>
