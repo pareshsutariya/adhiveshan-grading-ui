@@ -21,7 +21,7 @@ import { CompetitionEvent } from "../../models/competitionEvent";
   selector: "app-users",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, UsersService, Constants],
+  providers: [MessageService, Constants],
   templateUrl: "users.html",
 })
 export class Users implements OnInit {

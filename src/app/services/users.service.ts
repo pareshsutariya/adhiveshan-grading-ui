@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { Constants } from "./_constants";
 import { User } from "../models/user";
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class UsersService {
   constructor(private http: HttpClient) {}
 
