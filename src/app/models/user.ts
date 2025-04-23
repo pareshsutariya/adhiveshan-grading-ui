@@ -2,8 +2,8 @@ export interface User {
     id?: string;
     userId?: number;
     fullName?: string;
-    username?: string;
+    misId?: string;
     password?: string;
     status?: string;
-    roles?: any[];
+    assignedRoles?: any[];
   }

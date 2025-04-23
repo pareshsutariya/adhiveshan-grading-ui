@@ -16,7 +16,7 @@
 </p-toolbar>
 
 <!-- List View -->
-<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['fullName', 'username']"
+<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['fullName', 'misId']"
     [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" scrollHeight="450px"
     [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users"
     [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30]">
@@ -29,9 +29,9 @@
                 Fullname
                 <p-sortIcon field="fullName" />
             </th>
-            <th pSortableColumn="username" class="whitespace-nowrap">
-                Username
-                <p-sortIcon field="username" />
+            <th pSortableColumn="misId" class="whitespace-nowrap">
+                MIS Id / Username
+                <p-sortIcon field="misId" />
             </th>
             <!-- <th pSortableColumn="password" class="whitespace-nowrap" >
           Password
@@ -55,7 +55,7 @@
                     (click)="openEdit(item)" />
             </td>
             <td class="whitespace-nowrap">{{ item.fullName }}</td>
-            <td>{{ item.username }}</td>
+            <td>{{ item.misId }}</td>
             <!-- <td class="align-top">{{ item.password }}</td> -->
             <td>
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
@@ -67,7 +67,7 @@
                         <p-accordion-header>Roles</p-accordion-header>
                         <p-accordion-content>
                             <ul>
-                                <li class="mb-2" *ngFor="let per of item.roles"> <i class="fa-solid fa-key"></i>
+                                <li class="mb-2" *ngFor="let per of item.assignedRoles"> <i class="fa-solid fa-key"></i>
                                     {{per}}</li>
                             </ul>
                         </p-accordion-content>
@@ -93,15 +93,15 @@
             </p-inputgroup>
             <small class="text-red-500" *ngIf="submitted && !addOrEditItem.fullName">Fullname is required.</small>
 
-            <!-- Username -->
+            <!-- MISId / Username -->
             <p-inputgroup>
                 <p-inputgroup-addon>
                     <i class="pi pi-user"></i>
                 </p-inputgroup-addon>
-                <input pInputText type="text" id="username" [(ngModel)]="addOrEditItem.username" placeholder="Username"
-                    required autofocus fluid />
+                <input pInputText type="text" id="misId" [(ngModel)]="addOrEditItem.misId" placeholder="MIS Id" required
+                    autofocus fluid />
             </p-inputgroup>
-            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.username">Username is required.</small>
+            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.misId">MIS Id is required.</small>
 
             <!-- Password -->
             <p-inputgroup>
@@ -137,8 +137,8 @@
                 </ng-template>
             </p-toolbar>
 
-            <p-table #dtRoles [value]="roles()" [(selection)]="addOrEditItem.roles" [globalFilterFields]="['label']"
-                [rowHover]="true" [scrollable]="true" scrollHeight="300px">
+            <p-table #dtRoles [value]="roles()" [(selection)]="addOrEditItem.assignedRoles"
+                [globalFilterFields]="['label']" [rowHover]="true" [scrollable]="true" scrollHeight="300px">
 
                 <ng-template #header>
                     <tr>

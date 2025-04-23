@@ -63,7 +63,7 @@ export class AuthService {
   }
 
   IsAdminUser():boolean {
-    if (this.GetLoginUser() && this.GetLoginUser().username=='vyom131313') {
+    if (this.GetLoginUser() && this.GetLoginUser().misId=='vyom131313') {
         return true; 
     }
     return false;
@@ -78,7 +78,7 @@ export class AuthService {
   }
 
   LoggedInUserPermissions(){
-    return this.GetLoginUser()  != null ? this.GetLoginUser().roles : null;
+    return this.GetLoginUser()  != null ? this.GetLoginUser().assignedRoles : null;
   }
   
   logoutUser(): void{
@@ -96,9 +96,9 @@ export class AuthService {
       return new Observable<User>(observable => {
         let user: User = {};
         user.fullName = "Paresh";
-        user.username = "vyom131313";
+        user.misId = "vyom131313";
         user.status = "ACTIVE";
-        user.roles = [];
+        user.assignedRoles = [];
         observable.next(user);
       });
     }

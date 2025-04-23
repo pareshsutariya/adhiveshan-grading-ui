@@ -92,7 +92,7 @@ export class Users implements OnInit {
   }
 
   isValid() {
-    if(!this.addOrEditItem.username || this.addOrEditItem.username.trim().length == 0)
+    if(!this.addOrEditItem.misId || this.addOrEditItem.misId.trim().length == 0)
       return false;
 
     if(!this.addOrEditItem.password || this.addOrEditItem.password.trim().length == 0)

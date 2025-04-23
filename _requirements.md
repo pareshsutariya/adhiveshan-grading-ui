@@ -100,14 +100,14 @@
 
 ### Users:
 
-- [ ] API: "Users" table Schema (Id, BAPS ID, FullName, Password, Region, Center, Roles[], EventIds[], Mandals[], SKILL CATEGORY IDs[], Checkin, IsActive)
-- [ ] API: Implement an endpoint to return list of data
-- [ ] API: Implement an endpoint to Add record
-- [ ] API: Implement an endpoint to Update record
-- [ ] UI: Menu: Add "Users" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
-- [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+- [x] API: "Users" table Schema (Id, BAPS ID, FullName, Password, Region, Center, Roles[], EventIds[], Mandals[], SKILL CATEGORY IDs[], Checkin, IsActive)
+- [x] API: Implement an endpoint to return list of data
+- [x] API: Implement an endpoint to Add record
+- [x] API: Implement an endpoint to Update record
+- [x] UI: Menu: Add "Users" menu in navigation panel
+- [x] UI: List Page: Make an API call, and display data
+- [x] UI: List Page: Apply standard sorting and searching
+- [x] UI: Add Page: Design UI to Add or Edit record, and call API
 - Note:
   - Roles are National Admin / Regional Admin / Proctors
   - National Admin: Can manage regional admin AND proctors of all region of ANY genders
