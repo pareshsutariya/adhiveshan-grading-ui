@@ -42,6 +42,32 @@ export class Constants {
     }
   }
 
+  get Regions(): any {
+    return [
+      { label: "Canada", value: "Canada", color: "navy" },
+      { label: "North East", value: "Northeast", color: "#C95792" },
+      { label: "South East", value: "Southeast", color: "brown" },
+      { label: "South West", value: "Southwest", color: "#F8B55F" },
+      { label: "West", value: "West", color: "#3D365C" },
+      { label: "Mid West", value: "Midwest", color: "#7C4585" },
+      { label: "Unknown", value: "Unknown", color: "black" },
+    ];
+  }
+
+  get Mandals(): any {
+    return [
+      { label: "F1 Student", value: "F1 Student", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Kishor", value: "Kishor", icon: "fa-solid fa-person", color: "navy"  },
+      { label: "Yuvak", value: "Yuvak", icon: "fa-solid fa-person", color: "navy"  },
+      { label: "Sanyukta", value: "Sanyukta", icon: "fa-solid fa-person", color: "navy"  },
+    
+      { label: "iF1 Student", value: "iF1 Student", icon: "fa-solid fa-person-dress", color: "brown" },
+      { label: "Kishori", value: "Kishori", icon: "fa-solid fa-person-dress", color: "brown" },
+      { label: "Yuvati", value: "Yuvati", icon: "fa-solid fa-person-dress", color: "brown" },
+      { label: "Premvati", value: "Premvati", icon: "fa-solid fa-person-dress", color: "brown" },
+    ];
+  }
+
   get Roles(): any {
     return [
       { label: "National Admin", value: RolesEnum.NationalAdmin, icon: "fa fa-user-secret", color: 'red' },

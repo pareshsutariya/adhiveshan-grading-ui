@@ -25,6 +25,10 @@
     <ng-template #header>
         <tr>
             <th style="width: 1rem"></th>
+            <th pSortableColumn="region" class="whitespace-nowrap">
+                Region-Center
+                <p-sortIcon field="region" />
+            </th>
             <th pSortableColumn="fullName" class="whitespace-nowrap">
                 Fullname
                 <p-sortIcon field="fullName" />
@@ -44,6 +48,9 @@
             <th>
                 Roles
             </th>
+            <th>
+                Mandals
+            </th>
         </tr>
     </ng-template>
 
@@ -54,6 +61,7 @@
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
                     (click)="openEdit(item)" />
             </td>
+            <td class="whitespace-nowrap">{{ item.region }} - {{ item.center }}</td>
             <td class="whitespace-nowrap">{{ item.fullName }}</td>
             <td>{{ item.misId }}</td>
             <!-- <td class="align-top">{{ item.password }}</td> -->
@@ -74,6 +82,20 @@
                     </p-accordion-panel>
                 </p-accordion>
             </td>
+            <td>
+                <p-accordion>
+                    <p-accordion-panel value="{{item.userId}}">
+                        <p-accordion-header>Mandals</p-accordion-header>
+                        <p-accordion-content>
+                            <ul>
+                                <li class="mb-2" *ngFor="let item of item.assignedMandals"> <i
+                                        class="fa-solid fa-users"></i>
+                                    {{item}}</li>
+                            </ul>
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                </p-accordion>
+            </td>
         </tr>
     </ng-template>
 </p-table>
@@ -82,6 +104,39 @@
 <p-dialog [(visible)]="dialog" [style]="{ width: '400px', height: 'auto' }" header="User Details" [modal]="true">
     <ng-template #content>
         <div class="flex flex-col gap-2">
+
+            <!-- Region -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-signature"></i>
+                </p-inputgroup-addon>
+                <!-- <input pInputText type="text" id="region" [(ngModel)]="addOrEditItem.region" placeholder="Region"
+                    required autofocus fluid /> -->
+                <p-select inputId="region" [options]="constants.Regions" optionLabel="label" optionValue="value"
+                    [(ngModel)]="addOrEditItem.region" placeholder="Select a Region" fluid />
+            </p-inputgroup>
+            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is required.</small>
+
+            <!-- 
+            <div class="grid grid-cols-12 gap-2">
+                <label for="mandal" class="flex font-bold items-center col-span-4">Mandal*</label>
+                <div class="col-span-8">
+                    <p-select inputId="mandal" [options]="constants.Mandals" optionLabel="label" optionValue="value"
+                        [(ngModel)]="addOrEditItem.mandal" placeholder="Select a Mandal" fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.mandal">Mandal is required.</small>
+                </div>
+            </div>  
+            -->
+
+            <!-- Center -->
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-signature"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" id="center" [(ngModel)]="addOrEditItem.center" placeholder="Center"
+                    required autofocus fluid />
+            </p-inputgroup>
+            <small class="text-red-500" *ngIf="submitted && !addOrEditItem.center">Center is required.</small>
 
             <!-- Full Name -->
             <p-inputgroup>
@@ -124,25 +179,12 @@
             <small class="text-red-500" *ngIf="submitted && !addOrEditItem.status">Status is required.</small>
 
             <!-- Roles -->
-            <p-toolbar styleClass="mb-2">
-                <ng-template #start>
-                    <h5 class="m-0 mr-2">Roles</h5>
-                    <p-iconfield>
-                        <p-inputicon styleClass="pi pi-search" />
-                        <input pInputText type="text" placeholder="Search..."
-                            (input)="onRolesFilter(dtRoles, $event)" />
-                    </p-iconfield>
-                    <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true"
-                        severity="contrast" (click)="clearRolesFilter()" />
-                </ng-template>
-            </p-toolbar>
-
-            <p-table #dtRoles [value]="roles()" [(selection)]="addOrEditItem.assignedRoles"
-                [globalFilterFields]="['label']" [rowHover]="true" [scrollable]="true" scrollHeight="300px">
+            <p-table #dtRoles [value]="roles()" [(selection)]="addOrEditItem.assignedRoles" [rowHover]="true"
+                [scrollable]="true" scrollHeight="300px">
 
                 <ng-template #header>
                     <tr>
-                        <th style="width: 1rem"></th>
+                        <th style="width: 1rem"><i class="fa fa-key"></i></th>
                         <th pSortableColumn="label" style="min-width:7rem">
                             Roles
                             <p-sortIcon field="label" />
@@ -159,6 +201,31 @@
                     </tr>
                 </ng-template>
             </p-table>
+
+            <!-- Mandal -->
+            <p-table #dtMandals [value]="mandals()" [(selection)]="addOrEditItem.assignedMandals" [rowHover]="true"
+                [scrollable]="true" scrollHeight="300px">
+
+                <ng-template #header>
+                    <tr>
+                        <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
+                        <th pSortableColumn="label" style="min-width:7rem">
+                            Mandals
+                            <p-sortIcon field="label" />
+                        </th>
+                    </tr>
+                </ng-template>
+
+                <ng-template #body let-mandal>
+                    <tr [style]="{'color':mandal.color}">
+                        <td>
+                            <p-tableCheckbox ngDefaultControl [value]="mandal.value" />
+                        </td>
+                        <td> <i class="{{mandal.icon}}"></i> {{ mandal.label }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
         </div>
     </ng-template>
 

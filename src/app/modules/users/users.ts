@@ -27,6 +27,7 @@ export class Users implements OnInit {
   dialog: boolean = false;
   data = signal<User[]>([]);
   roles = signal<any[]>([]);
+  mandals = signal<any[]>([]);
   addOrEditItem!: User;
   submitted: boolean = false;
 
@@ -43,6 +44,7 @@ export class Users implements OnInit {
     this.layoutService.pageTitle.set("Users");
 
     this.roles.set(this.constants.Roles);
+    this.mandals.set(this.constants.Mandals);
     this.loadData();
   }
 
@@ -93,6 +95,15 @@ export class Users implements OnInit {
 
   isValid() {
     if(!this.addOrEditItem.misId || this.addOrEditItem.misId.trim().length == 0)
+      return false;
+
+    if(!this.addOrEditItem.region || this.addOrEditItem.region.trim().length == 0)
+      return false;
+
+    if(!this.addOrEditItem.center || this.addOrEditItem.center.trim().length == 0)
+      return false;
+
+    if(!this.addOrEditItem.fullName || this.addOrEditItem.fullName.trim().length == 0)
       return false;
 
     if(!this.addOrEditItem.password || this.addOrEditItem.password.trim().length == 0)
