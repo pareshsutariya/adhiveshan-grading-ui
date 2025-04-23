@@ -34,7 +34,7 @@
                 <p-sortIcon field="fullName" />
             </th>
             <th pSortableColumn="misId" class="whitespace-nowrap">
-                MIS Id / Username
+                MIS Id
                 <p-sortIcon field="misId" />
             </th>
             <!-- <th pSortableColumn="password" class="whitespace-nowrap" >
@@ -50,6 +50,9 @@
             </th>
             <th>
                 Mandals
+            </th>
+            <th>
+                Skills
             </th>
         </tr>
     </ng-template>
@@ -75,7 +78,7 @@
                         <p-accordion-header>Roles</p-accordion-header>
                         <p-accordion-content>
                             <ul>
-                                <li class="mb-2" *ngFor="let role of item.assignedRoles"> <i
+                                <li class="mb-2 whitespace-nowrap" *ngFor="let role of item.assignedRoles"> <i
                                         class="fa-solid fa-key"></i>
                                     {{role}}</li>
                             </ul>
@@ -89,7 +92,21 @@
                         <p-accordion-header>Mandals</p-accordion-header>
                         <p-accordion-content>
                             <ul>
-                                <li class="mb-2" *ngFor="let item of item.assignedMandals"> <i
+                                <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedMandals"> <i
+                                        class="fa-solid fa-users"></i>
+                                    {{item}}</li>
+                            </ul>
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                </p-accordion>
+            </td>
+            <td>
+                <p-accordion>
+                    <p-accordion-panel value="{{item.userId}}">
+                        <p-accordion-header>Skills</p-accordion-header>
+                        <p-accordion-content>
+                            <ul>
+                                <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedSkillCategories"> <i
                                         class="fa-solid fa-users"></i>
                                     {{item}}</li>
                             </ul>
