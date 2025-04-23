@@ -116,9 +116,9 @@
 
 ### Role Permissions:
 
-- [ ] API: "RolePermissions" table Schema (Id, Name, Permission)
-- [ ] API: Implement an endpoint to return list of data
-- [ ] UI: Menu: Add "Roles" menu in navigation panel
+- [x] API: "RolePermissions" Schema (RoleName, Permissions[])
+- [x] API: Implement an endpoint to return list of data
+- [x] UI: Menu: Add "Roles" menu in navigation panel
 - Note:
   1. Role: National Admin User:
      - CRUD Regional Admin Users
