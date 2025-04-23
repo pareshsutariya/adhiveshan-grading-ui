@@ -14,7 +14,6 @@ export class Constants {
   public static DateTimeFormat: string = "MM/DD/YYYY HH:mm";
   public static DateTimeFormatShort: string = "MM/DD HH:mm";
 
-
   get UserStatuses(): any {
     return [
       { label: "Active", value: "Active" },
@@ -42,18 +41,6 @@ export class Constants {
     }
   }
 
-  get Regions(): any {
-    return [
-      { label: "Canada", value: "Canada", color: "navy" },
-      { label: "North East", value: "Northeast", color: "#C95792" },
-      { label: "South East", value: "Southeast", color: "brown" },
-      { label: "South West", value: "Southwest", color: "#F8B55F" },
-      { label: "West", value: "West", color: "#3D365C" },
-      { label: "Mid West", value: "Midwest", color: "#7C4585" },
-      { label: "Unknown", value: "Unknown", color: "black" },
-    ];
-  }
-
   get Mandals(): any {
     return [
       { label: "F1 Student", value: "F1 Student", icon: "fa-solid fa-person", color: "navy" },
@@ -67,54 +54,4 @@ export class Constants {
       { label: "Premvati", value: "Premvati", icon: "fa-solid fa-person-dress", color: "brown" },
     ];
   }
-
-  get Roles(): any {
-    return [
-      { label: "National Admin", value: RolesEnum.NationalAdmin, icon: "fa fa-user-secret", color: 'red' },
-      { label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'purple' },
-      { label: "Proctor", value: RolesEnum.Proctor, icon: "fa fa-user-pen", color: 'navy' },
-
-    ];
-  }
-
-  get Permissions(): any {
-    return [
-      { label: "Participants: List", value: PermissionsEnum.PARTICIPANTS_LIST, icon: "pi pi-id-card", color: 'brown' },
-
-      { label: "Admin: Users List", value: PermissionsEnum.USERS_LIST, icon: "fa-solid fa-user", color: 'red' },
-      // { label: "Users Add", value: PermissionsEnum.USERS_ADD },
-      // { label: "Users Edit", value: PermissionsEnum.USERS_EDIT },
-    ];
-  }
-
-  public get PermissionsEnum(): typeof PermissionsEnum {
-    return PermissionsEnum; 
-  }
-}
-
-
-export enum RolesEnum {
-
-  NationalAdmin = 'National Admin',
-  RegionalAdmin = 'Regional Admin',
-  Proctor = 'Proctor',
-}
-
-export enum PermissionsEnum {
-
-  PARTICIPANTS_LIST = 'PARTICIPANTS_LIST',
-
-  USERS_LIST = 'USERS_LIST',
-  USERS_ADD = 'USERS_ADD',
-  USERS_EDIT = 'USERS_EDIT',
-}
-
-export enum RegionsEnum {
-  Canada = 'Canada',
-  Midwest = 'Midwest',
-  Northeast = 'Northeast',
-  Southeast = 'Southeast',
-  Southwest = 'Southwest',
-  West = 'West',
-  Unknown = 'Unknown',
 }

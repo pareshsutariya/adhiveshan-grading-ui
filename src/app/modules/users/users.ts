@@ -12,6 +12,8 @@ import { Constants } from "../../services/_constants";
 import { UsersService } from "../../services/users.service";
 import { AuthService } from "../../services/auth.service";
 import { User } from "../../models/user";
+import { RegionCenterService } from "../../services/_regionCenters.service";
+import { RolePermissionsService } from "../../services/rolePermissions.service";
 
 @Component({
   selector: "app-users",
@@ -35,6 +37,8 @@ export class Users implements OnInit {
     private usersService: UsersService,
     public router: Router,
     public constants: Constants,
+    public regionsService: RegionCenterService,
+    public rolePermissionsService: RolePermissionsService,
     public authService: AuthService,
     private messageService: MessageService,
     public layoutService: LayoutService
@@ -43,7 +47,7 @@ export class Users implements OnInit {
   ngOnInit() {
     this.layoutService.pageTitle.set("Users");
 
-    this.roles.set(this.constants.Roles);
+    this.roles.set(this.rolePermissionsService.Roles);
     this.mandals.set(this.constants.Mandals);
     this.loadData();
   }

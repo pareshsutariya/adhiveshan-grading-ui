@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { Constants, PermissionsEnum } from './_constants';
+import { Constants } from './_constants';
 import { MenuItem } from 'primeng/api';
 import { User } from '../models/user';
 

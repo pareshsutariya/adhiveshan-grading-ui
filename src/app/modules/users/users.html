@@ -108,11 +108,11 @@
             <!-- Region -->
             <p-inputgroup>
                 <p-inputgroup-addon>
-                    <i class="fa-solid fa-signature"></i>
+                    <i class="pi pi-map"></i>
                 </p-inputgroup-addon>
                 <!-- <input pInputText type="text" id="region" [(ngModel)]="addOrEditItem.region" placeholder="Region"
                     required autofocus fluid /> -->
-                <p-select inputId="region" [options]="constants.Regions" optionLabel="label" optionValue="value"
+                <p-select inputId="region" [options]="regionsService.Regions" optionLabel="label" optionValue="value"
                     [(ngModel)]="addOrEditItem.region" placeholder="Select a Region" fluid />
             </p-inputgroup>
             <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is required.</small>
@@ -131,7 +131,7 @@
             <!-- Center -->
             <p-inputgroup>
                 <p-inputgroup-addon>
-                    <i class="fa-solid fa-signature"></i>
+                    <i class="pi pi-building-columns"></i>
                 </p-inputgroup-addon>
                 <input pInputText type="text" id="center" [(ngModel)]="addOrEditItem.center" placeholder="Center"
                     required autofocus fluid />
@@ -141,7 +141,7 @@
             <!-- Full Name -->
             <p-inputgroup>
                 <p-inputgroup-addon>
-                    <i class="fa-solid fa-signature"></i>
+                    <i class="fa-solid fa-id-card"></i>
                 </p-inputgroup-addon>
                 <input pInputText type="text" id="fullName" [(ngModel)]="addOrEditItem.fullName" placeholder="Full Name"
                     required autofocus fluid />
@@ -151,7 +151,7 @@
             <!-- MISId / Username -->
             <p-inputgroup>
                 <p-inputgroup-addon>
-                    <i class="pi pi-user"></i>
+                    <i class="fa-solid fa-hashtag"></i>
                 </p-inputgroup-addon>
                 <input pInputText type="text" id="misId" [(ngModel)]="addOrEditItem.misId" placeholder="MIS Id" required
                     autofocus fluid />
