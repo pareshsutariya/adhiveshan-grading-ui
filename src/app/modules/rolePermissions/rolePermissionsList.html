@@ -1,0 +1,46 @@
+<!-- Toolbar -->
+<p-toolbar styleClass="mb-2">
+    <ng-template #start>
+        <p-button icon="fa-solid fa-home" class="mr-2" [rounded]="true" [outlined]="true" [severity]="'secondary'"
+            (onClick)="router.navigate(['/'])" />
+
+        <p-iconfield>
+            <p-inputicon styleClass="pi pi-search" />
+            <input pInputText type="text" placeholder="Search..." (input)="onGlobalFilter(dt, $event)" />
+        </p-iconfield>
+        <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
+            (click)="clearGlobalFilter()" />
+    </ng-template>
+</p-toolbar>
+
+<!-- List View -->
+<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['roleName', 'permissions']"
+    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" [paginator]="false">
+
+    <!-- List View Header -->
+    <ng-template #header>
+        <tr>
+            <th style="width: 1rem"></th>
+            <th pSortableColumn="roleName" class="whitespace-nowrap">
+                Role
+                <p-sortIcon field="roleName" />
+            </th>
+            <th class="whitespace-nowrap">
+                Permissions
+            </th>
+        </tr>
+    </ng-template>
+
+    <!-- List View Data -->
+    <ng-template #body let-item>
+        <tr>
+            <td class="whitespace-nowrap align-top">{{ item.roleName }}</td>
+            <td>
+                <ul>
+                    <li class="mb-2" *ngFor="let per of item.permissions"> <i class="fa-solid fa-key"></i>
+                        {{per}}</li>
+                </ul>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

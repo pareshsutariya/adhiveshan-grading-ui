@@ -1,5 +1,5 @@
 export interface Center {
-  centerId: number;
+  //centerId: number;
   regionName: string;
   centerName: string;
 }

@@ -52,6 +52,7 @@ export class AppMenu {
         //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
         let accounts: MenuItem = {label: 'Accounts', items: []};
         accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
+        accounts.items?.push({ label: 'Roles/Permissions', icon: 'fa-solid fa-user-lock', routerLink: ['/rolePermissions'] });
 
         if(home!.items!.length > 0)
             this.model.push(home);
