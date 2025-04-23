@@ -280,17 +280,16 @@
                                     Region
                                     <p-sortIcon field="region" />
                                 </th>
-                                <th pSortableColumn="eventStartDate" style="min-width:7rem">
+                                <th pSortableColumn="startDate" style="min-width:7rem">
                                     Event Date
-                                    <p-sortIcon field="eventStartDate" />
+                                    <p-sortIcon field="startDate" />
                                 </th>
-                                <th pSortableColumn="eventStartDate" style="min-width:7rem">
+                                <th style="min-width:7rem">
                                     Centers
-                                    <p-sortIcon field="eventStartDate" />
                                 </th>
-                                <th pSortableColumn="hostingCenter" style="min-width:7rem">
+                                <th pSortableColumn="hostCenter" style="min-width:7rem">
                                     Host
-                                    <p-sortIcon field="hostingCenter" />
+                                    <p-sortIcon field="hostCenter" />
                                 </th>
                             </tr>
                         </ng-template>
@@ -301,7 +300,7 @@
                                     <p-tableCheckbox ngDefaultControl [value]="event.value" />
                                 </td>
                                 <td>{{ event.region }}</td>
-                                <td>{{ event.eventStartDate }} - {{ event.eventEndDate }}</td>
+                                <td>{{ event.startDate }} - {{ event.endDate }}</td>
                                 <td>
                                     <ul>
                                         <li class="mb-2 whitespace-nowrap" *ngFor="let center of event.centers">
@@ -309,7 +308,7 @@
                                         </li>
                                     </ul>
                                 </td>
-                                <td>{{ event.hostingCenter }}</td>
+                                <td>{{ event.hostCenter }}</td>
                             </tr>
                         </ng-template>
                     </p-table>

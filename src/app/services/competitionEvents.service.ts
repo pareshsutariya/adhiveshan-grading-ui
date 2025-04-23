@@ -15,4 +15,17 @@ export class CompetitionEventsService {
   GetById(id: number): Observable<CompetitionEvent> {
     return this.http.get<CompetitionEvent>(Constants.WebApiBaseUrl + `/CompetitionEvents/getById/${id}`);
   }
+  
+  Save(item: CompetitionEvent) {
+    let headers = new HttpHeaders({ "Content-Type": "application/json" });
+
+    if (item.competitionEventId == null || item.competitionEventId == 0)
+      return this.http
+        .post(Constants.WebApiBaseUrl + "/CompetitionEvents", JSON.stringify(item), { headers: headers })
+        .pipe();
+    else
+      return this.http
+        .put(Constants.WebApiBaseUrl + "/CompetitionEvents/" + item.competitionEventId, JSON.stringify(item), { headers: headers })
+        .pipe();
+  }
 }

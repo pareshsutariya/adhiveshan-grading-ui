@@ -1,10 +1,10 @@
 export interface CompetitionEvent {
   competitionEventId: number;
-  eventName: string,
-  eventStartDate: Date;
-  eventEndDate: Date;
+  name: string,
+  startDate: Date;
+  endDate: Date;
   region: string,
   centers: string[],
-  hostingCenter: string,
+  hostCenter: string,
   status: string
 }
