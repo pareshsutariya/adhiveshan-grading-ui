@@ -14,6 +14,8 @@ import { AuthService } from "../../services/auth.service";
 import { User } from "../../models/user";
 import { RegionCenterService } from "../../services/_regionCenters.service";
 import { RolePermissionsService } from "../../services/rolePermissions.service";
+import { CompetitionEventsService } from "../../services/competitionEvents.service";
+import { CompetitionEvent } from "../../models/competitionEvent";
 
 @Component({
   selector: "app-users",
@@ -29,6 +31,7 @@ export class Users implements OnInit {
   data = signal<User[]>([]);
   roles = signal<any[]>([]);
   mandals = signal<any[]>([]);
+  events = signal<CompetitionEvent[]>([]);
   skillCategories = signal<any[]>([]);
   addOrEditItem!: User;
   submitted: boolean = false;
@@ -38,6 +41,7 @@ export class Users implements OnInit {
     public router: Router,
     public constants: Constants,
     public regionsService: RegionCenterService,
+    public eventsService: CompetitionEventsService,
     public rolePermissionsService: RolePermissionsService,
     public authService: AuthService,
     private messageService: MessageService,
@@ -47,19 +51,26 @@ export class Users implements OnInit {
   ngOnInit() {
     this.layoutService.pageTitle.set("Users");
 
-    this.roles.set(this.rolePermissionsService.Roles);
-    this.mandals.set(this.constants.Mandals);
-    this.skillCategories.set(this.constants.SkillCategories);
     this.loadData();
   }
 
   loadData() {
-    this.layoutService.isDataLoading.set(true);
 
+    this.roles.set(this.rolePermissionsService.Roles);
+    this.mandals.set(this.constants.Mandals);
+    this.skillCategories.set(this.constants.SkillCategories);
+
+    this.layoutService.isDataLoading.set(true);
+    this.eventsService.GetItems().subscribe(data => { 
+      this.events.set(data);
+      this.layoutService.isDataLoading.set(false);
+    });
+
+    this.layoutService.isDataLoading.set(true);
     this.usersService.GetItems().subscribe(data => { 
-        this.data.set(data);
-        this.layoutService.isDataLoading.set(false);
-      });
+      this.data.set(data);
+      this.layoutService.isDataLoading.set(false);
+    });
   }
 
   openNew() {

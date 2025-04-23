@@ -259,6 +259,51 @@
                 </ng-template>
             </p-table>
 
+            <!-- Events -->
+            <p-table #dtEvents [value]="events()" [(selection)]="addOrEditItem.assignedEventIds" [rowHover]="true"
+                [scrollable]="true" scrollHeight="300px">
+
+                <ng-template #header>
+                    <tr>
+                        <th style="width: 1rem"><i class="fa-regular fa-calendar-days"></i></th>
+                        <th pSortableColumn="region" style="min-width:7rem">
+                            Region
+                            <p-sortIcon field="region" />
+                        </th>
+                        <th pSortableColumn="eventStartDate" style="min-width:7rem">
+                            Event Date
+                            <p-sortIcon field="eventStartDate" />
+                        </th>
+                        <th pSortableColumn="eventStartDate" style="min-width:7rem">
+                            Centers
+                            <p-sortIcon field="eventStartDate" />
+                        </th>
+                        <th pSortableColumn="hostingCenter" style="min-width:7rem">
+                            Host
+                            <p-sortIcon field="hostingCenter" />
+                        </th>
+                    </tr>
+                </ng-template>
+
+                <ng-template #body let-event>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox ngDefaultControl [value]="event.value" />
+                        </td>
+                        <td>{{ event.region }}</td>
+                        <td>{{ event.eventStartDate }} - {{ event.eventEndDate }}</td>
+                        <td>
+                            <ul>
+                                <li class="mb-2 whitespace-nowrap" *ngFor="let center of event.centers">
+                                    <i class="fa-solid fa-key"></i>{{center}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td>{{ event.hostingCenter }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
         </div>
     </ng-template>
 

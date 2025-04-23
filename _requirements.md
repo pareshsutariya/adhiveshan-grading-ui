@@ -11,11 +11,6 @@
 - [ ] Prod Env setup in AWS
 - [ ] DB Connection and Password protection/injection
 
-### Create tickets:
-
-- [x] Beakdown requirements into task
-- [x] Create tickets in Github
-
 ## ====== PARTICIPANTS =====
 
 ### Import Participants UI:
@@ -80,9 +75,9 @@
 - [ ] UI: List Page: Apply standard sorting and searching
 - [ ] UI: Add Page: Design UI to Add or Edit record, and call API
 
-## ====== EVENTS =====:
+## ====== COMPETITION EVENTS =====:
 
-- [ ] API: "Events", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
+- [ ] API: "CompetitionEvents", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
 - [ ] API: Implement an endpoint to return list of data
 - [ ] API: Implement an endpoint to Add record
 - [ ] API: Implement an endpoint to Update record
