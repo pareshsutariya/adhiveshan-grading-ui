@@ -215,14 +215,14 @@
 
             <div class="md:w-1/4">
                 <!-- Mandal -->
-                <div class="mb-2">
+                <div class="mb-4">
                     <p-table #dtMandals [value]="mandals()" [(selection)]="addOrEditItem.assignedMandals"
-                        [rowHover]="true" [scrollable]="true" scrollHeight="300px">
+                        [rowHover]="true" stripedRows>
 
                         <ng-template #header>
                             <tr>
                                 <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
-                                <th pSortableColumn="label" style="min-width:7rem">
+                                <th pSortableColumn="label" style="min-width:7rem; font-weight: bolder;">
                                     Mandals
                                     <p-sortIcon field="label" />
                                 </th>
@@ -243,12 +243,12 @@
                 <!-- Skill Categories -->
                 <div class="mb-2">
                     <p-table #dtSkills [value]="skillCategories()" [(selection)]="addOrEditItem.assignedSkillCategories"
-                        [rowHover]="true" [scrollable]="true" scrollHeight="300px">
+                        [rowHover]="true" stripedRows>
 
                         <ng-template #header>
                             <tr>
                                 <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
-                                <th pSortableColumn="label" style="min-width:7rem">
+                                <th pSortableColumn="label" style="min-width:7rem;font-weight: bolder;">
                                     Skills
                                     <p-sortIcon field="label" />
                                 </th>

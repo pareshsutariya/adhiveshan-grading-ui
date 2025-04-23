@@ -32,8 +32,8 @@
 
     <!-- List View Data -->
     <ng-template #body let-item>
-        <tr>
-            <td class="whitespace-nowrap align-top">{{ item.roleName }}</td>
+        <tr [style]="{'color': item.color}">
+            <td class="whitespace-nowrap align-top"><i class="{{item.icon}}"></i> {{ item.roleName }}</td>
             <td>
                 <ul>
                     <li class="mb-2" *ngFor="let per of item.permissions"> <i class="fa-solid fa-key"></i>

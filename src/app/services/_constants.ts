@@ -43,13 +43,13 @@ export class Constants {
 
   get Mandals(): any {
     return [
-      { label: "F1 Student", value: "F1 Student", icon: "fa-solid fa-person", color: "navy" },
-      { label: "Kishor", value: "Kishor", icon: "fa-solid fa-person", color: "navy"  },
+      //{ label: "F1 Student", value: "F1 Student", icon: "fa-solid fa-person", color: "navy" },
+      //{ label: "Kishor", value: "Kishor", icon: "fa-solid fa-person", color: "navy"  },
       { label: "Yuvak", value: "Yuvak", icon: "fa-solid fa-person", color: "navy"  },
       { label: "Sanyukta", value: "Sanyukta", icon: "fa-solid fa-person", color: "navy"  },
     
-      { label: "iF1 Student", value: "iF1 Student", icon: "fa-solid fa-person-dress", color: "brown" },
-      { label: "Kishori", value: "Kishori", icon: "fa-solid fa-person-dress", color: "brown" },
+      //{ label: "iF1 Student", value: "iF1 Student", icon: "fa-solid fa-person-dress", color: "brown" },
+      //{ label: "Kishori", value: "Kishori", icon: "fa-solid fa-person-dress", color: "brown" },
       { label: "Yuvati", value: "Yuvati", icon: "fa-solid fa-person-dress", color: "brown" },
       { label: "Premvati", value: "Premvati", icon: "fa-solid fa-person-dress", color: "brown" },
     ];
@@ -57,11 +57,11 @@ export class Constants {
 
   get SkillCategories(): any {
     return [
-      { label: "Pravachan: Ghanshyam", value: "Pravachan: Ghanshyam", icon: "fa-solid fa-person", color: "navy" },
-      { label: "Pravachan: Nilkanth", value: "Pravachan: Nilkanth", icon: "fa-solid fa-person", color: "navy" },
-      { label: "Pravachan: Sahajanand", value: "Pravachan: Sahajanand", icon: "fa-solid fa-person", color: "navy" },
-      { label: "Pravachan: Harikrishna", value: "Pravachan: Harikrishna", icon: "fa-solid fa-person", color: "navy" },
-      { label: "Pravachan: Shri Hari", value: "Pravachan: Shri Hari", icon: "fa-solid fa-person", color: "navy" },
+      { label: "Pravachan: Ghanshyam", value: "Pravachan: Ghanshyam", icon: "fa-solid fa-person", color: "green" },
+      { label: "Pravachan: Nilkanth", value: "Pravachan: Nilkanth", icon: "fa-solid fa-person", color: "green" },
+      { label: "Pravachan: Sahajanand", value: "Pravachan: Sahajanand", icon: "fa-solid fa-person", color: "green" },
+      { label: "Pravachan: Harikrishna", value: "Pravachan: Harikrishna", icon: "fa-solid fa-person", color: "green" },
+      { label: "Pravachan: Shri Hari", value: "Pravachan: Shri Hari", icon: "fa-solid fa-person", color: "green" },
       
       { label: "Emcee: Ghanshyam", value: "Emcee: Ghanshyam", icon: "fa-solid fa-person", color: "navy" },
       { label: "Emcee: Nilkanth", value: "Emcee: Nilkanth", icon: "fa-solid fa-person", color: "navy" },
