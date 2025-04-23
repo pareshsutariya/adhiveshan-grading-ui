@@ -108,6 +108,7 @@
 - [x] UI: List Page: Make an API call, and display data
 - [x] UI: List Page: Apply standard sorting and searching
 - [x] UI: Add Page: Design UI to Add or Edit record, and call API
+- [ ] UI: Add Page: Assign Events
 - Note:
   - Roles are National Admin / Regional Admin / Proctors
   - National Admin: Can manage regional admin AND proctors of all region of ANY genders
