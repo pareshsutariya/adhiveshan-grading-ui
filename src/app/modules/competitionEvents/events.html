@@ -9,7 +9,7 @@
             <input pInputText type="text" placeholder="Search..." (input)="onGlobalFilter(dt, $event)" />
         </p-iconfield>
         <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
-            (click)="clearGlobalFilter()" />
+            (click)="clearGlobalFilter(dt)" />
         <p-button icon="pi pi-plus" class="ml-4" [rounded]="true" [outlined]="true" severity="success"
             (onClick)="openNew()" />
     </ng-template>
@@ -59,8 +59,9 @@
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
                     (click)="openEdit(item)" />
             </td>
-            <td [vAlign]="'top'" class="whitespace-nowrap">{{ item.region }}</td>
-            <td [vAlign]="'top'" class="whitespace-nowrap">{{ item.hostCenter }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap"><i class="pi pi-map"></i> {{ item.region }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap"><i class="pi pi-building-columns"></i> {{ item.hostCenter }}
+            </td>
             <td [vAlign]="'top'">
                 <ul>
                     <li class="mb-2 whitespace-nowrap" *ngFor="let center of item.centers"> <i
@@ -143,8 +144,19 @@
                 </div>
             </div>
             <!-- Centers -->
-            <p-table #dtCenters [value]="centersForRegion()" [(selection)]="addOrEditItem.centers" [rowHover]="true"
-                stripedRows>
+            <p-toolbar styleClass="mb-2">
+                <ng-template #start>
+                    <p-iconfield>
+                        <p-inputicon styleClass="pi pi-search" />
+                        <input pInputText type="text" placeholder="Search..."
+                            (input)="onGlobalFilter(dtCenters, $event)" />
+                    </p-iconfield>
+                    <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true"
+                        severity="contrast" (click)="clearGlobalFilter(dtCenters)" />
+                </ng-template>
+            </p-toolbar>
+            <p-table #dtCenters [value]="centersForRegion()" [(selection)]="addOrEditItem.centers"
+                [globalFilterFields]="['label']" [rowHover]="true" stripedRows>
 
                 <ng-template #header>
                     <tr>

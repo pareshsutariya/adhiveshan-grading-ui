@@ -25,6 +25,7 @@ import { CompetitionEvent } from "../../models/competitionEvent";
 })
 export class Events implements OnInit {
   @ViewChild("dt") dt!: Table;
+  @ViewChild("dtCenters") dtCenters!: Table;
 
   dialog: boolean = false;
   data = signal<CompetitionEvent[]>([]);
@@ -132,7 +133,7 @@ export class Events implements OnInit {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
-  clearGlobalFilter(){
-    this.dt.filterGlobal("", 'contains');
+  clearGlobalFilter(table: Table){
+    table.filterGlobal("", 'contains');
   }
 }
