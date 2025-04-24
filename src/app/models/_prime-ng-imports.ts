@@ -98,6 +98,7 @@ import { StyleClassModule } from "primeng/styleclass";
 import { FloatLabelModule } from "primeng/floatlabel";
 import { IconFieldModule } from "primeng/iconfield";
 import { InputIconModule } from "primeng/inputicon";
+import { DatePicker } from 'primeng/datepicker';
 
 export const PrimeNgModules = [
   TableModule,
@@ -109,6 +110,8 @@ export const PrimeNgModules = [
   RippleModule,
   ToastModule,
   ToolbarModule,
+  DatePickerModule,
+  DatePicker,
   CheckboxModule,
   RatingModule,
   InputTextModule,

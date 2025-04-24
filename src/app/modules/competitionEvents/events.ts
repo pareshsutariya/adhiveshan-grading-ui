@@ -83,7 +83,7 @@ export class Events implements OnInit {
 
     this.layoutService.isDataLoading.set(true);
 
-    this.usersService.Save(this.addOrEditItem).subscribe(c => {
+    this.eventsService.Save(this.addOrEditItem).subscribe(c => {
         this.layoutService.isDataLoading.set(false);
 
         let detail = this.addOrEditItem.competitionEventId ? "Event Updated" : "Event Created";
@@ -96,8 +96,8 @@ export class Events implements OnInit {
   }
 
   isValid() {
-    if(!this.addOrEditItem.name || this.addOrEditItem.name.trim().length == 0)
-      return false;
+    // if(!this.addOrEditItem.name || this.addOrEditItem.name.trim().length == 0)
+    //   return false;
 
     if(!this.addOrEditItem.region || this.addOrEditItem.region.trim().length == 0)
       return false;
@@ -105,14 +105,14 @@ export class Events implements OnInit {
     if(!this.addOrEditItem.hostCenter || this.addOrEditItem.hostCenter.trim().length == 0)
       return false;
 
-    if(!this.addOrEditItem.centers || this.addOrEditItem.centers.length == 0)
-        return false;
+    // if(!this.addOrEditItem.centers || this.addOrEditItem.centers.length == 0)
+    //     return false;
 
-    if(!this.addOrEditItem.startDate)
-      return false;
+    // if(!this.addOrEditItem.startDate)
+    //   return false;
 
-    if(!this.addOrEditItem.endDate)
-      return false;
+    // if(!this.addOrEditItem.endDate)
+    //   return false;
 
     if(!this.addOrEditItem.status || this.addOrEditItem.status.trim().length == 0)
       return false;

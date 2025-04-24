@@ -17,7 +17,6 @@ export class RolePermissionsService {
       { label: "National Admin", value: RolesEnum.NationalAdmin, icon: "fa fa-user-secret", color: 'red' },
       { label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'purple' },
       { label: "Proctor", value: RolesEnum.Proctor, icon: "fa fa-user-pen", color: 'navy' },
-
     ];
   }
 
@@ -31,6 +30,9 @@ export class RolePermissionsService {
     ];
   }
 
+  public get RolesEnum(): typeof RolesEnum {
+    return RolesEnum; 
+  }
   public get PermissionsEnum(): typeof PermissionsEnum {
     return PermissionsEnum; 
   }
