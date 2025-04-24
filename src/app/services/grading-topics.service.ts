@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Constants } from "./_constants";
-import { User } from "../models/user";
 import { SkillCategory } from "../models/skill-category";
+import { GradingTopic } from "../models/grading-topic";
 
 @Injectable({providedIn: 'root'})
 export class GradingTopicsService {
@@ -11,5 +11,26 @@ export class GradingTopicsService {
 
   GetSkillCategories(): Observable<Array<SkillCategory>> {
     return this.http.get<Array<SkillCategory>>(Constants.WebApiBaseUrl + "/GradingTopics/GetSkillCategories");
+  }
+
+  GetItems(): Observable<Array<GradingTopic>> {
+    return this.http.get<Array<GradingTopic>>(Constants.WebApiBaseUrl + "/GradingTopics");
+  }
+
+  GetById(id: number): Observable<GradingTopic> {
+    return this.http.get<GradingTopic>(Constants.WebApiBaseUrl + "/GradingTopics/" + id);
+  }
+
+  Save(item: GradingTopic) {
+    let headers = new HttpHeaders({ "Content-Type": "application/json" });
+
+    if (item.gradingTopicId == null || item.gradingTopicId == 0)
+      return this.http
+        .post(Constants.WebApiBaseUrl + "/GradingTopics", JSON.stringify(item), { headers: headers })
+        .pipe();
+    else
+      return this.http
+        .put(Constants.WebApiBaseUrl + "/GradingTopics/" + item.gradingTopicId, JSON.stringify(item), { headers: headers })
+        .pipe();
   }
 }
