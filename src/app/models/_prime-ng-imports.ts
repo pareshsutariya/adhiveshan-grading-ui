@@ -122,6 +122,7 @@ export const PrimeNgModules = [
   SelectModule,
   RadioButtonModule,
   InputNumberModule,
+  CalendarModule,
   DialogModule,
   TagModule,
   InputIconModule,

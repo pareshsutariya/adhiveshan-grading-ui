@@ -94,7 +94,7 @@
                     <p-select inputId="region" [options]="regionsService.Regions" optionLabel="label"
                         optionValue="value" [(ngModel)]="addOrEditItem.region" placeholder="Select a Region"
                         (onChange)="getCentersForRegion()" fluid />
-                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">region is
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is
                         required.</small>
                 </div>
             </div>
@@ -115,8 +115,8 @@
             <div class="grid grid-cols-12 gap-2">
                 <label for="startDate" class="flex font-bold items-center col-span-4">Start Date*</label>
                 <div class="col-span-8">
-                    <p-datepicker inputId="startDate" size="small" [style]="{width:'100%'}"
-                        [(ngModel)]="addOrEditItem.startDate" [showTime]="true" [showIcon]="true" />
+                    <p-datepicker name="startDate" size="small" [style]="{width:'100%'}"
+                        [(ngModel)]="addOrEditItem.startDate" [showTime]="true" [showIcon]="true" required />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.startDate">Start Date is
                         required.</small>
                 </div>
@@ -127,7 +127,7 @@
                 <label for="startDate" class="flex font-bold items-center col-span-4">End Date*</label>
                 <div class="col-span-8">
                     <p-datepicker inputId="endDate" size="small" [style]="{width:'100%'}"
-                        [(ngModel)]="addOrEditItem.endDate" [showTime]="true" [showIcon]="true" />
+                        [(ngModel)]="addOrEditItem.endDate" [showTime]="true" [showIcon]="true" required />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.endDate">End Date is
                         required.</small>
                 </div>
