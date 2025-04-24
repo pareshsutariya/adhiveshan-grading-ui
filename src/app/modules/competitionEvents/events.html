@@ -83,9 +83,9 @@
 </p-table>
 
 <!-- Add/Edit Dialog -->
-<p-dialog [(visible)]="dialog" [style]="{ width: '500px', height: '650px' }" header="Event Details" [modal]="true">
+<p-dialog [(visible)]="dialog" [style]="{ width: '500px', height: 'auto' }" header="Event Details" [modal]="true">
     <ng-template #content>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-1">
 
             <!-- Region -->
             <div class="grid grid-cols-12 gap-2">
@@ -148,15 +148,15 @@
                 <ng-template #start>
                     <p-iconfield>
                         <p-inputicon styleClass="pi pi-search" />
-                        <input pInputText type="text" placeholder="Search..."
+                        <input pInputText type="text" placeholder="Search..." pSize="small"
                             (input)="onGlobalFilter(dtCenters, $event)" />
                     </p-iconfield>
-                    <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true"
+                    <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" size="small"
                         severity="contrast" (click)="clearGlobalFilter(dtCenters)" />
                 </ng-template>
             </p-toolbar>
             <p-table #dtCenters [value]="centersForRegion()" [(selection)]="addOrEditItem.centers"
-                [globalFilterFields]="['label']" [rowHover]="true" stripedRows>
+                [globalFilterFields]="['label']" [rowHover]="true" [scrollable]="true" scrollHeight="300px" stripedRows>
 
                 <ng-template #header>
                     <tr>
