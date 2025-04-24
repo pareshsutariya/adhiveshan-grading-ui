@@ -20,7 +20,7 @@ import { CompetitionEvent } from "../../models/competitionEvent";
   selector: "app-events",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, UsersService, Constants],
+  providers: [MessageService, Constants],
   templateUrl: "events.html",
 })
 export class Events implements OnInit {
@@ -35,7 +35,6 @@ export class Events implements OnInit {
   submitted: boolean = false;
 
   constructor(
-    private usersService: UsersService,
     public router: Router,
     public constants: Constants,
     public regionsService: RegionCenterService,
