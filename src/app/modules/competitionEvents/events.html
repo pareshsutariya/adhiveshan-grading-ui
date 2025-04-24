@@ -33,17 +33,18 @@
                 Host Center
                 <p-sortIcon field="hostCenter" />
             </th>
-            <th pSortableColumn="name" class="whitespace-nowrap">
+            <th class="whitespace-nowrap">
+                Centers
+            </th>
+            <!-- <th pSortableColumn="name" class="whitespace-nowrap">
                 Name
                 <p-sortIcon field="name" />
-            </th>
+            </th> -->
             <th pSortableColumn="startDate" class="whitespace-nowrap">
                 Date
                 <p-sortIcon field="startDate" />
             </th>
-            <th class="whitespace-nowrap">
-                Centers
-            </th>
+
             <th pSortableColumn="status" class="whitespace-nowrap">
                 Status
                 <p-sortIcon field="status" />
@@ -54,25 +55,25 @@
     <!-- List View Data -->
     <ng-template #body let-item>
         <tr>
-            <td>
+            <td [vAlign]="'top'">
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
                     (click)="openEdit(item)" />
             </td>
-            <td class="whitespace-nowrap">{{ item.region }}</td>
-            <td class="whitespace-nowrap">{{ item.hostCenter }}</td>
-            <td class="whitespace-nowrap">{{ item.name }}</td>
-            <td class="whitespace-nowrap">
-                {{ item.startDate | date:'MM/dd/yyyy hh:mm a'}}
-                <br>{{ item.endDate | date:'MM/dd/yyyy hh:mm a'}}
-            </td>
-            <td>
+            <td [vAlign]="'top'" class="whitespace-nowrap">{{ item.region }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap">{{ item.hostCenter }}</td>
+            <td [vAlign]="'top'">
                 <ul>
                     <li class="mb-2 whitespace-nowrap" *ngFor="let center of item.centers"> <i
                             class="pi pi-building-columns"></i>
                         {{center}}</li>
                 </ul>
             </td>
-            <td>
+            <!-- <td class="whitespace-nowrap">{{ item.name }}</td> -->
+            <td [vAlign]="'top'" class="whitespace-nowrap">
+                {{ item.startDate | date:'MM/dd/yyyy hh:mm a'}} <br>
+                {{ item.endDate | date:'MM/dd/yyyy hh:mm a'}}
+            </td>
+            <td [vAlign]="'top'">
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
                     styleClass="dark:!bg-surface-900" />
             </td>
@@ -90,7 +91,8 @@
                 <label for="region" class="flex font-bold items-center col-span-4">Region*</label>
                 <div class="col-span-8">
                     <p-select inputId="region" [options]="regionsService.Regions" optionLabel="label"
-                        optionValue="value" [(ngModel)]="addOrEditItem.region" placeholder="Select a Region" fluid />
+                        optionValue="value" [(ngModel)]="addOrEditItem.region" placeholder="Select a Region"
+                        (onChange)="getCentersForRegion()" fluid />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">region is
                         required.</small>
                 </div>
@@ -141,30 +143,28 @@
                 </div>
             </div>
             <!-- Centers -->
-            <!-- <div class="grid grid-cols-12 gap-2">
-                <p-table #dtCenters [value]="regionsService.GetCentersForRegion(addOrEditItem.region)"
-                    [(selection)]="addOrEditItem.centers" [rowHover]="true" stripedRows>
+            <p-table #dtCenters [value]="centersForRegion()" [(selection)]="addOrEditItem.centers" [rowHover]="true"
+                stripedRows>
 
-                    <ng-template #header>
-                        <tr>
-                            <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
-                            <th pSortableColumn="label" style="min-width:7rem;font-weight: bolder;">
-                                Center
-                                <p-sortIcon field="label" />
-                            </th>
-                        </tr>
-                    </ng-template>
+                <ng-template #header>
+                    <tr>
+                        <th style="width: 1rem"><i class="pi pi-building-columns"></i></th>
+                        <th pSortableColumn="label" style="min-width:7rem;font-weight: bolder;">
+                            Center
+                            <p-sortIcon field="label" />
+                        </th>
+                    </tr>
+                </ng-template>
 
-                    <ng-template #body let-center>
-                        <tr>
-                            <td>
-                                <p-tableCheckbox ngDefaultControl [value]="center.value" />
-                            </td>
-                            <td class="whitespace-nowrap"> {{ center.label }}</td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>-->
+                <ng-template #body let-center>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox ngDefaultControl [value]="center.value" />
+                        </td>
+                        <td class="whitespace-nowrap"> {{ center.label }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
         </div>
 
     </ng-template>

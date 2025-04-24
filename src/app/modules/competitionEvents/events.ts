@@ -28,6 +28,7 @@ export class Events implements OnInit {
 
   dialog: boolean = false;
   data = signal<CompetitionEvent[]>([]);
+  centersForRegion = signal<any[]>([]);
   skillCategories = signal<any[]>([]);
   addOrEditItem!: CompetitionEvent;
   submitted: boolean = false;
@@ -68,11 +69,18 @@ export class Events implements OnInit {
   openEdit(item: CompetitionEvent) {
     this.addOrEditItem = { ...item };
     this.dialog = true;
+
+    console.log(item);
+    this.getCentersForRegion();
   }
 
   hideDialog() {
     this.dialog = false;
     this.submitted = false;
+  }
+
+  getCentersForRegion(){
+    this.centersForRegion.set(this.regionsService.GetCentersForRegion(this.addOrEditItem.region));
   }
   
   save() {

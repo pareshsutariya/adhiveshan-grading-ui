@@ -19,6 +19,8 @@ export class CompetitionEventsService {
   Save(item: CompetitionEvent) {
     let headers = new HttpHeaders({ "Content-Type": "application/json" });
 
+    console.log("Save", item);
+
     if (item.competitionEventId == null || item.competitionEventId == 0)
       return this.http
         .post(Constants.WebApiBaseUrl + "/CompetitionEvents", JSON.stringify(item), { headers: headers })
