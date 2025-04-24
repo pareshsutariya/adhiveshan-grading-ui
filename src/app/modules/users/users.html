@@ -94,9 +94,15 @@
             </td>
             <td>
                 <ul>
-                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedEventIds"> <i
-                            class="fa-regular fa-calendar-days"></i>
-                        {{item}}</li>
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedEvents">
+                        <i class="pi pi-map"></i>
+                        {{item.region}} - {{item.hostCenter}} <br>
+
+                        <i class="fa-regular fa-calendar-days"></i>
+                        {{ item.startDate | date:'MM/dd/yyyy hh:mm a'}} <br>
+                        <i class="fa-regular fa-calendar-days"></i>
+                        {{ item.endDate | date:'MM/dd/yyyy hh:mm a'}}
+                    </li>
                 </ul>
             </td>
         </tr>
@@ -277,12 +283,8 @@
                             <tr>
                                 <th style="width: 1rem"><i class="fa-regular fa-calendar-days"></i></th>
                                 <th pSortableColumn="region" style="min-width:7rem">
-                                    Region
+                                    Region / Host
                                     <p-sortIcon field="region" />
-                                </th>
-                                <th pSortableColumn="hostCenter" style="min-width:7rem">
-                                    Host
-                                    <p-sortIcon field="hostCenter" />
                                 </th>
                                 <th pSortableColumn="startDate" style="min-width:7rem">
                                     Event Date
@@ -297,18 +299,20 @@
                         <ng-template #body let-event>
                             <tr>
                                 <td>
-                                    <p-tableCheckbox ngDefaultControl [value]="event.value" />
+                                    <p-tableCheckbox ngDefaultControl [value]="event.competitionEventId" />
                                 </td>
-                                <td>{{ event.region }}</td>
-                                <td>{{ event.hostCenter }}</td>
+                                <td><i class="pi pi-building-columns"></i> {{ event.region }} - {{ event.hostCenter }}
+                                </td>
                                 <td>
+                                    <i class="fa-regular fa-calendar-days"></i>
                                     {{ event.startDate | date:'MM/dd/yyyy hh:mm a'}} <br>
+                                    <i class="fa-regular fa-calendar-days"></i>
                                     {{ event.endDate | date:'MM/dd/yyyy hh:mm a'}}
                                 </td>
                                 <td>
                                     <ul>
                                         <li class="mb-2 whitespace-nowrap" *ngFor="let center of event.centers">
-                                            <i class="fa-solid fa-key"></i>{{center}}
+                                            <i class="fa-solid fa-key"></i> {{center}}
                                         </li>
                                     </ul>
                                 </td>

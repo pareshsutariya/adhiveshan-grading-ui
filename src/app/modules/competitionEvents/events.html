@@ -71,7 +71,10 @@
             </td>
             <!-- <td class="whitespace-nowrap">{{ item.name }}</td> -->
             <td [vAlign]="'top'" class="whitespace-nowrap">
+                <i class="fa-regular fa-calendar-days"></i>
                 {{ item.startDate | date:'MM/dd/yyyy hh:mm a'}} <br>
+
+                <i class="fa-regular fa-calendar-days"></i>
                 {{ item.endDate | date:'MM/dd/yyyy hh:mm a'}}
             </td>
             <td [vAlign]="'top'">
@@ -143,6 +146,7 @@
                         required.</small>
                 </div>
             </div>
+
             <!-- Centers -->
             <p-toolbar styleClass="mb-2">
                 <ng-template #start>
@@ -178,7 +182,6 @@
                 </ng-template>
             </p-table>
         </div>
-
     </ng-template>
 
     <ng-template #footer>

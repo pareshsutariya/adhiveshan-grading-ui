@@ -15,4 +15,7 @@ export interface User {
     assignedSkillCategories?: any[];
 
     checkedIn?: boolean;
+
+    //-------------
+    assignedEvents?: any[];
   }
