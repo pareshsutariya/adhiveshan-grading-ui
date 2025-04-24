@@ -38,7 +38,7 @@ export class AppMenu {
 
         // NATIONAL ADMINS
         let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
-        nationalAdmin.items?.push({ label: 'Skill Grading Questions', icon: 'fa-solid fa-circle-question', routerLink: ['/skill-grading-questions'] });
+        nationalAdmin.items?.push({ label: 'Grading Topics', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
         nationalAdmin.items?.push({ label: 'Skill and Categories', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
 
         // PROCTOR ADMINS

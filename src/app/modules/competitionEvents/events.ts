@@ -47,8 +47,6 @@ export class Events implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.layoutService.pageTitle.set("Users");
-
     this.loadData();
   }
 

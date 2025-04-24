@@ -1,0 +1,66 @@
+<!-- Toolbar -->
+<p-toolbar styleClass="mb-2">
+    <ng-template #start>
+        <div class="font-semibold mr-5" style="font-size:1.5rem">Grading Topics</div>
+        <p-iconfield>
+            <p-inputicon styleClass="pi pi-search" />
+            <input pInputText type="text" placeholder="Search..." (input)="onGlobalFilter(dt, $event)" />
+        </p-iconfield>
+        <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
+            (click)="clearGlobalFilter(dt)" />
+    </ng-template>
+</p-toolbar>
+
+<!-- List View -->
+<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['name', 'description', 'skill', 'category']"
+    [rowHover]="true" [scrollable]="true" [paginator]="false">
+
+    <!-- List View Header -->
+    <ng-template #header>
+        <tr>
+            <th pSortableColumn="skill" class="whitespace-nowrap">
+                Skill
+                <p-sortIcon field="skill" />
+            </th>
+            <th pSortableColumn="category" class="whitespace-nowrap">
+                Category
+                <p-sortIcon field="category" />
+            </th>
+            <th pSortableColumn="name" class="whitespace-nowrap">
+                Topic Name
+                <p-sortIcon field="name" />
+            </th>
+            <th pSortableColumn="description" class="whitespace-nowrap">
+                Description
+                <p-sortIcon field="description" />
+            </th>
+            <th class="whitespace-nowrap">
+                Weightage Options
+            </th>
+            <th pSortableColumn="requiredProctors" class="whitespace-nowrap">
+                Required Proctors
+                <p-sortIcon field="requiredProctors" />
+            </th>
+            <th pSortableColumn="status" class="whitespace-nowrap">
+                Status
+                <p-sortIcon field="status" />
+            </th>
+        </tr>
+    </ng-template>
+
+    <!-- List View Data -->
+    <ng-template #body let-item>
+        <tr [style]="{'color': item.color}">
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.skill }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.category }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.name }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.description }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.weightageOptions }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.requiredProctors }}</td>
+            <td [vAlign]="'top'">
+                <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
+                    styleClass="dark:!bg-surface-900" />
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

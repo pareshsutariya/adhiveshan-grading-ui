@@ -9,25 +9,25 @@ import { Table } from "primeng/table";
 
 import { LayoutService } from "../../layout/service/layout.service";
 import { Constants } from "../../services/_constants";
-import { UsersService } from "../../services/users.service";
 import { AuthService } from "../../services/auth.service";
-import { RolePermissions } from "../../models/rolePermissions";
-import { RolePermissionsService } from "../../services/rolePermissions.service";
+import { SkillCategory } from "../../models/skill-category";
+import { GradingTopicsService } from "../../services/grading-topics.service";
+import { GradingTopic } from "../../models/grading-topic";
 
 @Component({
-  selector: "app-role-permissions-list",
+  selector: "app-grading-topics-list-list",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, UsersService, Constants],
-  templateUrl: "role-permissions-list.html",
+  providers: [MessageService, Constants],
+  templateUrl: "grading-topics-list.html",
 })
-export class RolePermissionsList implements OnInit {
+export class GradingTopicsList implements OnInit {
   @ViewChild("dt") dt!: Table;
 
-  data = signal<RolePermissions[]>([]);
+  data = signal<GradingTopic[]>([]);
 
   constructor(
-    private rolePermissionsService: RolePermissionsService,
+    private gradingTopicsService: GradingTopicsService,
     public router: Router,
     public constants: Constants,
     public authService: AuthService,
@@ -42,7 +42,7 @@ export class RolePermissionsList implements OnInit {
   loadData() {
     this.layoutService.isDataLoading.set(true);
 
-    this.rolePermissionsService.GetItems().subscribe(data => { 
+    this.gradingTopicsService.GetItems().subscribe(data => { 
         this.data.set(data);
         this.layoutService.isDataLoading.set(false);
       });
@@ -52,7 +52,7 @@ export class RolePermissionsList implements OnInit {
     table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
-  clearGlobalFilter(){
-    this.dt.filterGlobal("", 'contains');
+  clearGlobalFilter(table: Table){
+    table.filterGlobal("", 'contains');
   }
 }

@@ -36,8 +36,6 @@ export class SkillCategoriesList implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.layoutService.pageTitle.set("Users");
-
     this.loadData();
   }
 
