@@ -4,7 +4,7 @@ import { Dashboard } from './app/modules/dashboard/dashboard';
 import { Users } from './app/modules/users/users';
 import { ImportParticipants } from './app/modules/participants/import-participants';
 import { Notfound } from './app/modules/auth/notfound';
-import { RolePermissionsList } from './app/modules/rolePermissions/rolePermissionsList';
+import { RolePermissionsList } from './app/modules/role-permissions/role-permissions-list';
 import { Events } from './app/modules/competitionEvents/events';
 import { SkillCategoriesList } from './app/modules/skill-categories/skill-categories-list';
 

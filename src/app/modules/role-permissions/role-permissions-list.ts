@@ -11,7 +11,6 @@ import { LayoutService } from "../../layout/service/layout.service";
 import { Constants } from "../../services/_constants";
 import { UsersService } from "../../services/users.service";
 import { AuthService } from "../../services/auth.service";
-import { User } from "../../models/user";
 import { RolePermissions } from "../../models/rolePermissions";
 import { RolePermissionsService } from "../../services/rolePermissions.service";
 
@@ -20,7 +19,7 @@ import { RolePermissionsService } from "../../services/rolePermissions.service";
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
   providers: [MessageService, UsersService, Constants],
-  templateUrl: "rolePermissionsList.html",
+  templateUrl: "role-permissions-list.html",
 })
 export class RolePermissionsList implements OnInit {
   @ViewChild("dt") dt!: Table;
