@@ -77,14 +77,14 @@
 
 ## ====== COMPETITION EVENTS =====:
 
-- [ ] API: "CompetitionEvents", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
-- [ ] API: Implement an endpoint to return list of data
-- [ ] API: Implement an endpoint to Add record
-- [ ] API: Implement an endpoint to Update record
-- [ ] UI: Menu: Add "Events" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
-- [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+- [x] API: "CompetitionEvents", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
+- [x] API: Implement an endpoint to return list of data
+- [x] API: Implement an endpoint to Add record
+- [x] API: Implement an endpoint to Update record
+- [x] UI: Menu: Add "Events" menu in navigation panel
+- [x] UI: List Page: Make an API call, and display data
+- [x] UI: List Page: Apply standard sorting and searching
+- [x] UI: Add Page: Design UI to Add or Edit record, and call API
 - Note:
   - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event.
   - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events.

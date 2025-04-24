@@ -116,11 +116,18 @@ export class Events implements OnInit {
     if(!this.addOrEditItem.centers || this.addOrEditItem.centers.length == 0)
       return false;
 
-    // if(!this.addOrEditItem.startDate)
-    //   return false;
+    if(!this.addOrEditItem.startDate)
+      return false;
 
-    // if(!this.addOrEditItem.endDate)
-    //   return false;
+    if(!this.addOrEditItem.endDate)
+      return false;
+
+    if(!(this.addOrEditItem.startDate < this.addOrEditItem.endDate)) {
+
+      this.messageService.add({ severity: "error", summary: "Validation", detail: "Start Date should be less than End Date", life: 3000 });
+      
+      return false;
+    }
 
     // if(!this.addOrEditItem.name || this.addOrEditItem.name.trim().length == 0)
     //   return false;
