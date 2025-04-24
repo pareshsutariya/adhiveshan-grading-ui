@@ -6,6 +6,7 @@ import { ImportParticipants } from './app/modules/participants/import-participan
 import { Notfound } from './app/modules/auth/notfound';
 import { RolePermissionsList } from './app/modules/rolePermissions/rolePermissionsList';
 import { Events } from './app/modules/competitionEvents/events';
+import { SkillCategoriesList } from './app/modules/skill-categories/skill-categories-list';
 
 export const appRoutes: Routes = [
     {
@@ -17,6 +18,7 @@ export const appRoutes: Routes = [
             { path: 'users', component: Users },
             { path: 'events', component: Events },
             { path: 'rolePermissions', component: RolePermissionsList },
+            { path: 'skill-categories', component: SkillCategoriesList },
             { path: '**', component: Notfound }
         ]
     },

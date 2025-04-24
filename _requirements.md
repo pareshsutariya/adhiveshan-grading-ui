@@ -58,15 +58,15 @@
 
 ### Skill Categories:
 
-- [ ] API: "SkillCategories" table Schema (Id, Skill Name, Category Name)
-- [ ] API: Implement an endpoint to return data from table SkillCategories
-- [ ] UI: Menu: Add "Skill Categories" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
+- [x] API: "SkillCategories" table Schema (Id, Skill Name, Category Name)
+- [x] API: Implement an endpoint to return data from table SkillCategories
+- [x] UI: Menu: Add "Skill Categories" menu in navigation panel
+- [x] UI: List Page: Make an API call, and display data
+- [x] UI: List Page: Apply standard sorting and searching
 
 ### Skill Grading Topics:
 
-- [ ] API: "GradingTopics" table Schema (Id, Topic Name, Description, Round, WeightageOptions[], RequiredProctors, IsActive)
+- [ ] API: "GradingTopics" table Schema (Id, Skill, SkillCategory, Name, Description, Round, WeightageOptions[], RequiredProctors, IsActive)
 - [ ] API: Implement an endpoint to return list of data
 - [ ] API: Implement an endpoint to Add record
 - [ ] API: Implement an endpoint to Edit record
@@ -103,7 +103,7 @@
 - [x] UI: List Page: Make an API call, and display data
 - [x] UI: List Page: Apply standard sorting and searching
 - [x] UI: Add Page: Design UI to Add or Edit record, and call API
-- [ ] UI: Add Page: Assign Events
+- [x] UI: Add Page: Assign Events
 - Note:
   - Roles are National Admin / Regional Admin / Proctors
   - National Admin: Can manage regional admin AND proctors of all region of ANY genders
