@@ -34,12 +34,14 @@ export class AppMenu {
 
         // NATIONAL ADMINS
         let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
+        nationalAdmin.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
         nationalAdmin.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
         nationalAdmin.items?.push({ label: 'Grading Topics', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
         nationalAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
 
         // PROCTOR ADMINS
         let proctorAdmin: MenuItem = {label: 'Proctor Admins', items: []};
+        proctorAdmin.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
         proctorAdmin.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
         proctorAdmin.items?.push({ label: 'Grading Topics (View)', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
         proctorAdmin.items?.push({ label: 'Events (Update)', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
