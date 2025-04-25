@@ -1,12 +1,13 @@
-## Feedbacks
+## Feedbacks:
 
-- Users: Provide Genders rather than Mandals
+- [x] Users: Provide Genders rather than Mandals
+
 - Users: Provide searching functionality by MIS ID while Add/Update
 - Users: Display Mandals / Skills / Events sections if applicable to selected roles
-- Topics: List view: by default sort by Skill / Category, and then by Sequence field
-- Topics: List view: Weitages: display comma separated
+- [x] Topics: List view: by default sort by Skill / Category, and then by Sequence field
+- [x] Topics: List view: Weitages: display comma separated
 - Topics: List view: Provide grouping
-- Topics: Add/Edit view: Provide Sequence field
+- [x] Topics: Add/Edit view: Provide Sequence field
 - Participants: Make changes according to ERS file structure
 
 ## ====== INFRASTRUCTURE ======

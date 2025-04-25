@@ -73,6 +73,7 @@ export class Users implements OnInit {
 
   openNew() {
     this.addOrEditItem = {};
+    this.addOrEditItem.status = "Active";
     this.submitted = false;
     this.dialog = true;
   }

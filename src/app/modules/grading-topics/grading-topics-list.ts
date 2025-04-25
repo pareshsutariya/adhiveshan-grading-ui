@@ -110,6 +110,9 @@ export class GradingTopicsList implements OnInit {
     if(!this.addOrEditItem.skillCategoryId || this.addOrEditItem.skillCategoryId == 0)
       return false;
 
+    if(!this.addOrEditItem.sequence)
+      return false;
+
     if(!this.addOrEditItem.name || this.addOrEditItem.name.trim().length == 0)
       return false;
 

@@ -3,6 +3,7 @@ export interface GradingTopic {
     skillCategoryId?: number;
     name?: string,
     description?: string,
+    sequence?: number;
     round?: number;
     requiredProctors?: number;
     weightageOptions?: number[];
