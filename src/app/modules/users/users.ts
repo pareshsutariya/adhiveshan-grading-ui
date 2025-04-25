@@ -30,7 +30,7 @@ export class Users implements OnInit {
   dialog: boolean = false;
   data = signal<User[]>([]);
   roles = signal<any[]>([]);
-  mandals = signal<any[]>([]);
+  genders = signal<any[]>([]);
   events = signal<CompetitionEvent[]>([]);
   skillCategories = signal<any[]>([]);
   addOrEditItem!: User;
@@ -55,7 +55,7 @@ export class Users implements OnInit {
   loadData() {
 
     this.roles.set(this.rolePermissionsService.Roles);
-    this.mandals.set(this.constants.Mandals);
+    this.genders.set(this.constants.Genders);
     this.skillCategories.set(this.constants.SkillCategories);
 
     this.layoutService.isDataLoading.set(true);

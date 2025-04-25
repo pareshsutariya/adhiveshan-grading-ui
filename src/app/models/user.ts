@@ -11,7 +11,7 @@ export interface User {
 
     assignedRoles?: any[];
     assignedEventIds?: any[];
-    assignedMandals?: any[];
+    assignedGenders?: any[];
     assignedSkillCategories?: any[];
 
     checkedIn?: boolean;

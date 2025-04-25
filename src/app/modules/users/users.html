@@ -46,7 +46,7 @@
                 Roles
             </th>
             <th>
-                Mandals
+                Genders
             </th>
             <th>
                 Skills
@@ -81,7 +81,7 @@
             </td>
             <td>
                 <ul>
-                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedMandals"> <i
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedGenders"> <i
                             class="fa-solid fa-users"></i>
                         {{item}}</li>
                 </ul>
@@ -221,27 +221,27 @@
             </div>
 
             <div class="md:w-1/4">
-                <!-- Mandal -->
+                <!-- Gender -->
                 <div class="mb-4">
-                    <p-table #dtMandals [value]="mandals()" [(selection)]="addOrEditItem.assignedMandals"
+                    <p-table #dtGenders [value]="genders()" [(selection)]="addOrEditItem.assignedGenders"
                         [rowHover]="true" stripedRows>
 
                         <ng-template #header>
                             <tr>
                                 <th style="width: 1rem"><i class="fa-solid fa-users"></i></th>
                                 <th pSortableColumn="label" style="min-width:7rem; font-weight: bolder;">
-                                    Mandals
+                                    Genders
                                     <p-sortIcon field="label" />
                                 </th>
                             </tr>
                         </ng-template>
 
-                        <ng-template #body let-mandal>
-                            <tr [style]="{'color':mandal.color}">
+                        <ng-template #body let-gender>
+                            <tr [style]="{'color':gender.color}">
                                 <td>
-                                    <p-tableCheckbox ngDefaultControl [value]="mandal.value" />
+                                    <p-tableCheckbox ngDefaultControl [value]="gender.value" />
                                 </td>
-                                <td> <i class="{{mandal.icon}}"></i> {{ mandal.label }}</td>
+                                <td> <i class="{{gender.icon}}"></i> {{ gender.label }}</td>
                             </tr>
                         </ng-template>
                     </p-table>

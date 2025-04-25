@@ -27,7 +27,6 @@ export class GradingTopicsList implements OnInit {
   data = signal<GradingTopic[]>([]);
 
   dialog: boolean = false;
-  mandals = signal<any[]>([]);
   skillCategories = signal<SkillCategory[]>([]);
   addOrEditItem!: GradingTopic;
   submitted: boolean = false;

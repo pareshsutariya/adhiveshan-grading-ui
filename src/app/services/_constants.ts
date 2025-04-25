@@ -55,6 +55,14 @@ export class Constants {
     ];
   }
 
+
+  get Genders(): any {
+    return [
+      { label: "Male", value: "Male", icon: "fa-solid fa-person", color: "navy"  },
+      { label: "Female", value: "Female", icon: "fa-solid fa-person-dress", color: "brown" },
+    ];
+  }
+
   get SkillCategories(): any {
     return [
       { label: "Pravachan: Ghanshyam", value: "Pravachan: Ghanshyam", icon: "fa-solid fa-person", color: "green" },
