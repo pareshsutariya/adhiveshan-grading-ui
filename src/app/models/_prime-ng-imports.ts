@@ -12,7 +12,7 @@ import { BreadcrumbModule } from "primeng/breadcrumb";
 import { BlockUIModule } from "primeng/blockui";
 import { ButtonModule } from "primeng/button";
 import { CalendarModule } from "primeng/calendar";
-import { DatePickerModule } from "primeng/datepicker";
+//import { DatePickerModule } from "primeng/datepicker";
 import { CarouselModule } from "primeng/carousel";
 import { CascadeSelectModule } from "primeng/cascadeselect";
 import { ChartModule } from "primeng/chart";
@@ -110,7 +110,7 @@ export const PrimeNgModules = [
   RippleModule,
   ToastModule,
   ToolbarModule,
-  DatePickerModule,
+  //DatePickerModule,
   DatePicker,
   CheckboxModule,
   RatingModule,

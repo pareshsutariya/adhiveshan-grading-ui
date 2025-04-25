@@ -119,9 +119,10 @@
             <div class="grid grid-cols-12 gap-2">
                 <label for="startDate" class="flex font-bold items-center col-span-4">Start Date*</label>
                 <div class="col-span-8">
-                    <p-datepicker name="startDate" size="small" [style]="{width:'100%'}"
-                        [(ngModel)]="addOrEditItem.startDate" [showTime]="true" [showIcon]="true" required />
-                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.startDate">Start Date is
+                    <p-calendar name="startDate" [style]="{width:'100%'}" [(ngModel)]="startDateValue" [showTime]="true"
+                        [showIcon]="true">
+                    </p-calendar>
+                    <small class="text-red-500" *ngIf="submitted && !startDateValue">Start Date is
                         required.</small>
                 </div>
             </div>
@@ -130,9 +131,9 @@
             <div class="grid grid-cols-12 gap-2">
                 <label for="startDate" class="flex font-bold items-center col-span-4">End Date*</label>
                 <div class="col-span-8">
-                    <p-datepicker inputId="endDate" size="small" [style]="{width:'100%'}"
-                        [(ngModel)]="addOrEditItem.endDate" [showTime]="true" [showIcon]="true" required />
-                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.endDate">End Date is
+                    <p-calendar inputId="endDate" [style]="{width:'100%'}" [(ngModel)]="endDateValue" [showTime]="true"
+                        [showIcon]="true" />
+                    <small class="text-red-500" *ngIf="submitted && !endDateValue">End Date is
                         required.</small>
                 </div>
             </div>

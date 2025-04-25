@@ -33,7 +33,9 @@ export class Events implements OnInit {
   skillCategories = signal<any[]>([]);
   addOrEditItem!: CompetitionEvent;
   submitted: boolean = false;
-
+  public startDateValue: Date = new Date();
+  public endDateValue: Date = new Date();
+  
   constructor(
     public router: Router,
     public constants: Constants,
@@ -59,13 +61,19 @@ export class Events implements OnInit {
   }
 
   openNew() {
-    this.addOrEditItem = {};
+    this.startDateValue.setDate(new Date().getDate());
+    this.endDateValue.setDate(new Date().getDate());
+
+    this.addOrEditItem = {startDate: new Date(), endDate: new Date()};
     this.submitted = false;
     this.dialog = true;
   }
 
-  openEdit(item: CompetitionEvent) {
+  openEdit(item: CompetitionEvent) {    
     this.addOrEditItem = { ...item };
+    this.startDateValue = new Date(this.addOrEditItem.startDate);
+    this.endDateValue = new Date(this.addOrEditItem.endDate);
+
     this.dialog = true;
 
     console.log(item);
@@ -97,7 +105,7 @@ export class Events implements OnInit {
         this.messageService.add({ severity: "success", summary: "Successful", detail: detail, life: 1000 });
 
         this.dialog = false;
-        this.addOrEditItem = {};
+        this.addOrEditItem = {startDate : new Date(), endDate : new Date()};
         this.loadData();
     });
   }
@@ -118,6 +126,9 @@ export class Events implements OnInit {
 
     if(!this.addOrEditItem.endDate)
       return false;
+
+    this.addOrEditItem.startDate = this.startDateValue;
+    this.addOrEditItem.endDate = this.endDateValue;
 
     if(!(this.addOrEditItem.startDate < this.addOrEditItem.endDate)) {
 
