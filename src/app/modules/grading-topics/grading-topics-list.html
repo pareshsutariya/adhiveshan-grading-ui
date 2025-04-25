@@ -150,7 +150,6 @@
 
             <!-- Weightage Options -->
             <div class="grid grid-cols-12 gap-2">
-
                 <label for="status" class="flex font-bold items-center col-span-3 whitespace-nowrap">Weightage
                     Options*</label>
                 <div class="col-span-8" items-center>
@@ -159,19 +158,18 @@
                 </div>
             </div>
 
-            <p-table #dtWeightageOptions [value]="addOrEditItemWeightages()"
-                [(selection)]="addOrEditItem.weightageOptions" [rowHover]="true" [scrollable]="true"
-                [tableStyle]="{ 'width': '100%' }" scrollHeight="300px">
-                <ng-template #body let-weightage>
-                    <tr>
-                        <td>
-                            <input pInputText type="number" mode="decimal" [incremental]="0.5" [value]="weightage"
-                                fluid />
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-
+            <table>
+                <tr *ngFor="let weightage of addOrEditItem.weightageOptions;index as i">
+                    <td>
+                        <input pInputText type="number" mode="decimal" [incremental]="0.5" [(ngModel)]="weightage!"
+                            fluid />
+                    </td>
+                    <td>
+                        <p-button [icon]="'pi pi-times'" [rounded]="true" [outlined]="true" severity="danger"
+                            (onClick)="removeGrade(i)" class="ml-3" />
+                    </td>
+                </tr>
+            </table>
         </div>
     </ng-template>
 

@@ -29,7 +29,6 @@ export class GradingTopicsList implements OnInit {
   dialog: boolean = false;
   mandals = signal<any[]>([]);
   skillCategories = signal<SkillCategory[]>([]);
-  addOrEditItemWeightages = signal<number[]>([]);
   addOrEditItem!: GradingTopic;
   submitted: boolean = false;
 
@@ -65,8 +64,6 @@ export class GradingTopicsList implements OnInit {
     this.addOrEditItem = {};
     this.addOrEditItem.round = 1;
     this.addOrEditItem.requiredProctors = 2;
-    // this.addOrEditItem.weightageOptions = [0.5, 1.0, 1.5, 2.0];
-    // this.addOrEditItemWeightages.set([0.5, 1.0, 1.5, 2.0]);
     this.addOrEditItem.status = "Active";
     this.submitted = false;
     this.dialog = true;
@@ -95,8 +92,6 @@ export class GradingTopicsList implements OnInit {
       this.addOrEditItem.weightageOptions = [];
 
     this.addOrEditItem.weightageOptions?.push(0.5);
-
-    this.addOrEditItemWeightages.set(this.addOrEditItem.weightageOptions);
   }
 
   removeGrade(index: number){
@@ -104,8 +99,6 @@ export class GradingTopicsList implements OnInit {
       this.addOrEditItem.weightageOptions = [];
 
     this.addOrEditItem.weightageOptions?.splice(index, 1);
-
-    this.addOrEditItemWeightages.set(this.addOrEditItem.weightageOptions);
   }
 
   isValid() {
