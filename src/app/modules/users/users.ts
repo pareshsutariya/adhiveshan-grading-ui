@@ -16,6 +16,7 @@ import { RegionCenterService } from "../../services/_regionCenters.service";
 import { RolePermissionsService } from "../../services/rolePermissions.service";
 import { CompetitionEventsService } from "../../services/competitionEvents.service";
 import { CompetitionEvent } from "../../models/competitionEvent";
+import { ParticipantsService } from "../../services/participants.service";
 
 @Component({
   selector: "app-users",
@@ -43,6 +44,7 @@ export class Users implements OnInit {
     public regionsService: RegionCenterService,
     public eventsService: CompetitionEventsService,
     public rolePermissionsService: RolePermissionsService,
+    private participantsService: ParticipantsService,
     public authService: AuthService,
     private messageService: MessageService,
     public layoutService: LayoutService
@@ -86,6 +88,30 @@ export class Users implements OnInit {
   hideDialog() {
     this.dialog = false;
     this.submitted = false;
+  }
+
+  searchByMisId(){
+    if(!this.addOrEditItem.misId || isNaN(Number(this.addOrEditItem.misId!))){
+      this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter a valid MIS Id", life: 3000 });
+      return;
+    }
+
+    this.layoutService.isDataLoading.set(true);
+
+    this.participantsService.GetByMisId(Number(this.addOrEditItem.misId!)).subscribe(participant => {
+      this.layoutService.isDataLoading.set(false);
+
+      if(participant == null) {
+
+        this.messageService.add({ severity: "error", summary: "Validation", detail: "Participant not found", life: 3000 });
+        
+        return;
+      }
+
+      this.addOrEditItem.fullName = participant.fullName;
+      this.addOrEditItem.region = participant.region;
+      this.addOrEditItem.center = participant.center;
+    });
   }
   
   save() {

@@ -125,6 +125,9 @@
                         </p-inputgroup-addon>
                         <input pInputText type="text" id="misId" [(ngModel)]="addOrEditItem.misId" placeholder="MIS Id"
                             required autofocus fluid />
+                        <p-inputgroup-addon>
+                            <p-button icon="pi pi-search" (onClick)="searchByMisId()" />
+                        </p-inputgroup-addon>
                     </p-inputgroup>
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.misId">MIS Id is required.</small>
                 </div>
@@ -188,8 +191,8 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </p-inputgroup-addon>
                         <p-select inputId="status" [options]="constants.UserStatuses" optionLabel="label"
-                            optionValue="value" [(ngModel)]="addOrEditItem.status" placeholder="Select a Status" fluid
-                            [ngStyle]="{'z-index': 1000}" />
+                            optionValue="value" [(ngModel)]="addOrEditItem.status" placeholder="Select a Status"
+                            fluid />
                     </p-inputgroup>
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.status">Status is
                         required.</small>
