@@ -251,7 +251,8 @@
                 </div>
 
                 <!-- Skill Categories -->
-                <div class="mb-2">
+                <div class="mb-2"
+                    *ngIf="addOrEditItem.assignedRoles && addOrEditItem.assignedRoles.indexOf('Proctor')>=0">
                     <p-table #dtSkills [value]="skillCategories()" [(selection)]="addOrEditItem.assignedSkillCategories"
                         [rowHover]="true" stripedRows>
 
@@ -277,7 +278,8 @@
                 </div>
             </div>
 
-            <div class="md:w-1/2">
+            <div class="md:w-1/2"
+                *ngIf="addOrEditItem.assignedRoles && (addOrEditItem.assignedRoles!.indexOf('Proctor')>=0 || addOrEditItem.assignedRoles!.indexOf('Regional Admin')>=0)">
                 <!-- Events -->
                 <div class="mb-2">
                     <p-table #dtEvents [value]="events()" [(selection)]="addOrEditItem.assignedEventIds"

@@ -3,8 +3,8 @@
 - [x] Users: Add/Edit view: Provide Genders rather than Mandals
 - [x] Users: Add/Edit view: add new role "Participants Check In"
 - [x] Users: Add/Edit view: Status z-index issue
-- Users: Add/Edit view: Provide searching functionality by MIS ID while Add/Update
-- Users: Add/Edit view: Display Skills / Events sections if applicable to selected roles
+- [x] Users: Add/Edit view: Provide searching functionality by MIS ID while Add/Update
+- [x] Users: Add/Edit view: Display Skills / Events sections if applicable to selected roles
 - [x] Topics: List view: by default sort by Skill / Category, and then by Sequence field
 - [x] Topics: List view: Weightage options: display comma separated
 - [x] Topics: List view: Provide grouping
