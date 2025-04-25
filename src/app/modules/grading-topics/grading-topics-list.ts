@@ -90,7 +90,27 @@ export class GradingTopicsList implements OnInit {
     table.filterGlobal("", 'contains');
   }
 
+  addGrade(){
+    if(!this.addOrEditItem.weightageOptions) 
+      this.addOrEditItem.weightageOptions = [];
+
+    this.addOrEditItem.weightageOptions?.push(0.5);
+
+    this.addOrEditItemWeightages.set(this.addOrEditItem.weightageOptions);
+  }
+
+  removeGrade(index: number){
+    if(!this.addOrEditItem.weightageOptions) 
+      this.addOrEditItem.weightageOptions = [];
+
+    this.addOrEditItem.weightageOptions?.splice(index, 1);
+
+    this.addOrEditItemWeightages.set(this.addOrEditItem.weightageOptions);
+  }
+
   isValid() {
+    //console.log(this.addOrEditItem);
+
     if(!this.addOrEditItem.skillCategoryId || this.addOrEditItem.skillCategoryId == 0)
       return false;
 
