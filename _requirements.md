@@ -13,32 +13,26 @@
 
 ## ====== PARTICIPANTS =====
 
-### Import Participants UI:
+### Import Participants:
 
-- [x] Provide menu
-- [x] File import button
-- [x] Parse the imported file data, and post to API
-
-### Import Participants API:
-
-- [x] Implement an endpoint to Import Participants
-- [x] While importing, for the given MIS ID, first delete the existing record from database, and then import the new record
+- [x] UI: Provide menu
+- [x] UI: File import button
+- [x] UI: Parse the imported file data, and post to API
+- [x] API: Implement an endpoint to Import Participants
+- [x] API: While importing, for the given MIS ID, first delete the existing record from database, and then import the new record
 
 ### List Participants UI:
 
-- [x] List the participants in table by calling the endpoint
-- [x] Provide standard pagination / sorting / search
-- [x] Provide multi column sorting
-- [x] Provide filter on each column
-- [x] Freeze the table header
-
-### List Participants API:
-
-- [x] Implement an endpoint to get Participants
+- [x] UI: List the participants in table by calling the endpoint
+- [x] UI: Provide standard pagination / sorting / search
+- [x] UI: Provide multi column sorting
+- [x] UI: Provide filter on each column
+- [x] UI: Freeze the table header
+- [x] API: Implement an endpoint to get Participants
 
 ### View a Participant detail UI:
 
-- [x] On clicking participant, display that participant detail in popup
+- [x] UI: On clicking participant, display that participant detail in popup
 
 ### Additional fields:
 
@@ -47,14 +41,6 @@
 - [ ] Checkin field
 
 ## ====== GRADING TOPICS =====:
-
-### Region and Centers Schema:
-
-- [ ] API: "Center" table schema (Id, Region Name, Center Name)
-- [ ] API: Implement an endpoint to return list centers from table "Centers"
-- [ ] UI: Add menu in navigation panel: "Region Centers"
-- [ ] UI: Make an API call and display list of region centers
-- [ ] UI: Apply standard sorting and searching on list view
 
 ### Skill Categories:
 
@@ -74,6 +60,14 @@
 - [x] UI: List Page: Make an API call, and display data
 - [x] UI: List Page: Apply standard sorting and searching
 - [x] UI: Add Page: Design UI to Add or Edit record, and call API
+
+### Region and Centers Schema:
+
+- [ ] API: "Center" table schema (Id, Region Name, Center Name)
+- [ ] API: Implement an endpoint to return list centers from table "Centers"
+- [ ] UI: Add menu in navigation panel: "Region Centers"
+- [ ] UI: Make an API call and display list of region centers
+- [ ] UI: Apply standard sorting and searching on list view
 
 ## ====== COMPETITION EVENTS =====:
 
