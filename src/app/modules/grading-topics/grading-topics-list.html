@@ -14,16 +14,16 @@
 </p-toolbar>
 
 <!-- List View -->
-<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['name', 'description', 'skill', 'category']"
-    [rowHover]="true" [scrollable]="true" [paginator]="false">
+<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['name', 'description', 'skill', 'category', 'status']"
+    [rowHover]="true" [scrollable]="true" rowGroupMode="subheader" groupRowsBy="skillWithCategory">
 
     <!-- List View Header -->
     <ng-template #header>
         <tr>
             <th style="width: 1rem"></th>
-            <th pSortableColumn="skill" class="whitespace-nowrap">
+            <th pSortableColumn="skillWithCategory" class="whitespace-nowrap">
                 Skill Category
-                <p-sortIcon field="skill" />
+                <p-sortIcon field="skillWithCategory" />
             </th>
             <th style="width: 1rem">#</th>
             <th pSortableColumn="name" class="whitespace-nowrap">
@@ -33,18 +33,27 @@
             <th class="whitespace-nowrap">
                 Weightage Options
             </th>
-            <th pSortableColumn="round" class="whitespace-nowrap">
+            <th class="whitespace-nowrap">
                 Round
-                <p-sortIcon field="round" />
             </th>
-            <th pSortableColumn="requiredProctors" class="whitespace-nowrap">
+            <th class="whitespace-nowrap">
                 Proctors
-                <p-sortIcon field="requiredProctors" />
             </th>
             <th pSortableColumn="status" class="whitespace-nowrap">
                 Status
                 <p-sortIcon field="status" />
             </th>
+        </tr>
+    </ng-template>
+
+    <!-- List View Group -->
+    <ng-template #groupheader let-item>
+        <tr pRowGroupHeader>
+            <td colspan="8">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold">{{ item.skillWithCategory }}</span>
+                </div>
+            </td>
         </tr>
     </ng-template>
 
