@@ -90,7 +90,7 @@
                 <label for="name" class="flex font-bold items-center col-span-4">Name*</label>
                 <div class="col-span-8">
                     <input pInputText type="text" id="name" [(ngModel)]="addOrEditItem.name" placeholder="Topic Name"
-                        required fluid />
+                        fluid />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.name">Name is
                         required.</small>
                 </div>
@@ -110,7 +110,7 @@
                 <label for="round" class="flex font-bold items-center col-span-4">Round*</label>
                 <div class="col-span-8">
                     <input pInputText type="number" id="round" [(ngModel)]="addOrEditItem.round"
-                        placeholder="Round Name" required fluid />
+                        placeholder="Round Name" fluid />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.round">Round is
                         required.</small>
                 </div>
@@ -121,7 +121,7 @@
                 <label for="requiredProctors" class="flex font-bold col-span-4">Required Proctors*</label>
                 <div class="col-span-8">
                     <input pInputText type="number" id="requiredProctors" [(ngModel)]="addOrEditItem.requiredProctors"
-                        placeholder="Required Proctors" required fluid />
+                        placeholder="Required Proctors" fluid />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.requiredProctors">No. of Required
                         Proctors is required.</small>
                 </div>

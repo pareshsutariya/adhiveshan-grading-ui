@@ -66,8 +66,8 @@ export class GradingTopicsList implements OnInit {
     this.dialog = true;
   }
 
-  openEdit(user: GradingTopic) {
-    this.addOrEditItem = { ...user };
+  openEdit(item: GradingTopic) {
+    this.addOrEditItem = { ...item };
     this.dialog = true;
   }
 
@@ -114,13 +114,21 @@ export class GradingTopicsList implements OnInit {
     this.gradingTopicsService.Save(this.addOrEditItem).subscribe(c => {
         this.layoutService.isDataLoading.set(false);
 
-        let detail = this.addOrEditItem.skillCategoryId ? "Grading Topic Updated" : "Grading Topic Created";
-        this.messageService.add({ severity: "success", summary: "Successful", detail: detail, life: 1000 });
+        let detail = this.addOrEditItem.gradingTopicId ? "Grading Topic Updated" : "Grading Topic Created";
+        this.messageService.add({ severity: "success", summary: "Successful", detail: detail, life: 3000 });
 
-        this.dialog = false;
-        this.addOrEditItem = {};
+        let selectedSkillCategoryId = this.addOrEditItem.skillCategoryId;
+
         this.loadData();
+
+        if(!this.addOrEditItem.gradingTopicId){
+          this.openNew();
+          this.addOrEditItem.skillCategoryId = selectedSkillCategoryId;
+        }
+        else {
+          this.dialog = false;
+          this.addOrEditItem = {};
+        }
     });
   }
-
 }
