@@ -53,6 +53,10 @@ export class AppMenu {
         accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
         accounts.items?.push({ label: 'Roles/Permissions', icon: 'fa-solid fa-user-lock', routerLink: ['/rolePermissions'] });
 
+        // CHECK IN
+        let checkIn: MenuItem = {label: 'Check In Desk',  items: []};
+        checkIn.items?.push({ label: 'Check In Proctors', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-proctors'] });
+        
         if(home!.items!.length > 0)
             this.model.push(home);
 
@@ -69,6 +73,9 @@ export class AppMenu {
             this.model.push(proctors);
 
         if(accounts!.items!.length > 0)
-            this.model.push(accounts);        
+            this.model.push(accounts);     
+        
+        if(checkIn!.items!.length > 0)
+            this.model.push(checkIn);   
     }
 }
