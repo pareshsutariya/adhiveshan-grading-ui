@@ -66,14 +66,14 @@
 
 ### Skill Grading Topics:
 
-- [ ] API: "GradingTopics" table Schema (Id, Skill, SkillCategory, Name, Description, Round, WeightageOptions[], RequiredProctors, IsActive)
-- [ ] API: Implement an endpoint to return list of data
-- [ ] API: Implement an endpoint to Add record
-- [ ] API: Implement an endpoint to Edit record
-- [ ] UI: Menu: Add "Grading Topics" menu in navigation panel
-- [ ] UI: List Page: Make an API call, and display data
-- [ ] UI: List Page: Apply standard sorting and searching
-- [ ] UI: Add Page: Design UI to Add or Edit record, and call API
+- [x] API: "GradingTopics" table Schema (Id, Skill, SkillCategory, Name, Description, Round, WeightageOptions[], RequiredProctors, IsActive)
+- [x] API: Implement an endpoint to return list of data
+- [x] API: Implement an endpoint to Add record
+- [x] API: Implement an endpoint to Edit record
+- [x] UI: Menu: Add "Grading Topics" menu in navigation panel
+- [x] UI: List Page: Make an API call, and display data
+- [x] UI: List Page: Apply standard sorting and searching
+- [x] UI: Add Page: Design UI to Add or Edit record, and call API
 
 ## ====== COMPETITION EVENTS =====:
 
