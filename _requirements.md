@@ -1,13 +1,14 @@
 ## Feedbacks:
 
 - [x] Users: Provide Genders rather than Mandals
+- [x] Add/Edit view: add new role "Participants Check In"
 - Users: Provide searching functionality by MIS ID while Add/Update
-- Users: Display Mandals / Skills / Events sections if applicable to selected roles
+- Users: Display Skills / Events sections if applicable to selected roles
 - [x] Topics: List view: by default sort by Skill / Category, and then by Sequence field
-- [x] Topics: List view: Weitages: display comma separated
+- [x] Topics: List view: Weightage options: display comma separated
 - [x] Topics: List view: Provide grouping
 - [x] Topics: Add/Edit view: Provide Sequence field
-- Participants: Make changes according to ERS file structure
+- Participants Import: Make changes according to ERS file structure
 
 ## ====== INFRASTRUCTURE ======
 
@@ -100,7 +101,7 @@
 
 ### Users:
 
-- [x] API: "Users" table Schema (Id, BAPS ID, FullName, Password, Region, Center, Roles[], EventIds[], Mandals[], SKILL CATEGORY IDs[], Checkin, IsActive)
+- [x] API: "Users" table Schema (Id, BAPS ID, FullName, Password, Region, Center, Roles[], EventIds[], Genders[], SKILL CATEGORY IDs[], Checkin, IsActive)
 - [x] API: Implement an endpoint to return list of data
 - [x] API: Implement an endpoint to Add record
 - [x] API: Implement an endpoint to Update record
