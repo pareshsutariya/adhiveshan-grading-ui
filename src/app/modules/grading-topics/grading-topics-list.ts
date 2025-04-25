@@ -26,8 +26,14 @@ export class GradingTopicsList implements OnInit {
 
   data = signal<GradingTopic[]>([]);
 
+  dialog: boolean = false;
+  mandals = signal<any[]>([]);
+  skillCategories = signal<SkillCategory[]>([]);
+  addOrEditItem!: GradingTopic;
+  submitted: boolean = false;
+
   constructor(
-    private gradingTopicsService: GradingTopicsService,
+    public gradingTopicsService: GradingTopicsService,
     public router: Router,
     public constants: Constants,
     public authService: AuthService,
@@ -40,12 +46,34 @@ export class GradingTopicsList implements OnInit {
   }
 
   loadData() {
-    this.layoutService.isDataLoading.set(true);
 
+    this.layoutService.isDataLoading.set(true);
+    this.gradingTopicsService.GetSkillCategories().subscribe(data => {
+      this.skillCategories.set(data);
+      this.layoutService.isDataLoading.set(false);
+    });
+
+    this.layoutService.isDataLoading.set(true);
     this.gradingTopicsService.GetItems().subscribe(data => { 
         this.data.set(data);
         this.layoutService.isDataLoading.set(false);
       });
+  }
+
+  openNew() {
+    this.addOrEditItem = {};
+    this.submitted = false;
+    this.dialog = true;
+  }
+
+  openEdit(user: GradingTopic) {
+    this.addOrEditItem = { ...user };
+    this.dialog = true;
+  }
+
+  hideDialog() {
+    this.dialog = false;
+    this.submitted = false;
   }
 
   onGlobalFilter(table: Table, event: Event) {
@@ -55,4 +83,44 @@ export class GradingTopicsList implements OnInit {
   clearGlobalFilter(table: Table){
     table.filterGlobal("", 'contains');
   }
+
+  isValid() {
+    if(!this.addOrEditItem.skillCategoryId || this.addOrEditItem.skillCategoryId == 0)
+      return false;
+
+    if(!this.addOrEditItem.name || this.addOrEditItem.name.trim().length == 0)
+      return false;
+
+    if(!this.addOrEditItem.round || this.addOrEditItem.round == 0)
+      return false;
+
+    if(!this.addOrEditItem.requiredProctors || this.addOrEditItem.requiredProctors == 0)
+      return false;
+
+    if(!this.addOrEditItem.status || this.addOrEditItem.status.trim().length == 0)
+      return false;
+
+    return true;
+  }
+
+  save() {
+    this.submitted = true;
+
+    if(this.isValid() == false)
+      return;
+
+    this.layoutService.isDataLoading.set(true);
+
+    this.gradingTopicsService.Save(this.addOrEditItem).subscribe(c => {
+        this.layoutService.isDataLoading.set(false);
+
+        let detail = this.addOrEditItem.skillCategoryId ? "Grading Topic Updated" : "Grading Topic Created";
+        this.messageService.add({ severity: "success", summary: "Successful", detail: detail, life: 1000 });
+
+        this.dialog = false;
+        this.addOrEditItem = {};
+        this.loadData();
+    });
+  }
+
 }

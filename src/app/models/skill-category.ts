@@ -4,4 +4,6 @@ export interface SkillCategory {
     category: string,
     color: string,
     status: string;
+
+    skillWithCategory: string;
   }

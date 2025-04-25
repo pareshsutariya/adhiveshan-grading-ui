@@ -8,6 +8,8 @@
         </p-iconfield>
         <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
             (click)="clearGlobalFilter(dt)" />
+        <p-button icon="pi pi-plus" class="ml-4" [rounded]="true" [outlined]="true" severity="success"
+            (onClick)="openNew()" />
     </ng-template>
 </p-toolbar>
 
@@ -64,3 +66,83 @@
         </tr>
     </ng-template>
 </p-table>
+
+
+<!-- Add/Edit Dialog -->
+<p-dialog [(visible)]="dialog" [style]="{ width: '500px', height: 'auto' }" header="Grading Topic Details"
+    [modal]="true">
+    <ng-template #content>
+        <div class="flex flex-col gap-1">
+
+            <!-- Skill Category -->
+            <div class="grid grid-cols-12 gap-2">
+                <label for="skillCategoryId" class="flex font-bold items-center col-span-4">Skill Category*</label>
+                <div class="col-span-8">
+                    <p-select inputId="skillCategoryId" [options]="skillCategories()" optionLabel="skillWithCategory"
+                        optionValue="skillCategoryId" [(ngModel)]="addOrEditItem.skillCategoryId"
+                        placeholder="Select a Skill Category" fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.skillCategoryId">Skill Category is
+                        required.</small>
+                </div>
+            </div>
+
+            <!-- Name -->
+            <div class="grid grid-cols-12 gap-2">
+                <label for="name" class="flex font-bold items-center col-span-4">Name*</label>
+                <div class="col-span-8">
+                    <input pInputText type="text" id="name" [(ngModel)]="addOrEditItem.name" placeholder="Topic Name"
+                        required fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.name">Name is
+                        required.</small>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="grid grid-cols-12 gap-2">
+                <label for="description" class="flex font-bold items-center col-span-4">Description</label>
+                <div class="col-span-8">
+                    <textarea pTextarea rows="5" cols="30" placeholder="Description"
+                        [(ngModel)]="addOrEditItem.description" fluid></textarea>
+                </div>
+            </div>
+
+            <!-- Round -->
+            <div class="grid grid-cols-12 gap-2">
+                <label for="round" class="flex font-bold items-center col-span-4">Round*</label>
+                <div class="col-span-8">
+                    <input pInputText type="number" id="round" [(ngModel)]="addOrEditItem.round"
+                        placeholder="Round Name" required fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.round">Round is
+                        required.</small>
+                </div>
+            </div>
+
+            <!-- Required Proctors -->
+            <div class="grid grid-cols-12 gap-2">
+                <label for="requiredProctors" class="flex font-bold col-span-4">Required Proctors*</label>
+                <div class="col-span-8">
+                    <input pInputText type="number" id="requiredProctors" [(ngModel)]="addOrEditItem.requiredProctors"
+                        placeholder="Required Proctors" required fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.requiredProctors">No. of Required
+                        Proctors is required.</small>
+                </div>
+            </div>
+
+            <!-- Status -->
+            <div class="grid grid-cols-12 gap-2">
+                <label for="status" class="flex font-bold items-center col-span-4">Status*</label>
+                <div class="col-span-8">
+                    <p-select inputId="status" [options]="constants.UserStatuses" optionLabel="label"
+                        optionValue="value" [(ngModel)]="addOrEditItem.status" placeholder="Select a Status" fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.status">Status is
+                        required.</small>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #footer>
+        <p-button label="Cancel" icon="pi pi-times" text (click)="hideDialog()" />
+        <p-button label="Save" icon="pi pi-check" (click)="save()" />
+    </ng-template>
+</p-dialog>
