@@ -36,8 +36,12 @@
             <th class="whitespace-nowrap">
                 Weightage Options
             </th>
+            <th pSortableColumn="round" class="whitespace-nowrap">
+                Round
+                <p-sortIcon field="round" />
+            </th>
             <th pSortableColumn="requiredProctors" class="whitespace-nowrap">
-                Required Proctors
+                Proctors
                 <p-sortIcon field="requiredProctors" />
             </th>
             <th pSortableColumn="status" class="whitespace-nowrap">
@@ -50,14 +54,20 @@
     <!-- List View Data -->
     <ng-template #body let-item>
         <tr [style]="{'color': item.color}">
-            <td>
+            <td [vAlign]="'top'">
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
                     (click)="openEdit(item)" />
             </td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.skillWithCategory }}</td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.name }}</td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.description }}</td>
-            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.weightageOptions }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">
+                <ul>
+                    <li class="mb-2 whitespace-nowrap" *ngFor="let weightage of item.weightageOptions"> <i
+                            class="fa-solid fa-check mr-1"></i> {{weightage}}</li>
+                </ul>
+            </td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.round }}</td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.requiredProctors }}</td>
             <td [vAlign]="'top'">
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
@@ -100,7 +110,7 @@
             <div class="grid grid-cols-12 gap-2">
                 <label for="description" class="flex font-bold items-center col-span-4">Description</label>
                 <div class="col-span-8">
-                    <textarea pTextarea rows="5" cols="30" placeholder="Description"
+                    <textarea pTextarea rows="4" cols="30" placeholder="Description"
                         [(ngModel)]="addOrEditItem.description" fluid></textarea>
                 </div>
             </div>
@@ -137,6 +147,31 @@
                         required.</small>
                 </div>
             </div>
+
+            <!-- Weightage Options -->
+            <div class="grid grid-cols-12 gap-2">
+
+                <label for="status" class="flex font-bold items-center col-span-3 whitespace-nowrap">Weightage
+                    Options*</label>
+                <div class="col-span-8" items-center>
+                    <p-button icon="pi pi-plus" class="ml-4" [rounded]="true" [outlined]="true" severity="success"
+                        (onClick)="openNew()" />
+                </div>
+            </div>
+
+            <p-table #dtWeightageOptions [value]="addOrEditItemWeightages()"
+                [(selection)]="addOrEditItem.weightageOptions" [rowHover]="true" [scrollable]="true"
+                [tableStyle]="{ 'width': '100%' }" scrollHeight="300px">
+                <ng-template #body let-weightage>
+                    <tr>
+                        <td>
+                            <input pInputText type="number" mode="decimal" [incremental]="0.5" [value]="weightage"
+                                fluid />
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
         </div>
     </ng-template>
 
