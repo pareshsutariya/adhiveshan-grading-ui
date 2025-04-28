@@ -114,33 +114,46 @@ export class ImportParticipants implements OnInit {
           region: raw["Region"],
           center: raw["Center"],
           zone: raw["Zone"],
-          registration_Status: raw["Registration Status"],
-          mandal: raw["mandal"],
-          firstLastName_MISID: raw["FirstLastName-MISID"],
-          prathmik_mukhpath_status: raw["Prathmik Mukhpath Status"],
-          skilled_competitions: raw["Skilled Competitions"],
-          aarti: raw["Aarti"],
-          bhojan_shlok: raw["Bhojan Shlok"],
-          manglacharan_shlok: raw["Manglacharan Shlok"],
-          nitya_puja_mantra: raw["Nitya Puja Mantra"],
-          sabha_shlok: raw["Sabha Shlok"],
-          stuti_shlok: raw["Stuti Shlok"],
-          satsang_mukhpath: raw["Satsang Mukhpath"],
-          completed_Pushpo: raw["Completed Pushpo"],
-          sampark: raw["Sampark"],
-          sampark_Category: raw["Sampark Category"],
+          registrationStatus: raw["RegistrationStatus"],
+
+          misId: raw["MISID"],
+          bapsId: raw["BAPSID"],
+          firstName: raw["FirstName"],
+          middleName: raw["MiddleName"],
+          lastName: raw["LastName"],
+          gender: raw["Gender"],
+          mandal: raw["Mandal"],
+          category: raw["Category"],
+
+          language_For_Skill_Competitions: raw["Language for Skill Competitions"],
+
           speech_Pravachan: raw["Speech (Pravachan)"],
           speech_Pravachan_Category: raw["Speech (Pravachan) Category"],
           emcee: raw["Emcee"],
           emcee_Category: raw["Emcee Category"],
-          skit_Writing_Samvad_Lekhan: raw["Skit Writing (Samvad Lekhan)"],
-          article_Writing: raw["Article Writing"],
-          speech_Writing_Pravachan_Lekhan: raw["Speech Writing (Pravachan Lekhan)"],
-          vyaktigat_Kirtan_Gaan: raw["Vyaktigat Kirtan Gaan"],
-          vyaktigat_Kirtan_Gaan_Category: raw["Vyaktigat Kirtan Gaan Category"],
-          gender: raw["Gender"],
+
+          // skilled_Competitions: raw["Skilled Competitions"],
+          // prathmik_Mukhpath_Status: raw["Prathmik Mukhpath Status"],
+          // aarti: raw["Aarti"],
+          // bhojan_Shlok: raw["Bhojan Shlok"],
+          // manglacharan_Shlok: raw["Manglacharan Shlok"],
+          // nitya_Puja_Mantra: raw["Nitya Puja Mantra"],
+          // sabha_Shlok: raw["Sabha Shlok"],
+          // stuti_Shlok: raw["Stuti Shlok"],
+          // satsang_Mukhpath: raw["Satsang Mukhpath"],
+          // completed_Pushpo: raw["Completed Pushpo"],
+          // sampark: raw["Sampark"],
+          // sampark_Category: raw["Sampark Category"],
+
+          // skit_Writing_Samvad_Lekhan: raw["Skit Writing (Samvad Lekhan)"],
+          // article_Writing: raw["Article Writing"],
+          // speech_Writing_Pravachan_Lekhan: raw["Speech Writing (Pravachan Lekhan)"],
+          // vyaktigat_Kirtan_Gaan: raw["Vyaktigat Kirtan Gaan"],
+          // vyaktigat_Kirtan_Gaan_Category: raw["Vyaktigat Kirtan Gaan Category"],
         });
       }
+
+      console.log(importData);
 
       this.layoutService.isDataLoading.set(true);
 

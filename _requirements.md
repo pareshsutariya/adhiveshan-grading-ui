@@ -10,6 +10,7 @@
 - [x] Topics: List view: Provide grouping
 - [x] Topics: Add/Edit view: Provide Sequence field
 - Participants Import: Make changes according to ERS file structure
+- Add all region and centers
 
 ## ====== INFRASTRUCTURE ======
 
