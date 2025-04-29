@@ -1,22 +1,123 @@
+<p-toast />
+
 <!-- Toolbar -->
 <p-toolbar styleClass="mb-2">
     <ng-template #start>
-        <div class="font-semibold mr-5" style="font-size:1.5rem">Grading Candidates</div>
+        <div class="font-semibold mr-5" style="font-size:1.5rem">Grading Participants</div>
     </ng-template>
 </p-toolbar>
 <div class="card">
     <p-tabs value="0">
         <p-tablist>
-            @for (tab of proctorSkillCategories; track tab.value) {
-            <p-tab [value]="tab.value" [ngStyle]="{'color': tab.color}">{{ tab.label }}</p-tab>
-            }
+            <p-tab *ngFor="let skill of proctorSkillCategories" [value]="skill.value"
+                [ngStyle]="{'color': skill.color}">{{
+                skill.label }}</p-tab>
         </p-tablist>
         <p-tabpanels>
-            @for (tab of proctorSkillCategories; track tab.value) {
-            <p-tabpanel [value]="tab.value">
-                <p class="m-0">{{ tab.label }}</p>
+            <p-tabpanel *ngFor="let skill of proctorSkillCategories" [value]="skill.value">
+                <p-toolbar styleClass="mb-2">
+
+                    <!-- Search By MIS Id -->
+                    <ng-template #start>
+                        <div class="font-semibold whitespace-nowrap mr-3" style="font-size:1rem">Search Participant for
+                            <span [ngStyle]="{'color': skill.color}" class="whitespace-nowrap">{{skill.value}}</span>
+                        </div>
+
+                        <p-inputgroup>
+                            <p-inputgroup-addon>
+                                <i class=" fa-solid fa-hashtag"></i>
+                            </p-inputgroup-addon>
+                            <p-inputnumber id="candidateMISId" mode="decimal" [(ngModel)]="participantMISId"
+                                [useGrouping]="false" placeholder="MIS Id" required autofocus fluid />
+                            <p-inputgroup-addon>
+                                <p-button icon="pi pi-search" (onClick)="searchByMisId()" />
+                            </p-inputgroup-addon>
+                        </p-inputgroup>
+                    </ng-template>
+                </p-toolbar>
+
+                <!-- Participant Details -->
+                <div class="card flex flex-col gap-2 md:w-1/3" *ngIf="participant" header="Participant Details">
+
+                    <!-- Region -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">Region</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" id="fullName" [(ngModel)]="participant.region"
+                                [readonly]="true" fluid />
+                        </div>
+                    </div>
+
+                    <!-- Center -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">Center</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" id="center" [(ngModel)]="participant.center" [readonly]="true"
+                                fluid />
+                        </div>
+                    </div>
+
+                    <!-- MIS ID -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">MIS Id</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" [(ngModel)]="participant.misId" [readonly]="true" fluid />
+                        </div>
+                    </div>
+
+                    <!-- BAPS ID -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">BAPS Id</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" [(ngModel)]="participant.bapsId" [readonly]="true" fluid />
+                        </div>
+                    </div>
+
+                    <!-- Full Name -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">Full Name</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" id="fullName" [(ngModel)]="participant.fullName"
+                                [readonly]="true" fluid />
+                        </div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">Gender</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" [(ngModel)]="participant.gender" [readonly]="true" fluid />
+                        </div>
+                    </div>
+
+                    <!-- Mandal -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">Mandal</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" [(ngModel)]="participant.mandal" [readonly]="true" fluid />
+                        </div>
+                    </div>
+
+                    <!-- Emcee Category -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">Emcee</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" [(ngModel)]="participant.emcee_Category" [readOnly]="true"
+                                fluid />
+                        </div>
+                    </div>
+
+                    <!-- Speech Pravachan Category -->
+                    <div class="grid grid-cols-12 gap-2">
+                        <label class="flex font-bold items-center col-span-4">Pravachan</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" [(ngModel)]="participant.speech_Pravachan_Category"
+                                [readOnly]="true" fluid />
+                        </div>
+                    </div>
+                </div>
+
             </p-tabpanel>
-            }
         </p-tabpanels>
     </p-tabs>
 </div>

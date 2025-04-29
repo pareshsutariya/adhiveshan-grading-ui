@@ -232,6 +232,11 @@
 - [ ] Export Grading Topics
 - [ ] Export Grading
 
+## ===== NICE to have =====:
+
+- Icons for each skill
+- Activity tracking
+
 ## ===== ACTIVITY TRACKING =====:
 
 - DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
