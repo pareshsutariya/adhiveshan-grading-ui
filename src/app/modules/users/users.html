@@ -153,7 +153,7 @@
                         </p-inputgroup-addon>
                         <p-select inputId="region" [options]="regionsService.Regions" optionLabel="label"
                             optionValue="value" [(ngModel)]="addOrEditItem.region" placeholder="Select a Region"
-                            fluid />
+                            [ngStyle]="{'z-index': 103}" fluid />
                     </p-inputgroup>
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is required.</small>
                 </div>
@@ -166,7 +166,7 @@
                         </p-inputgroup-addon>
                         <p-select inputId="center" [options]="regionsService.GetCentersForRegion(addOrEditItem.region)"
                             optionLabel="label" optionValue="value" [(ngModel)]="addOrEditItem.center"
-                            placeholder="Select a Center" fluid />
+                            placeholder="Select a Center" [ngStyle]="{'z-index': 102}" fluid />
                     </p-inputgroup>
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.center">Center is required.</small>
                 </div>
@@ -192,7 +192,7 @@
                         </p-inputgroup-addon>
                         <p-select inputId="status" [options]="constants.UserStatuses" optionLabel="label"
                             optionValue="value" [(ngModel)]="addOrEditItem.status" placeholder="Select a Status"
-                            fluid />
+                            [ngStyle]="{'z-index': 100}" fluid />
                     </p-inputgroup>
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.status">Status is
                         required.</small>
