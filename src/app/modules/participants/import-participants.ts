@@ -1,14 +1,13 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
+import { Table } from "primeng/table";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-import { Table } from "primeng/table";
-import { ConfirmationService, MessageService } from "primeng/api";
+import { MessageService } from "primeng/api";
 
 import * as XLSX from "xlsx";
-import { LayoutService } from "../../layout/service/layout.service";
 import { Participant } from "../../models/participant";
-import { ParticipantsService } from "../../services/participants.service";
+import { BaseComponent } from "../../services/_baseComponent";
 
 @Component({
   selector: "app-import-participants",
@@ -31,28 +30,21 @@ import { ParticipantsService } from "../../services/participants.service";
 `, 
 ],
 })
-export class ImportParticipants implements OnInit {
+export class ImportParticipants extends BaseComponent implements OnInit {
   globalSearchText: string = "";
   @ViewChild("dt") dt!: Table;
   data = signal<Participant[]>([]);
   dialog: boolean = false;
   addOrEditItem!: Participant;
 
-  constructor(
-    private service: ParticipantsService,
-    private layoutService: LayoutService,
-    private messageService: MessageService
-  ) {}
-
   ngOnInit() {
-    this.layoutService.pageTitle.set("Import Participants");
 
     this.loadData();
   }
 
   loadData() {
     this.layoutService.isDataLoading.set(true);
-    this.service.GetItems().subscribe(f_data =>{ 
+    this.participantsService.GetItems().subscribe(f_data =>{ 
       this.layoutService.isDataLoading.set(false);
       this.data.set(f_data); 
 
@@ -158,7 +150,7 @@ export class ImportParticipants implements OnInit {
       this.layoutService.isDataLoading.set(true);
 
       if (importData && importData.length > 0) {
-        this.service.Import(importData).subscribe((c) => {
+        this.participantsService.Import(importData).subscribe((c) => {
           this.layoutService.isDataLoading.set(false);
 
           let detail = "Data Import";

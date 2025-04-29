@@ -1,29 +1,20 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
+import { Table } from "primeng/table";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-
 import { MessageService } from "primeng/api";
-import { Table } from "primeng/table";
+import { BaseComponent } from "../../services/_baseComponent";
 
-import { LayoutService } from "../../layout/service/layout.service";
-import { Constants } from "../../services/_constants";
-import { UsersService } from "../../services/users.service";
-import { AuthService } from "../../services/auth.service";
-import { RegionCenterService } from "../../services/_regionCenters.service";
-import { RolePermissionsService } from "../../services/rolePermissions.service";
-import { CompetitionEventsService } from "../../services/competitionEvents.service";
 import { CompetitionEvent } from "../../models/competitionEvent";
 
 @Component({
   selector: "app-events",
-  standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, Constants],
+  providers: [MessageService],
   templateUrl: "events.html",
 })
-export class Events implements OnInit {
+export class Events extends BaseComponent implements OnInit {
   @ViewChild("dt") dt!: Table;
   @ViewChild("dtCenters") dtCenters!: Table;
 
@@ -35,17 +26,6 @@ export class Events implements OnInit {
   submitted: boolean = false;
   public startDateValue: Date = new Date();
   public endDateValue: Date = new Date();
-  
-  constructor(
-    public router: Router,
-    public constants: Constants,
-    public regionsService: RegionCenterService,
-    public eventsService: CompetitionEventsService,
-    public rolePermissionsService: RolePermissionsService,
-    public authService: AuthService,
-    private messageService: MessageService,
-    public layoutService: LayoutService
-  ) {}
 
   ngOnInit() {
     this.loadData();

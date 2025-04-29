@@ -1,40 +1,18 @@
-import { Component, OnInit, signal, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
-
+import { Component, OnInit } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-
 import { MessageService } from "primeng/api";
-import { Table } from "primeng/table";
-
-import { LayoutService } from "../../layout/service/layout.service";
-import { Constants } from "../../services/_constants";
-import { AuthService } from "../../services/auth.service";
-import { SkillCategory } from "../../models/skill-category";
-import { GradingTopicsService } from "../../services/grading-topics.service";
-import { GradingTopic } from "../../models/grading-topic";
-import { UsersService } from "../../services/users.service";
+import { BaseComponent } from "../../services/_baseComponent";
 
 @Component({
   selector: "app-grading-participants",
-  standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, Constants],
+  providers: [MessageService],
   templateUrl: "grading-participants.html",
 })
-export class GradingParticipants implements OnInit {
+export class GradingParticipants extends BaseComponent implements OnInit {
 
     proctorSkillCategories: any[] = [];
-
-    constructor(
-        public gradingTopicsService: GradingTopicsService,
-        public router: Router,
-        public constants: Constants,
-        public authService: AuthService,
-        public usersService: UsersService,
-        private messageService: MessageService,
-        public layoutService: LayoutService
-    ) {}
 
     ngOnInit() {
         this.loadData();

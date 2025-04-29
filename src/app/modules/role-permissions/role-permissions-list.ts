@@ -1,39 +1,24 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
+import { Table } from "primeng/table";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-
 import { MessageService } from "primeng/api";
-import { Table } from "primeng/table";
+import { BaseComponent } from "../../services/_baseComponent";
 
-import { LayoutService } from "../../layout/service/layout.service";
-import { Constants } from "../../services/_constants";
-import { UsersService } from "../../services/users.service";
-import { AuthService } from "../../services/auth.service";
 import { RolePermissions } from "../../models/rolePermissions";
-import { RolePermissionsService } from "../../services/rolePermissions.service";
 
 @Component({
   selector: "app-role-permissions-list",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, UsersService, Constants],
+  providers: [MessageService],
   templateUrl: "role-permissions-list.html",
 })
-export class RolePermissionsList implements OnInit {
+export class RolePermissionsList extends BaseComponent implements OnInit {
   @ViewChild("dt") dt!: Table;
 
   data = signal<RolePermissions[]>([]);
-
-  constructor(
-    private rolePermissionsService: RolePermissionsService,
-    public router: Router,
-    public constants: Constants,
-    public authService: AuthService,
-    private messageService: MessageService,
-    public layoutService: LayoutService
-  ) {}
 
   ngOnInit() {
     this.loadData();

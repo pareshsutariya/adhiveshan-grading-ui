@@ -1,4 +1,4 @@
-- Inherit components from base components
+- [x] Inherit components from base components
 
 - [x] API: Implement an endpoint to return list of proctors skills
 - [x] UI: Design UI to display tabs according to the procotr's skills

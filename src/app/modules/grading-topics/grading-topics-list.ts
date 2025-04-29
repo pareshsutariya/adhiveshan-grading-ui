@@ -1,5 +1,4 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
@@ -7,21 +6,17 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { Table } from "primeng/table";
 
-import { LayoutService } from "../../layout/service/layout.service";
-import { Constants } from "../../services/_constants";
-import { AuthService } from "../../services/auth.service";
 import { SkillCategory } from "../../models/skill-category";
-import { GradingTopicsService } from "../../services/grading-topics.service";
 import { GradingTopic } from "../../models/grading-topic";
+import { BaseComponent } from "../../services/_baseComponent";
 
 @Component({
   selector: "app-grading-topics-list",
-  standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, Constants],
+  providers: [MessageService],
   templateUrl: "grading-topics-list.html",
 })
-export class GradingTopicsList implements OnInit {
+export class GradingTopicsList extends BaseComponent implements OnInit {
   @ViewChild("dt") dt!: Table;
 
   data = signal<GradingTopic[]>([]);
@@ -30,15 +25,6 @@ export class GradingTopicsList implements OnInit {
   skillCategories = signal<SkillCategory[]>([]);
   addOrEditItem!: GradingTopic;
   submitted: boolean = false;
-
-  constructor(
-    public gradingTopicsService: GradingTopicsService,
-    public router: Router,
-    public constants: Constants,
-    public authService: AuthService,
-    private messageService: MessageService,
-    public layoutService: LayoutService
-  ) {}
 
   ngOnInit() {
     this.loadData();

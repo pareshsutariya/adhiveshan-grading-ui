@@ -1,31 +1,22 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
+import { Table } from "primeng/table";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-
 import { MessageService } from "primeng/api";
-import { Table } from "primeng/table";
+import { BaseComponent } from "../../services/_baseComponent";
 
-import { LayoutService } from "../../layout/service/layout.service";
-import { Constants } from "../../services/_constants";
-import { UsersService } from "../../services/users.service";
-import { AuthService } from "../../services/auth.service";
 import { User } from "../../models/user";
-import { RegionCenterService } from "../../services/_regionCenters.service";
-import { RolePermissionsService } from "../../services/rolePermissions.service";
-import { CompetitionEventsService } from "../../services/competitionEvents.service";
 import { CompetitionEvent } from "../../models/competitionEvent";
-import { ParticipantsService } from "../../services/participants.service";
 
 @Component({
   selector: "app-users",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService, Constants],
+  providers: [MessageService],
   templateUrl: "users.html",
 })
-export class Users implements OnInit {
+export class Users extends BaseComponent implements OnInit {
   @ViewChild("dt") dt!: Table;
 
   dialog: boolean = false;
@@ -36,19 +27,6 @@ export class Users implements OnInit {
   skillCategories = signal<any[]>([]);
   addOrEditItem!: User;
   submitted: boolean = false;
-
-  constructor(
-    private usersService: UsersService,
-    public router: Router,
-    public constants: Constants,
-    public regionsService: RegionCenterService,
-    public eventsService: CompetitionEventsService,
-    public rolePermissionsService: RolePermissionsService,
-    private participantsService: ParticipantsService,
-    public authService: AuthService,
-    private messageService: MessageService,
-    public layoutService: LayoutService
-  ) {}
 
   ngOnInit() {
     this.loadData();
@@ -163,5 +141,4 @@ export class Users implements OnInit {
   clearGlobalFilter(){
     this.dt.filterGlobal("", 'contains');
   }
-
 }
