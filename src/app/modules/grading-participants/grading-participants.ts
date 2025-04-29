@@ -22,6 +22,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     }
 
     loadData(){
+        this.layoutService.isDataLoading.set(true);
 
         // TODO : Get login user roles and assigned skills, and display the tabs accordingly
         this.usersService.GetById(1).subscribe(user=>{
@@ -29,21 +30,27 @@ export class GradingParticipants extends BaseComponent implements OnInit {
             if(user.assignedSkillCategories){
                 this.proctorSkillCategories = this.constants.SkillCategories.filter((s: { label: string; title: string; })=> user.assignedSkillCategories!.indexOf(s.label) >=0 );
             }
+
+            this.layoutService.isDataLoading.set(false);
         });
     }
 
-    searchByMisId(){
+    searchByMisId(skillCategory: string){
 
         if(!this.participantMISId || this.participantMISId <= 0){
             this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid MIS Id", life: 3000 });
             return;
         }
 
-        this.participantsService.GetByMisId(this.participantMISId).subscribe(data=>{
+        this.layoutService.isDataLoading.set(true);
+
+        this.participantsService.GetByMisIdAndSkillCategory(this.participantMISId, skillCategory).subscribe(data=>{
+
+            this.layoutService.isDataLoading.set(false);
 
             this.participant = data;
             if(!this.participant){
-                this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId}`, life: 3000 });
+                this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId} for ${skillCategory}`, life: 3000 });
                 return;
             }
         });

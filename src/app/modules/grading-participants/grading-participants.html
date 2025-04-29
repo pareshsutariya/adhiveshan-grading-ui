@@ -16,7 +16,6 @@
         <p-tabpanels>
             <p-tabpanel *ngFor="let skill of proctorSkillCategories" [value]="skill.value">
                 <p-toolbar styleClass="mb-2">
-
                     <!-- Search By MIS Id -->
                     <ng-template #start>
                         <div class="font-semibold whitespace-nowrap mr-3" style="font-size:1rem">Search Participant for
@@ -30,7 +29,7 @@
                             <p-inputnumber id="candidateMISId" mode="decimal" [(ngModel)]="participantMISId"
                                 [useGrouping]="false" placeholder="MIS Id" required autofocus fluid />
                             <p-inputgroup-addon>
-                                <p-button icon="pi pi-search" (onClick)="searchByMisId()" />
+                                <p-button icon="pi pi-search" (onClick)="searchByMisId(skill.value)" />
                             </p-inputgroup-addon>
                         </p-inputgroup>
                     </ng-template>

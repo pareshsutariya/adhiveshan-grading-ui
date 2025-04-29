@@ -16,6 +16,10 @@ export class ParticipantsService {
     return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMisId/${misId}`);
   }
 
+  GetByMisIdAndSkillCategory(misId: number, skillCategory: string): Observable<Participant> {
+    return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMISIdAneSkillCategory/${misId}/${skillCategory}`);
+  }
+
   Import(items: Participant[]) {
     let headers = new HttpHeaders({ "Content-Type": "application/json" });
 

@@ -3,8 +3,8 @@
 - [x] API: Implement an endpoint to return list of proctors skills
 - [x] UI: Design UI to display tabs according to the procotr's skills
 
-- [ ] API: Implement an endpoint to search candidate for the given BAPS ID and Skill name
-- [ ] UI: Design UI to Search Candidate for BAPS ID and Skill Name
+- [ ] API: Implement an endpoint to search candidate for the given BAPS ID/SkillCategory/Center
+- [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
 
 - [ ] API: Implement an endpoint to return skill topics for the give skill
 - [ ] UI: Design UI to display list of topics for the givek skill
