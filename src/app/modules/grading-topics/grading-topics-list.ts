@@ -15,7 +15,7 @@ import { GradingTopicsService } from "../../services/grading-topics.service";
 import { GradingTopic } from "../../models/grading-topic";
 
 @Component({
-  selector: "app-grading-topics-list-list",
+  selector: "app-grading-topics-list",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
   providers: [MessageService, Constants],

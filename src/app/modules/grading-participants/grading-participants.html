@@ -1,0 +1,22 @@
+<!-- Toolbar -->
+<p-toolbar styleClass="mb-2">
+    <ng-template #start>
+        <div class="font-semibold mr-5" style="font-size:1.5rem">Grading Candidates</div>
+    </ng-template>
+</p-toolbar>
+<div class="card">
+    <p-tabs value="0">
+        <p-tablist>
+            @for (tab of proctorSkillCategories; track tab.value) {
+            <p-tab [value]="tab.value" [ngStyle]="{'color': tab.color}">{{ tab.label }}</p-tab>
+            }
+        </p-tablist>
+        <p-tabpanels>
+            @for (tab of proctorSkillCategories; track tab.value) {
+            <p-tabpanel [value]="tab.value">
+                <p class="m-0">{{ tab.label }}</p>
+            </p-tabpanel>
+            }
+        </p-tabpanels>
+    </p-tabs>
+</div>

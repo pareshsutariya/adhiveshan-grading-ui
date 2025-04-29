@@ -1,16 +1,20 @@
-## Feedbacks:
+- Inherit components from base components
 
-- [x] Users: Add/Edit view: Provide Genders rather than Mandals
-- [x] Users: Add/Edit view: add new role "Participants Check In"
-- [x] Users: Add/Edit view: Status z-index issue
-- [x] Users: Add/Edit view: Provide searching functionality by MIS ID while Add/Update
-- [x] Users: Add/Edit view: Display Skills / Events sections if applicable to selected roles
-- [x] Topics: List view: by default sort by Skill / Category, and then by Sequence field
-- [x] Topics: List view: Weightage options: display comma separated
-- [x] Topics: List view: Provide grouping
-- [x] Topics: Add/Edit view: Provide Sequence field
-- [x] Participants Import: Make changes according to ERS file structure
-- [x] Add all region and centers
+- [x] API: Implement an endpoint to return list of proctors skills
+- [x] UI: Design UI to display tabs according to the procotr's skills
+
+- [ ] API: Implement an endpoint to search candidate for the given BAPS ID and Skill name
+- [ ] UI: Design UI to Search Candidate for BAPS ID and Skill Name
+
+- [ ] API: Implement an endpoint to return skill topics for the give skill
+- [ ] UI: Design UI to display list of topics for the givek skill
+
+- [ ] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
+- [ ] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
+- [ ] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
+
+- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
+- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
 
 ## ====== INFRASTRUCTURE ======
 

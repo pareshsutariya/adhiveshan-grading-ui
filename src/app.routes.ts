@@ -8,6 +8,7 @@ import { RolePermissionsList } from './app/modules/role-permissions/role-permiss
 import { Events } from './app/modules/competitionEvents/events';
 import { SkillCategoriesList } from './app/modules/skill-categories/skill-categories-list';
 import { GradingTopicsList } from './app/modules/grading-topics/grading-topics-list';
+import { GradingParticipants } from './app/modules/grading-participants/grading-participants';
 
 export const appRoutes: Routes = [
     {
@@ -21,6 +22,7 @@ export const appRoutes: Routes = [
             { path: 'rolePermissions', component: RolePermissionsList },
             { path: 'skill-categories', component: SkillCategoriesList },
             { path: 'grading-topics', component: GradingTopicsList },
+            { path: 'grading-participants', component: GradingParticipants },
             { path: '**', component: Notfound }
         ]
     },

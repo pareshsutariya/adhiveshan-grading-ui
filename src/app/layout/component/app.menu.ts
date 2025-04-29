@@ -48,7 +48,7 @@ export class AppMenu {
 
         // PROCTORS
         let proctors: MenuItem = {label: 'Proctors', items: []};
-        proctors.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grade-participant'] });
+        proctors.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
 
         //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
         let accounts: MenuItem = {label: 'Accounts', items: []};

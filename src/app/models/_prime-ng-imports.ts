@@ -101,6 +101,7 @@ import { InputIconModule } from "primeng/inputicon";
 import { DatePicker } from 'primeng/datepicker';
 
 export const PrimeNgModules = [
+  TabsModule,
   TableModule,
   CardModule,
   ButtonModule,
