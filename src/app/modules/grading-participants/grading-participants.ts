@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
@@ -6,6 +6,7 @@ import { BaseComponent } from "../../services/_baseComponent";
 import { Participant } from "../../models/participant";
 import { HttpErrorResponse } from "@angular/common/http";
 import { GradingTopic } from "../../models/grading-topic";
+import { Table } from "primeng/table";
 
 @Component({
   selector: "app-grading-participants",
@@ -22,6 +23,9 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     searchError: string | undefined;
     selectedSkillCategory: string | undefined;
     gradingTopics = signal<GradingTopic[]>([]);
+
+    @ViewChild("dtGradingTopicsReadOnly") dtGradingTopicsReadOnly!: Table;
+    
 
     ngOnInit() {
         this.loadData();
@@ -96,7 +100,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
                 console.log(data);
 
                 this.layoutService.isDataLoading.set(false);
-                this.gradingTopics = data;
+                this.gradingTopics.set(data);
             }
           });
     }
