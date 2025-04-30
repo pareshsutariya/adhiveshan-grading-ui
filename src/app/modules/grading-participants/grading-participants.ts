@@ -92,20 +92,20 @@ export class GradingParticipants extends BaseComponent implements OnInit {
           });
     }
 
-    getBySkillCategory(){
-        this.layoutService.isDataLoading.set(true);
+    // getBySkillCategory(){
+    //     this.layoutService.isDataLoading.set(true);
 
-        this.gradingTopicsService.GetBySkillCategory(this.selectedSkillCategory!)
-        .subscribe({
-            next: (data: any) => {
+    //     this.gradingTopicsService.GetBySkillCategory(this.selectedSkillCategory!)
+    //     .subscribe({
+    //         next: (data: any) => {
 
-                console.log(data);
+    //             console.log(data);
 
-                this.layoutService.isDataLoading.set(false);
-                this.gradingTopics.set(data);
-            }
-          });
-    }
+    //             this.layoutService.isDataLoading.set(false);
+    //             this.gradingTopics.set(data);
+    //         }
+    //       });
+    // }
 
     getParticipantGrades(){
         this.layoutService.isDataLoading.set(true);
@@ -120,6 +120,23 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     startGrading() {
         this.dialog = true;
 
-        this.getBySkillCategory();
+        this.getParticipantGrades();
+    }
+
+    onGradeChanged(gradingTopicId: number, score: number){
+
+        this.layoutService.isDataLoading.set(true);
+
+        let model : Grade = {
+            misId: this.participantMISId,
+            gradingTopicId: gradingTopicId,
+            score: score,
+            proctorUserId: this.loginUserId,
+        };
+        
+        this.gradesService.Save(model).subscribe(data=>{
+            this.layoutService.isDataLoading.set(false);
+            this.messageService.add({ severity: "success", summary: "Success", detail: "Grade updated successfully", life: 3000 });
+        });
     }
 }

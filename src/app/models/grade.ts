@@ -12,5 +12,5 @@ export interface Grade {
   skill?: string,
   category?: string,
   color?: string,
-  skillWithCategory: string;
+  skillWithCategory?: string;
 }
