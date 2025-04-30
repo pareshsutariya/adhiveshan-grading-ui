@@ -87,8 +87,8 @@ export class AuthService {
 
   logoutUserAndRedirect(): void{
     localStorage.clear(); 
-    location.reload();
-    //this.router.navigate(['/dashboard']);
+    this.router.navigate(['/login']);
+    //location.reload();
   }
 
   GetUserByUsernameAndPassword(username: string, password: string): Observable<User> {

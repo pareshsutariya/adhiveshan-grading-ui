@@ -19,6 +19,7 @@ export const appRoutes: Routes = [
         component: AppLayout,
         children: [
             { path: '', component: Dashboard },
+            { path: 'dashboard', component: Dashboard },
             { path: 'import-participants', component: ImportParticipants },
             { path: 'users', component: Users },
             { path: 'events', component: Events },
