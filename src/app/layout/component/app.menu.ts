@@ -69,15 +69,15 @@ export class AppMenu {
         if(grading!.items!.length > 0)
             this.model.push(grading);
         
-        if(accounts!.items!.length > 0)
-            this.model.push(accounts);     
-        
         if(checkIn!.items!.length > 0)
             this.model.push(checkIn);   
 
         if(reports!.items!.length > 0)
             this.model.push(reports);  
 
+        if(accounts!.items!.length > 0)
+            this.model.push(accounts);     
+        
         /*
         // NATIONAL ADMINS
         let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
