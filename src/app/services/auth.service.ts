@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Constants } from './_constants';
-import { MenuItem } from 'primeng/api';
 import { User } from '../models/user';
 
 @Injectable({
@@ -53,7 +52,7 @@ export class AuthService {
 
     if(!requiredPermissions) return true;
 
-    if(this.IsAdminUser()) return true;
+    if(this.IsSuperAdminUser()) return true;
 
     let userPermissions = this.LoggedInUserPermissions();
     if(!userPermissions)
@@ -62,7 +61,7 @@ export class AuthService {
     return requiredPermissions?.every(permission => userPermissions.includes(permission));
   }
 
-  IsAdminUser():boolean {
+  IsSuperAdminUser():boolean {
     if (this.GetLoginUser() && this.GetLoginUser().misId=='vyom131313') {
         return true; 
     }
@@ -78,6 +77,10 @@ export class AuthService {
   }
 
   LoggedInUserPermissions(){
+    return this.GetLoginUser()  != null ? this.GetLoginUser().assignedPermissions : null;
+  }
+
+  LoggedInUserRoles(){
     return this.GetLoginUser()  != null ? this.GetLoginUser().assignedRoles : null;
   }
   

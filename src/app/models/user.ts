@@ -18,4 +18,5 @@ export interface User {
 
     //-------------
     assignedEvents?: any[];
+    assignedPermissions?: string[];
   }
