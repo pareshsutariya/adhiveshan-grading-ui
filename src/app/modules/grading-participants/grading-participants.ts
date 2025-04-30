@@ -39,6 +39,8 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
     searchByMisId(skillCategory: string){
 
+        this.participant = {};
+
         if(!this.participantMISId || this.participantMISId <= 0){
             this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid MIS Id", life: 3000 });
             return;
@@ -46,7 +48,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetCandidateForProctoring(this.participantMISId, skillCategory, this.loginUserId)
+        this.participantsService.GetParticipantForProctoring(this.participantMISId, skillCategory, this.loginUserId)
         .subscribe({
             next: (data: any) => {
                 
@@ -54,7 +56,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
                 
                 this.layoutService.isDataLoading.set(false);
 
-                this.participant = data;
+                this.participant = JSON.parse(data);
                 if(!this.participant){
                     this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId} for ${skillCategory}`, life: 3000 });
                     return;

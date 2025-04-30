@@ -16,8 +16,8 @@ export class ParticipantsService {
     return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMisId/${misId}`);
   }
 
-  GetCandidateForProctoring(misId: number, skillCategory: string, loginUserId: number) {
-    return this.http.get(Constants.WebApiBaseUrl + `/Participants/GetCandidateForProctoring/${misId}/${skillCategory}/${loginUserId}`, {responseType: 'text'})
+  GetParticipantForProctoring(misId: number, skillCategory: string, loginUserId: number) {
+    return this.http.get(Constants.WebApiBaseUrl + `/Participants/GetParticipantForProctoring/${misId}/${skillCategory}/${loginUserId}`, {responseType: 'text'})
     .pipe(
       catchError((error: any) => {
 
