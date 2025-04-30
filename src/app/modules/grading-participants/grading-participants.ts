@@ -15,9 +15,11 @@ import { HttpErrorResponse } from "@angular/common/http";
 export class GradingParticipants extends BaseComponent implements OnInit {
 
     proctorSkillCategories: any[] = [];
-    participantMISId: number | undefined;
+    participantMISId: number | undefined = 2183256;
     participant: Participant | undefined;
     loginUserId: number = 1;
+    searchError: string | undefined;
+    selectedSkillCategory: string | undefined;
 
     ngOnInit() {
         this.loadData();
@@ -37,7 +39,14 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         });
     }
 
-    searchByMisId(skillCategory: string){
+    onTabChange($event: any){
+        this.participant = {};
+        this.searchError = undefined;
+        this.selectedSkillCategory = $event;
+        console.log($event);
+    }
+
+    searchParticipant(skillCategory: string){
 
         this.participant = {};
 
@@ -52,8 +61,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         .subscribe({
             next: (data: any) => {
                 
-                console.log(data);
-                
+                this.searchError = undefined;
                 this.layoutService.isDataLoading.set(false);
 
                 this.participant = JSON.parse(data);
@@ -64,6 +72,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
             },
             error: (err) => {
 
+                this.searchError = err.error;
                 console.log(err);
 
                 this.messageService.add({ severity: "error", summary: "Validation", detail: `${err.error}`, life: 3000 });

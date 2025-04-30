@@ -3,7 +3,7 @@
 
 - [x] API: Implement an endpoint to search candidate for the given BAPS ID/SkillCategory/EventId
 - [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
-- [ ] UI: Button "Start Grading {Participant}" (0.5)
+- [ ] UI: Button "Start Grading {Participant}"
 
 - [ ] API: Implement an endpoint to return skill topics for the given skill (0.5)
 - [ ] UI: Design Pop Up UI to display list of topics for the given skill (0.5)

@@ -111,6 +111,8 @@ export const PrimeNgModules = [
   RippleModule,
   ToastModule,
   ToolbarModule,
+  PanelModule,
+  MessageModule,
   //DatePickerModule,
   DatePicker,
   CheckboxModule,
