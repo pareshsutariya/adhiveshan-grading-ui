@@ -55,10 +55,15 @@ export class AuthService {
     if(this.IsSuperAdminUser()) return true;
 
     let userPermissions = this.LoggedInUserPermissions();
-    if(!userPermissions)
-      return false;
+    if(!userPermissions){
 
-    return requiredPermissions?.every(permission => userPermissions.includes(permission));
+      //console.log("requiredPermissions", requiredPermissions);
+      //console.log("userPermissions", userPermissions);
+  
+      return false;
+    }
+
+    return requiredPermissions?.filter(permission => userPermissions.includes(permission)).length > 0;
   }
 
   IsSuperAdminUser():boolean {

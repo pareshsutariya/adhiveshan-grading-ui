@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AppMenuitem } from './app.menuitem';
 import { AuthService } from '../../services/auth.service';
+import { PermissionsEnum } from '../../services/rolePermissions.service';
 
 @Component({
     selector: 'app-menu',
@@ -17,6 +18,8 @@ import { AuthService } from '../../services/auth.service';
     </ul> `
 })
 export class AppMenu {
+
+    constructor(private auth: AuthService) { }
      //dashboard: MenuItem = {label: 'Dashboard', icon: 'fa-solid fa-house', routerLink: ['/'] };
 
      model: MenuItem[] = [];
@@ -30,32 +33,47 @@ export class AppMenu {
 
         // PARTICIPANTS
         let participants: MenuItem = {label: 'Participants',  items: []};
-        participants.items?.push({ label: 'Import / View', icon: 'fa-solid fa-upload', routerLink: ['/import-participants'] });
-        participants.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
-        participants.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
+        
+        if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
+            participants.items?.push({ label: 'Import / View', icon: 'fa-solid fa-upload', routerLink: ['/import-participants'] });
+        
+        if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
+            participants.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
+        
+        if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
+            participants.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
 
         // EVENTS
         let events: MenuItem = {label: 'Events', items: []};
-        events.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.Events_View]))
+            events.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
         
         // GRADING
         let grading: MenuItem = {label: 'Grading', items: []};
-        grading.items?.push({ label: 'Grading Topics', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
-        grading.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.Grading_Questions_View]))
+            grading.items?.push({ label: 'Grading Topics', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.Grading_Participants_Search_Participants]))
+            grading.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
 
         // ACCOUNTS
         let accounts: MenuItem = {label: 'Accounts', items: []};
-        accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
-        accounts.items?.push({ label: 'Roles/Permissions', icon: 'fa-solid fa-user-lock', routerLink: ['/rolePermissions'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.Users_NationalAdmins_View, PermissionsEnum.Users_RegionalAdmins_View, PermissionsEnum.Users_Proctors_View]))
+            accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
+        
+        if(this.auth.HasUserPermissions([PermissionsEnum.Users_NationalAdmins_View]))
+            accounts.items?.push({ label: 'Roles/Permissions', icon: 'fa-solid fa-user-lock', routerLink: ['/rolePermissions'] });
 
         // CHECK IN
         let checkIn: MenuItem = {label: 'Check In Desk',  items: []};
-        checkIn.items?.push({ label: 'Check In Proctors', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-proctors'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.CheckIn_View]))
+            checkIn.items?.push({ label: 'Check In Proctors', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-proctors'] });
         
         // REPORTS
         let reports: MenuItem = {label: 'Reports',  items: []};
-        reports.items?.push({ label: 'Check In Report', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-report'] });
-        reports.items?.push({ label: 'Grading Report', icon: 'fa-solid fa-graduation-cap', routerLink: ['/gradeing-report'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.Reports_Check_In_Report]))
+            reports.items?.push({ label: 'Check In Report', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-report'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.Reports_Grading_Report]))
+            reports.items?.push({ label: 'Grading Report', icon: 'fa-solid fa-graduation-cap', routerLink: ['/gradeing-report'] });
 
         if(home!.items!.length > 0)
             this.model.push(home);

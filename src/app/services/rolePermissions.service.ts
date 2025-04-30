@@ -25,16 +25,6 @@ export class RolePermissionsService {
     ];
   }
 
-  get Permissions(): any {
-    return [
-      { label: "Participants: List", value: PermissionsEnum.PARTICIPANTS_LIST, icon: "pi pi-id-card", color: 'brown' },
-
-      { label: "Admin: Users List", value: PermissionsEnum.USERS_LIST, icon: "fa-solid fa-user", color: 'red' },
-      // { label: "Users Add", value: PermissionsEnum.USERS_ADD },
-      // { label: "Users Edit", value: PermissionsEnum.USERS_EDIT },
-    ];
-  }
-
   public get RolesEnum(): typeof RolesEnum {
     return RolesEnum; 
   }
@@ -53,9 +43,38 @@ export enum RolesEnum {
 
 export enum PermissionsEnum {
 
-  PARTICIPANTS_LIST = 'PARTICIPANTS_LIST',
+  Users_NationalAdmins_View = "Users: National Admins: View",
+  Users_NationalAdmins_Add = "Users: National Admins: Add",
+  Users_NationalAdmins_Update = "Users: National Admins: Update",
 
-  USERS_LIST = 'USERS_LIST',
-  USERS_ADD = 'USERS_ADD',
-  USERS_EDIT = 'USERS_EDIT',
+  Users_RegionalAdmins_View = "Users: Regional Admins: View",
+  Users_RegionalAdmins_Add = "Users: Regional Admins: Add",
+  Users_RegionalAdmins_Update = "Users: Regional Admins: Update",
+
+  Users_Proctors_View = "Users: Proctors: View",
+  Users_Proctors_Add = "Users: Proctors: Add",
+  Users_Proctors_Update = "Users: Proctors: Update",
+
+  Grading_Questions_View = "Grading Questions: View",
+  Grading_Questions_Add = "Grading Questions: Add",
+  Grading_Questions_Update = "Grading Questions: Update",
+
+  Skill_Categories_View = "Skill Categories: View",
+
+  Participants_View = "Participants: View",
+  Participants_Import = "Participants: Import",
+
+  CheckIn_View = "Check In: View",
+  CheckIn_Update = "Check In: Update",
+
+  Events_View = "Events: View",
+  Events_Add = "Events: Add",
+  Events_Update = "Events: Update",
+
+  Grading_Participants_Search_Participants = "Grading Participants: Search Participants",
+  Grading_Participants_Grade_Participants = "Grading Participants: Grade Participants",
+  Grading_Participants_View_Participants_Grade = "Grading Participants: View Participants Grade",
+
+  Reports_Check_In_Report = "Reports: Check In Report",
+  Reports_Grading_Report = "Reports: Grading Report",
 }
