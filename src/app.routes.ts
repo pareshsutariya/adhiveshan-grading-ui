@@ -27,11 +27,13 @@ export const appRoutes: Routes = [
             { path: 'grading-topics', component: GradingTopicsList },
             { path: 'grading-participants', component: GradingParticipants },
             { path: 'region-centers', component: RegionCentersList },
-            { path: '**', component: Notfound }
+            //{ path: '**', component: Notfound }
         ]
     },
     { path: 'login', component: Login  },
     { path: 'access', component: Access  },
+    { path: 'notfound', component: Notfound },
+
     //{ path: 'auth', loadChildren: () => import('./app/modules/auth/auth.routes') },
     { path: '**', redirectTo: '/notfound' }
 ];
