@@ -19,17 +19,17 @@
 - [x] UI: Roles/Permissions in Pivot view (0.5)
 - [x] UI: Display menus properly (0.5)
 
-- [ ] UI: Use hard coded user Id and display menu according to the roles (0.5)
-
 - [ ] UI: Logic screen (0.5)
 - [ ] API: Authenticate user (0.5)
 - [ ] UI: Display menus/actions according to the roles/permissions (0.5)
 
+- [ ] UI: Use hard coded user Id and display menu according to the roles (0.5)
+
+## ===== TECH =====
+
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
 - [ ] API: Return roles/permissions for a given user (0.5)
-
-## ===== TECH =====
 
 - API: throw error as object/json so no need to do JSON.parse
 
@@ -178,34 +178,34 @@
 
 ### Display tabs according to the skills access to the proctor:
 
-- [ ] API: Implement an endpoint to return list of proctors skills
-- [ ] UI: Design UI to display tabs according to the procotr's skills
+- [x] API: Implement an endpoint to return list of proctors skills
+- [x] UI: Design UI to display tabs according to the procotr's skills
 
 ### Search Candidate by proctor for BAPS ID and Skill Name:
 
-- [ ] API: Implement an endpoint to search candidate for the given BAPS ID and Skill name
+- [x] API: Implement an endpoint to search candidate for the given BAPS ID and Skill name
   - Note: The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the proctor’s allowed access
-- [ ] UI: Design UI to Search Candidate for BAPS ID and Skill Name
+- [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
   - Note: A text input field and QR scan option, like the satsang mukhpath, will appear on the screen
 
 ### Display list of skill topics to grade:
 
-- [ ] API: Implement an endpoint to return skill topics for the give skill
-- [ ] UI: Design UI to display list of topics for the givek skill
+- [x] API: Implement an endpoint to return skill topics for the give skill
+- [x] UI: Design UI to display list of topics for the givek skill
   - Note:
     - Once proctor clicks start proctoring, the proctor will be shown a series of question topics
     - Display topics along with weitage option to grade
 
 ### Grade candidate for list of skill topics:
 
-- [ ] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
-- [ ] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
-- [ ] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
+- [x] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
+- [x] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
+- [x] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
 
 ### View list of graded candidite for a proctor:
 
-- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
-- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
+- [x] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
+- [x] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
       Note: - Allow edit option to change the grade - Once event time is over, NO ONE should be able to change the grade
 
 ### Candidate Status:
@@ -231,6 +231,13 @@
 - [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
 - [ ] UI: Provide a button to check in for the found participant or proctor for the given MIS ID or BAPS ID
 - [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
+
+## ===== REPORTS =====
+
+- [ ] API: Check in report
+- [ ] UI: Check in report
+- [ ] API: Grading report
+- [ ] UI: Grading report
 
 ## ====== DASHBOARD =====:
 
