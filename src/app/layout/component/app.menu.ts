@@ -53,7 +53,9 @@ export class AppMenu {
         if(this.auth.HasUserPermissions([PermissionsEnum.Grading_Questions_View]))
             grading.items?.push({ label: 'Grading Topics', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
         if(this.auth.HasUserPermissions([PermissionsEnum.Grading_Participants_Search_Participants]))
-            grading.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
+            grading.items?.push({ label: 'Grading Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
+        if(this.auth.HasUserPermissions([PermissionsEnum.Grading_Participants_View_Participants_Grade]))
+            grading.items?.push({ label: 'View Participants Grades', icon: 'fa-solid fa-graduation-cap', routerLink: ['/graded-participants'] });
 
         // ACCOUNTS
         let accounts: MenuItem = {label: 'Accounts', items: []};

@@ -12,6 +12,7 @@ import { GradingParticipants } from './app/modules/grading-participants/grading-
 import { RegionCentersList } from './app/modules/region-centers/region-centers-list';
 import { Login } from './app/modules/auth/login';
 import { Access } from './app/modules/auth/access';
+import { GradedParticipantsList } from './app/modules/graded-participants/graded-participants-list';
 
 export const appRoutes: Routes = [
     {
@@ -27,6 +28,7 @@ export const appRoutes: Routes = [
             { path: 'skill-categories', component: SkillCategoriesList },
             { path: 'grading-topics', component: GradingTopicsList },
             { path: 'grading-participants', component: GradingParticipants },
+            { path: 'graded-participants', component: GradedParticipantsList },
             { path: 'region-centers', component: RegionCentersList },
             //{ path: '**', component: Notfound }
         ]

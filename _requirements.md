@@ -24,18 +24,18 @@
 - [x] UI: Display menus/actions according to the roles/permissions (0.5)
 - [x] UI: Display action buttons according to the roles/permissions (0.5)
 
-- [ ] UI: Graded candidates
-- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
-- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
+- [ ] UI: Graded candidates (0.5)
+- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor (0.5)
+- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor (0.5)
 
 ## ===== TECH =====
 
-- [ ] UI: Auth Guard
+- [ ] UI: Auth Guard (0.5)
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
 - [ ] API: Return roles/permissions for a given user (0.5)
 
-- API: throw error as object/json so no need to do JSON.parse
+- API: throw error as object/json so no need to do JSON.parse (0.5)
 
 ## ====== INFRASTRUCTURE ======
 

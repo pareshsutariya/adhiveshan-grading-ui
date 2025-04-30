@@ -26,6 +26,15 @@ export class AuthService {
     return JSON.parse(localStorage.getItem("loggedInUser") as string) as User;
   }
 
+  GetLoginUserId() : number {
+    let user = this.GetLoginUser();
+
+    if(user == null)
+      return 0;
+
+    return user.userId!;
+  }
+
   GetLoginUserInitial() : string {
     let loginUser = this.GetLoginUser();
     let initial = "";
