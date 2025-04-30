@@ -23,6 +23,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     loginUserId: number = 1;
     searchError: string | undefined;
     selectedSkillCategory: string | undefined;
+    selectedSkillCategoryColor: string | undefined;
     participantGrades = signal<Grade[]>([]);
     gradingTopics = signal<GradingTopic[]>([]);
     dialog: boolean = false;
@@ -49,6 +50,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.participant = {};
         this.searchError = undefined;
         this.selectedSkillCategory = $event;
+        this.selectedSkillCategoryColor = this.proctorSkillCategories.filter(c=>c.value == this.selectedSkillCategory)[0]?.color;
         console.log($event);
     }
 
