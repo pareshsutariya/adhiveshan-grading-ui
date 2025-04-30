@@ -66,13 +66,13 @@ export class Constants {
   get SkillCategories(): any {
     return [
       { label: "Pravachan: Ghanshyam", value: "Pravachan: Ghanshyam", icon: "fa-solid fa-person", color: "black" },
-      { label: "Pravachan: Nilkanth", value: "Pravachan: Nilkanth", icon: "fa-solid fa-person", color: "brown" },
+      { label: "Pravachan: Neelkanth", value: "Pravachan: Neelkanth", icon: "fa-solid fa-person", color: "brown" },
       { label: "Pravachan: Sahajanand", value: "Pravachan: Sahajanand", icon: "fa-solid fa-person", color: "green" },
       { label: "Pravachan: Harikrishna", value: "Pravachan: Harikrishna", icon: "fa-solid fa-person", color: "purple" },
       { label: "Pravachan: Shri Hari", value: "Pravachan: Shri Hari", icon: "fa-solid fa-person", color: "orange" },
       
       { label: "Emcee: Ghanshyam", value: "Emcee: Ghanshyam", icon: "fa-solid fa-person", color: "black" },
-      { label: "Emcee: Nilkanth", value: "Emcee: Nilkanth", icon: "fa-solid fa-person", color: "brown" },
+      { label: "Emcee: Neelkanth", value: "Emcee: Neelkanth", icon: "fa-solid fa-person", color: "brown" },
       { label: "Emcee: Sahajanand", value: "Emcee: Sahajanand", icon: "fa-solid fa-person", color: "green" },
       { label: "Emcee: Harikrishna", value: "Emcee: Harikrishna", icon: "fa-solid fa-person", color: "purple" },
       { label: "Emcee: Shri Hari", value: "Emcee: Shri Hari", icon: "fa-solid fa-person", color: "orange" },

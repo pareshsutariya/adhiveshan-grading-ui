@@ -4,6 +4,7 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
 import { Participant } from "../../models/participant";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-grading-participants",
@@ -45,21 +46,27 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetCandidateForProctoring(this.participantMISId, skillCategory, this.loginUserId).subscribe(data=>{
+        this.participantsService.GetCandidateForProctoring(this.participantMISId, skillCategory, this.loginUserId)
+        .subscribe({
+            next: (data: any) => {
+                
+                console.log(data);
+                
+                this.layoutService.isDataLoading.set(false);
 
-            this.layoutService.isDataLoading.set(false);
+                this.participant = data;
+                if(!this.participant){
+                    this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId} for ${skillCategory}`, life: 3000 });
+                    return;
+                }
+            },
+            error: (err) => {
 
-            this.participant = data;
-            if(!this.participant){
-                this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId} for ${skillCategory}`, life: 3000 });
-                return;
+                console.log(err);
+
+                this.messageService.add({ severity: "error", summary: "Validation", detail: `${err.error}`, life: 3000 });
+                this.layoutService.isDataLoading.set(false);
             }
-        },
-        err=>{
-            console.log(err);
-            console.log(err.error.message);
-            this.messageService.add({ severity: "error", summary: "Validation", detail: `${JSON.stringify(err)}`, life: 3000 });
-            this.layoutService.isDataLoading.set(false);
-        });
+          });
     }
 }
