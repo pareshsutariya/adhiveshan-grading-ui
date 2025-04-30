@@ -16,8 +16,8 @@ export class ParticipantsService {
     return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMisId/${misId}`);
   }
 
-  GetByMisIdAndSkillCategory(misId: number, skillCategory: string): Observable<Participant> {
-    return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMISIdAneSkillCategory/${misId}/${skillCategory}`);
+  GetCandidateForProctoring(misId: number, skillCategory: string, loginUserId: number): Observable<Participant> {
+    return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/GetCandidateForProctoring/${misId}/${skillCategory}/${loginUserId}`);
   }
 
   Import(items: Participant[]) {

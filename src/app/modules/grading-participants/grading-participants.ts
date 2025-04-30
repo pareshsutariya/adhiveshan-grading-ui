@@ -16,6 +16,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     proctorSkillCategories: any[] = [];
     participantMISId: number | undefined;
     participant: Participant | undefined;
+    loginUserId: number = 1;
 
     ngOnInit() {
         this.loadData();
@@ -25,7 +26,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.layoutService.isDataLoading.set(true);
 
         // TODO : Get login user roles and assigned skills, and display the tabs accordingly
-        this.usersService.GetById(1).subscribe(user=>{
+        this.usersService.GetById(this.loginUserId).subscribe(user=>{
             this.proctorSkillCategories = [];
             if(user.assignedSkillCategories){
                 this.proctorSkillCategories = this.constants.SkillCategories.filter((s: { label: string; title: string; })=> user.assignedSkillCategories!.indexOf(s.label) >=0 );
@@ -44,7 +45,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetByMisIdAndSkillCategory(this.participantMISId, skillCategory).subscribe(data=>{
+        this.participantsService.GetCandidateForProctoring(this.participantMISId, skillCategory, this.loginUserId).subscribe(data=>{
 
             this.layoutService.isDataLoading.set(false);
 
@@ -53,6 +54,12 @@ export class GradingParticipants extends BaseComponent implements OnInit {
                 this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId} for ${skillCategory}`, life: 3000 });
                 return;
             }
+        },
+        err=>{
+            console.log(err);
+            console.log(err.error.message);
+            this.messageService.add({ severity: "error", summary: "Validation", detail: `${JSON.stringify(err)}`, life: 3000 });
+            this.layoutService.isDataLoading.set(false);
         });
     }
 }

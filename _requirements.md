@@ -3,11 +3,11 @@
 - [x] API: Implement an endpoint to return list of proctors skills
 - [x] UI: Design UI to display tabs according to the procotr's skills
 
-- [ ] API: Implement an endpoint to search candidate for the given BAPS ID/SkillCategory/Center
+- [ ] API: Implement an endpoint to search candidate for the given BAPS ID/SkillCategory/EventId
 - [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
 
-- [ ] API: Implement an endpoint to return skill topics for the give skill
-- [ ] UI: Design UI to display list of topics for the givek skill
+- [ ] API: Implement an endpoint to return skill topics for the given skill
+- [ ] UI: Design UI to display list of topics for the given skill
 
 - [ ] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
 - [ ] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
@@ -15,6 +15,10 @@
 
 - [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
 - [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
+
+## ===== TECH =====
+
+- Display serverside error
 
 ## ====== INFRASTRUCTURE ======
 
