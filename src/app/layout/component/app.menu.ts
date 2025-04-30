@@ -63,11 +63,11 @@ export class AppMenu {
         if(participants!.items!.length > 0)
             this.model.push(participants);
 
-        if(grading!.items!.length > 0)
-            this.model.push(participants);
-        
         if(events!.items!.length > 0)
             this.model.push(events);
+
+        if(grading!.items!.length > 0)
+            this.model.push(grading);
         
         if(accounts!.items!.length > 0)
             this.model.push(accounts);     
