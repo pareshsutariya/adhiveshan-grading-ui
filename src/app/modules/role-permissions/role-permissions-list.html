@@ -12,32 +12,59 @@
 </p-toolbar>
 
 <!-- List View -->
-<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['roleName', 'permissions']"
-    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" [paginator]="false">
+<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['permission']" [tableStyle]="{ 'min-width': '75rem' }"
+    [rowHover]="true" [scrollable]="true" [paginator]="false">
 
     <!-- List View Header -->
     <ng-template #header>
         <tr>
-            <th pSortableColumn="roleName" class="whitespace-nowrap">
-                Role
-                <p-sortIcon field="roleName" />
+            <th pSortableColumn="permission" class="whitespace-nowrap" [width]="'100px'">
+                <i class="fa-solid fa-key"></i>
+                Permission
+                <p-sortIcon field="permission" />
             </th>
-            <th class="whitespace-nowrap">
-                Permissions
+            <th pSortableColumn="nationalAdmin" class="whitespace-nowrap" [width]="'100px'">
+                <i class="fa-solid fa-user-shield"></i> National Admin
+                <p-sortIcon field="nationalAdmin" />
+            </th>
+            <th pSortableColumn="regionalAdmin" class="whitespace-nowrap" [width]="'100px'">
+                <i class="fa-solid fa-user-tag"></i> Regional Admin
+                <p-sortIcon field="regionalAdmin" />
+
+            </th>
+            <th pSortableColumn="proctor" class="whitespace-nowrap" [width]="'100px'">
+                <i class="fa-solid fa-user-clock"></i> Proctor
+                <p-sortIcon field="proctor" />
+
+            </th>
+            <th pSortableColumn="checkIn" class="whitespace-nowrap">
+                <i class="fa-solid fa-user-check"></i> Check In
+                <p-sortIcon field="checkIn" />
             </th>
         </tr>
     </ng-template>
 
     <!-- List View Data -->
     <ng-template #body let-item>
-        <tr [style]="{'color': item.color}">
+        <tr>
+            <td class="whitespace-nowrap"><i class="fa-solid fa-key"></i> {{ item.permission }}</td>
+            <td [style]="{'text-align':'center','color': item.nationalAdminColor}"> <i class="fa-solid fa-check"
+                    *ngIf="item.nationalAdmin"></i> </td>
+            <td [style]="{'text-align':'center','color': item.regionalAdminColor}"> <i class="fa-solid fa-check"
+                    *ngIf="item.regionalAdmin"></i> </td>
+            <td [style]="{'text-align':'center','color': item.proctorColor}"> <i class="fa-solid fa-check"
+                    *ngIf="item.proctor"></i> </td>
+            <td [style]="{'text-align':'center','color': item.checkInColor}"> <i class="fa-solid fa-check"
+                    *ngIf="item.checkIn"></i> </td>
+            <!-- 
             <td class="whitespace-nowrap align-top"><i class="{{item.icon}}"></i> {{ item.roleName }}</td>
             <td>
                 <ul>
                     <li class="mb-2" *ngFor="let per of item.permissions"> <i class="fa-solid fa-key"></i>
                         {{per}}</li>
                 </ul>
-            </td>
+            </td> 
+            -->
         </tr>
     </ng-template>
 </p-table>

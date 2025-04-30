@@ -6,7 +6,7 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
 
-import { RolePermissions } from "../../models/rolePermissions";
+import { RolePermissions, RolePermissionsPivot } from "../../models/rolePermissions";
 
 @Component({
   selector: "app-role-permissions-list",
@@ -18,7 +18,7 @@ import { RolePermissions } from "../../models/rolePermissions";
 export class RolePermissionsList extends BaseComponent implements OnInit {
   @ViewChild("dt") dt!: Table;
 
-  data = signal<RolePermissions[]>([]);
+  data = signal<RolePermissionsPivot[]>([]);
 
   ngOnInit() {
     this.loadData();
@@ -27,7 +27,7 @@ export class RolePermissionsList extends BaseComponent implements OnInit {
   loadData() {
     this.layoutService.isDataLoading.set(true);
 
-    this.rolePermissionsService.GetItems().subscribe(data => { 
+    this.rolePermissionsService.GetPivotItems().subscribe(data => { 
         this.data.set(data);
         this.layoutService.isDataLoading.set(false);
       });
