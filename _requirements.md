@@ -19,8 +19,8 @@
 - [x] UI: Roles/Permissions in Pivot view (0.5)
 - [x] UI: Display menus properly (0.5)
 
-- [ ] UI: Logic screen (0.5)
-- [ ] API: Authenticate user (0.5)
+- [x] UI: Logic screen (0.5)
+- [x] API: Authenticate user (0.5)
 - [ ] UI: Display menus/actions according to the roles/permissions (0.5)
 
 - [ ] UI: Use hard coded user Id and display menu according to the roles (0.5)

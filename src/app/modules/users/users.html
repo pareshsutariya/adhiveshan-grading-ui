@@ -18,7 +18,7 @@
 
 <!-- List View -->
 <p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['fullName', 'misId']"
-    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" scrollHeight="450px"
+    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" scrollHeight="600px"
     [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users"
     [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30]">
 
@@ -60,40 +60,40 @@
     <!-- List View Data -->
     <ng-template #body let-item>
         <tr>
-            <td>
+            <td [vAlign]="'top'">
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
                     (click)="openEdit(item)" />
             </td>
-            <td class="whitespace-nowrap">{{ item.region }} - {{ item.center }}</td>
-            <td class="whitespace-nowrap">{{ item.fullName }} <br>
+            <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.region }} - {{ item.center }}</td>
+            <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.fullName }} <br>
                 #{{ item.misId }}
             </td>
-            <td>
+            <td [vAlign]="'top'">
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
                     styleClass="dark:!bg-surface-900" />
             </td>
-            <td>
+            <td [vAlign]="'top'">
                 <ul>
                     <li class="mb-2 whitespace-nowrap" *ngFor="let role of item.assignedRoles"> <i
                             class="fa-solid fa-user-tie"></i>
                         {{role}}</li>
                 </ul>
             </td>
-            <td>
+            <td [vAlign]="'top'">
                 <ul>
                     <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedGenders"> <i
                             class="fa-solid fa-users"></i>
                         {{item}}</li>
                 </ul>
             </td>
-            <td>
+            <td [vAlign]="'top'">
                 <ul>
                     <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedSkillCategories"> <i
                             class="fa-solid fa-chalkboard-user"></i>
                         {{item}}</li>
                 </ul>
             </td>
-            <td>
+            <td [vAlign]="'top'">
                 <ul>
                     <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedEvents">
                         <i class="pi pi-map"></i>
