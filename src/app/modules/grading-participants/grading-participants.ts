@@ -7,6 +7,7 @@ import { Participant } from "../../models/participant";
 import { HttpErrorResponse } from "@angular/common/http";
 import { GradingTopic } from "../../models/grading-topic";
 import { Table } from "primeng/table";
+import { Grade } from "../../models/grade";
 
 @Component({
   selector: "app-grading-participants",
@@ -22,11 +23,9 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     loginUserId: number = 1;
     searchError: string | undefined;
     selectedSkillCategory: string | undefined;
+    participantGrades = signal<Grade[]>([]);
     gradingTopics = signal<GradingTopic[]>([]);
     dialog: boolean = false;
-
-    @ViewChild("dtGradingTopicsReadOnly") dtGradingTopicsReadOnly!: Table;
-    
 
     ngOnInit() {
         this.loadData();
@@ -77,7 +76,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
                     return;
                 }
                 else {
-                    this.getBySkillCategory();
+                    this.getParticipantGrades();
                 }
             },
             error: (err) => {
@@ -106,7 +105,19 @@ export class GradingParticipants extends BaseComponent implements OnInit {
           });
     }
 
+    getParticipantGrades(){
+        this.layoutService.isDataLoading.set(true);
+
+        this.gradesService.GetForParticipantAndProctor(this.participantMISId!, this.selectedSkillCategory!, this.loginUserId).subscribe(data=>{
+            this.participantGrades.set(data);
+
+            this.layoutService.isDataLoading.set(false);
+        });
+    }
+
     startGrading() {
         this.dialog = true;
+
+        this.getBySkillCategory();
     }
 }

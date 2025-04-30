@@ -11,7 +11,7 @@ export class GradesService {
   constructor(private http: HttpClient) {}
 
   GetForParticipantAndProctor(misId: number, skillCategory: string, proctorUserId: number): Observable<Array<Grade>> {
-    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetForParticipantAndProctor/${skillCategory}/${proctorUserId}`);
+    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetForParticipantAndProctor/${misId}/${skillCategory}/${proctorUserId}`);
   }
 
   Save(item: Grade) {
