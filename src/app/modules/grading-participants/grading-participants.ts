@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, signal } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
 import { Participant } from "../../models/participant";
 import { HttpErrorResponse } from "@angular/common/http";
+import { GradingTopic } from "../../models/grading-topic";
 
 @Component({
   selector: "app-grading-participants",
@@ -20,6 +21,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     loginUserId: number = 1;
     searchError: string | undefined;
     selectedSkillCategory: string | undefined;
+    gradingTopics = signal<GradingTopic[]>([]);
 
     ngOnInit() {
         this.loadData();
@@ -69,6 +71,9 @@ export class GradingParticipants extends BaseComponent implements OnInit {
                     this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId} for ${skillCategory}`, life: 3000 });
                     return;
                 }
+                else {
+                    this.getBySkillCategory();
+                }
             },
             error: (err) => {
 
@@ -77,6 +82,21 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
                 this.messageService.add({ severity: "error", summary: "Validation", detail: `${err.error}`, life: 3000 });
                 this.layoutService.isDataLoading.set(false);
+            }
+          });
+    }
+
+    getBySkillCategory(){
+        this.layoutService.isDataLoading.set(true);
+
+        this.gradingTopicsService.GetBySkillCategory(this.selectedSkillCategory!)
+        .subscribe({
+            next: (data: any) => {
+
+                console.log(data);
+
+                this.layoutService.isDataLoading.set(false);
+                this.gradingTopics = data;
             }
           });
     }

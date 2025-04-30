@@ -17,6 +17,10 @@ export class GradingTopicsService {
     return this.http.get<Array<GradingTopic>>(Constants.WebApiBaseUrl + "/GradingTopics");
   }
 
+  GetBySkillCategory(skillCategory: string): Observable<Array<GradingTopic>> {
+    return this.http.get<Array<GradingTopic>>(Constants.WebApiBaseUrl + `/GradingTopics/GetBySkillCategory/${skillCategory}`);
+  }
+
   GetById(id: number): Observable<GradingTopic> {
     return this.http.get<GradingTopic>(Constants.WebApiBaseUrl + "/GradingTopics/" + id);
   }

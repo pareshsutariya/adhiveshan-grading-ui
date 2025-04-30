@@ -125,7 +125,60 @@
                 </p-card>
 
                 <!-- Start Grading -->
-                <div class="md:w-1/2 items-center">
+                <div class="md:w-1/2">
+
+                    <p-table dataKey="id" [value]="gradingTopics()" [rowHover]="true" [scrollable]="true"
+                        [paginator]="false">
+
+                        <!-- Grading Topics List View Header -->
+                        <ng-template #header>
+                            <tr>
+                                <th pSortableColumn="skillWithCategory" class="whitespace-nowrap">
+                                    Skill Category
+                                    <p-sortIcon field="skillWithCategory" />
+                                </th>
+                                <th style="width: 1rem">#</th>
+                                <th pSortableColumn="name" class="whitespace-nowrap">
+                                    Topic Name
+                                    <p-sortIcon field="name" />
+                                </th>
+                                <th class="whitespace-nowrap">
+                                    Weightage Options
+                                </th>
+                                <th class="whitespace-nowrap">
+                                    Round
+                                </th>
+                                <th class="whitespace-nowrap">
+                                    Proctors
+                                </th>
+                                <th pSortableColumn="status" class="whitespace-nowrap">
+                                    Status
+                                    <p-sortIcon field="status" />
+                                </th>
+                            </tr>
+                        </ng-template>
+
+                        <!-- Grading Topics List View Data -->
+                        <ng-template #body let-item>
+                            <tr [style]="{'color': item.color}">
+                                <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.skillWithCategory }}
+                                </td>
+                                <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.sequence }}</td>
+                                <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.name }}</td>
+                                <td [vAlign]="'top'" class="whitespace-nowrap align-top">
+                                    <span class="mb-2" *ngFor="let weightage of item.weightageOptions"> {{weightage}}
+                                        &nbsp; </span>
+                                </td>
+                                <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.round }}</td>
+                                <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.requiredProctors }}
+                                </td>
+                                <td [vAlign]="'top'">
+                                    <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
+                                        styleClass="dark:!bg-surface-900" />
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
                     <button pButton pRipple severity="warn" [raised]="true" class="items-center"
                         style="vertical-align: middle;top: 40%;">
                         <WindowMaximizeIcon pButtonIcon />
