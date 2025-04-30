@@ -48,6 +48,20 @@ export class AuthService {
       return this.GetLoginUser() != null;
   }
 
+  HasUserRoles(requiredRoles: Array<string>): boolean {
+
+    if(!requiredRoles) return true;
+
+    if(this.IsSuperAdminUser()) return true;
+
+    let userRoles = this.LoggedInUserRoles();
+    if(!userRoles){
+      return false;
+    }
+
+    return requiredRoles?.filter(role => userRoles.includes(role)).length > 0;
+  }
+
   HasUserPermissions(requiredPermissions: Array<string>): boolean {
 
     if(!requiredPermissions) return true;
