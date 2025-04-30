@@ -1,0 +1,47 @@
+<!-- Toolbar -->
+<p-toolbar styleClass="mb-2">
+    <ng-template #start>
+        <div class="font-semibold mr-5" style="font-size:1.5rem">Regions and Centers</div>
+        <p-iconfield>
+            <p-inputicon styleClass="pi pi-search" />
+            <input pInputText type="text" placeholder="Search..." (input)="onGlobalFilter(dt, $event)" />
+        </p-iconfield>
+        <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
+            (click)="clearGlobalFilter()" />
+    </ng-template>
+</p-toolbar>
+
+<!-- List View -->
+<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['label','centers']"
+    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" [paginator]="false">
+
+    <!-- List View Header -->
+    <ng-template #header>
+        <tr>
+            <th pSortableColumn="label" class="whitespace-nowrap" [width]="'100px'">
+                <i class="pi pi-map"></i>
+                Region
+                <p-sortIcon field="label" />
+            </th>
+
+            <th class="whitespace-nowrap" [width]="'100px'">
+                <i class="pi pi-building-columns"></i>
+                Center
+                <p-columnFilter type="text" field="centers.label" display="menu" />
+            </th>
+        </tr>
+    </ng-template>
+
+    <!-- List View Data -->
+    <ng-template #body let-item>
+        <tr>
+            <td class="whitespace-nowrap" [vAlign]="'top'"> {{ item.label }}</td>
+            <td>
+                <ul>
+                    <li class="mb-2" *ngFor="let center of item.centers">
+                        {{center.label}}</li>
+                </ul>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

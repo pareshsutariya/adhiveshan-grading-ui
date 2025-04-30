@@ -9,6 +9,7 @@ import { Events } from './app/modules/competitionEvents/events';
 import { SkillCategoriesList } from './app/modules/skill-categories/skill-categories-list';
 import { GradingTopicsList } from './app/modules/grading-topics/grading-topics-list';
 import { GradingParticipants } from './app/modules/grading-participants/grading-participants';
+import { RegionCentersList } from './app/modules/region-centers/region-centers-list';
 
 export const appRoutes: Routes = [
     {
@@ -23,6 +24,7 @@ export const appRoutes: Routes = [
             { path: 'skill-categories', component: SkillCategoriesList },
             { path: 'grading-topics', component: GradingTopicsList },
             { path: 'grading-participants', component: GradingParticipants },
+            { path: 'region-centers', component: RegionCentersList },
             { path: '**', component: Notfound }
         ]
     },

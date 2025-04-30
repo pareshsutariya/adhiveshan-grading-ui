@@ -31,7 +31,54 @@ export class AppMenu {
         // PARTICIPANTS
         let participants: MenuItem = {label: 'Participants',  items: []};
         participants.items?.push({ label: 'Import / View', icon: 'fa-solid fa-upload', routerLink: ['/import-participants'] });
+        participants.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
+        participants.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
 
+        // EVENTS
+        let events: MenuItem = {label: 'Events', items: []};
+        events.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
+        
+        // GRADING
+        let grading: MenuItem = {label: 'Grading', items: []};
+        grading.items?.push({ label: 'Grading Topics', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
+        grading.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
+
+        // ACCOUNTS
+        let accounts: MenuItem = {label: 'Accounts', items: []};
+        accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
+        accounts.items?.push({ label: 'Roles/Permissions', icon: 'fa-solid fa-user-lock', routerLink: ['/rolePermissions'] });
+
+        // CHECK IN
+        let checkIn: MenuItem = {label: 'Check In Desk',  items: []};
+        checkIn.items?.push({ label: 'Check In Proctors', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-proctors'] });
+        
+        // REPORTS
+        let reports: MenuItem = {label: 'Reports',  items: []};
+        reports.items?.push({ label: 'Check In Report', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-report'] });
+        reports.items?.push({ label: 'Grading Report', icon: 'fa-solid fa-graduation-cap', routerLink: ['/gradeing-report'] });
+
+        if(home!.items!.length > 0)
+            this.model.push(home);
+
+        if(participants!.items!.length > 0)
+            this.model.push(participants);
+
+        if(grading!.items!.length > 0)
+            this.model.push(participants);
+        
+        if(events!.items!.length > 0)
+            this.model.push(events);
+        
+        if(accounts!.items!.length > 0)
+            this.model.push(accounts);     
+        
+        if(checkIn!.items!.length > 0)
+            this.model.push(checkIn);   
+
+        if(reports!.items!.length > 0)
+            this.model.push(reports);  
+
+        /*
         // NATIONAL ADMINS
         let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
         nationalAdmin.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
@@ -50,6 +97,7 @@ export class AppMenu {
         let proctors: MenuItem = {label: 'Proctors', items: []};
         proctors.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
 
+        // ACCOUNTS
         //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
         let accounts: MenuItem = {label: 'Accounts', items: []};
         accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
@@ -87,5 +135,6 @@ export class AppMenu {
 
         if(reports!.items!.length > 0)
             this.model.push(reports);  
+        */
     }
 }

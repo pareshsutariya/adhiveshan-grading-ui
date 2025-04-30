@@ -16,8 +16,8 @@
 - [x] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
 
 - [x] UI: Add reports menu, and it's permissions to roles
-- [ ] UI: Roles/Permissions in Pivot view (0.5)
-- [ ] UI: Display menus properly (0.5)
+- [x] UI: Roles/Permissions in Pivot view (0.5)
+- [x] UI: Display menus properly (0.5)
 
 - [ ] UI: Use hard coded user Id and display menu according to the roles (0.5)
 
