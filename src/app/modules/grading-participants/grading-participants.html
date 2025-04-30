@@ -124,7 +124,7 @@
                     </div>
                 </p-card>
 
-                <!-- Start Grading -->
+                <!-- Grading Topics -->
                 <p-card class="card flex flex-col md:w-1/2" header="Grading Topics"
                     [style]="{border: '0.1rem solid silver'}">
                     <br>
@@ -157,15 +157,44 @@
                             </tr>
                         </ng-template>
                     </p-table>
-                    <button pButton pRipple severity="warn" [raised]="true" class="mt-5 items-center"
+                    <br>
+                    <p-button pRipple severity="warn" [raised]="true" (onClick)="startGrading()"
                         *ngIf="gradingTopics().length>0">
                         <WindowMaximizeIcon pButtonIcon />
                         <span pButtonLabel style="font-size: large;"><b>Start Grading {{participant?.fullName}} for
                                 {{selectedSkillCategory}}</b></span>
-                    </button>
+                    </p-button>
                 </p-card>
             </div>
 
         </p-tabpanels>
     </p-tabs>
 </div>
+
+<p-dialog [(visible)]="dialog" [style]="{ width: '80%', height: 'auto' }"
+    header="Grading {{participant?.fullName}} for {{selectedSkillCategory}}" [modal]="true">
+    <p-table [value]="gradingTopics()" showGridlines [rowHover]="true" [scrollable]="true">
+        <!-- Grading Topics List View Header -->
+        <ng-template #header>
+            <tr>
+                <th class="whitespace-nowrap">
+                    Topic Name
+                </th>
+                <th class="whitespace-nowrap">
+                    Weightage Options
+                </th>
+            </tr>
+        </ng-template>
+
+        <!-- Grading Topics List View Data -->
+        <ng-template #body let-item>
+            <tr [style]="{'color': item.color}">
+                <td class="whitespace-nowrap align-top">{{ item.name }}</td>
+                <td class="whitespace-nowrap align-top">
+                    <span class="mb-2" *ngFor="let weightage of item.weightageOptions"> {{weightage}}
+                        &nbsp; </span>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-dialog>

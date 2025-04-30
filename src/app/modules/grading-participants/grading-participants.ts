@@ -23,6 +23,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     searchError: string | undefined;
     selectedSkillCategory: string | undefined;
     gradingTopics = signal<GradingTopic[]>([]);
+    dialog: boolean = false;
 
     @ViewChild("dtGradingTopicsReadOnly") dtGradingTopicsReadOnly!: Table;
     
@@ -103,5 +104,9 @@ export class GradingParticipants extends BaseComponent implements OnInit {
                 this.gradingTopics.set(data);
             }
           });
+    }
+
+    startGrading() {
+        this.dialog = true;
     }
 }
