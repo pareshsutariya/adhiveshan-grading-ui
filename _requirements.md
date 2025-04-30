@@ -7,13 +7,13 @@
 
 - [x] API: Implement an endpoint to return skill topics for the given skill
 - [ ] UI: Design Pop Up UI to display list of topics for the given skill
+- [ ] UI: make the grid editable for Grade column and auto save on change
 
 - [ ] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId (0.5)
 - [ ] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor (0.5)
-- [ ] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor (0.5)
-
 - [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor (0.5)
 - [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor (0.5)
+- [ ] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor (0.5)
 
 - [ ] UI: Add reports menu, and it's permissions to roles (0.5)
 - [ ] UI: Display menus properly (0.5)
