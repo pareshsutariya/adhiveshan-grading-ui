@@ -3,19 +3,33 @@
 
 - [x] API: Implement an endpoint to search candidate for the given BAPS ID/SkillCategory/EventId
 - [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
-- [ ] UI: Button "Start Grading {Participant}"
+- [ ] UI: Button "Start Grading {Participant}" (0.5)
 
-- [ ] API: Implement an endpoint to return skill topics for the given skill
-- [ ] UI: Design Pop Up UI to display list of topics for the given skill
+- [ ] API: Implement an endpoint to return skill topics for the given skill (0.5)
+- [ ] UI: Design Pop Up UI to display list of topics for the given skill (0.5)
 
-- [ ] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
-- [ ] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
-- [ ] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
+- [ ] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId (0.5)
+- [ ] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor (0.5)
+- [ ] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor (0.5)
 
-- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
-- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
+- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor (0.5)
+- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor (0.5)
+
+- [ ] UI: Add reports menu, and it's permissions to roles (0.5)
+- [ ] UI: Display menus properly (0.5)
+- [ ] UI: Use hard coded user Id and display menu according to the roles (0.5)
+
+- [ ] UI: Logic screen (0.5)
+- [ ] API: Authenticate user (0.5)
+- [ ] UI: Display menus/actions according to the roles/permissions (0.5)
+
+- [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
+- [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
+- [ ] API: Return roles/permissions for a given user (0.5)
 
 ## ===== TECH =====
+
+- API: throw error as object/json so no need to do JSON.parse
 
 ## ====== INFRASTRUCTURE ======
 
