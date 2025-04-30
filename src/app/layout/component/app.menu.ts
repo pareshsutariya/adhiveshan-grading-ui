@@ -59,6 +59,11 @@ export class AppMenu {
         let checkIn: MenuItem = {label: 'Check In Desk',  items: []};
         checkIn.items?.push({ label: 'Check In Proctors', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-proctors'] });
         
+        // REPORTS
+        let reports: MenuItem = {label: 'Reports',  items: []};
+        reports.items?.push({ label: 'Check In Report', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-report'] });
+        reports.items?.push({ label: 'Grading Report', icon: 'fa-solid fa-graduation-cap', routerLink: ['/gradeing-report'] });
+
         if(home!.items!.length > 0)
             this.model.push(home);
 
@@ -79,5 +84,8 @@ export class AppMenu {
         
         if(checkIn!.items!.length > 0)
             this.model.push(checkIn);   
+
+        if(reports!.items!.length > 0)
+            this.model.push(reports);  
     }
 }
