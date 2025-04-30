@@ -10,6 +10,8 @@ import { SkillCategoriesList } from './app/modules/skill-categories/skill-catego
 import { GradingTopicsList } from './app/modules/grading-topics/grading-topics-list';
 import { GradingParticipants } from './app/modules/grading-participants/grading-participants';
 import { RegionCentersList } from './app/modules/region-centers/region-centers-list';
+import { Login } from './app/modules/auth/login';
+import { Access } from './app/modules/auth/access';
 
 export const appRoutes: Routes = [
     {
@@ -28,6 +30,8 @@ export const appRoutes: Routes = [
             { path: '**', component: Notfound }
         ]
     },
-    { path: 'auth', loadChildren: () => import('./app/modules/auth/auth.routes') },
+    { path: 'login', component: Login  },
+    { path: 'access', component: Access  },
+    //{ path: 'auth', loadChildren: () => import('./app/modules/auth/auth.routes') },
     { path: '**', redirectTo: '/notfound' }
 ];

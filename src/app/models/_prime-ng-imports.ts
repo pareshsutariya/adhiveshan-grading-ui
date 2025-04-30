@@ -60,7 +60,7 @@ import { OverlayPanelModule } from "primeng/overlaypanel";
 import { PaginatorModule } from "primeng/paginator";
 import { PanelModule } from "primeng/panel";
 import { PanelMenuModule } from "primeng/panelmenu";
-import { PasswordModule } from "primeng/password";
+import { Password, PasswordModule } from "primeng/password";
 import { PickListModule } from "primeng/picklist";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { ProgressBarModule } from "primeng/progressbar";
@@ -113,6 +113,7 @@ export const PrimeNgModules = [
   ToolbarModule,
   PanelModule,
   MessageModule,
+  PasswordModule,
   //DatePickerModule,
   DatePicker,
   CheckboxModule,
