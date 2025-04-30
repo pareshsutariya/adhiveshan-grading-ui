@@ -162,7 +162,9 @@
                     <p-button pRipple severity="warn" [raised]="true" (onClick)="startGrading()">
                         <WindowMaximizeIcon pButtonIcon />
                         <span pButtonLabel style="font-size: large;">
-                            <b>Start Grading {{participant!.fullName}} for {{selectedSkillCategory}}</b>
+                            <b>Start Grading <span class="underline">{{participant!.fullName}}</span> for
+                                <span
+                                    [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span></b>
                         </span>
                     </p-button>
                 </p-card>

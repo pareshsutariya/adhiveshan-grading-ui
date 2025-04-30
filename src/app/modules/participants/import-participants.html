@@ -28,62 +28,37 @@
     <ng-template #header>
         <tr>
             <th class="whitespace-nowrap"></th>
-            <th class="whitespace-nowrap" pSortableColumn="region">Region <p-sortIcon field="region" /></th>
-            <th class="whitespace-nowrap" pSortableColumn="center">Center <p-sortIcon field="center" /></th>
-            <th class="whitespace-nowrap" pSortableColumn="misId">MIS Id <p-sortIcon field="misId" /></th>
-            <th class="whitespace-nowrap" pSortableColumn="bapsId">BAPS Id <p-sortIcon field="bapsId" /></th>
-            <th class="whitespace-nowrap" pSortableColumn="fullName">Full Name <p-sortIcon field="fullName" /></th>
-            <th class="whitespace-nowrap" pSortableColumn="gender">Gender <p-sortIcon field="gender" /></th>
-            <th class="whitespace-nowrap" pSortableColumn="mandal">Mandal <p-sortIcon field="mandal" /></th>
+            <th class="whitespace-nowrap" pSortableColumn="region">Region <p-sortIcon field="region" />
+                <p-columnFilter type="text" field="region" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="center">Center <p-sortIcon field="center" />
+                <p-columnFilter type="text" field="center" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="misId">MIS Id <p-sortIcon field="misId" />
+                <p-columnFilter type="text" field="misId" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="bapsId">BAPS Id <p-sortIcon field="bapsId" />
+                <p-columnFilter type="text" field="bapsId" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="fullName">Full Name <p-sortIcon field="fullName" />
+                <p-columnFilter type="text" field="fullName" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="gender">Gender <p-sortIcon field="gender" />
+                <p-columnFilter type="text" field="gender" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="mandal">Mandal <p-sortIcon field="mandal" />
+                <p-columnFilter type="text" field="mandal" display="menu" />
+            </th>
             <th class="whitespace-nowrap" pSortableColumn="language_For_Skill_Competitions">Language <p-sortIcon
-                    field="language_For_Skill_Competitions" /></th>
+                    field="language_For_Skill_Competitions" />
+                <p-columnFilter type="text" field="language_For_Skill_Competitions" display="menu" />
+            </th>
             <th class="whitespace-nowrap" pSortableColumn="emcee_Category">Emcee <p-sortIcon field="emcee_Category" />
+                <p-columnFilter type="text" field="emcee_Category" display="menu" />
             </th>
             <th class="whitespace-nowrap" pSortableColumn="speech_Pravachan_Category">Pravachan <p-sortIcon
                     field="speech_Pravachan_Category" />
-            </th>
-        </tr>
-        <tr>
-            <th></th>
-            <th>
-                <p-columnFilter type="text" field="region" placeholder="Search by region"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="center" placeholder="Search by Center"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="misId" placeholder="Search by MIS ID"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="bapsId" placeholder="Search by BAPS ID"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="fullName" placeholder=" Search by Full Name"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="gender" placeholder=" Search by Gender"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="mandal" placeholder=" Search by Mandal"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="language_For_Skill_Competitions" placeholder=" Search by Language"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="emcee_Category" placeholder=" Search by Emcee"
-                    ariaLabel="Filter Name"></p-columnFilter>
-            </th>
-            <th>
-                <p-columnFilter type="text" field="speech_Pravachan_Category" placeholder=" Search by Pravachan"
-                    ariaLabel="Filter Name"></p-columnFilter>
+                <p-columnFilter type="text" field="speech_Pravachan_Category" display="menu" />
             </th>
         </tr>
     </ng-template>
@@ -189,7 +164,7 @@
             <!-- Category -->
             <p-inputgroup>
                 <p-inputgroup-addon>
-                    <i class="fa-solid fa-handshake mr-1"></i>
+                    <i class="fa-solid fa-hands-praying mr-1"></i>
                 </p-inputgroup-addon>
                 <input pInputText type="text" [(ngModel)]="addOrEditItem.category" [readonly]="true" fluid />
             </p-inputgroup>
