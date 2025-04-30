@@ -22,10 +22,15 @@
 - [x] UI: Logic screen (0.5)
 - [x] API: Authenticate user (0.5)
 - [x] UI: Display menus/actions according to the roles/permissions (0.5)
-- [ ] UI: Display action buttons according to the roles/permissions (0.5)
+- [x] UI: Display action buttons according to the roles/permissions (0.5)
+
+- [ ] UI: Graded candidates
+- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
+- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
 
 ## ===== TECH =====
 
+- [ ] UI: Auth Guard
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
 - [ ] API: Return roles/permissions for a given user (0.5)

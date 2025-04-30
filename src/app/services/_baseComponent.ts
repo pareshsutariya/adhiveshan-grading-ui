@@ -8,7 +8,7 @@ import { UsersService } from "./users.service";
 import { Directive } from "@angular/core";
 import { RegionCenterService } from "./_regionCenters.service";
 import { CompetitionEventsService } from "./competitionEvents.service";
-import { RolePermissionsService } from "./rolePermissions.service";
+import { PermissionsEnum, RolePermissionsService } from "./rolePermissions.service";
 import { ParticipantsService } from "./participants.service";
 import { GradesService } from "./grades.service";
 
@@ -30,4 +30,6 @@ export abstract class BaseComponent {
         public gradingTopicsService: GradingTopicsService,
         public gradesService: GradesService,
     ) {}
+
+    public permissionsEnum: typeof PermissionsEnum = PermissionsEnum;
 }

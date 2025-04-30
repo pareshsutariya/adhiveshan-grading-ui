@@ -159,7 +159,8 @@
                         </ng-template>
                     </p-table>
                     <br>
-                    <p-button pRipple severity="warn" [raised]="true" (onClick)="startGrading()">
+                    <p-button pRipple severity="warn" [raised]="true" (onClick)="startGrading()"
+                        *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants])">
                         <WindowMaximizeIcon pButtonIcon />
                         <span pButtonLabel style="font-size: large;">
                             <b>Start Grading <span class="underline">{{participant!.fullName}}</span> for

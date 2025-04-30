@@ -12,7 +12,8 @@
         <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
             (click)="clearGlobalFilter()" />
         <p-button icon="pi pi-plus" class="ml-4" [rounded]="true" [outlined]="true" severity="success"
-            (onClick)="openNew()" />
+            (onClick)="openNew()"
+            *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Add, permissionsEnum.Users_RegionalAdmins_Add, permissionsEnum.Users_Proctors_Add, permissionsEnum.Users_CheckIns_Add])" />
     </ng-template>
 </p-toolbar>
 
@@ -61,8 +62,8 @@
     <ng-template #body let-item>
         <tr>
             <td [vAlign]="'top'">
-                <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
-                    (click)="openEdit(item)" />
+                <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" (click)="openEdit(item)"
+                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Update, permissionsEnum.Users_RegionalAdmins_Update, permissionsEnum.Users_Proctors_Update, permissionsEnum.Users_CheckIns_Update])" />
             </td>
             <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.region }} - {{ item.center }}</td>
             <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.fullName }} <br>

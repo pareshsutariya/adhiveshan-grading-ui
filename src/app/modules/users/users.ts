@@ -8,6 +8,7 @@ import { BaseComponent } from "../../services/_baseComponent";
 
 import { User } from "../../models/user";
 import { CompetitionEvent } from "../../models/competitionEvent";
+import { RolesEnum } from "../../services/rolePermissions.service";
 
 @Component({
   selector: "app-users",
@@ -34,7 +35,21 @@ export class Users extends BaseComponent implements OnInit {
 
   loadData() {
 
-    this.roles.set(this.rolePermissionsService.Roles);
+    var rolesTemp = [];
+    
+    if(this.authService.HasUserPermissions([this.permissionsEnum.Users_NationalAdmins_Add]))
+      rolesTemp.push({ label: "National Admin", value: RolesEnum.NationalAdmin, icon: "fa fa-user-secret", color: 'red' });
+    
+    if(this.authService.HasUserPermissions([this.permissionsEnum.Users_RegionalAdmins_Add]))
+      rolesTemp.push({ label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'purple' });
+    
+    if(this.authService.HasUserPermissions([this.permissionsEnum.Users_Proctors_Add]))
+      rolesTemp.push({ label: "Proctor", value: RolesEnum.Proctor, icon: "fa fa-user-pen", color: 'black' });
+    
+    if(this.authService.HasUserPermissions([this.permissionsEnum.Users_CheckIns_Add]))
+      rolesTemp.push({ label: "Check In", value: RolesEnum.CheckIn, icon: "fa-solid fa-user-check", color: 'green' });
+
+    this.roles.set(rolesTemp);
     this.genders.set(this.constants.Genders);
     this.skillCategories.set(this.constants.SkillCategories);
 

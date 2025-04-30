@@ -55,6 +55,10 @@ export enum PermissionsEnum {
   Users_Proctors_Add = "Users: Proctors: Add",
   Users_Proctors_Update = "Users: Proctors: Update",
 
+  Users_CheckIns_View = "Users: Check Ins: View",
+  Users_CheckIns_Add = "Users: Check Ins: Add",
+  Users_CheckIns_Update = "Users: Check Ins: Update",
+
   Grading_Questions_View = "Grading Questions: View",
   Grading_Questions_Add = "Grading Questions: Add",
   Grading_Questions_Update = "Grading Questions: Update",

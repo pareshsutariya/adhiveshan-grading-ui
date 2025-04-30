@@ -12,7 +12,7 @@
         <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
             (click)="clearGlobalFilter(dt)" />
         <p-button icon="pi pi-plus" class="ml-4" [rounded]="true" [outlined]="true" severity="success"
-            (onClick)="openNew()" />
+            (onClick)="openNew()" *ngIf="this.authService.HasUserPermissions([permissionsEnum.Events_Add])" />
     </ng-template>
 </p-toolbar>
 
@@ -57,8 +57,8 @@
     <ng-template #body let-item>
         <tr>
             <td [vAlign]="'top'">
-                <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true"
-                    (click)="openEdit(item)" />
+                <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" (click)="openEdit(item)"
+                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Events_Update])" />
             </td>
             <td [vAlign]="'top'" class="whitespace-nowrap"><i class="pi pi-map"></i> {{ item.region }}</td>
             <td [vAlign]="'top'" class="whitespace-nowrap"><i class="pi pi-building-columns"></i> {{ item.hostCenter }}
