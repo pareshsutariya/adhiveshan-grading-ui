@@ -14,7 +14,7 @@ export class GradesService {
     return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetForParticipantAndProctor/${misId}/${skillCategory}/${proctorUserId}`);
   }
 
-  GetParticipantsForProctor(proctorUserId: number): Observable<Array<Grade>> {
+  GetGradedParticipantsForProctor(proctorUserId: number): Observable<Array<Grade>> {
     return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetParticipantsForProctor/${proctorUserId}`);
   }
 
