@@ -5,6 +5,11 @@ Roles:
 - Use caption "Judge" rather than "Proctor"
 - new Role: Result Committee
 
+Participants:
+
+- Allow to update field: HostCenter
+- Use HostCenter if provided otherwise use "Center"
+
 Events:
 
 - Region admin should be able to change only Event DateTime field
@@ -18,6 +23,7 @@ Grade Topics:
 Grade:
 
 - Provide globle search
+- use BAPSID everywhere to search
 - Provide start button for each skill of the candidate
 - Provide Submit button
 
@@ -26,6 +32,7 @@ Users:
 - Proctor room assignment
 - Only single gender option
 - Events: show only assigned events
+- Pull user info by MISID using external API
 
 Room Schedule modules:
 
@@ -78,8 +85,8 @@ Room Schedule modules:
 
 ### Additional fields:
 
-- [ ] BAPS ID: add this field once added to PBI
-- [ ] Participation center (can be different that center of candidate)
+- [x] BAPS ID: add this field once added to PBI
+- [x] Participation center (can be different that center of candidate)
 - [ ] Checkin field
 
 ## ====== GRADING TOPICS =====:
