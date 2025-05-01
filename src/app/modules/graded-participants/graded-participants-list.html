@@ -13,15 +13,15 @@
 
 <!-- List View -->
 <p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['fullName', 'skill', 'category']" [rowHover]="true"
-    [scrollable]="true" [paginator]="false">
+    [paginator]="false" [scrollable]="true" rowGroupMode="subheader" groupRowsBy="participant.fullName">
 
     <!-- List View Header -->
     <ng-template #header>
         <tr>
-            <th pSortableColumn="participant.fullName" class="whitespace-nowrap">
+            <!-- <th pSortableColumn="participant.fullName" class="whitespace-nowrap">
                 Full Name
                 <p-sortIcon field="participant.fullName" />
-            </th>
+            </th> -->
             <th pSortableColumn="skillWithCategory" class="whitespace-nowrap">
                 Skill Category
                 <p-sortIcon field="skillWithCategory" />
@@ -38,10 +38,22 @@
         </tr>
     </ng-template>
 
+
+    <!-- List View Group -->
+    <ng-template #groupheader let-item>
+        <tr pRowGroupHeader>
+            <td colspan="8">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold">{{ item.participant.fullName }}</span>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+
     <!-- List View Data -->
     <ng-template #body let-item>
         <tr>
-            <td class="whitespace-nowrap align-top">{{ item.participant.fullName }}</td>
+            <!-- <td class="whitespace-nowrap align-top">{{ item.participant.fullName }}</td> -->
             <td class="whitespace-nowrap align-top">{{ item.skillWithCategory }}</td>
             <td class="whitespace-nowrap align-top">{{ item.topicName }}</td>
             <td class="whitespace-nowrap align-top">{{ item.score }}</td>
