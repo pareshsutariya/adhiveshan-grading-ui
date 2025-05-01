@@ -5,6 +5,10 @@ Roles:
 - Use caption "Judge" rather than "Proctor"
 - new Role: Result Committee
 
+Events:
+
+- Region admin should be able to change only Event DateTime field
+
 Grade Topics:
 
 - editable grid
