@@ -1,32 +1,31 @@
-- [x] API: Implement an endpoint to return list of proctors skills
-- [x] UI: Design UI to display tabs according to the procotr's skills
+## ===== Feedback =====
 
-- [x] API: Implement an endpoint to search candidate for the given BAPS ID/SkillCategory/EventId
-- [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
-- [x] UI: Button "Start Grading {Participant}"
+Roles:
 
-- [x] API: Implement an endpoint to return skill topics for the given skill
-- [x] UI: Design Pop Up UI to display list of topics for the given skill
-- [x] UI: make the grid editable for Grade column and auto save on change
+- Use caption "Judge" rather than "Proctor"
+- new Role: Result Committee
 
-- [x] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
-- [x] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
-- [x] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
-- [x] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
-- [x] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
+Grade Topics:
 
-- [x] UI: Add reports menu, and it's permissions to roles
-- [x] UI: Roles/Permissions in Pivot view (0.5)
-- [x] UI: Display menus properly (0.5)
+- editable grid
+- Weightage Options: no dropdown, configure max number
+- Section and Attributes
 
-- [x] UI: Logic screen (0.5)
-- [x] API: Authenticate user (0.5)
-- [x] UI: Display menus/actions according to the roles/permissions (0.5)
-- [x] UI: Display action buttons according to the roles/permissions (0.5)
+Grade:
 
-- [x] UI: Graded candidates (0.5)
-- [x] API: Implement an endpoint to return grades for the given candidate/Skill/proctor (0.5)
-- [x] UI: Design UI to display candidate grades for the given candidate/Skill/proctor (0.5)
+- Provide globle search
+- Provide start button for each skill of the candidate
+- Provide Submit button
+
+Users:
+
+- Proctor room assignment
+- Only single gender option
+- Events: show only assigned events
+
+Room Schedule modules:
+
+- Include this module
 
 ## ===== TECH =====
 
