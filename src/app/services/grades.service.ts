@@ -15,7 +15,7 @@ export class GradesService {
   }
 
   GetGradedParticipantsForProctor(proctorUserId: number): Observable<Array<Grade>> {
-    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetParticipantsForProctor/${proctorUserId}`);
+    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetGradedParticipantsForProctor/${proctorUserId}`);
   }
 
   Save(item: Grade) {

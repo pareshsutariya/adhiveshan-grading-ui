@@ -28,7 +28,9 @@ export class GradedParticipantsList extends BaseComponent implements OnInit {
   loadData() {
     this.layoutService.isDataLoading.set(true);
 
-    this.gradesService.GetGradedParticipantsForProctor(this.authService.GetLoginUserId()).subscribe(data => { 
+    //let loginUserId = this.authService.GetLoginUserId();
+    let loginUserId = 1;
+    this.gradesService.GetGradedParticipantsForProctor(loginUserId).subscribe(data => { 
         this.data.set(data);
         this.layoutService.isDataLoading.set(false);
       });
