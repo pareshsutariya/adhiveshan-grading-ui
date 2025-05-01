@@ -24,9 +24,9 @@
 - [x] UI: Display menus/actions according to the roles/permissions (0.5)
 - [x] UI: Display action buttons according to the roles/permissions (0.5)
 
-- [ ] UI: Graded candidates (0.5)
-- [ ] API: Implement an endpoint to return grades for the given candidate/Skill/proctor (0.5)
-- [ ] UI: Design UI to display candidate grades for the given candidate/Skill/proctor (0.5)
+- [x] UI: Graded candidates (0.5)
+- [x] API: Implement an endpoint to return grades for the given candidate/Skill/proctor (0.5)
+- [x] UI: Design UI to display candidate grades for the given candidate/Skill/proctor (0.5)
 
 ## ===== TECH =====
 
