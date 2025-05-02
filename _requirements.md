@@ -2,16 +2,15 @@
 
 - [x] Roles: Use caption "Judge" rather than "Judge"
 - [x] Roles: New Role: Result Committee
+- [x] Grade Topics: Remove Required Proctor option from grading question creation view
+- [x] Grade Topics: Weightage Options: no dropdown, Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 
 - [ ] Participants: Allow to update field: HostCenter
 - [ ] Participants:Use HostCenter if provided otherwise use "Center"
 
 - [ ] Events: Region admin should be able to change only Event DateTime field
 
-- [x] Grade Topics: Remove Required Proctor option from grading question creation view
-- [x] Grade Topics: Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 - [ ] Grade Topics: editable grid / Section and Attributes
-- [ ] Grade Topics: Weightage Options: no dropdown, Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 
 - [ ] Gradeing: Provide global search
 - [ ] Gradeing: use BAPSID everywhere to search
