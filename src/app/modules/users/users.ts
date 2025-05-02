@@ -41,11 +41,14 @@ export class Users extends BaseComponent implements OnInit {
       rolesTemp.push({ label: "National Admin", value: RolesEnum.NationalAdmin, icon: "fa fa-user-secret", color: 'red' });
     
     if(this.authService.HasUserPermissions([this.permissionsEnum.Users_RegionalAdmins_Add]))
-      rolesTemp.push({ label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'purple' });
+      rolesTemp.push({ label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'blue' });
     
     if(this.authService.HasUserPermissions([this.permissionsEnum.Users_Judges_Add]))
-      rolesTemp.push({ label: "Judge", value: RolesEnum.Judge, icon: "fa fa-user-pen", color: 'black' });
-    
+      rolesTemp.push({ label: "Judge", value: RolesEnum.Judge, icon: "fa fa-user-pen", color: 'Chocolate' });
+
+    if(this.authService.HasUserPermissions([this.permissionsEnum.Users_NationalAdmins_Add]))
+      rolesTemp.push({ label: "National Admin", value: RolesEnum.ResultCommittee, icon: "fa-solid fa-square-poll-vertical", color: 'purple' });
+
     if(this.authService.HasUserPermissions([this.permissionsEnum.Users_CheckIns_Add]))
       rolesTemp.push({ label: "Check In", value: RolesEnum.CheckIn, icon: "fa-solid fa-user-check", color: 'green' });
 

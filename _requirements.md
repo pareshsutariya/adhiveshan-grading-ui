@@ -3,7 +3,7 @@
 Roles:
 
 - [x] Use caption "Judge" rather than "Judge"
-- new Role: Result Committee
+- [x] new Role: Result Committee
 
 Participants:
 

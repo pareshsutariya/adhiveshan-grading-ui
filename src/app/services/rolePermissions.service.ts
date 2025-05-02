@@ -19,8 +19,9 @@ export class RolePermissionsService {
   get Roles(): any {
     return [
       { label: "National Admin", value: RolesEnum.NationalAdmin, icon: "fa fa-user-secret", color: 'red' },
-      { label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'purple' },
+      { label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'blue' },
       { label: "Judge", value: RolesEnum.Judge, icon: "fa fa-user-pen", color: 'black' },
+      { label: "Result Committee", value: RolesEnum.ResultCommittee, icon: "fa-solid fa-square-poll-vertical", color: 'purple' },
       { label: "Check In", value: RolesEnum.CheckIn, icon: "fa-solid fa-user-check", color: 'green' },
     ];
   }
@@ -38,6 +39,7 @@ export enum RolesEnum {
   NationalAdmin = 'National Admin',
   RegionalAdmin = 'Regional Admin',
   Judge = 'Judge',
+  ResultCommittee = 'Result Committee',
   CheckIn = 'Check In',
 }
 
