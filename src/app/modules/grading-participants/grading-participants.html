@@ -45,7 +45,7 @@
 
             <div class="flex flex-col md:flex-row" *ngIf="participant && participant.misId">
                 <!-- Participant Details -->
-                <p-card class="card flex flex-col md:w-1/3" [style]="{border: '0.1rem solid silver'}">
+                <p-card class="card flex flex-col md:w-1/2" [style]="{border: '0.1rem solid silver'}">
 
                     <ng-template #title>
                         Participant Details for MIS Id <span class="underline">{{participantMISId}}</span>
@@ -202,16 +202,9 @@
         <ng-template #body let-item>
             <tr [style]="{'color': item.color}">
                 <td class="whitespace-nowrap">{{ item.topicName }}</td>
-                <td [pEditableColumn]="item.marks" pEditableColumnField="marks">
-                    <p-cellEditor>
-                        <ng-template #input>
-                            <input pInputText type="number" [(ngModel)]="item.marks" (change)="onGradeChanged(item)"
-                                max="{{item.maximumMarks}}" />
-                        </ng-template>
-                        <ng-template #output>
-                            {{ item.marks }}
-                        </ng-template>
-                    </p-cellEditor>
+                <td>
+                    <input pInputText type="number" [(ngModel)]="item.marks" (change)="onGradeChanged(item)" min="0"
+                        mode="decimal" max="{{item.maximumMarks}}" [ngStyle]="{'width': '100px'}" step="0.5" />
                 </td>
                 <td class="whitespace-nowrap">{{ item.maximumMarks }}</td>
             </tr>

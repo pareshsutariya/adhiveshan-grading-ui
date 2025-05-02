@@ -127,10 +127,25 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.dialog = false;
     }
 
+    isRoundedToHalf(num: number): boolean {
+       return num * 2 === Math.round(num * 2);
+    }
+
+    roundUpToHalf(num: number): number {
+       return Math.ceil(num * 2) / 2;
+    }
+
     onGradeChanged(model: Grade){
 
-        if(model.marks! > model.maximumMarks!)
+        if(model.marks! < 0 || model.marks! > model.maximumMarks!)
             return;
+
+        // if(!this.isRoundedToHalf(model.marks!)) {
+        //     this.messageService.add({ severity: "error", summary: "Validation", detail: `${model.marks} is not a valid number`, life: 3000 });
+        //     return;
+        // }
+
+        model.marks = this.roundUpToHalf(model.marks!);
 
         this.layoutService.isDataLoading.set(true);
 
