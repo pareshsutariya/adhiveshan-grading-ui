@@ -1,38 +1,31 @@
 ## ===== Feedback =====
 
-Roles:
+- [x] Roles: Use caption "Judge" rather than "Judge"
+- [x] Roles: New Role: Result Committee
 
-- [x] Use caption "Judge" rather than "Judge"
-- [x] new Role: Result Committee
+- [ ] Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
+- [ ] Remove Required Proctor option from grading question creation view
+- [ ] For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal
+- [ ] For judges, on grading screen include a search bar. When they search or scan a BAPS ID, delegate's information should be displayed only if it matches one of the judge's assigned skills
 
-Participants:
+- [ ] Participants: Allow to update field: HostCenter
+- [ ] Participants:Use HostCenter if provided otherwise use "Center"
 
-- Allow to update field: HostCenter
-- Use HostCenter if provided otherwise use "Center"
+- [ ] Events: Region admin should be able to change only Event DateTime field
 
-Events:
+- [ ] Grade Topics: editable grid / Section and Attributes
+- [ ] Grade Topics: Weightage Options: no dropdown, Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 
-- Region admin should be able to change only Event DateTime field
+- [ ] Gradeing: Provide global search
+- [ ] Gradeing: use BAPSID everywhere to search
+- [ ] Gradeing: Provide start button for each skill of the candidate
+- [ ] Gradeing: Provide Submit button
+- [ ] Gradeing: locking approach
 
-Grade Topics:
-
-- editable grid
-- Weightage Options: no dropdown, configure max number
-- Section and Attributes
-
-Grade:
-
-- Provide globle search
-- use BAPSID everywhere to search
-- Provide start button for each skill of the candidate
-- Provide Submit button
-
-Users:
-
-- Judge room assignment
-- Only single gender option
-- Events: show only assigned events
-- Pull user info by MISID using external API
+- [ ] Users: Only single gender option
+- [ ] Users: Judge room assignment
+- [ ] Users: Events: show only assigned events
+- [ ] Users: Pull user info by MISID using external API
 
 Room Schedule modules:
 
