@@ -17,7 +17,7 @@ import { Grade } from "../../models/grade";
 })
 export class GradingParticipants extends BaseComponent implements OnInit {
 
-    proctorSkillCategories: any[] = [];
+    judgeSkillCategories: any[] = [];
     participantMISId: number | undefined = 2183256;
     participant: Participant | undefined;
     loginUserId: number = 1;
@@ -37,9 +37,9 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         // TODO : Get login user roles and assigned skills, and display the tabs accordingly
         this.usersService.GetById(this.loginUserId).subscribe(user=>{
-            this.proctorSkillCategories = [];
+            this.judgeSkillCategories = [];
             if(user.assignedSkillCategories){
-                this.proctorSkillCategories = this.constants.SkillCategories.filter((s: { label: string; title: string; })=> user.assignedSkillCategories!.indexOf(s.label) >=0 );
+                this.judgeSkillCategories = this.constants.SkillCategories.filter((s: { label: string; title: string; })=> user.assignedSkillCategories!.indexOf(s.label) >=0 );
             }
 
             this.layoutService.isDataLoading.set(false);
@@ -50,7 +50,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.participant = {};
         this.searchError = undefined;
         this.selectedSkillCategory = $event;
-        this.selectedSkillCategoryColor = this.proctorSkillCategories.filter(c=>c.value == this.selectedSkillCategory)[0]?.color;
+        this.selectedSkillCategoryColor = this.judgeSkillCategories.filter(c=>c.value == this.selectedSkillCategory)[0]?.color;
         console.log($event);
     }
 
@@ -65,7 +65,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetParticipantForProctoring(this.participantMISId, skillCategory, this.loginUserId)
+        this.participantsService.GetParticipantForJudging(this.participantMISId, skillCategory, this.loginUserId)
         .subscribe({
             next: (data: any) => {
                 
@@ -110,7 +110,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     getParticipantGrades(){
         this.layoutService.isDataLoading.set(true);
 
-        this.gradesService.GetForParticipantAndProctor(this.participantMISId!, this.selectedSkillCategory!, this.loginUserId).subscribe(data=>{
+        this.gradesService.GetForParticipantAndJudge(this.participantMISId!, this.selectedSkillCategory!, this.loginUserId).subscribe(data=>{
             this.participantGrades.set(data);
 
             this.layoutService.isDataLoading.set(false);
@@ -131,7 +131,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
             misId: this.participantMISId,
             gradingTopicId: gradingTopicId,
             score: score,
-            proctorUserId: this.loginUserId,
+            judgeUserId: this.loginUserId,
         };
         
         this.gradesService.Save(model).subscribe(data=>{

@@ -32,9 +32,9 @@
                 <p-sortIcon field="regionalAdmin" />
 
             </th>
-            <th pSortableColumn="proctor" class="whitespace-nowrap" [width]="'100px'">
-                <i class="fa-solid fa-user-clock"></i> Proctor
-                <p-sortIcon field="proctor" />
+            <th pSortableColumn="judge" class="whitespace-nowrap" [width]="'100px'">
+                <i class="fa-solid fa-user-clock"></i> Judge
+                <p-sortIcon field="judge" />
 
             </th>
             <th pSortableColumn="checkIn" class="whitespace-nowrap">
@@ -52,8 +52,8 @@
                     *ngIf="item.nationalAdmin"></i> </td>
             <td [style]="{'text-align':'center','color': item.regionalAdminColor}"> <i class="fa-solid fa-check"
                     *ngIf="item.regionalAdmin"></i> </td>
-            <td [style]="{'text-align':'center','color': item.proctorColor}"> <i class="fa-solid fa-check"
-                    *ngIf="item.proctor"></i> </td>
+            <td [style]="{'text-align':'center','color': item.judgeColor}"> <i class="fa-solid fa-check"
+                    *ngIf="item.judge"></i> </td>
             <td [style]="{'text-align':'center','color': item.checkInColor}"> <i class="fa-solid fa-check"
                     *ngIf="item.checkIn"></i> </td>
             <!-- 

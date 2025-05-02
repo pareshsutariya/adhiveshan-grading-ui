@@ -13,7 +13,7 @@
             (click)="clearGlobalFilter()" />
         <p-button icon="pi pi-plus" class="ml-4" [rounded]="true" [outlined]="true" severity="success"
             (onClick)="openNew()"
-            *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Add, permissionsEnum.Users_RegionalAdmins_Add, permissionsEnum.Users_Proctors_Add, permissionsEnum.Users_CheckIns_Add])" />
+            *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Add, permissionsEnum.Users_RegionalAdmins_Add, permissionsEnum.Users_Judges_Add, permissionsEnum.Users_CheckIns_Add])" />
     </ng-template>
 </p-toolbar>
 
@@ -63,7 +63,7 @@
         <tr>
             <td [vAlign]="'top'">
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" (click)="openEdit(item)"
-                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Update, permissionsEnum.Users_RegionalAdmins_Update, permissionsEnum.Users_Proctors_Update, permissionsEnum.Users_CheckIns_Update])" />
+                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Update, permissionsEnum.Users_RegionalAdmins_Update, permissionsEnum.Users_Judges_Update, permissionsEnum.Users_CheckIns_Update])" />
             </td>
             <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.region }} - {{ item.center }}</td>
             <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.fullName }} <br>
@@ -251,7 +251,7 @@
 
                 <!-- Skill Categories -->
                 <div class="mb-2"
-                    *ngIf="addOrEditItem.assignedRoles && addOrEditItem.assignedRoles.indexOf('Proctor')>=0">
+                    *ngIf="addOrEditItem.assignedRoles && addOrEditItem.assignedRoles.indexOf('Judge')>=0">
                     <p-table #dtSkills [value]="skillCategories()" [(selection)]="addOrEditItem.assignedSkillCategories"
                         [rowHover]="true" stripedRows>
 
@@ -278,7 +278,7 @@
             </div>
 
             <div class="md:w-1/2"
-                *ngIf="addOrEditItem.assignedRoles && (addOrEditItem.assignedRoles!.indexOf('Proctor')>=0 || addOrEditItem.assignedRoles!.indexOf('Regional Admin')>=0)">
+                *ngIf="addOrEditItem.assignedRoles && (addOrEditItem.assignedRoles!.indexOf('Judge')>=0 || addOrEditItem.assignedRoles!.indexOf('Regional Admin')>=0)">
                 <!-- Events -->
                 <div class="mb-2">
                     <p-table #dtEvents [value]="events()" [(selection)]="addOrEditItem.assignedEventIds"

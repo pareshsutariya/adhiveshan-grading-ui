@@ -9,16 +9,16 @@ export interface RolePermissions {
     permission: string;
     nationalAdmin: boolean;
     regionalAdmin: boolean;
-    proctor: boolean;
+    judge: boolean;
     checkIn: boolean;
 
     nationalAdminIcon: string;
     regionalAdminIcon: string;
-    proctorIcon: string;
+    judgeIcon: string;
     checkInIcon: string;
 
     nationalAdminColor: string;
     regionalAdminColor: string;
-    proctorColor: string;
+    judgeColor: string;
     checkInColor: string;
   }

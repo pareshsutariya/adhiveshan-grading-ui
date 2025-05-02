@@ -39,7 +39,7 @@
                 Round
             </th>
             <th class="whitespace-nowrap">
-                Proctors
+                Judges
             </th>
             <th pSortableColumn="status" class="whitespace-nowrap">
                 Status
@@ -73,7 +73,7 @@
                 <span class="mb-2" *ngFor="let weightage of item.weightageOptions"> {{weightage}} &nbsp; </span>
             </td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.round }}</td>
-            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.requiredProctors }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.requiredJudges }}</td>
             <td [vAlign]="'top'">
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
                     styleClass="dark:!bg-surface-900" />
@@ -142,14 +142,14 @@
                 </div>
             </div>
 
-            <!-- Required Proctors -->
+            <!-- Required Judges -->
             <div class="grid grid-cols-12 gap-2">
-                <label for="requiredProctors" class="flex font-bold col-span-4">Required Proctors*</label>
+                <label for="requiredJudges" class="flex font-bold col-span-4">Required Judges*</label>
                 <div class="col-span-8">
-                    <input pInputText type="number" id="requiredProctors" [(ngModel)]="addOrEditItem.requiredProctors"
-                        placeholder="Required Proctors" fluid />
-                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.requiredProctors">No. of Required
-                        Proctors is required.</small>
+                    <input pInputText type="number" id="requiredJudges" [(ngModel)]="addOrEditItem.requiredJudges"
+                        placeholder="Required Judges" fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.requiredJudges">No. of Required
+                        Judge is required.</small>
                 </div>
             </div>
 

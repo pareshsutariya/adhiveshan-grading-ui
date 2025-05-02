@@ -5,7 +5,7 @@ export interface Grade {
   misId?: number;
   gradingTopicId?: number;
   score?: number;
-  proctorUserId: number;
+  judgeUserId: number;
 
   // ----------
   participant?: Participant,
@@ -15,5 +15,5 @@ export interface Grade {
   category?: string,
   color?: string,
   skillWithCategory?: string;
-  proctorName?: string,
+  judgeName?: string,
 }

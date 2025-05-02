@@ -59,7 +59,7 @@ export class AppMenu {
 
         // ACCOUNTS
         let accounts: MenuItem = {label: 'Accounts', items: []};
-        if(this.auth.HasUserPermissions([PermissionsEnum.Users_NationalAdmins_View, PermissionsEnum.Users_RegionalAdmins_View, PermissionsEnum.Users_Proctors_View]))
+        if(this.auth.HasUserPermissions([PermissionsEnum.Users_NationalAdmins_View, PermissionsEnum.Users_RegionalAdmins_View, PermissionsEnum.Users_Judges_View]))
             accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
         
         if(this.auth.HasUserPermissions([PermissionsEnum.Users_NationalAdmins_View]))
@@ -68,7 +68,7 @@ export class AppMenu {
         // CHECK IN
         let checkIn: MenuItem = {label: 'Check In Desk',  items: []};
         if(this.auth.HasUserPermissions([PermissionsEnum.CheckIn_View]))
-            checkIn.items?.push({ label: 'Check In Proctors', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-proctors'] });
+            checkIn.items?.push({ label: 'Check In', icon: 'fa-solid fa-user-check', routerLink: ['/check-in'] });
         
         // REPORTS
         let reports: MenuItem = {label: 'Reports',  items: []};
@@ -97,64 +97,5 @@ export class AppMenu {
 
         if(accounts!.items!.length > 0)
             this.model.push(accounts);     
-        
-        /*
-        // NATIONAL ADMINS
-        let nationalAdmin: MenuItem = {label: 'National Admin', items: []};
-        nationalAdmin.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
-        nationalAdmin.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
-        nationalAdmin.items?.push({ label: 'Grading Topics', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
-        nationalAdmin.items?.push({ label: 'Events', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
-
-        // PROCTOR ADMINS
-        let proctorAdmin: MenuItem = {label: 'Proctor Admins', items: []};
-        proctorAdmin.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
-        proctorAdmin.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
-        proctorAdmin.items?.push({ label: 'Grading Topics (View)', icon: 'fa-solid fa-circle-question', routerLink: ['/grading-topics'] });
-        proctorAdmin.items?.push({ label: 'Events (Update)', icon: 'fa-solid fa-calendar-check', routerLink: ['/events'] });
-
-        // PROCTORS
-        let proctors: MenuItem = {label: 'Proctors', items: []};
-        proctors.items?.push({ label: 'Grade Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/grading-participants'] });
-
-        // ACCOUNTS
-        //if(this.HasUserPermissions([PermissionsEnum.USERS_LIST]))
-        let accounts: MenuItem = {label: 'Accounts', items: []};
-        accounts.items?.push({ label: 'Users', icon: 'fa-solid fa-user-lock', routerLink: ['/users'] });
-        accounts.items?.push({ label: 'Roles/Permissions', icon: 'fa-solid fa-user-lock', routerLink: ['/rolePermissions'] });
-
-        // CHECK IN
-        let checkIn: MenuItem = {label: 'Check In Desk',  items: []};
-        checkIn.items?.push({ label: 'Check In Proctors', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-proctors'] });
-        
-        // REPORTS
-        let reports: MenuItem = {label: 'Reports',  items: []};
-        reports.items?.push({ label: 'Check In Report', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-report'] });
-        reports.items?.push({ label: 'Grading Report', icon: 'fa-solid fa-graduation-cap', routerLink: ['/gradeing-report'] });
-
-        if(home!.items!.length > 0)
-            this.model.push(home);
-
-        if(participants!.items!.length > 0)
-            this.model.push(participants);
-
-        if(nationalAdmin!.items!.length > 0)
-            this.model.push(nationalAdmin);
-
-        if(proctorAdmin!.items!.length > 0)
-            this.model.push(proctorAdmin);
-
-        if(proctors!.items!.length > 0)
-            this.model.push(proctors);
-
-        if(accounts!.items!.length > 0)
-            this.model.push(accounts);     
-        
-        if(checkIn!.items!.length > 0)
-            this.model.push(checkIn);   
-
-        if(reports!.items!.length > 0)
-            this.model.push(reports);  
-        */
     }
 }

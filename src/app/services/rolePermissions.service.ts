@@ -20,7 +20,7 @@ export class RolePermissionsService {
     return [
       { label: "National Admin", value: RolesEnum.NationalAdmin, icon: "fa fa-user-secret", color: 'red' },
       { label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'purple' },
-      { label: "Proctor", value: RolesEnum.Proctor, icon: "fa fa-user-pen", color: 'black' },
+      { label: "Judge", value: RolesEnum.Judge, icon: "fa fa-user-pen", color: 'black' },
       { label: "Check In", value: RolesEnum.CheckIn, icon: "fa-solid fa-user-check", color: 'green' },
     ];
   }
@@ -37,7 +37,7 @@ export enum RolesEnum {
 
   NationalAdmin = 'National Admin',
   RegionalAdmin = 'Regional Admin',
-  Proctor = 'Proctor',
+  Judge = 'Judge',
   CheckIn = 'Check In',
 }
 
@@ -51,9 +51,9 @@ export enum PermissionsEnum {
   Users_RegionalAdmins_Add = "Users: Regional Admins: Add",
   Users_RegionalAdmins_Update = "Users: Regional Admins: Update",
 
-  Users_Proctors_View = "Users: Proctors: View",
-  Users_Proctors_Add = "Users: Proctors: Add",
-  Users_Proctors_Update = "Users: Proctors: Update",
+  Users_Judges_View = "Users: Judges: View",
+  Users_Judges_Add = "Users: Judges: Add",
+  Users_Judges_Update = "Users: Judges: Update",
 
   Users_CheckIns_View = "Users: Check Ins: View",
   Users_CheckIns_Add = "Users: Check Ins: Add",

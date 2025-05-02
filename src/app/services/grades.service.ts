@@ -10,12 +10,12 @@ import { Grade } from "../models/grade";
 export class GradesService {
   constructor(private http: HttpClient) {}
 
-  GetForParticipantAndProctor(misId: number, skillCategory: string, proctorUserId: number): Observable<Array<Grade>> {
-    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetForParticipantAndProctor/${misId}/${skillCategory}/${proctorUserId}`);
+  GetForParticipantAndJudge(misId: number, skillCategory: string, judgeUserId: number): Observable<Array<Grade>> {
+    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetForParticipantAndJudge/${misId}/${skillCategory}/${judgeUserId}`);
   }
 
-  GetGradedParticipantsForProctor(proctorUserId: number): Observable<Array<Grade>> {
-    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetGradedParticipantsForProctor/${proctorUserId}`);
+  GetGradedParticipantsForJudge(judgeUserId: number): Observable<Array<Grade>> {
+    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetGradedParticipantsForJudge/${judgeUserId}`);
   }
 
   Save(item: Grade) {

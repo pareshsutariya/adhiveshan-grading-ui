@@ -9,12 +9,12 @@
 <div class="card">
     <p-tabs value="0" (valueChange)="onTabChange($event)">
         <p-tablist>
-            <p-tab *ngFor="let skill of proctorSkillCategories" [value]="skill.value"
+            <p-tab *ngFor="let skill of judgeSkillCategories" [value]="skill.value"
                 [ngStyle]="{'color': skill.color}">{{
                 skill.label }}</p-tab>
         </p-tablist>
         <p-tabpanels>
-            <p-tabpanel *ngFor="let skill of proctorSkillCategories" [value]="skill.value">
+            <p-tabpanel *ngFor="let skill of judgeSkillCategories" [value]="skill.value">
                 <p-toolbar styleClass="mb-2">
                     <!-- Search By MIS Id -->
                     <ng-template #start>

@@ -2,7 +2,7 @@
 
 Roles:
 
-- Use caption "Judge" rather than "Proctor"
+- [x] Use caption "Judge" rather than "Judge"
 - new Role: Result Committee
 
 Participants:
@@ -29,7 +29,7 @@ Grade:
 
 Users:
 
-- Proctor room assignment
+- Judge room assignment
 - Only single gender option
 - Events: show only assigned events
 - Pull user info by MISID using external API
@@ -101,7 +101,7 @@ Room Schedule modules:
 
 ### Skill Grading Topics:
 
-- [x] API: "GradingTopics" table Schema (Id, Skill, SkillCategory, Name, Description, Round, WeightageOptions[], RequiredProctors, IsActive)
+- [x] API: "GradingTopics" table Schema (Id, Skill, SkillCategory, Name, Description, Round, WeightageOptions[], RequiredJudges, IsActive)
 - [x] API: Implement an endpoint to return list of data
 - [x] API: Implement an endpoint to Add record
 - [x] API: Implement an endpoint to Edit record
@@ -129,8 +129,8 @@ Room Schedule modules:
 - [x] UI: List Page: Apply standard sorting and searching
 - [x] UI: Add Page: Design UI to Add or Edit record, and call API
 - Note:
-  - Proctor Admins will be able to create events for proctoring, selecting the number of centers, and forming clusters of centers for a specific event.
-  - Set Event Periods: The Proctor Admin can specify the start and end time for proctoring events.
+  - Judge Admins will be able to create events for judging, selecting the number of centers, and forming clusters of centers for a specific event.
+  - Set Event Periods: The Judge Admin can specify the start and end time for judging events.
   - During this period, only delegates from the selected centers will be allowed to participate.
   - Regional admin can only change the time, but not the date
 
@@ -148,10 +148,10 @@ Room Schedule modules:
 - [x] UI: Add Page: Design UI to Add or Edit record, and call API
 - [x] UI: Add Page: Assign Events
 - Note:
-  - Roles are National Admin / Regional Admin / Proctors
-  - National Admin: Can manage regional admin AND proctors of all region of ANY genders
-  - Regional Admin: Can manage proctors according to THEIR gender
-  - Proctor: Can search and grade participant of their ASSIGNED EVENTS and ASSIGNED SKILLS and ASSIGNED GENDERS only
+  - Roles are National Admin / Regional Admin / Judges
+  - National Admin: Can manage regional admin AND judges of all region of ANY genders
+  - Regional Admin: Can manage judges according to THEIR gender
+  - Judge: Can search and grade participant of their ASSIGNED EVENTS and ASSIGNED SKILLS and ASSIGNED GENDERS only
 
 ### Role Permissions:
 
@@ -162,12 +162,12 @@ Room Schedule modules:
   1. Role: National Admin User:
      - CRUD Regional Admin Users
      - CRUD Events
-     - View Proctor Users
+     - View Judge Users
      - CRUD Skill Grading Questions
   2. Role: Regional Admin User:
-     - CRUD Proctor Users
+     - CRUD Judge Users
      - View Skill Grading Questions
-  3. Role: Proctor User:
+  3. Role: Judge User:
      - Search Participant
      - Grade Participant
 
@@ -190,15 +190,15 @@ Room Schedule modules:
 
 ## ====== GRADING THE PARTICIPANTS =====:
 
-### Display tabs according to the skills access to the proctor:
+### Display tabs according to the skills access to the judge:
 
-- [x] API: Implement an endpoint to return list of proctors skills
+- [x] API: Implement an endpoint to return list of judges skills
 - [x] UI: Design UI to display tabs according to the procotr's skills
 
-### Search Candidate by proctor for BAPS ID and Skill Name:
+### Search Candidate by judge for BAPS ID and Skill Name:
 
 - [x] API: Implement an endpoint to search candidate for the given BAPS ID and Skill name
-  - Note: The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the proctor’s allowed access
+  - Note: The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the judge’s allowed access
 - [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
   - Note: A text input field and QR scan option, like the satsang mukhpath, will appear on the screen
 
@@ -207,19 +207,19 @@ Room Schedule modules:
 - [x] API: Implement an endpoint to return skill topics for the give skill
 - [x] UI: Design UI to display list of topics for the givek skill
   - Note:
-    - Once proctor clicks start proctoring, the proctor will be shown a series of question topics
+    - Once judge clicks start judging, the judge will be shown a series of question topics
     - Display topics along with weitage option to grade
 
 ### Grade candidate for list of skill topics:
 
-- [x] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, ProctorId
-- [x] API: Implement an endpoint to add/update candidate for the given Skill topics and by given proctor
-- [x] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given proctor
+- [x] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, JudgeId
+- [x] API: Implement an endpoint to add/update candidate for the given Skill topics and by given judge
+- [x] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given judge
 
-### View list of graded candidite for a proctor:
+### View list of graded candidite for a judge:
 
-- [x] API: Implement an endpoint to return grades for the given candidate/Skill/proctor
-- [x] UI: Design UI to display candidate grades for the given candidate/Skill/proctor
+- [x] API: Implement an endpoint to return grades for the given candidate/Skill/judge
+- [x] UI: Design UI to display candidate grades for the given candidate/Skill/judge
       Note: - Allow edit option to change the grade - Once event time is over, NO ONE should be able to change the grade
 
 ### Candidate Status:
@@ -228,7 +228,7 @@ Room Schedule modules:
 
   - Note: return COMPLETED if all the topic has been graded else PENDING
 
-- TBD: at a time only x proctors should be able to access or grade the candidate
+- TBD: at a time only x judges should be able to access or grade the candidate
 
 ## ====== SCHEDULING PARTICIPANTS =====:
 
@@ -238,12 +238,12 @@ Room Schedule modules:
 - [ ] Export cluster schedule
 - [ ] API: Get a schedule for a candidate (API can be called from mySatsangApp or Adhiveshan portal)
 
-## ====== CHECK IN PROCTORS AND PARTICIPANTS =====:
+## ====== CHECK IN JUDGES AND PARTICIPANTS =====:
 
 - [ ] UI: Menu: Add "Check In" menu in navigation panel
 - [ ] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
 - [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
-- [ ] UI: Provide a button to check in for the found participant or proctor for the given MIS ID or BAPS ID
+- [ ] UI: Provide a button to check in for the found participant or judge for the given MIS ID or BAPS ID
 - [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
 
 ## ===== REPORTS =====
@@ -259,8 +259,8 @@ Room Schedule modules:
   - In progress
   - up coming
 - [ ] Skill Participants Count
-- [ ] Regional wise proctors count
-- [ ] Checked in Proctors
+- [ ] Regional wise judges count
+- [ ] Checked in Judges
 - [ ] Checked in Participants
 
 ## ====== EXPORT =====:

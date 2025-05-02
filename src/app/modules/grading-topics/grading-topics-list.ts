@@ -48,7 +48,7 @@ export class GradingTopicsList extends BaseComponent implements OnInit {
   openNew() {
     this.addOrEditItem = {};
     this.addOrEditItem.round = 1;
-    this.addOrEditItem.requiredProctors = 2;
+    this.addOrEditItem.requiredJudges = 2;
     this.addOrEditItem.status = "Active";
     this.submitted = false;
     this.dialog = true;
@@ -105,7 +105,7 @@ export class GradingTopicsList extends BaseComponent implements OnInit {
     if(!this.addOrEditItem.round || this.addOrEditItem.round == 0)
       return false;
 
-    if(!this.addOrEditItem.requiredProctors || this.addOrEditItem.requiredProctors == 0)
+    if(!this.addOrEditItem.requiredJudges || this.addOrEditItem.requiredJudges == 0)
       return false;
 
     if(!this.addOrEditItem.status || this.addOrEditItem.status.trim().length == 0)

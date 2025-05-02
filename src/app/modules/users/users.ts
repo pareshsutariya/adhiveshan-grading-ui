@@ -43,8 +43,8 @@ export class Users extends BaseComponent implements OnInit {
     if(this.authService.HasUserPermissions([this.permissionsEnum.Users_RegionalAdmins_Add]))
       rolesTemp.push({ label: "Regional Admin", value: RolesEnum.RegionalAdmin, icon: "fa fa-user-tie", color: 'purple' });
     
-    if(this.authService.HasUserPermissions([this.permissionsEnum.Users_Proctors_Add]))
-      rolesTemp.push({ label: "Proctor", value: RolesEnum.Proctor, icon: "fa fa-user-pen", color: 'black' });
+    if(this.authService.HasUserPermissions([this.permissionsEnum.Users_Judges_Add]))
+      rolesTemp.push({ label: "Judge", value: RolesEnum.Judge, icon: "fa fa-user-pen", color: 'black' });
     
     if(this.authService.HasUserPermissions([this.permissionsEnum.Users_CheckIns_Add]))
       rolesTemp.push({ label: "Check In", value: RolesEnum.CheckIn, icon: "fa-solid fa-user-check", color: 'green' });

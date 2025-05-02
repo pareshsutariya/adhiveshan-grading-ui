@@ -5,7 +5,7 @@ export interface GradingTopic {
     description?: string,
     sequence?: number;
     round?: number;
-    requiredProctors?: number;
+    requiredJudges?: number;
     weightageOptions?: number[];
     status?: string;
 
