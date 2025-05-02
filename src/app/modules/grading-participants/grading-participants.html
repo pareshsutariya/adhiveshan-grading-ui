@@ -145,7 +145,7 @@
                                     Topic Name
                                 </th>
                                 <th class="whitespace-nowrap">
-                                    Score
+                                    Marks
                                 </th>
                             </tr>
                         </ng-template>
@@ -154,7 +154,7 @@
                         <ng-template #body let-item>
                             <tr [style]="{'color': item.color}">
                                 <td class="whitespace-nowrap align-top">{{ item.topicName }}</td>
-                                <td class="whitespace-nowrap align-top"> {{ item.score }} </td>
+                                <td class="whitespace-nowrap align-top"> {{ item.marks }} </td>
                             </tr>
                         </ng-template>
                     </p-table>
@@ -190,7 +190,10 @@
                     Topic Name
                 </th>
                 <th class="whitespace-nowrap" style="width: 200px;">
-                    Score
+                    Marks
+                </th>
+                <th class="whitespace-nowrap" style="width: 200px;">
+                    Maximum Allowed Marks
                 </th>
             </tr>
         </ng-template>
@@ -198,17 +201,19 @@
         <!-- Grading Topics List View Data -->
         <ng-template #body let-item>
             <tr [style]="{'color': item.color}">
-                <td class="whitespace-nowrap align-top">{{ item.topicName }}</td>
-                <td [pEditableColumn]="item.score" pEditableColumnField="score">
+                <td class="whitespace-nowrap">{{ item.topicName }}</td>
+                <td [pEditableColumn]="item.marks" pEditableColumnField="marks">
                     <p-cellEditor>
                         <ng-template #input>
-                            <input pInputText type="text" [(ngModel)]="item.maximumMarks" />
+                            <input pInputText type="number" [(ngModel)]="item.marks" (change)="onGradeChanged(item)"
+                                max="{{item.maximumMarks}}" />
                         </ng-template>
                         <ng-template #output>
-                            {{ item.score }}
+                            {{ item.marks }}
                         </ng-template>
                     </p-cellEditor>
                 </td>
+                <td class="whitespace-nowrap">{{ item.maximumMarks }}</td>
             </tr>
         </ng-template>
     </p-table>

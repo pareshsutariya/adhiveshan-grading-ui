@@ -123,16 +123,19 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.getParticipantGrades();
     }
 
-    onGradeChanged(gradingTopicId: number, score: number){
+    hideDialog() {
+        this.dialog = false;
+    }
+
+    onGradeChanged(model: Grade){
+
+        if(model.marks! > model.maximumMarks!)
+            return;
 
         this.layoutService.isDataLoading.set(true);
 
-        let model : Grade = {
-            misId: this.participantMISId,
-            gradingTopicId: gradingTopicId,
-            score: score,
-            judgeUserId: this.loginUserId,
-        };
+        model.misId= this.participantMISId;
+        model.judgeUserId= this.loginUserId;
         
         this.gradesService.Save(model).subscribe(data=>{
             this.layoutService.isDataLoading.set(false);

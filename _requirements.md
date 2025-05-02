@@ -9,7 +9,7 @@
 - [ ] Events: Region admin should be able to change only Event DateTime field
 
 - [x] Grade Topics: Remove Required Proctor option from grading question creation view
-- [ ] Grade Topics: Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
+- [x] Grade Topics: Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 - [ ] Grade Topics: editable grid / Section and Attributes
 - [ ] Grade Topics: Weightage Options: no dropdown, Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 

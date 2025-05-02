@@ -4,10 +4,7 @@ export interface GradingTopic {
     name?: string,
     description?: string,
     sequence?: number;
-    round?: number;
-    requiredJudges?: number;
     maximumMarks?: number;
-    weightageOptions?: number[];
     status?: string;
 
     // ----------
