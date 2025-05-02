@@ -72,24 +72,6 @@ export class GradingTopicsList extends BaseComponent implements OnInit {
     table.filterGlobal("", 'contains');
   }
 
-  addGrade(){
-    if(!this.addOrEditItem.weightageOptions) 
-      this.addOrEditItem.weightageOptions = [];
-
-    this.addOrEditItem.weightageOptions?.push(0.5);
-  }
-
-  updateGrade(index: number, event: any){
-    this.addOrEditItem.weightageOptions![index]= event.target.value;
-  }
-
-  removeGrade(index: number){
-    if(!this.addOrEditItem.weightageOptions) 
-      this.addOrEditItem.weightageOptions = [];
-
-    this.addOrEditItem.weightageOptions?.splice(index, 1);
-  }
-
   isValid() {
     //console.log(this.addOrEditItem);
 

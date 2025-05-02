@@ -202,8 +202,7 @@
                 <td [pEditableColumn]="item.score" pEditableColumnField="score">
                     <p-cellEditor>
                         <ng-template #input>
-                            <p-select [options]="item.weightageOptions" [(ngModel)]="item.score"
-                                (onChange)="onGradeChanged(item.gradingTopicId, $event.value)" fluid />
+                            <input pInputText type="text" [(ngModel)]="item.maximumMarks" />
                         </ng-template>
                         <ng-template #output>
                             {{ item.score }}
