@@ -5,28 +5,27 @@
 - [x] Grade Topics: Remove Required Proctor option from grading question creation view
 - [x] Grade Topics: Weightage Options: no dropdown, Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 
-- [ ] Participants: Allow to update field: HostCenter
-- [ ] Participants:Use HostCenter if provided otherwise use "Center"
+- [ ] Participants: Allow to update field: HostCenter (1.0)
+- [ ] Participants: While searching, use HostCenter if provided otherwise use "Center" (0.5)
+
+- [ ] Gradeing: Provide global search (0.5)
+- [ ] Gradeing: use BAPSID everywhere to search (0.5)
+- [ ] Gradeing: For judges, on grading screen include a search bar. When they search or scan a BAPS ID, delegate's information should be displayed only if it matches one of the judge's assigned skills
+- [ ] Gradeing: Provide start button for each skill of the candidate (0.5)
+- [ ] Gradeing: Provide Submit button (0.5)
+- [ ] Gradeing: locking approach
+
+- [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal (0.5)
+- [ ] Users: Events: show only assigned events (0.5)
 
 - [ ] Events: Region admin should be able to change only Event DateTime field
 
+## =====
+
 - [ ] Grade Topics: editable grid / Section and Attributes
-
-- [ ] Gradeing: Provide global search
-- [ ] Gradeing: use BAPSID everywhere to search
-- [ ] Gradeing: For judges, on grading screen include a search bar. When they search or scan a BAPS ID, delegate's information should be displayed only if it matches one of the judge's assigned skills
-- [ ] Gradeing: Provide start button for each skill of the candidate
-- [ ] Gradeing: Provide Submit button
-- [ ] Gradeing: locking approach
-
-- [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal
+- [ ] Include Room Schedule module
 - [ ] Users: Judge room assignment
-- [ ] Users: Events: show only assigned events
 - [ ] Users: Pull user info by MISID using external API
-
-Room Schedule modules:
-
-- Include this module
 
 ## ===== TECH =====
 
