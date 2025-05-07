@@ -3,7 +3,7 @@ export * from "../models/competitionEvent";
 export * from "../models/grade";
 export * from "../models/grading-topic";
 export * from "../models/participant";
-export * from "../models/ParticipantUpdateHostCenter";
+export * from "../models/participantUpdateHostCenter";
 export * from "../models/rolePermissions";
 export * from "../models/skill-category";
 export * from "../models/user";
