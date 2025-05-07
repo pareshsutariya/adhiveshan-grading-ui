@@ -3,6 +3,7 @@ export interface Participant {
   bapsId?: string;
   region?: string;
   center?: string;
+  hostCenter?: string;
   zone?: string;
   firstName?: string;
   middleName?: string;

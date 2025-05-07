@@ -8,6 +8,7 @@ import { MessageService } from "primeng/api";
 import * as XLSX from "xlsx";
 import { Participant } from "../../models/participant";
 import { BaseComponent } from "../../services/_baseComponent";
+import { ParticipantUpdateHostCenter } from "../../models/_index";
 
 @Component({
   selector: "app-import-participants",
@@ -36,6 +37,7 @@ export class ImportParticipants extends BaseComponent implements OnInit {
   data = signal<Participant[]>([]);
   dialog: boolean = false;
   addOrEditItem!: Participant;
+  submitted: boolean = false;
 
   ngOnInit() {
 
@@ -79,10 +81,12 @@ export class ImportParticipants extends BaseComponent implements OnInit {
 
   openView(participant: Participant) {
     this.addOrEditItem = { ...participant };
+    this.submitted = false;
     this.dialog = true;
   }
 
   hideDialog() {
+    this.submitted = false;
     this.dialog = false;
   }
 
@@ -169,5 +173,23 @@ export class ImportParticipants extends BaseComponent implements OnInit {
     };
 
     fileReader.readAsArrayBuffer(file);
+  }
+
+  updateHostCenter() {
+    this.submitted = true;
+
+    this.layoutService.isDataLoading.set(true);
+
+    let model: ParticipantUpdateHostCenter = { misId: this.addOrEditItem.misId, hostCenter: this.addOrEditItem.hostCenter};
+
+    this.participantsService.UpdateHostCenter(model).subscribe(c => {
+        this.layoutService.isDataLoading.set(false);
+
+        this.messageService.add({ severity: "success", summary: "Successful", detail: "Host Update successfully", life: 1000 });
+
+        this.dialog = false;
+        this.addOrEditItem = {};
+        this.loadData();
+    });
   }
 }

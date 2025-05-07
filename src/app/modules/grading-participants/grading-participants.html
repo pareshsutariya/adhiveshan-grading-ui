@@ -127,6 +127,15 @@
                                 [readOnly]="true" fluid />
                         </div>
                     </div>
+
+                    <!-- Host Center -->
+                    <div class="grid grid-cols-12 gap-2 mb-1">
+                        <label class="flex font-bold items-center col-span-4">Host Center</label>
+                        <div class="col-span-8">
+                            <input pInputText type="text" id="hostCenter" [(ngModel)]="participant.hostCenter"
+                                [readonly]="true" fluid />
+                        </div>
+                    </div>
                 </p-card>
 
                 <!-- Participant Grading Topics -->

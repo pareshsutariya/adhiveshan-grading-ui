@@ -5,8 +5,8 @@
 - [x] Grade Topics: Remove Required Proctor option from grading question creation view
 - [x] Grade Topics: Weightage Options: no dropdown, Add maximum weightage field, and in the dropdown while grading, show values in 0.5 increments
 
-- [ ] Participants: Allow to update field: HostCenter (1.0)
-- [ ] Participants: While searching, use HostCenter if provided otherwise use "Center" (0.5)
+- [x] Participants: Allow to update field: HostCenter (1.0)
+- [x] Participants: While searching, use HostCenter if provided otherwise use "Center" (0.5)
 
 - [ ] Gradeing: Provide global search (0.5)
 - [ ] Gradeing: use BAPSID everywhere to search (0.5)

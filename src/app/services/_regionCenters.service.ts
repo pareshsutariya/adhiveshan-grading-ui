@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import moment, { Moment } from "moment";
-import { Center } from "../models/center";
 
 @Injectable({ providedIn: 'root' })
 export class RegionCenterService {

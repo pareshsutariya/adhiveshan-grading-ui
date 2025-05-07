@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 import { Injectable } from "@angular/core";
 import { catchError, map, Observable, of, throwError } from "rxjs";
 import { Constants } from "./_constants";
-import { Participant } from "../models/participant";
+import { Participant, ParticipantUpdateHostCenter } from "../models/_index";
 
 @Injectable({providedIn: 'root'})
 export class ParticipantsService {
@@ -44,6 +44,14 @@ export class ParticipantsService {
         );
       })
     )
+  }
+
+  UpdateHostCenter(item: ParticipantUpdateHostCenter) {
+    let headers = new HttpHeaders({ "Content-Type": "application/json" });
+
+    return this.http
+      .post(Constants.WebApiBaseUrl + "/Participants/UpdateHostCenter", JSON.stringify(item), { headers: headers })
+      .pipe();
   }
 
   Import(items: Participant[]) {

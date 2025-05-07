@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Constants } from "./_constants";
-import { RolePermissions, RolePermissionsPivot } from "../models/rolePermissions";
+import { RolePermissions, RolePermissionsPivot } from "../models/_index";
 
 @Injectable({providedIn: 'root'})
 export class RolePermissionsService {

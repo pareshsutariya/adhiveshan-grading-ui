@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Constants } from './_constants';
-import { User } from '../models/user';
+import { User } from '../models/_index';
 
 @Injectable({
   providedIn: 'root'
