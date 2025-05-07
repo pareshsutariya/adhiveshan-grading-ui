@@ -13,11 +13,10 @@
 - [ ] Grading: Provide start button for each skill of the candidate (0.5)
 - [ ] Grading: Provide Submit button (0.5)
 
-- [ ] Users: Bulk Import excel format
-- [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role
 - [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal (0.5)
 - [ ] Users: Events: show only assigned events (0.5)
-- [ ] Users: Proctor login should be disbled as soon as the event ends
+- [ ] Users: Bulk Import excel format
+- [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role
 
 - [ ] Events: Region admin should be able to change only Event DateTime field
 
@@ -28,6 +27,7 @@
 - [ ] Grading: need to decide the grade locking approach
 - [ ] Users: Judge room assignment
 - [ ] Users: Pull user info by MISID using external API
+- [ ] Users: Proctor login should be disbled as soon as the event ends
 
 ## ===== TECH =====
 
