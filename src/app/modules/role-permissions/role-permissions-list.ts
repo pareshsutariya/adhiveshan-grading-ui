@@ -6,7 +6,7 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
 
-import { RolePermissions, RolePermissionsPivot } from "../../models/rolePermissions";
+import { RolePermissionsPivot } from "../../models/_index";
 
 @Component({
   selector: "app-role-permissions-list",

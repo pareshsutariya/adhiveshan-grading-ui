@@ -1,13 +1,12 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
+import { Participant, Grade, GradingTopic } from "../../models/_index";
+
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
-import { Participant } from "../../models/participant";
 import { HttpErrorResponse } from "@angular/common/http";
-import { GradingTopic } from "../../models/grading-topic";
 import { Table } from "primeng/table";
-import { Grade } from "../../models/grade";
 
 @Component({
   selector: "app-grading-participants",

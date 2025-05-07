@@ -4,11 +4,10 @@ import { Table } from "primeng/table";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
+import { Participant, ParticipantUpdateHostCenter } from "../../models/_index";
 
 import * as XLSX from "xlsx";
-import { Participant } from "../../models/participant";
 import { BaseComponent } from "../../services/_baseComponent";
-import { ParticipantUpdateHostCenter } from "../../models/_index";
 
 @Component({
   selector: "app-import-participants",

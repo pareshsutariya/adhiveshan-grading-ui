@@ -6,8 +6,7 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
 
-import { User } from "../../models/user";
-import { CompetitionEvent } from "../../models/competitionEvent";
+import { User, CompetitionEvent } from "../../models/_index";
 import { RolesEnum } from "../../services/rolePermissions.service";
 
 @Component({

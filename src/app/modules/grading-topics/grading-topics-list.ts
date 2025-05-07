@@ -2,12 +2,10 @@ import { Component, OnInit, signal, ViewChild } from "@angular/core";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
+import { SkillCategory, GradingTopic } from "../../models/_index";
 
 import { MessageService } from "primeng/api";
 import { Table } from "primeng/table";
-
-import { SkillCategory } from "../../models/skill-category";
-import { GradingTopic } from "../../models/grading-topic";
 import { BaseComponent } from "../../services/_baseComponent";
 
 @Component({

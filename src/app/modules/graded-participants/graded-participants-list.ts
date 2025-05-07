@@ -6,8 +6,7 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
 
-import { SkillCategory } from "../../models/skill-category";
-import { Grade } from "../../models/grade";
+import { Grade } from "../../models/_index";
 
 @Component({
   selector: "app-graded-participants-list",

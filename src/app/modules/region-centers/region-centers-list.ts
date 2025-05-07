@@ -6,8 +6,6 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../../services/_baseComponent";
 
-import { RolePermissions, RolePermissionsPivot } from "../../models/rolePermissions";
-
 @Component({
   selector: "app-region-centers-list",
   standalone: true,
