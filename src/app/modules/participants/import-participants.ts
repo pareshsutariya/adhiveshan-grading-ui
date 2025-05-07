@@ -7,7 +7,7 @@ import { MessageService } from "primeng/api";
 import { Participant, ParticipantUpdateHostCenter } from "../../models/_index";
 
 import * as XLSX from "xlsx";
-import { BaseComponent } from "../../services/_baseComponent";
+import { BaseComponent } from "../base-component/baseComponent";
 
 @Component({
   selector: "app-import-participants",

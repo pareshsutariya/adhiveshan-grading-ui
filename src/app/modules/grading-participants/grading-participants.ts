@@ -4,7 +4,7 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { Participant, Grade, GradingTopic } from "../../models/_index";
 
 import { MessageService } from "primeng/api";
-import { BaseComponent } from "../../services/_baseComponent";
+import { BaseComponent } from "../base-component/baseComponent";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Table } from "primeng/table";
 

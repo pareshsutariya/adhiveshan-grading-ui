@@ -1,16 +1,16 @@
 import { Router } from "@angular/router";
 import { MessageService } from "primeng/api";
-import { LayoutService } from "../layout/service/layout.service";
-import { Constants } from "./_constants";
-import { AuthService } from "./auth.service";
-import { GradingTopicsService } from "./grading-topics.service";
-import { UsersService } from "./users.service";
 import { Directive } from "@angular/core";
-import { RegionCenterService } from "./_regionCenters.service";
-import { CompetitionEventsService } from "./competitionEvents.service";
-import { PermissionsEnum, RolePermissionsService, RolesEnum } from "./rolePermissions.service";
-import { ParticipantsService } from "./participants.service";
-import { GradesService } from "./grades.service";
+import { LayoutService } from "../../layout/service/layout.service";
+import { Constants } from "../../services/_constants";
+import { RegionCenterService } from "../../services/_regionCenters.service";
+import { AuthService } from "../../services/auth.service";
+import { CompetitionEventsService } from "../../services/competitionEvents.service";
+import { GradesService } from "../../services/grades.service";
+import { GradingTopicsService } from "../../services/grading-topics.service";
+import { ParticipantsService } from "../../services/participants.service";
+import { RolePermissionsService, PermissionsEnum, RolesEnum } from "../../services/rolePermissions.service";
+import { UsersService } from "../../services/users.service";
 
 @Directive({ selector: "base-component" })
 export abstract class BaseComponent {

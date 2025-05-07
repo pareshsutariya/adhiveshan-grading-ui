@@ -6,7 +6,7 @@ import { SkillCategory, GradingTopic } from "../../models/_index";
 
 import { MessageService } from "primeng/api";
 import { Table } from "primeng/table";
-import { BaseComponent } from "../../services/_baseComponent";
+import { BaseComponent } from "../base-component/baseComponent";
 
 @Component({
   selector: "app-grading-topics-list",

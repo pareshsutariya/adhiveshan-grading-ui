@@ -4,7 +4,7 @@ import { Table } from "primeng/table";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
-import { BaseComponent } from "../../services/_baseComponent";
+import { BaseComponent } from "../base-component/baseComponent";
 
 import { User, CompetitionEvent } from "../../models/_index";
 import { RolesEnum } from "../../services/rolePermissions.service";
