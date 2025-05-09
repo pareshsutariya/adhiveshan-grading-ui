@@ -110,6 +110,18 @@ export class Users extends BaseComponent implements OnInit {
         return;
       }
 
+      // Search user gender should match with login user gender
+      if(!this.authService.HasUserRoles([RolesEnum.NationalAdmin])){
+
+        console.log(this.authService.GetLoginUser().assignedGenders, participant.gender);
+
+        if(this.authService.GetLoginUser().assignedGenders!.indexOf(participant.gender) < 0){
+          this.messageService.add({ severity: "error", summary: "Validation", detail: "Participant gender is not matching with login user gender", life: 3000 });
+        
+          return;
+        }
+      }
+
       this.addOrEditItem.fullName = participant.fullName;
       this.addOrEditItem.region = participant.region;
       this.addOrEditItem.center = participant.center;
