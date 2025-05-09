@@ -62,7 +62,7 @@ export class Users extends BaseComponent implements OnInit {
     });
 
     this.layoutService.isDataLoading.set(true);
-    this.usersService.GetItems().subscribe(data => { 
+    this.usersService.GetUsersForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(data => { 
 
       // Filter out National Admin data
       if(!this.authService.HasUserRoles([this.rolesEnum.NationalAdmin])){

@@ -35,6 +35,12 @@ export class AuthService {
     return user.userId!;
   }
 
+  GetLoginUserBAPSId() : string {
+    let user = this.GetLoginUser();
+
+    return user?.bapsId!;
+  }
+
   GetLoginUserInitial() : string {
     let loginUser = this.GetLoginUser();
     let initial = "";

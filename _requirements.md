@@ -18,11 +18,14 @@
 - [x] Users: Add: Search by BAPS Id should match the gender of login user RA
 - [ ] Users: List: For RA show only his/her region's users according to his/her gender (0.5)
 - [ ] Users: Events: show only assigned events (0.5)
+- [ ] Users: Edit User: Login user shouldn't be able to change his/her own user (0.5)
 
-- [ ] Users: Bulk Import excel format
-- [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role
+- [ ] Users: Bulk Import excel format (0.5)
+- [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role (1.0)
 
-- [ ] Events: Region admin should be able to change only Event DateTime field
+- [ ] Events: Region admin should be able to change only Event DateTime field (0.5)
+
+- [ ] Create Requirement files for tech and functional (0.5)
 
 ## =====
 

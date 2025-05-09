@@ -8,8 +8,8 @@ import { User } from "../models/_index";
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  GetItems(): Observable<Array<User>> {
-    return this.http.get<Array<User>>(Constants.WebApiBaseUrl + "/Users");
+  GetUsersForLoginUser(loginUserBapsId: string): Observable<Array<User>> {
+    return this.http.get<Array<User>>(Constants.WebApiBaseUrl + "/Users/GetUsersForLoginUser/" + loginUserBapsId);
   }
 
   GetById(id: number): Observable<User> {
