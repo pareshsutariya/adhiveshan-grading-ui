@@ -64,7 +64,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetParticipantForJudging(this.participantMISId, skillCategory, this.loginUserId)
+        this.participantsService.GetParticipantForJudging(this.participantMISId, this.loginUserId)
         .subscribe({
             next: (data: any) => {
                 
@@ -73,11 +73,11 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
                 this.participant = JSON.parse(data);
                 if(!this.participant){
-                    this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId} for ${skillCategory}`, life: 3000 });
+                    this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId}`, life: 3000 });
                     return;
                 }
                 else {
-                    this.getParticipantGrades();
+                    //this.getParticipantGrades();
                 }
             },
             error: (err) => {
