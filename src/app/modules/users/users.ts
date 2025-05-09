@@ -46,7 +46,7 @@ export class Users extends BaseComponent implements OnInit {
       rolesTemp.push({ label: "Judge", value: RolesEnum.Judge, icon: "fa fa-user-pen", color: 'Chocolate' });
 
     if(this.authService.HasUserPermissions([this.permissionsEnum.Users_NationalAdmins_Add]))
-      rolesTemp.push({ label: "National Admin", value: RolesEnum.ResultCommittee, icon: "fa-solid fa-square-poll-vertical", color: 'purple' });
+      rolesTemp.push({ label: "Result Committee", value: RolesEnum.ResultCommittee, icon: "fa-solid fa-square-poll-vertical", color: 'purple' });
 
     if(this.authService.HasUserPermissions([this.permissionsEnum.Users_CheckIns_Add]))
       rolesTemp.push({ label: "Check In", value: RolesEnum.CheckIn, icon: "fa-solid fa-user-check", color: 'green' });
@@ -56,7 +56,7 @@ export class Users extends BaseComponent implements OnInit {
     this.skillCategories.set(this.constants.SkillCategories);
 
     this.layoutService.isDataLoading.set(true);
-    this.eventsService.GetItems().subscribe(data => { 
+    this.eventsService.GetEventsForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(data => { 
       this.events.set(data);
       this.layoutService.isDataLoading.set(false);
     });

@@ -12,6 +12,10 @@ export class CompetitionEventsService {
     return this.http.get<Array<CompetitionEvent>>(Constants.WebApiBaseUrl + "/CompetitionEvents");
   }
 
+  GetEventsForLoginUser(loginUserBapsId: string): Observable<Array<CompetitionEvent>> {
+    return this.http.get<Array<CompetitionEvent>>(Constants.WebApiBaseUrl + "/CompetitionEvents/GetEventsForLoginUser/" + loginUserBapsId);
+  }
+
   GetById(id: number): Observable<CompetitionEvent> {
     return this.http.get<CompetitionEvent>(Constants.WebApiBaseUrl + `/CompetitionEvents/getById/${id}`);
   }
