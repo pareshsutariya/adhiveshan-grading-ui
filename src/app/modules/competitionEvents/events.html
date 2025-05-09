@@ -120,7 +120,7 @@
                 <label for="startDate" class="flex font-bold items-center col-span-4">Start Date*</label>
                 <div class="col-span-8">
                     <p-calendar name="startDate" [style]="{width:'100%'}" [(ngModel)]="startDateValue" [showTime]="true"
-                        [showIcon]="true">
+                        [showIcon]="true" [disabledDays]="disabledDays" [readonlyInput]="true">
                     </p-calendar>
                     <small class="text-red-500" *ngIf="submitted && !startDateValue">Start Date is
                         required.</small>
@@ -132,7 +132,7 @@
                 <label for="startDate" class="flex font-bold items-center col-span-4">End Date*</label>
                 <div class="col-span-8">
                     <p-calendar inputId="endDate" [style]="{width:'100%'}" [(ngModel)]="endDateValue" [showTime]="true"
-                        [showIcon]="true" />
+                        [showIcon]="true" [disabledDays]="disabledDays" [readonlyInput]="true" />
                     <small class="text-red-500" *ngIf="submitted && !endDateValue">End Date is
                         required.</small>
                 </div>

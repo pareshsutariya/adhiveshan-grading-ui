@@ -23,7 +23,7 @@
 - [ ] Users: Bulk Import excel format (0.5)
 - [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role (1.0)
 
-- [ ] Events: Region admin should be able to change only Event DateTime field (0.5)
+- [x] Events: Region admin should be able to change only Event DateTime field
 
 - [ ] Create Requirement files for tech and functional (0.5)
 - [ ] VS Extension for dotnet
@@ -44,6 +44,7 @@
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
 - [ ] API: Return roles/permissions for a given user (0.5)
+- [ ] API: Consider different time zone
 
 - API: throw error as object/json so no need to do JSON.parse (0.5)
 

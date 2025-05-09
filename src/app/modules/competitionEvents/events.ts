@@ -6,6 +6,7 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { CompetitionEvent } from "../../models/_index";
 import { BaseComponent } from "../base-component/baseComponent";
+import { RolesEnum } from "../../services/rolePermissions.service";
 
 @Component({
   selector: "app-events",
@@ -25,8 +26,13 @@ export class Events extends BaseComponent implements OnInit {
   submitted: boolean = false;
   public startDateValue: Date = new Date();
   public endDateValue: Date = new Date();
+  public disabledDays: number[] = [];
 
   ngOnInit() {
+
+    // Other than national admin, disable dates to be changed
+    this.disabledDays = !this.authService.HasUserRoles([RolesEnum.NationalAdmin]) ? [0,1,2,3,4,5,6] : [];
+
     this.loadData();
   }
 
