@@ -114,7 +114,7 @@ export class AuthService {
   }
 
   IsSuperAdminUser():boolean {
-    if (this.GetLoginUser() && this.GetLoginUser().misId=='vyom131313') {
+    if (this.GetLoginUser() && this.GetLoginUser().bapsId=='vyom131313') {
         return true; 
     }
     return false;
@@ -151,7 +151,7 @@ export class AuthService {
       return new Observable<User>(observable => {
         let user: User = {};
         user.fullName = "Paresh";
-        user.misId = "vyom131313";
+        user.bapsId = "vyom131313";
         user.status = "ACTIVE";
         user.assignedRoles = [];
         observable.next(user);

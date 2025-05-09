@@ -16,6 +16,10 @@ export class ParticipantsService {
     return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMisId/${misId}`);
   }
 
+  GetByBAPSId(bapsId: string): Observable<Participant> {
+    return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByBAPSId/${bapsId}`);
+  }
+
   GetParticipantForJudging(bapsId: string, loginUserId: number) {
     return this.http.get(Constants.WebApiBaseUrl + `/Participants/GetParticipantForJudging/${bapsId}/${loginUserId}`, {responseType: 'text'})
     .pipe(

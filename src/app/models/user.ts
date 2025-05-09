@@ -5,7 +5,7 @@ export interface User {
     center?: string;
 
     fullName?: string;
-    misId?: string;
+    bapsId?: string;
     password?: string;
     status?: string;
 

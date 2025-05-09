@@ -13,8 +13,12 @@
 - [x] Grading: Provide start button for each skill of the candidate
 - [x] Grading: Hide grading button if Judge doesn't have skill
 
-- [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on RA's gender (0.5)
+- [x] Users: For RA, when adding a new proctor, gender field should be auto selected based on RA's gender
+- [x] Users: Add/Login: Use BAPS ID rather than MIS Id
+- [ ] Users: Add: Search by BAPS Id should match the gender of login user RA
+- [ ] Users: List: For RA show only his/her region's users according to his/her gender (0.5)
 - [ ] Users: Events: show only assigned events (0.5)
+
 - [ ] Users: Bulk Import excel format
 - [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role
 

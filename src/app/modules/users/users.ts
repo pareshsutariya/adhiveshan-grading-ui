@@ -92,15 +92,15 @@ export class Users extends BaseComponent implements OnInit {
     this.submitted = false;
   }
 
-  searchByMisId(){
-    if(!this.addOrEditItem.misId || isNaN(Number(this.addOrEditItem.misId!))){
-      this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter a valid MIS Id", life: 3000 });
+  searchByBAPSId(){
+    if(!this.addOrEditItem.bapsId){
+      this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter a valid BAPS Id", life: 3000 });
       return;
     }
 
     this.layoutService.isDataLoading.set(true);
 
-    this.participantsService.GetByMisId(Number(this.addOrEditItem.misId!)).subscribe(participant => {
+    this.participantsService.GetByBAPSId(this.addOrEditItem.bapsId).subscribe(participant => {
       this.layoutService.isDataLoading.set(false);
 
       if(participant == null) {
@@ -137,7 +137,7 @@ export class Users extends BaseComponent implements OnInit {
   }
 
   isValid() {
-    if(!this.addOrEditItem.misId || this.addOrEditItem.misId.trim().length == 0)
+    if(!this.addOrEditItem.bapsId || this.addOrEditItem.bapsId.trim().length == 0)
       return false;
 
     if(!this.addOrEditItem.region || this.addOrEditItem.region.trim().length == 0)
