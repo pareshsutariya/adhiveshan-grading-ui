@@ -13,8 +13,6 @@
 - [x] Grading: Provide start button for each skill of the candidate
 - [x] Grading: Hide grading button if Judge doesn't have skill
 
-- [ ] UI: Auth Guard (0.5)
-
 - [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal (0.5)
 - [ ] Users: Events: show only assigned events (0.5)
 - [ ] Users: Bulk Import excel format
@@ -34,6 +32,7 @@
 
 ## ===== TECH =====
 
+- [x] UI: Auth Guard (0.5)
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
 - [ ] API: Return roles/permissions for a given user (0.5)
