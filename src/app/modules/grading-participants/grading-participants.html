@@ -16,8 +16,8 @@
                 <p-inputgroup-addon>
                     <i class=" fa-solid fa-hashtag"></i>
                 </p-inputgroup-addon>
-                <p-inputnumber id="candidateMISId" mode="decimal" [(ngModel)]="participantBAPSId" [useGrouping]="false"
-                    placeholder="MIS Id" required autofocus fluid />
+                <input pInputText type="text" id="candidateMISId" [(ngModel)]="participantBAPSId" placeholder="MIS Id"
+                    (ngModelChange)="onChangeCandidateMISId($event)" required autofocus fluid />
                 <p-inputgroup-addon>
                     <p-button icon="pi pi-search" (onClick)="searchParticipant('')" />
                 </p-inputgroup-addon>

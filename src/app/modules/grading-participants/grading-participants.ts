@@ -53,7 +53,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         console.log($event);
     }
 
-    onCandidateMISId($event: any) {
+    onChangeCandidateMISId($event: any) {
         this.participant = {};
     }
 
