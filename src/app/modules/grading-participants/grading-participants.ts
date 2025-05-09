@@ -17,7 +17,7 @@ import { Table } from "primeng/table";
 export class GradingParticipants extends BaseComponent implements OnInit {
 
     judgeSkillCategories: any[] = [];
-    participantBAPSId: string | undefined = "AT1212101";
+    participantBAPSId: string | undefined = "AL6415001";
     participant: Participant | undefined;
     loginUserId: number = 1;
     searchError: string | undefined;
@@ -48,8 +48,6 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     onTabChange($event: any){
         this.participant = {};
         this.searchError = undefined;
-        this.selectedSkillCategory = $event;
-        this.selectedSkillCategoryColor = this.judgeSkillCategories.filter(c=>c.value == this.selectedSkillCategory)[0]?.color;
         console.log($event);
     }
 
@@ -95,21 +93,6 @@ export class GradingParticipants extends BaseComponent implements OnInit {
           });
     }
 
-    // getBySkillCategory(){
-    //     this.layoutService.isDataLoading.set(true);
-
-    //     this.gradingTopicsService.GetBySkillCategory(this.selectedSkillCategory!)
-    //     .subscribe({
-    //         next: (data: any) => {
-
-    //             console.log(data);
-
-    //             this.layoutService.isDataLoading.set(false);
-    //             this.gradingTopics.set(data);
-    //         }
-    //       });
-    // }
-
     getParticipantGrades(){
         this.layoutService.isDataLoading.set(true);
 
@@ -120,8 +103,16 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         });
     }
 
-    startGrading() {
+    startGrading(skill: string, category: string) {
         this.dialog = true;
+
+        category = category.replace("(", "").replace(")", "").replace("Gujarati", "").replace("English", "").trim();
+        let skillCategory = `${skill}: ${category}`;
+
+        this.selectedSkillCategory = skillCategory;
+        this.selectedSkillCategoryColor = this.judgeSkillCategories.filter(c=>c.value == skillCategory)[0]?.color;
+
+        console.log(skillCategory, this.judgeSkillCategories, this.selectedSkillCategoryColor);
 
         this.getParticipantGrades();
     }
@@ -161,3 +152,18 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         });
     }
 }
+
+// getBySkillCategory(){
+//     this.layoutService.isDataLoading.set(true);
+
+//     this.gradingTopicsService.GetBySkillCategory(this.selectedSkillCategory!)
+//     .subscribe({
+//         next: (data: any) => {
+
+//             console.log(data);
+
+//             this.layoutService.isDataLoading.set(false);
+//             this.gradingTopics.set(data);
+//         }
+//       });
+// }

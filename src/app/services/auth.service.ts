@@ -99,9 +99,8 @@ export class AuthService {
 
     let skillCategory = `${skill}: ${category}`;
 
-    console.log("skillCategory", skillCategory);
-
-    console.log("user.assignedSkillCategories", user.assignedSkillCategories);
+    // console.log("skillCategory", skillCategory);
+    // console.log("user.assignedSkillCategories", user.assignedSkillCategories);
 
     if(!user || !user.assignedSkillCategories){
 

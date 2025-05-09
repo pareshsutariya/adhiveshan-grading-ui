@@ -27,8 +27,7 @@
 
     <!-- Error message -->
     <p-message severity="secondary" *ngIf="participantBAPSId && searchError" size="large">
-        BAPS Id: {{participantBAPSId}} <br>
-        Skill: <span [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span> <br><br>
+        BAPS Id: {{participantBAPSId}} <br><br>
         <span style="color:red">{{searchError}}</span>
     </p-message>
 </div>
@@ -107,7 +106,8 @@
             <div class="col-span-6" *ngIf="participant.emcee_Category && 
                 this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants]) && 
                 this.authService.HasUserSkill('Emcee', participant.emcee_Category)">
-                <p-button pRipple severity="info" [raised]="true" (onClick)="startGrading()">
+                <p-button pRipple severity="info" [raised]="true"
+                    (onClick)="startGrading('Emcee', participant.emcee_Category)">
                     <WindowMaximizeIcon pButtonIcon />
                     <span pButtonLabel>
                         <b>Start Grading <span class="underline">{{participant!.fullName}}</span>'s Emcee Skill
@@ -129,7 +129,8 @@
             <div class="col-span-6" *ngIf="participant.speech_Pravachan_Category && 
                 this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants]) && 
                 this.authService.HasUserSkill('Pravachan', participant.speech_Pravachan_Category)">
-                <p-button pRipple [raised]="true" (onClick)="startGrading()">
+                <p-button pRipple [raised]="true"
+                    (onClick)="startGrading('Pravachan', participant.speech_Pravachan_Category)">
                     <WindowMaximizeIcon pButtonIcon />
                     <span pButtonLabel>
                         <b>Start Grading <span class="underline">{{participant!.fullName}}</span>' Pravachan Skill

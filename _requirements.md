@@ -12,7 +12,8 @@
 - [x] Grading: use BAPSID to search candidate
 - [x] Grading: Provide start button for each skill of the candidate
 - [x] Grading: Hide grading button if Judge doesn't have skill
-- [ ] Grading: Provide Submit button (0.5)
+
+- [ ] UI: Auth Guard (0.5)
 
 - [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal (0.5)
 - [ ] Users: Events: show only assigned events (0.5)
@@ -25,6 +26,7 @@
 
 - [ ] Grade Topics: editable grid / Section and Attributes
 - [ ] Include Room Schedule module
+- [ ] Grading: Provide Submit button (0.5)
 - [ ] Grading: need to decide the grade locking approach
 - [ ] Users: Judge room assignment
 - [ ] Users: Pull user info by MISID using external API
@@ -32,7 +34,6 @@
 
 ## ===== TECH =====
 
-- [ ] UI: Auth Guard (0.5)
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
 - [ ] API: Return roles/permissions for a given user (0.5)
