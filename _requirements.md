@@ -8,9 +8,10 @@
 - [x] Participants: Allow to update field: HostCenter
 - [x] Participants: While searching, use HostCenter if provided otherwise use "Center"
 
-- [ ] Grading: Provide global search (0.5)
-- [ ] Grading: use BAPSID to search candidate (0.5)
-- [ ] Grading: Provide start button for each skill of the candidate (0.5)
+- [x] Grading: Provide global search
+- [x] Grading: use BAPSID to search candidate
+- [x] Grading: Provide start button for each skill of the candidate
+- [x] Grading: Hide grading button if Judge doesn't have skill
 - [ ] Grading: Provide Submit button (0.5)
 
 - [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal (0.5)

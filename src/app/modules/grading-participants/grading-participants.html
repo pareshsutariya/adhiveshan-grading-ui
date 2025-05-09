@@ -104,9 +104,10 @@
             <div class="col-span-4">
                 <input pInputText type="text" [(ngModel)]="participant.emcee_Category" [readOnly]="true" fluid />
             </div>
-            <div class="col-span-6" *ngIf="participant.emcee_Category">
-                <p-button pRipple severity="info" [raised]="true" (onClick)="startGrading()"
-                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants])">
+            <div class="col-span-6" *ngIf="participant.emcee_Category && 
+                this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants]) && 
+                this.authService.HasUserSkill('Emcee', participant.emcee_Category)">
+                <p-button pRipple severity="info" [raised]="true" (onClick)="startGrading()">
                     <WindowMaximizeIcon pButtonIcon />
                     <span pButtonLabel>
                         <b>Start Grading <span class="underline">{{participant!.fullName}}</span>'s Emcee Skill
@@ -125,9 +126,10 @@
                     fluid />
             </div>
 
-            <div class="col-span-6" *ngIf="participant.speech_Pravachan_Category">
-                <p-button pRipple [raised]="true" (onClick)="startGrading()"
-                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants])">
+            <div class="col-span-6" *ngIf="participant.speech_Pravachan_Category && 
+                this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants]) && 
+                this.authService.HasUserSkill('Pravachan', participant.speech_Pravachan_Category)">
+                <p-button pRipple [raised]="true" (onClick)="startGrading()">
                     <WindowMaximizeIcon pButtonIcon />
                     <span pButtonLabel>
                         <b>Start Grading <span class="underline">{{participant!.fullName}}</span>' Pravachan Skill

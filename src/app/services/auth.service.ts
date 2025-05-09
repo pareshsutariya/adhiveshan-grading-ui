@@ -89,6 +89,31 @@ export class AuthService {
     return requiredPermissions?.filter(permission => userPermissions.includes(permission)).length > 0;
   }
 
+  HasUserSkill(skill: string, category: string): boolean {
+
+    if(this.IsSuperAdminUser()) return true;
+
+    let user = this.GetLoginUser();
+
+    category = category.replace("(", "").replace(")", "").replace("Gujarati", "").replace("English", "").trim();
+
+    let skillCategory = `${skill}: ${category}`;
+
+    console.log("skillCategory", skillCategory);
+
+    console.log("user.assignedSkillCategories", user.assignedSkillCategories);
+
+    if(!user || !user.assignedSkillCategories){
+
+      //console.log("requiredPermissions", requiredPermissions);
+      //console.log("userPermissions", userPermissions);
+  
+      return false;
+    }
+
+    return user.assignedSkillCategories!.includes(skillCategory);
+  }
+
   IsSuperAdminUser():boolean {
     if (this.GetLoginUser() && this.GetLoginUser().misId=='vyom131313') {
         return true; 
