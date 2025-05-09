@@ -19,8 +19,8 @@
 
 <!-- List View -->
 <p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['fullName', 'misId']"
-    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" scrollHeight="600px"
-    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users"
+    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" [scrollable]="true" [showCurrentPageReport]="true"
+    scrollHeight="650px" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users"
     [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 20, 30]">
 
     <!-- List View Header -->
@@ -67,7 +67,7 @@
             </td>
             <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.region }} - {{ item.center }}</td>
             <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.fullName }} <br>
-                #{{ item.misId }}
+                #{{ item.bapsId }}
             </td>
             <td [vAlign]="'top'">
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
@@ -98,17 +98,17 @@
                 </ul>
             </td>
             <td [vAlign]="'top'">
-                <ul>
-                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedEvents">
-                        <i class="pi pi-map"></i>
-                        {{item.region}} - {{item.hostCenter}} <br>
-
-                        <i class="fa-regular fa-calendar-days"></i>
-                        {{ item.startDate | date:'MM/dd/yyyy hh:mm a'}} <br>
-                        <i class="fa-regular fa-calendar-days"></i>
-                        {{ item.endDate | date:'MM/dd/yyyy hh:mm a'}}
-                    </li>
-                </ul>
+                <table [cellPadding]="5">
+                    <tr class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedEvents">
+                        <td>
+                            <i class="pi pi-map"></i> {{item.region}} - {{item.hostCenter}}
+                        </td>
+                        <td>
+                            <i class="fa-regular fa-calendar-days"></i> {{ item.startDate | date:'MM/dd/yyyy hh:mm a'}}
+                            - {{ item.endDate | date:'hh:mm a'}}
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </ng-template>
@@ -337,6 +337,7 @@
 
     <ng-template #footer>
         <p-button label="Cancel" icon="pi pi-times" text (click)="hideDialog()" />
-        <p-button label="Save" icon="pi pi-check" (click)="save()" />
+        <p-button label="Save" icon="pi pi-check" (click)="save()"
+            *ngIf="authService.GetLoginUserBAPSId() != addOrEditItem.bapsId" />
     </ng-template>
 </p-dialog>

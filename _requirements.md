@@ -16,9 +16,9 @@
 - [x] Users: For RA, when adding a new proctor, gender field should be auto selected based on RA's gender
 - [x] Users: Add/Login: Use BAPS ID rather than MIS Id
 - [x] Users: Add: Search by BAPS Id should match the gender of login user RA
-- [ ] Users: List: For RA show only his/her region's users according to his/her gender (0.5)
+- [x] Users: List: For RA show only his/her region's users according to his/her gender
+- [x] Users: Edit User: Login user shouldn't be able to change his/her own user
 - [ ] Users: Events: show only assigned events (0.5)
-- [ ] Users: Edit User: Login user shouldn't be able to change his/her own user (0.5)
 
 - [ ] Users: Bulk Import excel format (0.5)
 - [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role (1.0)
@@ -26,6 +26,7 @@
 - [ ] Events: Region admin should be able to change only Event DateTime field (0.5)
 
 - [ ] Create Requirement files for tech and functional (0.5)
+- [ ] VS Extension for dotnet
 
 ## =====
 
