@@ -77,4 +77,8 @@ export class Constants {
       { label: "Emcee: Shri Hari", value: "Emcee: Shri Hari", icon: "fa-solid fa-person", color: "orange" },
     ]
   }
+
+   GetColorForSkill(skill: string) {
+    return this.SkillCategories().filter((c: { label: string; })=>c.label == skill)[0].color;
+  }
 }

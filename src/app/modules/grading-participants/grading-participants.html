@@ -31,141 +31,122 @@
         Skill: <span [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span> <br><br>
         <span style="color:red">{{searchError}}</span>
     </p-message>
+</div>
 
-    <div class="flex flex-col md:flex-row" *ngIf="participant && participant.misId">
-        <!-- Participant Details -->
-        <p-card class="card flex flex-col md:w-1/2" [style]="{border: '0.1rem solid silver'}">
+<div class="flex flex-col" *ngIf="participant && participant.misId">
+    <!-- Participant Details -->
+    <p-card class="card" [style]="{border: '0.1rem solid silver'}">
 
-            <ng-template #title>
-                Participant Details for MIS Id <span class="underline">{{participantMISId}}</span>
-            </ng-template>
+        <ng-template #title>
+            Participant Details for MIS Id <span class="underline">{{participantMISId}}</span>
+        </ng-template>
 
-            <!-- Region -->
-            <div class="grid grid-cols-12 gap-2 mt-5 mb-2">
-                <label class="flex font-bold items-center col-span-4">Region</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" id="fullName" [(ngModel)]="participant.region" [readonly]="true"
-                        fluid />
-                </div>
+        <!-- Region -->
+        <div class="grid grid-cols-12 gap-2 mt-5 mb-2">
+            <label class="flex font-bold items-center col-span-2">Region</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="fullName" [(ngModel)]="participant.region" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Center -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Center</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="center" [(ngModel)]="participant.center" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- MIS ID -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">MIS Id</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.misId" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- BAPS ID -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">BAPS Id</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.bapsId" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Full Name</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="fullName" [(ngModel)]="participant.fullName" [readonly]="true"
+                    fluid />
+            </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Gender</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.gender" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Mandal -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Mandal</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.mandal" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Emcee Category -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Emcee</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.emcee_Category" [readOnly]="true" fluid />
+            </div>
+            <div class="col-span-6" *ngIf="participant.emcee_Category">
+                <p-button pRipple severity="info" [raised]="true" (onClick)="startGrading()"
+                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants])">
+                    <WindowMaximizeIcon pButtonIcon />
+                    <span pButtonLabel>
+                        <b>Start Grading <span class="underline">{{participant!.fullName}}</span>'s Emcee Skill
+                            <span style="text-decoration: underline;" class="pr-5">{{participant.emcee_Category}}
+                            </span></b>
+                    </span>
+                </p-button>
+            </div>
+        </div>
+
+        <!-- Speech Pravachan Category -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Pravachan</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.speech_Pravachan_Category" [readOnly]="true"
+                    fluid />
             </div>
 
-            <!-- Center -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">Center</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" id="center" [(ngModel)]="participant.center" [readonly]="true"
-                        fluid />
-                </div>
+            <div class="col-span-6" *ngIf="participant.speech_Pravachan_Category">
+                <p-button pRipple [raised]="true" (onClick)="startGrading()"
+                    *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants])">
+                    <WindowMaximizeIcon pButtonIcon />
+                    <span pButtonLabel>
+                        <b>Start Grading <span class="underline">{{participant!.fullName}}</span>' Pravachan Skill
+                            <span
+                                style="text-decoration: underline;">{{participant.speech_Pravachan_Category}}</span></b>
+                    </span>
+                </p-button>
             </div>
+        </div>
 
-            <!-- MIS ID -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">MIS Id</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" [(ngModel)]="participant.misId" [readonly]="true" fluid />
-                </div>
+        <!-- Host Center -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Host Center</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="hostCenter" [(ngModel)]="participant.hostCenter" [readonly]="true"
+                    fluid />
             </div>
-
-            <!-- BAPS ID -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">BAPS Id</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" [(ngModel)]="participant.bapsId" [readonly]="true" fluid />
-                </div>
-            </div>
-
-            <!-- Full Name -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">Full Name</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" id="fullName" [(ngModel)]="participant.fullName" [readonly]="true"
-                        fluid />
-                </div>
-            </div>
-
-            <!-- Gender -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">Gender</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" [(ngModel)]="participant.gender" [readonly]="true" fluid />
-                </div>
-            </div>
-
-            <!-- Mandal -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">Mandal</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" [(ngModel)]="participant.mandal" [readonly]="true" fluid />
-                </div>
-            </div>
-
-            <!-- Emcee Category -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">Emcee</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" [(ngModel)]="participant.emcee_Category" [readOnly]="true" fluid />
-                </div>
-            </div>
-
-            <!-- Speech Pravachan Category -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">Pravachan</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" [(ngModel)]="participant.speech_Pravachan_Category" [readOnly]="true"
-                        fluid />
-                </div>
-            </div>
-
-            <!-- Host Center -->
-            <div class="grid grid-cols-12 gap-2 mb-1">
-                <label class="flex font-bold items-center col-span-4">Host Center</label>
-                <div class="col-span-8">
-                    <input pInputText type="text" id="hostCenter" [(ngModel)]="participant.hostCenter" [readonly]="true"
-                        fluid />
-                </div>
-            </div>
-        </p-card>
-
-        <!-- Participant Grading Topics -->
-        <p-card class="card flex flex-col md:w-1/2" [style]="{border: '0.1rem solid silver'}">
-            <ng-template #title>
-                <span class="underline">{{participant!.fullName}}</span>'s' Grades for <span
-                    [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span>
-            </ng-template>
-            <br>
-            <p-table [value]="participantGrades()" *ngIf="participantGrades().length>0" showGridlines [rowHover]="true"
-                [scrollable]="true">
-                <!-- Grading Topics List View Header -->
-                <ng-template #header>
-                    <tr>
-                        <th class="whitespace-nowrap">
-                            Topic Name
-                        </th>
-                        <th class="whitespace-nowrap">
-                            Marks
-                        </th>
-                    </tr>
-                </ng-template>
-
-                <!-- Grading Topics List View Data -->
-                <ng-template #body let-item>
-                    <tr [style]="{'color': item.color}">
-                        <td class="whitespace-nowrap align-top">{{ item.topicName }}</td>
-                        <td class="whitespace-nowrap align-top"> {{ item.marks }} </td>
-                    </tr>
-                </ng-template>
-            </p-table>
-            <br>
-            <p-button pRipple severity="warn" [raised]="true" (onClick)="startGrading()"
-                *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants])">
-                <WindowMaximizeIcon pButtonIcon />
-                <span pButtonLabel style="font-size: large;">
-                    <b>Start Grading <span class="underline">{{participant!.fullName}}</span> for
-                        <span [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span></b>
-                </span>
-            </p-button>
-        </p-card>
-    </div>
+        </div>
+    </p-card>
 </div>
 
 <p-dialog [(visible)]="dialog" [style]="{ width: 'auto', height: 'auto' }" [modal]="true">
@@ -221,4 +202,43 @@
         </p-tabpanel>
     </p-tabpanels>
 </p-tabs> 
+-->
+
+<!-- 
+<p-card class="card flex flex-col md:w-1/2" [style]="{border: '0.1rem solid silver'}">
+    <ng-template #title>
+        <span class="underline">{{participant!.fullName}}</span>'s' Grades for <span
+            [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span>
+    </ng-template>
+    <br>
+    <p-table [value]="participantGrades()" *ngIf="participantGrades().length>0" showGridlines [rowHover]="true"
+        [scrollable]="true">
+        <ng-template #header>
+            <tr>
+                <th class="whitespace-nowrap">
+                    Topic Name
+                </th>
+                <th class="whitespace-nowrap">
+                    Marks
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template #body let-item>
+            <tr [style]="{'color': item.color}">
+                <td class="whitespace-nowrap align-top">{{ item.topicName }}</td>
+                <td class="whitespace-nowrap align-top"> {{ item.marks }} </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <br>
+    <p-button pRipple severity="warn" [raised]="true" (onClick)="startGrading()"
+        *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Participants_Grade_Participants])">
+        <WindowMaximizeIcon pButtonIcon />
+        <span pButtonLabel style="font-size: large;">
+            <b>Start Grading <span class="underline">{{participant!.fullName}}</span> for
+                <span [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span></b>
+        </span>
+    </p-button>
+</p-card> 
 -->
