@@ -82,9 +82,12 @@
             </td>
             <td [vAlign]="'top'">
                 <ul>
-                    <li class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedGenders"> <i
-                            class="fa-solid fa-users"></i>
-                        {{item}}</li>
+                    <li *ngFor="let item of item.assignedGenders" class="mb-2 whitespace-nowrap"
+                        [style]="{ color: item == 'Female' ? 'brown' : 'navy'}">
+                        <i *ngIf="item == 'Male'" class="fa-solid fa-person"></i>
+                        <i *ngIf="item == 'Female'" class="fa-solid fa-person-dress"></i>
+                        {{item}}
+                    </li>
                 </ul>
             </td>
             <td [vAlign]="'top'">
@@ -241,7 +244,8 @@
                         <ng-template #body let-gender>
                             <tr [style]="{'color':gender.color}">
                                 <td>
-                                    <p-tableCheckbox ngDefaultControl [value]="gender.value" />
+                                    <p-tableCheckbox ngDefaultControl [value]="gender.value"
+                                        [disabled]="!this.authService.HasUserRoles([rolesEnum.NationalAdmin])" />
                                 </td>
                                 <td> <i class="{{gender.icon}}"></i> {{ gender.label }}</td>
                             </tr>

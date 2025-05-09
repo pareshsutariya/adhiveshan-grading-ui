@@ -76,6 +76,7 @@ export class Users extends BaseComponent implements OnInit {
 
   openNew() {
     this.addOrEditItem = {};
+    this.addOrEditItem.assignedGenders = this.authService.GetLoginUser().assignedGenders;
     this.addOrEditItem.status = "Active";
     this.submitted = false;
     this.dialog = true;

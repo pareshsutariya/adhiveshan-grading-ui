@@ -13,7 +13,7 @@
 - [x] Grading: Provide start button for each skill of the candidate
 - [x] Grading: Hide grading button if Judge doesn't have skill
 
-- [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on their mandal (0.5)
+- [ ] Users: For regional admins, when adding a new proctor, gender field should be auto selected based on RA's gender (0.5)
 - [ ] Users: Events: show only assigned events (0.5)
 - [ ] Users: Bulk Import excel format
 - [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role
