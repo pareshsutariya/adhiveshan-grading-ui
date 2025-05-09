@@ -165,15 +165,15 @@
 
 ### Authentication / Logic:
 
-- [ ] UI: Design Login screen
-- [ ] API: Implement an endpoint to authenticate user for given username/password
+- [x] UI: Design Login screen
+- [x] API: Implement an endpoint to authenticate user for given username/password
 - [ ] API: Implement Jwt token approach
 - [ ] Participant BAPS ID authentication API using encode/decode BAPS ID
 
 ### Authorization:
 
-- [ ] API: Implement an endpoint to return roles/permissions for login user
-- [ ] UI: Make the menu and action button available based on permissions
+- [x] API: Implement an endpoint to return roles/permissions for login user
+- [x] UI: Make the menu and action button available based on permissions
 
 ### Audit fields:
 
