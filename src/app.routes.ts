@@ -13,23 +13,30 @@ import { RegionCentersList } from './app/modules/region-centers/region-centers-l
 import { Login } from './app/modules/auth/login';
 import { Access } from './app/modules/auth/access';
 import { GradedParticipantsList } from './app/modules/graded-participants/graded-participants-list';
+import { AuthGuard } from './app/services/auth.guard';
+import { PermissionsEnum } from './app/services/_index';
 
 export const appRoutes: Routes = [
     {
         path: '',
         component: AppLayout,
         children: [
-            { path: '', component: Dashboard },
-            { path: 'dashboard', component: Dashboard },
-            { path: 'import-participants', component: ImportParticipants },
-            { path: 'users', component: Users },
-            { path: 'events', component: Events },
-            { path: 'rolePermissions', component: RolePermissionsList },
-            { path: 'skill-categories', component: SkillCategoriesList },
-            { path: 'grading-topics', component: GradingTopicsList },
-            { path: 'grading-participants', component: GradingParticipants },
-            { path: 'graded-participants', component: GradedParticipantsList },
-            { path: 'region-centers', component: RegionCentersList },
+            { path: '', component: Dashboard, canActivate: [AuthGuard] },
+            { path: 'dashboard', component: Dashboard, canActivate: [AuthGuard] },
+
+            { path: 'import-participants', component: ImportParticipants, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_View] } },
+            { path: 'skill-categories', component: SkillCategoriesList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_Import] } },
+            { path: 'region-centers', component: RegionCentersList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_Import] } },
+            
+            { path: 'events', component: Events, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Events_View] } },
+
+            { path: 'grading-topics', component: GradingTopicsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Questions_View] } },
+            { path: 'grading-participants', component: GradingParticipants, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Participants_Search_Participants] } },
+            { path: 'graded-participants', component: GradedParticipantsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Participants_View_Participants_Grade] } },
+
+            { path: 'users', component: Users, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Users_NationalAdmins_View, PermissionsEnum.Users_RegionalAdmins_View, PermissionsEnum.Users_Judges_View, PermissionsEnum.Users_CheckIns_View] } },
+            { path: 'rolePermissions', component: RolePermissionsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Users_NationalAdmins_View] } },
+
             //{ path: '**', component: Notfound }
         ]
     },
