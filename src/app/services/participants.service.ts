@@ -16,8 +16,8 @@ export class ParticipantsService {
     return this.http.get<Participant>(Constants.WebApiBaseUrl + `/Participants/getByMisId/${misId}`);
   }
 
-  GetParticipantForJudging(misId: number, loginUserId: number) {
-    return this.http.get(Constants.WebApiBaseUrl + `/Participants/GetParticipantForJudging/${misId}/${loginUserId}`, {responseType: 'text'})
+  GetParticipantForJudging(bapsId: string, loginUserId: number) {
+    return this.http.get(Constants.WebApiBaseUrl + `/Participants/GetParticipantForJudging/${bapsId}/${loginUserId}`, {responseType: 'text'})
     .pipe(
       catchError((error: any) => {
 

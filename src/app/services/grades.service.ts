@@ -8,8 +8,8 @@ import { Grade } from "../models/_index";
 export class GradesService {
   constructor(private http: HttpClient) {}
 
-  GetForParticipantAndJudge(misId: number, skillCategory: string, judgeUserId: number): Observable<Array<Grade>> {
-    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetForParticipantAndJudge/${misId}/${skillCategory}/${judgeUserId}`);
+  GetForParticipantAndJudge(bapsId: string, skillCategory: string, judgeUserId: number): Observable<Array<Grade>> {
+    return this.http.get<Array<Grade>>(Constants.WebApiBaseUrl + `/Grades/GetForParticipantAndJudge/${bapsId}/${skillCategory}/${judgeUserId}`);
   }
 
   GetGradedParticipantsForJudge(judgeUserId: number): Observable<Array<Grade>> {

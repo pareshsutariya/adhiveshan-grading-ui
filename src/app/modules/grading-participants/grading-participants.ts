@@ -17,7 +17,7 @@ import { Table } from "primeng/table";
 export class GradingParticipants extends BaseComponent implements OnInit {
 
     judgeSkillCategories: any[] = [];
-    participantBAPSId: number | undefined = 2183256;
+    participantBAPSId: string | undefined = "AT1212101";
     participant: Participant | undefined;
     loginUserId: number = 1;
     searchError: string | undefined;
@@ -61,7 +61,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.participant = {};
 
-        if(!this.participantBAPSId || this.participantBAPSId <= 0){
+        if(!this.participantBAPSId){
             this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid MIS Id", life: 3000 });
             return;
         }
@@ -152,7 +152,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        model.misId= this.participantBAPSId;
+        model.bapsId = this.participantBAPSId;
         model.judgeUserId= this.loginUserId;
         
         this.gradesService.Save(model).subscribe(data=>{
