@@ -17,7 +17,7 @@ import { Table } from "primeng/table";
 export class GradingParticipants extends BaseComponent implements OnInit {
 
     judgeSkillCategories: any[] = [];
-    participantMISId: number | undefined = 2183256;
+    participantBAPSId: number | undefined = 2183256;
     participant: Participant | undefined;
     loginUserId: number = 1;
     searchError: string | undefined;
@@ -53,18 +53,22 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         console.log($event);
     }
 
+    onCandidateMISId($event: any) {
+        this.participant = {};
+    }
+
     searchParticipant(skillCategory: string){
 
         this.participant = {};
 
-        if(!this.participantMISId || this.participantMISId <= 0){
+        if(!this.participantBAPSId || this.participantBAPSId <= 0){
             this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid MIS Id", life: 3000 });
             return;
         }
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetParticipantForJudging(this.participantMISId, this.loginUserId)
+        this.participantsService.GetParticipantForJudging(this.participantBAPSId, this.loginUserId)
         .subscribe({
             next: (data: any) => {
                 
@@ -73,7 +77,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
                 this.participant = JSON.parse(data);
                 if(!this.participant){
-                    this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantMISId}`, life: 3000 });
+                    this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantBAPSId}`, life: 3000 });
                     return;
                 }
                 else {
@@ -109,7 +113,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     getParticipantGrades(){
         this.layoutService.isDataLoading.set(true);
 
-        this.gradesService.GetForParticipantAndJudge(this.participantMISId!, this.selectedSkillCategory!, this.loginUserId).subscribe(data=>{
+        this.gradesService.GetForParticipantAndJudge(this.participantBAPSId!, this.selectedSkillCategory!, this.loginUserId).subscribe(data=>{
             this.participantGrades.set(data);
 
             this.layoutService.isDataLoading.set(false);
@@ -148,7 +152,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        model.misId= this.participantMISId;
+        model.misId= this.participantBAPSId;
         model.judgeUserId= this.loginUserId;
         
         this.gradesService.Save(model).subscribe(data=>{

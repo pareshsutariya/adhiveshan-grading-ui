@@ -16,7 +16,7 @@
                 <p-inputgroup-addon>
                     <i class=" fa-solid fa-hashtag"></i>
                 </p-inputgroup-addon>
-                <p-inputnumber id="candidateMISId" mode="decimal" [(ngModel)]="participantMISId" [useGrouping]="false"
+                <p-inputnumber id="candidateMISId" mode="decimal" [(ngModel)]="participantBAPSId" [useGrouping]="false"
                     placeholder="MIS Id" required autofocus fluid />
                 <p-inputgroup-addon>
                     <p-button icon="pi pi-search" (onClick)="searchParticipant('')" />
@@ -26,8 +26,8 @@
     </div>
 
     <!-- Error message -->
-    <p-message severity="secondary" *ngIf="participantMISId && searchError" size="large">
-        MIS Id: {{participantMISId}} <br>
+    <p-message severity="secondary" *ngIf="participantBAPSId && searchError" size="large">
+        BAPS Id: {{participantBAPSId}} <br>
         Skill: <span [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span> <br><br>
         <span style="color:red">{{searchError}}</span>
     </p-message>
@@ -38,7 +38,7 @@
     <p-card class="card" [style]="{border: '0.1rem solid silver'}">
 
         <ng-template #title>
-            Participant Details for MIS Id <span class="underline">{{participantMISId}}</span>
+            Participant Details for BAPS ID <span class="underline">{{participantBAPSId}}</span>
         </ng-template>
 
         <!-- Region -->
