@@ -16,12 +16,13 @@
             *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Add, permissionsEnum.Users_RegionalAdmins_Add, permissionsEnum.Users_Judges_Add, permissionsEnum.Users_CheckIns_Add])" />
     </ng-template>
     <ng-template #end>
-        <input type="file" (change)="onJudgesImportFileChange($event)" />
-        <p-avatar image="https://static.thenounproject.com/png/1194546-512.png" size="normal"
-            [ngStyle]="{'cursor':'pointer'}" (click)="downloadSampleFile()" />
-        <!-- <p-avatar image="https://static.thenounproject.com/png/532076-512.png" size="large"/> -->
-        <span class="whitespace-nowrap" style="font-size: medium;">Download
+        <span class="whitespace-nowrap mr-2" style="font-size: medium;">Download
             Template</span>
+        <p-avatar image="https://static.thenounproject.com/png/1194546-512.png" size="normal"
+            [ngStyle]="{'cursor':'pointer', 'margin-right': '15px'}" (click)="downloadSampleFile()" />
+        <p-button label="Upload" icon="pi pi-upload" size="small" severity="contrast"
+            onclick="document.getElementById('fileJudgesImport').click()" />
+        <input type='file' id="fileJudgesImport" style="display:none" (change)="onJudgesImportFileChange($event)">
     </ng-template>
 </p-toolbar>
 
