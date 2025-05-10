@@ -17,6 +17,11 @@
     </ng-template>
     <ng-template #end>
         <input type="file" (change)="onJudgesImportFileChange($event)" />
+        <p-avatar image="https://static.thenounproject.com/png/1194546-512.png" size="normal"
+            [ngStyle]="{'cursor':'pointer'}" (click)="downloadSampleFile()" />
+        <!-- <p-avatar image="https://static.thenounproject.com/png/532076-512.png" size="large"/> -->
+        <span class="whitespace-nowrap" style="font-size: medium;">Download
+            Template</span>
     </ng-template>
 </p-toolbar>
 

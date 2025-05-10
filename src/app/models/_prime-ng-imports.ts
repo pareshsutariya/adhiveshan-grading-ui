@@ -143,6 +143,7 @@ export const PrimeNgModules = [
   ToastModule,
   ToolbarModule,
   CheckboxModule,
+  AvatarModule,
   RatingModule,
   InputTextModule,
   InputGroupAddonModule,

@@ -226,4 +226,15 @@ export class Users extends BaseComponent implements OnInit {
 
     fileReader.readAsArrayBuffer(file);
   }
+
+
+  downloadSampleFile(){
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', './public/Judges_Import_Template.xlsx');
+    link.setAttribute('download', `Judges_Import_Template.xlsx`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
 }
