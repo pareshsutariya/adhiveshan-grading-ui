@@ -26,9 +26,6 @@
 
 - [x] Events: Region admin should be able to change only Event DateTime field
 
-- [ ] Create Requirement files for tech and functional (0.5)
-- [ ] VS Extension for dotnet
-
 ## =====
 
 - [ ] Grade Topics: editable grid / Section and Attributes
@@ -41,7 +38,6 @@
 
 ## ===== TECH =====
 
-- [x] UI: Auth Guard (0.5)
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
 - [ ] API: Return roles/permissions for a given user (0.5)
@@ -53,10 +49,6 @@
 
 ### Repo Setup:
 
-- [x] UI Repo and basic framework
-- [x] API Repo and basic framework
-- [x] Steps to run the projects
-- [x] Apply Repo restriction
 - [ ] Code merging approach
 - [ ] Test Env setup in AWS
 - [ ] Prod Env setup in AWS
@@ -184,11 +176,6 @@
 
 - [x] API: Implement an endpoint to return roles/permissions for login user
 - [x] UI: Make the menu and action button available based on permissions
-
-### Audit fields:
-
-- [ ] API: Set audit fields while add/edit
-- [ ] UI: Display audit fields in List and detais page
 
 ## ====== GRADING THE PARTICIPANTS =====:
 

@@ -1,7 +1,7 @@
 ## ===== Queue =====
 
-- [ ] VS Extension for dotnet
-- [ ] AWS Lambda setup
+- [ ] VS Extension for dotnet (0.5)
+- [ ] AWS Lambda setup (1.0)
 
 - [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
 - [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
