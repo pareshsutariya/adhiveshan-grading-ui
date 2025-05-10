@@ -205,20 +205,21 @@ export class Users extends BaseComponent implements OnInit {
       this.layoutService.isDataLoading.set(true);
 
       if (importData && importData.length > 0) {
-        this.usersService.ImportJudges(importData).subscribe((c) => {
-          this.layoutService.isDataLoading.set(false);
+        this.usersService.ImportJudges(importData)
+        .subscribe({
+          next: (response: any) => {
+              this.layoutService.isDataLoading.set(false);
+  
+              this.messageService.add({ severity: "success", summary: "Import", detail: "Judges Imported successfully", life: 3000 });
 
-          let detail = "Data Import";
-          this.messageService.add({
-            severity: "success",
-            summary: "Successful",
-            detail: detail,
-            life: 1000,
-          });
-
-          this.loadData();
-          //location.reload();
-        });
+              this.loadData();
+          },
+          error: (err) => {
+              this.messageService.add({ severity: "error", summary: "Import", detail: `${err.error}`, life: 3000 });
+              this.layoutService.isDataLoading.set(false);
+              //this.loadData();
+          }
+        });        
       }
       //console.log(this.data);
       //this.data = JSON.parse(this.jsonData);
@@ -226,7 +227,6 @@ export class Users extends BaseComponent implements OnInit {
 
     fileReader.readAsArrayBuffer(file);
   }
-
 
   downloadSampleFile(){
     const link = document.createElement('a');

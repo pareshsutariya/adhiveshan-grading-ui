@@ -80,8 +80,6 @@ export class Login {
         next: (response: any) => {
             this.layoutService.isDataLoading.set(false);
 
-            console.log(response);
-
             let user = JSON.parse(response);
 
             if(user != null) {

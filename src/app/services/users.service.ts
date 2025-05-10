@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable } from "rxjs";
 import { Constants } from "./_constants";
 import { User, UserJudgeImport } from "../models/_index";
 
@@ -34,7 +34,10 @@ export class UsersService {
 
     return this.http
       .post(Constants.WebApiBaseUrl + "/Users/JudgesImport", JSON.stringify(items), { headers: headers })
-      .pipe();
+      .pipe(
+          catchError((error: any) => {
+            throw error;
+          })
+      );
   }
-
 }
