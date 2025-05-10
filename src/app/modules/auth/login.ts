@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { AuthService } from '../../services/auth.service';
 import { AngularModules } from '../../models/_angular-imports';
 import { PrimeNgModules } from '../../models/_prime-ng-imports';
+import { LayoutService } from '../../layout/service/layout.service';
 
 @Component({
     selector: 'app-login',
@@ -42,6 +43,12 @@ import { PrimeNgModules } from '../../models/_prime-ng-imports';
                             -->
                             <p-button label="Sign In" styleClass="w-full" (onClick)="onSubmit()"></p-button>
                         </div>
+
+                        <br>
+                        <!-- Error message -->
+                        <p-message severity="error" *ngIf="error" size="large">
+                            {{error}}
+                        </p-message>
                     </div>
                 </div>
             </div>
@@ -51,10 +58,12 @@ import { PrimeNgModules } from '../../models/_prime-ng-imports';
 export class Login {
     username: string = '';
     password: string = '';
+    error: string = '';
 
   constructor(
     private router: Router,        
     private messageService: MessageService,
+    private layoutService: LayoutService,
     private authService: AuthService) {
 }
   ngOnInit(): void {
@@ -62,15 +71,33 @@ export class Login {
   }
 
   onSubmit(): void {
-    this.authService.GetUserByUsernameAndPassword(this.username, this.password).subscribe(response => {
-      console.log("response:", response);
-          if(response != null) {
-            this.authService.SetLoginUser(response);
-            this.messageService.add({ severity: "success", summary: "Authentication", detail: "Login successfully !!", life: 1000 });
-            this.router.navigate(['dashboard']);
-          }
-          else 
-            this.messageService.add({ severity: "error", summary: "Authentication", detail: "Login failed !!", life: 1000 });
-        });
+    this.error = "";
+
+    this.layoutService.isDataLoading.set(true);
+
+    this.authService.GetUserByUsernameAndPassword(this.username, this.password)
+    .subscribe({
+        next: (response: any) => {
+            this.layoutService.isDataLoading.set(false);
+
+            console.log(response);
+
+            let user = JSON.parse(response);
+
+            if(user != null) {
+                this.authService.SetLoginUser(user);
+                this.messageService.add({ severity: "success", summary: "Authentication", detail: "Login successfully !!", life: 1000 });
+                this.router.navigate(['dashboard']);
+              }
+              else 
+                this.messageService.add({ severity: "error", summary: "Authentication", detail: "Login failed !!", life: 1000 });
+        },
+        error: (err) => {
+
+            this.error = err.error;
+            this.messageService.add({ severity: "error", summary: "Authentication", detail: `${err.error}`, life: 3000 });
+            this.layoutService.isDataLoading.set(false);
+        }
+      });
   }
 }

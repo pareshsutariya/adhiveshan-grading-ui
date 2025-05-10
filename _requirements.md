@@ -19,6 +19,7 @@
 - [x] Users: List: For RA show only his/her region's users according to his/her gender
 - [x] Users: Edit User: Login user shouldn't be able to change his/her own user
 - [x] Users: Add/Edit: show only assigned events
+- [x] Users: Inactive User: shouldn't be able to login
 
 - [ ] Users: Bulk Import excel format (0.5)
 - [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role (1.0)

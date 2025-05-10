@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Constants } from './_constants';
 import { User } from '../models/_index';
@@ -37,6 +37,7 @@ export class AuthService {
 
   GetLoginUserBAPSId() : string {
     let user = this.GetLoginUser();
+
 
     return user?.bapsId!;
   }
@@ -152,19 +153,24 @@ export class AuthService {
     //location.reload();
   }
 
-  GetUserByUsernameAndPassword(username: string, password: string): Observable<User> {
-    if(username == "vyom131313") {
-      return new Observable<User>(observable => {
-        let user: User = {};
-        user.fullName = "Paresh";
-        user.bapsId = "vyom131313";
-        user.status = "ACTIVE";
-        user.assignedRoles = [];
-        observable.next(user);
-      });
-    }
-    else {
-      return this.http.get<User>(`${this.WebApiBaseUrl}/users/GetUserByUsernameAndPassword/${username}/${password}`);
+  GetUserByUsernameAndPassword(username: string, password: string) {
+    // if(username == "vyom131313") {
+    //   return new Observable<User>(observable => {
+    //     let user: User = {};
+    //     user.fullName = "Paresh";
+    //     user.bapsId = "vyom131313";
+    //     user.status = "ACTIVE";
+    //     user.assignedRoles = [];
+    //     observable.next(user);
+    //   });
+    // }
+    // else 
+    {
+      return this.http.get(`${this.WebApiBaseUrl}/users/GetUserByUsernameAndPassword/${username}/${password}`, {responseType: 'text'}).pipe(
+          catchError((error: any) => {
+            throw error;
+          })
+        );
     }
   }
 }
