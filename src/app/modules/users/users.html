@@ -15,7 +15,7 @@
             (onClick)="openNew()"
             *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Add, permissionsEnum.Users_RegionalAdmins_Add, permissionsEnum.Users_Judges_Add, permissionsEnum.Users_CheckIns_Add])" />
     </ng-template>
-    <ng-template #end>
+    <ng-template #end *ngIf="authService.HasUserRoles([rolesEnum.RegionalAdmin])">
         <span class="whitespace-nowrap mr-2" style="font-size: medium;">Download
             Template</span>
         <p-avatar image="https://static.thenounproject.com/png/1194546-512.png" size="normal"
@@ -80,7 +80,7 @@
             </td>
             <td [vAlign]="'top'">
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
-                    styleClass="dark:!bg-surface-900" />
+                    styleClass="dark:!bg-surface-900" [ngClass]="'whitespace-nowrap'" />
             </td>
             <td [vAlign]="'top'">
                 <ul>
