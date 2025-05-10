@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Constants } from "./_constants";
-import { User } from "../models/_index";
+import { User, UserJudgeImport } from "../models/_index";
 
 @Injectable({providedIn: 'root'})
 export class UsersService {
@@ -28,4 +28,13 @@ export class UsersService {
         .put(Constants.WebApiBaseUrl + "/Users/" + item.userId, JSON.stringify(item), { headers: headers })
         .pipe();
   }
+
+  ImportJudges(items: UserJudgeImport[]) {
+    let headers = new HttpHeaders({ "Content-Type": "application/json" });
+
+    return this.http
+      .post(Constants.WebApiBaseUrl + "/Users/JudgesImport", JSON.stringify(items), { headers: headers })
+      .pipe();
+  }
+
 }

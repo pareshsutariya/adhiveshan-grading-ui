@@ -15,6 +15,9 @@
             (onClick)="openNew()"
             *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Add, permissionsEnum.Users_RegionalAdmins_Add, permissionsEnum.Users_Judges_Add, permissionsEnum.Users_CheckIns_Add])" />
     </ng-template>
+    <ng-template #end>
+        <input type="file" (change)="onJudgesImportFileChange($event)" />
+    </ng-template>
 </p-toolbar>
 
 <!-- List View -->

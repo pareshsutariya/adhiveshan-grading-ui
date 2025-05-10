@@ -6,8 +6,9 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 
-import { User, CompetitionEvent } from "../../models/_index";
+import { User, CompetitionEvent, UserJudgeImport } from "../../models/_index";
 import { RolesEnum } from "../../services/rolePermissions.service";
+import * as XLSX from "xlsx";
 
 @Component({
   selector: "app-users",
@@ -176,5 +177,53 @@ export class Users extends BaseComponent implements OnInit {
 
   clearGlobalFilter(){
     this.dt.filterGlobal("", 'contains');
+  }
+
+  onJudgesImportFileChange(event: any): void {
+    const file = event.target.files[0];
+    const fileReader = new FileReader();
+
+    fileReader.onload = (e: any) => {
+      const arrayBuffer = e.target.result;
+      const workbook = XLSX.read(arrayBuffer, { type: "array" });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      let jsonData: any[] = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+
+      let importData: UserJudgeImport[] = [];
+
+      for (let index = 0; index < jsonData.length; index++) {
+        const raw = jsonData[index];
+
+        importData.push({
+          bapsId: raw["bapsId"],
+          assignedSkillCategories: raw["assignedSkillCategories"],
+          eventDate: raw[""],
+        });
+      }
+
+      this.layoutService.isDataLoading.set(true);
+
+      if (importData && importData.length > 0) {
+        this.usersService.ImportJudges(importData).subscribe((c) => {
+          this.layoutService.isDataLoading.set(false);
+
+          let detail = "Data Import";
+          this.messageService.add({
+            severity: "success",
+            summary: "Successful",
+            detail: detail,
+            life: 1000,
+          });
+
+          this.loadData();
+          //location.reload();
+        });
+      }
+      //console.log(this.data);
+      //this.data = JSON.parse(this.jsonData);
+    };
+
+    fileReader.readAsArrayBuffer(file);
   }
 }
