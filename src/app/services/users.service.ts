@@ -29,11 +29,11 @@ export class UsersService {
         .pipe();
   }
 
-  ImportJudges(items: UserJudgeImport[]) {
+  ImportJudges(loginUserBapsId: string, items: UserJudgeImport[]) {
     let headers = new HttpHeaders({ "Content-Type": "application/json" });
 
     return this.http
-      .post(Constants.WebApiBaseUrl + "/Users/JudgesImport", JSON.stringify(items), { headers: headers })
+      .post(Constants.WebApiBaseUrl + "/Users/JudgesImport/" + loginUserBapsId, JSON.stringify(items), { headers: headers, responseType: 'text' })
       .pipe(
           catchError((error: any) => {
             throw error;

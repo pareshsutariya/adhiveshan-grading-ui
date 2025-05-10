@@ -22,7 +22,7 @@
 - [x] Users: Inactive User: shouldn't be able to login
 
 - [x] Users: Bulk Import excel format (0.5)
-- [ ] Users: Bulk Import users: Need to set the gender/role based on login user's role (1.0)
+- [x] Users: Bulk Import users: Need to set the gender/role based on login user's role
 
 - [x] Events: Region admin should be able to change only Event DateTime field
 

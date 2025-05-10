@@ -196,16 +196,19 @@ export class Users extends BaseComponent implements OnInit {
         const raw = jsonData[index];
 
         importData.push({
-          bapsId: raw["bapsId"],
-          assignedSkillCategories: raw["assignedSkillCategories"],
-          eventDate: raw[""],
+          bapsId: raw["BAPSId"],
+          assignedSkillCategories: raw["AssignedSkillCategories"],
+          eventDate: raw["EventDate"],
         });
       }
 
       this.layoutService.isDataLoading.set(true);
 
       if (importData && importData.length > 0) {
-        this.usersService.ImportJudges(importData)
+
+        console.log(importData);
+        
+        this.usersService.ImportJudges(this.authService.GetLoginUserBAPSId(), importData)
         .subscribe({
           next: (response: any) => {
               this.layoutService.isDataLoading.set(false);
@@ -215,7 +218,7 @@ export class Users extends BaseComponent implements OnInit {
               this.loadData();
           },
           error: (err) => {
-              this.messageService.add({ severity: "error", summary: "Import", detail: `${err.error}`, life: 3000 });
+              this.messageService.add({ severity: "error", summary: "Import Error", detail: `${err.error}`, life: 3000 });
               this.layoutService.isDataLoading.set(false);
               //this.loadData();
           }
