@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Constants } from "./_constants";
+import { environment } from './_index';
 import { RolePermissions, RolePermissionsPivot } from "../models/_index";
 
 @Injectable({providedIn: 'root'})
@@ -9,11 +9,11 @@ export class RolePermissionsService {
   constructor(private http: HttpClient) {}
 
   GetItems(): Observable<Array<RolePermissions>> {
-    return this.http.get<Array<RolePermissions>>(Constants.WebApiBaseUrl + "/RolePermissions");
+    return this.http.get<Array<RolePermissions>>(environment.WebApiBaseUrl + "/RolePermissions");
   }
 
   GetPivotItems(): Observable<Array<RolePermissionsPivot>> {
-    return this.http.get<Array<RolePermissionsPivot>>(Constants.WebApiBaseUrl + "/RolePermissions/Pivot");
+    return this.http.get<Array<RolePermissionsPivot>>(environment.WebApiBaseUrl + "/RolePermissions/Pivot");
   }
 
   get Roles(): any {

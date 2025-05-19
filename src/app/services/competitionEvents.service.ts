@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Constants } from "./_constants";
+import { environment } from './_index';
 import { CompetitionEvent } from "../models/_index";
 
 @Injectable({providedIn: 'root'})
@@ -9,15 +9,15 @@ export class CompetitionEventsService {
   constructor(private http: HttpClient) {}
 
   GetItems(): Observable<Array<CompetitionEvent>> {
-    return this.http.get<Array<CompetitionEvent>>(Constants.WebApiBaseUrl + "/CompetitionEvents");
+    return this.http.get<Array<CompetitionEvent>>(environment.WebApiBaseUrl + "/CompetitionEvents");
   }
 
   GetEventsForLoginUser(loginUserBapsId: string): Observable<Array<CompetitionEvent>> {
-    return this.http.get<Array<CompetitionEvent>>(Constants.WebApiBaseUrl + "/CompetitionEvents/GetEventsForLoginUser/" + loginUserBapsId);
+    return this.http.get<Array<CompetitionEvent>>(environment.WebApiBaseUrl + "/CompetitionEvents/GetEventsForLoginUser/" + loginUserBapsId);
   }
 
   GetById(id: number): Observable<CompetitionEvent> {
-    return this.http.get<CompetitionEvent>(Constants.WebApiBaseUrl + `/CompetitionEvents/getById/${id}`);
+    return this.http.get<CompetitionEvent>(environment.WebApiBaseUrl + `/CompetitionEvents/getById/${id}`);
   }
   
   Save(item: CompetitionEvent) {
@@ -27,11 +27,11 @@ export class CompetitionEventsService {
 
     if (item.competitionEventId == null || item.competitionEventId == 0)
       return this.http
-        .post(Constants.WebApiBaseUrl + "/CompetitionEvents", JSON.stringify(item), { headers: headers })
+        .post(environment.WebApiBaseUrl + "/CompetitionEvents", JSON.stringify(item), { headers: headers })
         .pipe();
     else
       return this.http
-        .put(Constants.WebApiBaseUrl + "/CompetitionEvents/" + item.competitionEventId, JSON.stringify(item), { headers: headers })
+        .put(environment.WebApiBaseUrl + "/CompetitionEvents/" + item.competitionEventId, JSON.stringify(item), { headers: headers })
         .pipe();
   }
 }

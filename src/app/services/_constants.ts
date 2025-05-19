@@ -4,12 +4,6 @@ import moment, { Moment } from "moment";
 @Injectable({ providedIn: 'root' })
 export class Constants {
 
-  private static AWSAPI: string =
-    /localhost/.test(document.location.host) == true
-      ? "http://localhost:5001"
-      : "TBD";
-
-  public static WebApiBaseUrl: string = Constants.AWSAPI + "/api";
   public static DateTimeFormat: string = "MM/DD/YYYY HH:mm";
   public static DateTimeFormatShort: string = "MM/DD HH:mm";
 

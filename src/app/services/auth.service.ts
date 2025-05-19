@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { Constants } from './_constants';
+import { environment } from './_index';
 import { User } from '../models/_index';
 
 @Injectable({
@@ -10,7 +10,6 @@ import { User } from '../models/_index';
 })
 export class AuthService {
 
-  public WebApiBaseUrl: string = Constants.WebApiBaseUrl; 
   //private loggedInUser:User;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -166,7 +165,7 @@ export class AuthService {
     // }
     // else 
     {
-      return this.http.get(`${this.WebApiBaseUrl}/users/GetUserByUsernameAndPassword/${username}/${password}`, {responseType: 'text'}).pipe(
+      return this.http.get(`${environment.WebApiBaseUrl}/users/GetUserByUsernameAndPassword/${username}/${password}`, {responseType: 'text'}).pipe(
           catchError((error: any) => {
             throw error;
           })

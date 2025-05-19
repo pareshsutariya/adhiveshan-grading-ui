@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Constants } from "./_constants";
+import { environment } from './_index';
 import { SkillCategory, GradingCriteria } from "../models/_index";
 
 @Injectable({providedIn: 'root'})
@@ -9,19 +9,19 @@ export class GradingCriteriasService {
   constructor(private http: HttpClient) {}
 
   GetSkillCategories(): Observable<Array<SkillCategory>> {
-    return this.http.get<Array<SkillCategory>>(Constants.WebApiBaseUrl + "/GradingCriterias/GetSkillCategories");
+    return this.http.get<Array<SkillCategory>>(environment.WebApiBaseUrl + "/GradingCriterias/GetSkillCategories");
   }
 
   GetItems(): Observable<Array<GradingCriteria>> {
-    return this.http.get<Array<GradingCriteria>>(Constants.WebApiBaseUrl + "/GradingCriterias");
+    return this.http.get<Array<GradingCriteria>>(environment.WebApiBaseUrl + "/GradingCriterias");
   }
 
   GetBySkillCategory(skillCategory: string): Observable<Array<GradingCriteria>> {
-    return this.http.get<Array<GradingCriteria>>(Constants.WebApiBaseUrl + `/GradingCriterias/GetBySkillCategory/${skillCategory}`);
+    return this.http.get<Array<GradingCriteria>>(environment.WebApiBaseUrl + `/GradingCriterias/GetBySkillCategory/${skillCategory}`);
   }
 
   GetById(id: number): Observable<GradingCriteria> {
-    return this.http.get<GradingCriteria>(Constants.WebApiBaseUrl + "/GradingCriterias/" + id);
+    return this.http.get<GradingCriteria>(environment.WebApiBaseUrl + "/GradingCriterias/" + id);
   }
 
   Save(item: GradingCriteria) {
@@ -29,11 +29,11 @@ export class GradingCriteriasService {
 
     if (item.gradingCriteriaId == null || item.gradingCriteriaId == 0)
       return this.http
-        .post(Constants.WebApiBaseUrl + "/GradingCriterias", JSON.stringify(item), { headers: headers })
+        .post(environment.WebApiBaseUrl + "/GradingCriterias", JSON.stringify(item), { headers: headers })
         .pipe();
     else
       return this.http
-        .put(Constants.WebApiBaseUrl + "/GradingCriterias/" + item.gradingCriteriaId, JSON.stringify(item), { headers: headers })
+        .put(environment.WebApiBaseUrl + "/GradingCriterias/" + item.gradingCriteriaId, JSON.stringify(item), { headers: headers })
         .pipe();
   }
 }

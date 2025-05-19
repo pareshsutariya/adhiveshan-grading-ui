@@ -7,3 +7,4 @@ export * from "./participants.service";
 export * from "./regionCenters.service";
 export * from "./rolePermissions.service";
 export * from "./users.service";
+export * from "../../environments/environment";
