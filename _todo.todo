@@ -1,5 +1,4 @@
-- [ ] UI: appSettings to store environment specific variables (1)
-- [ ] API: Error Handling (1)
+- [ ] API/UI: Error Handling (1)
 - [ ] UI: Design Login screen (1)
 - [ ] API: Implement an endpoint to authenticate user for given username/password (0.5)
 - [ ] API: Implement Jwt token approach : https://www.youtube.com/watch?v=w8I32UPEvj8&t=330s (1)
