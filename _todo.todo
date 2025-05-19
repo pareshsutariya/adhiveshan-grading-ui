@@ -1,20 +1,14 @@
-- [ ] Grade Topic: rename to Grading Criteria
-
 - [ ] UI: appSettings to store environment specific variables (1)
 - [ ] API: Error Handling (1)
 - [ ] UI: Design Login screen (1)
 - [ ] API: Implement an endpoint to authenticate user for given username/password (0.5)
 - [ ] API: Implement Jwt token approach : https://www.youtube.com/watch?v=w8I32UPEvj8&t=330s (1)
-- [ ] Grade Topics: editable grid / Section and Attributes (2)
-
 - [ ] AWS Lambda setup (2.0)
 - [ ] Test Env setup in AWS for API and UI (1)
 - [ ] Store DB Connection and Password in AWS Lambda Environment Variables
 
-- [ ] UI: On each page load, Reload roles/permissions for login user (0.5)
-- [ ] UI: And Refresh display menus/actions according to the roles/permissions (0.5)
-- [ ] API: Return roles/permissions for a given user (0.5)
-- [ ] API: Consider different time zone
+- [ ] Schedule: Include Room Schedule module
+- [ ] Schedule: Saving schedule for a center
 
 ## ===== Feedback =====
 
@@ -45,11 +39,13 @@
 - [x] Events: Region admin should be able to change only Event DateTime field
 
 ## =====
+- [ ] Schedule: Include Room Schedule module
+- [ ] Schedule: Saving schedule for a center
 
-- [ ] Grade Topics: editable grid / Section and Attributes
-- [ ] Include Room Schedule module
-- [ ] Grading: Provide Submit button (0.5)
-- [ ] Grading: need to decide the grade locking approach
 - [ ] Users: Judge room assignment
 - [ ] Users: Pull user info by MISID using external API
 - [ ] Users: Proctor login should be disbled as soon as the event ends
+
+- [ ] Grade Topics: editable grid / Section and Attributes
+- [ ] Grading: Provide Submit button (0.5)
+- [ ] Grading: need to decide the grade locking approach
