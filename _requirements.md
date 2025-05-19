@@ -37,13 +37,13 @@
 - [x] UI: List Page: Make an API call, and display data
 - [x] UI: List Page: Apply standard sorting and searching
 
-### Skill Grading Topics:
+### Skill Grading Criterias:
 
-- [x] API: "GradingTopics" table Schema (Id, Skill, SkillCategory, Name, Description, Round, WeightageOptions[], RequiredJudges, IsActive)
+- [x] API: "GradingCriterias" table Schema (Id, Skill, SkillCategory, Name, Description, Round, WeightageOptions[], RequiredJudges, IsActive)
 - [x] API: Implement an endpoint to return list of data
 - [x] API: Implement an endpoint to Add record
 - [x] API: Implement an endpoint to Edit record
-- [x] UI: Menu: Add "Grading Topics" menu in navigation panel
+- [x] UI: Menu: Add "Grading Criterias" menu in navigation panel
 - [x] UI: List Page: Make an API call, and display data
 - [x] UI: List Page: Apply standard sorting and searching
 - [x] UI: Add Page: Design UI to Add or Edit record, and call API
@@ -145,7 +145,7 @@
 
 ### Grade candidate for list of skill topics:
 
-- [x] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Topic Id, Grade, JudgeId
+- [x] DB: "Grades" table schema : MIS ID, SKILL CATEGORY ID, Grading Criteria Id, Grade, JudgeId
 - [x] API: Implement an endpoint to add/update candidate for the given Skill topics and by given judge
 - [x] UI: On clicking Submit button call endpoint to save candidate grades for the given Skill topics and by given judge
 
@@ -200,7 +200,7 @@
 
 - [ ] Export Users
 - [ ] Export Events
-- [ ] Export Grading Topics
+- [ ] Export Grading Criterias
 - [ ] Export Grading
 
 ## ===== NICE to have =====:

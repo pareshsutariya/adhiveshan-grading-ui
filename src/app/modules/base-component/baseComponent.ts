@@ -2,7 +2,7 @@ import { Router } from "@angular/router";
 import { MessageService } from "primeng/api";
 import { Directive } from "@angular/core";
 import { LayoutService } from "../../layout/service/layout.service";
-import { AuthService, CompetitionEventsService, Constants, GradesService, GradingTopicsService, ParticipantsService, PermissionsEnum, RegionCenterService, RolePermissionsService, RolesEnum, UsersService } from "../../services/_index";
+import { AuthService, CompetitionEventsService, Constants, GradesService, GradingCriteriasService, ParticipantsService, PermissionsEnum, RegionCenterService, RolePermissionsService, RolesEnum, UsersService } from "../../services/_index";
 
 @Directive({ selector: "base-component" })
 export abstract class BaseComponent {
@@ -19,7 +19,7 @@ export abstract class BaseComponent {
         public eventsService: CompetitionEventsService,
         public rolePermissionsService: RolePermissionsService,
         public participantsService: ParticipantsService,
-        public gradingTopicsService: GradingTopicsService,
+        public gradingCriteriasService: GradingCriteriasService,
         public gradesService: GradesService,
     ) {}
 

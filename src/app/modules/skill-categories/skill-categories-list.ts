@@ -27,7 +27,7 @@ export class SkillCategoriesList extends BaseComponent implements OnInit {
   loadData() {
     this.layoutService.isDataLoading.set(true);
 
-    this.gradingTopicsService.GetSkillCategories().subscribe(data => { 
+    this.gradingCriteriasService.GetSkillCategories().subscribe(data => { 
         this.data.set(data);
         this.layoutService.isDataLoading.set(false);
       });

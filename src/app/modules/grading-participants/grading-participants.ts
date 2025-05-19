@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-import { Participant, Grade, GradingTopic } from "../../models/_index";
+import { Participant, Grade, GradingCriteria } from "../../models/_index";
 
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
@@ -24,7 +24,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     selectedSkillCategory: string | undefined;
     selectedSkillCategoryColor: string | undefined;
     participantGrades = signal<Grade[]>([]);
-    gradingTopics = signal<GradingTopic[]>([]);
+    gradingCriterias = signal<GradingCriteria[]>([]);
     dialog: boolean = false;
 
     ngOnInit() {
@@ -156,14 +156,14 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 // getBySkillCategory(){
 //     this.layoutService.isDataLoading.set(true);
 
-//     this.gradingTopicsService.GetBySkillCategory(this.selectedSkillCategory!)
+//     this.gradingCriteriasService.GetBySkillCategory(this.selectedSkillCategory!)
 //     .subscribe({
 //         next: (data: any) => {
 
 //             console.log(data);
 
 //             this.layoutService.isDataLoading.set(false);
-//             this.gradingTopics.set(data);
+//             this.gradingCriterias.set(data);
 //         }
 //       });
 // }

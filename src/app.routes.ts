@@ -7,7 +7,7 @@ import { Notfound } from './app/modules/auth/notfound';
 import { RolePermissionsList } from './app/modules/role-permissions/role-permissions-list';
 import { Events } from './app/modules/competitionEvents/events';
 import { SkillCategoriesList } from './app/modules/skill-categories/skill-categories-list';
-import { GradingTopicsList } from './app/modules/grading-topics/grading-topics-list';
+import { GradingCriteriasList } from './app/modules/grading-criterias/grading-criterias-list';
 import { GradingParticipants } from './app/modules/grading-participants/grading-participants';
 import { RegionCentersList } from './app/modules/region-centers/region-centers-list';
 import { Login } from './app/modules/auth/login';
@@ -31,7 +31,7 @@ export const appRoutes: Routes = [
             
             { path: 'events', component: Events, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Events_View] } },
 
-            { path: 'grading-topics', component: GradingTopicsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Questions_View] } },
+            { path: 'grading-criterias', component: GradingCriteriasList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Questions_View] } },
             { path: 'grading-participants', component: GradingParticipants, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Participants_Search_Participants] } },
             { path: 'graded-participants', component: GradedParticipantsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Participants_View_Participants_Grade] } },
 

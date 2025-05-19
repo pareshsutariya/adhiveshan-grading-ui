@@ -2,26 +2,26 @@ import { Component, OnInit, signal, ViewChild } from "@angular/core";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-import { SkillCategory, GradingTopic } from "../../models/_index";
+import { SkillCategory, GradingCriteria } from "../../models/_index";
 
 import { MessageService } from "primeng/api";
 import { Table } from "primeng/table";
 import { BaseComponent } from "../base-component/baseComponent";
 
 @Component({
-  selector: "app-grading-topics-list",
+  selector: "app-grading-criterias-list",
   imports: [AngularModules, PrimeNgModules],
   providers: [MessageService],
-  templateUrl: "grading-topics-list.html",
+  templateUrl: "grading-criterias-list.html",
 })
-export class GradingTopicsList extends BaseComponent implements OnInit {
+export class GradingCriteriasList extends BaseComponent implements OnInit {
   @ViewChild("dt") dt!: Table;
 
-  data = signal<GradingTopic[]>([]);
+  data = signal<GradingCriteria[]>([]);
 
   dialog: boolean = false;
   skillCategories = signal<SkillCategory[]>([]);
-  addOrEditItem!: GradingTopic;
+  addOrEditItem!: GradingCriteria;
   submitted: boolean = false;
 
   ngOnInit() {
@@ -31,13 +31,13 @@ export class GradingTopicsList extends BaseComponent implements OnInit {
   loadData() {
 
     this.layoutService.isDataLoading.set(true);
-    this.gradingTopicsService.GetSkillCategories().subscribe(data => {
+    this.gradingCriteriasService.GetSkillCategories().subscribe(data => {
       this.skillCategories.set(data);
       this.layoutService.isDataLoading.set(false);
     });
 
     this.layoutService.isDataLoading.set(true);
-    this.gradingTopicsService.GetItems().subscribe(data => { 
+    this.gradingCriteriasService.GetItems().subscribe(data => { 
         this.data.set(data);
         this.layoutService.isDataLoading.set(false);
       });
@@ -50,7 +50,7 @@ export class GradingTopicsList extends BaseComponent implements OnInit {
     this.dialog = true;
   }
 
-  openEdit(item: GradingTopic) {
+  openEdit(item: GradingCriteria) {
     this.addOrEditItem = { ...item };
     this.dialog = true;
   }
@@ -97,17 +97,17 @@ export class GradingTopicsList extends BaseComponent implements OnInit {
 
     this.layoutService.isDataLoading.set(true);
 
-    this.gradingTopicsService.Save(this.addOrEditItem).subscribe(c => {
+    this.gradingCriteriasService.Save(this.addOrEditItem).subscribe(c => {
         this.layoutService.isDataLoading.set(false);
 
-        let detail = this.addOrEditItem.gradingTopicId ? "Grading Topic Updated" : "Grading Topic Created";
+        let detail = this.addOrEditItem.gradingCriteriaId ? "Grading Criteria Updated" : "Grading Criteria Created";
         this.messageService.add({ severity: "success", summary: "Successful", detail: detail, life: 3000 });
 
         let selectedSkillCategoryId = this.addOrEditItem.skillCategoryId;
 
         this.loadData();
 
-        if(!this.addOrEditItem.gradingTopicId){
+        if(!this.addOrEditItem.gradingCriteriaId){
           this.openNew();
           this.addOrEditItem.skillCategoryId = selectedSkillCategoryId;
         }

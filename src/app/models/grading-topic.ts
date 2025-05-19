@@ -1,5 +1,5 @@
-export interface GradingTopic {
-    gradingTopicId?: number;
+export interface GradingCriteria {
+    gradingCriteriaId?: number;
     skillCategoryId?: number;
     name?: string,
     description?: string,

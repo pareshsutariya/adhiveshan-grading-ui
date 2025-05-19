@@ -2,7 +2,7 @@ export * from "./_constants";
 export * from "./auth.service";
 export * from "./competitionEvents.service";
 export * from "./grades.service";
-export * from "./grading-topics.service";
+export * from "./grading-criterias.service";
 export * from "./participants.service";
 export * from "./regionCenters.service";
 export * from "./rolePermissions.service";

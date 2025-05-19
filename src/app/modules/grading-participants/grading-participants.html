@@ -160,7 +160,7 @@
         </h5>
     </ng-template>
     <p-table [value]="participantGrades()" showGridlines [rowHover]="true" [scrollable]="true">
-        <!-- Grading Topics List View Header -->
+        <!-- Grading Criterias List View Header -->
         <ng-template #header>
             <tr>
                 <th class="whitespace-nowrap">
@@ -175,7 +175,7 @@
             </tr>
         </ng-template>
 
-        <!-- Grading Topics List View Data -->
+        <!-- Grading Criterias List View Data -->
         <ng-template #body let-item>
             <tr [style]="{'color': item.color}">
                 <td class="whitespace-nowrap">{{ item.topicName }}</td>

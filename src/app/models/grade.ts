@@ -3,7 +3,7 @@ import { Participant } from "./participant";
 export interface Grade {
   gradeId?: number;
   bapsId?: string;
-  gradingTopicId?: number;
+  gradingCriteriaId?: number;
   marks?: number;
   judgeUserId: number;
 
