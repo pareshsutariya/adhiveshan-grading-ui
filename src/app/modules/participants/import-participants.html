@@ -22,7 +22,7 @@
 </p-toolbar>
 
 <p-table #dt [value]="data()"
-    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'sampark_Category', 'emcee_Category', 'speech_Pravachan_Category', 'vyaktigat_Kirtan_Gaan_Category', 'tedtalk_Category', 'gender']"
+    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'emcee_Category', 'speech_Pravachan_Category', 'gender']"
     sortField="center" sortMode="multiple" [scrollable]="true" [showCurrentPageReport]="true" [rowHover]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users" [paginator]="true" [rows]="10"
     [rowsPerPageOptions]="[10, 25, 50, 75, 100]" scrollHeight="550px">

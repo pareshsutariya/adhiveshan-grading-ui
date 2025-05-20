@@ -141,14 +141,6 @@ export class ImportParticipants extends BaseComponent implements OnInit {
           // stuti_Shlok: raw["Stuti Shlok"],
           // satsang_Mukhpath: raw["Satsang Mukhpath"],
           // completed_Pushpo: raw["Completed Pushpo"],
-          // sampark: raw["Sampark"],
-          // sampark_Category: raw["Sampark Category"],
-
-          // skit_Writing_Samvad_Lekhan: raw["Skit Writing (Samvad Lekhan)"],
-          // article_Writing: raw["Article Writing"],
-          // speech_Writing_Pravachan_Lekhan: raw["Speech Writing (Pravachan Lekhan)"],
-          // vyaktigat_Kirtan_Gaan: raw["Vyaktigat Kirtan Gaan"],
-          // vyaktigat_Kirtan_Gaan_Category: raw["Vyaktigat Kirtan Gaan Category"],
         });
       }
 

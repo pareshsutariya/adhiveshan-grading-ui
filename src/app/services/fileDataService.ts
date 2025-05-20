@@ -19,11 +19,8 @@ export class FileDataService {
     for (let index = 0; index < jsonData.length; index++) {
       const raw = jsonData[index];
 
-      let eligible = raw["Sampark Category"] != null && raw["Sampark Category"] != undefined && raw["Sampark Category"].trim().length > 0 || 
-                    raw["Speech (Pravachan) Category"] != null && raw["Speech (Pravachan) Category"] != undefined && raw["Speech (Pravachan) Category"].trim().length > 0 || 
-                    raw["Emcee Category"] != null && raw["Emcee Category"] != undefined  && raw["Emcee Category"].trim().length > 0 || 
-                    raw["Vyaktigat Kirtan Gaan"] != null && raw["Vyaktigat Kirtan Gaan"] != undefined  && raw["Vyaktigat Kirtan Gaan"]== "Participating" || 
-                    raw["TedTalk"] != null && raw["TedTalk"] != undefined  && raw["TedTalk"].trim().length > 0;
+      let eligible = raw["Speech (Pravachan) Category"] != null && raw["Speech (Pravachan) Category"] != undefined && raw["Speech (Pravachan) Category"].trim().length > 0 || 
+                    raw["Emcee Category"] != null && raw["Emcee Category"] != undefined  && raw["Emcee Category"].trim().length > 0;
 
       if(eligible == false){
         //eligibleData.push(raw);
@@ -35,11 +32,8 @@ export class FileDataService {
         registration_Status: raw["Registration Status"],
         mandal: raw["Mandal"],
         firstLastName_MISID: raw["FirstLastName-MISID"],
-        sampark_category: raw["Sampark Category"],
         speech_pravachan_category: raw["Speech (Pravachan) Category"],
         emcee_category: raw["Emcee Category"],
-        vyaktigat_kirtan_gaan: raw["Vyaktigat Kirtan Gaan"],
-        tedtalk_category: raw["TedTalk"],
         gender: raw["Gender"],
 
         misId: raw["FirstLastName-MISID"].split("-")[1],
@@ -71,10 +65,6 @@ export class FileDataService {
   }
 
   prepareCountsFromFile(input: AdhiveshanInput){
-    let samparkAksharCount = this.data.candidates?.filter(c => c.sampark_category != null && c.sampark_category != undefined && c.sampark_category.indexOf("Akshar") >= 0).length;
-    let samparkBrahmCount = this.data.candidates?.filter(c => c.sampark_category != null && c.sampark_category != undefined && c.sampark_category.indexOf("Brahm") >= 0).length;
-    let samparkNirgunCount = this.data.candidates?.filter(c => c.sampark_category != null && c.sampark_category != undefined && c.sampark_category.indexOf("Nirgun") >= 0).length;
-    
     let emceeSahajanandCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Sahajanand") >= 0).length;
     let emceeNeelkanthCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Neelkanth") >= 0).length;
     let emceeShriHariCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Shri Hari") >= 0).length;
@@ -86,10 +76,6 @@ export class FileDataService {
     let sahajanandCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Sahajanand") == 0 ).length;
     let harikrishnaCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Harikrishna") == 0 ).length;
     let shriHariCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Shri Hari") == 0 ).length;
-
-    let vyaktigatKirtanGaanCount = this.data.candidates?.filter(c => c.vyaktigat_kirtan_gaan != null && c.vyaktigat_kirtan_gaan != undefined  && c.vyaktigat_kirtan_gaan == "Participating").length;
-
-    let tedTalkCount = this.data.candidates?.filter(c => c.tedtalk_category?.indexOf("TedTalk") == 0 ).length;
 
     //input.examStartDate = Constants.ExamStartDate;
     //input.examEndDate = Constants.ExamEndDate;
@@ -183,11 +169,6 @@ export class FileDataService {
           candidate.participatingSkills.push({name: "Sampark: Nirgun", duration: Constants.SamparkNirgunDuration, color: Constants.SamparkColor });
       }
 
-      if(candidate.vyaktigat_kirtan_gaan != null && candidate.vyaktigat_kirtan_gaan != undefined) {
-        if(candidate.vyaktigat_kirtan_gaan == "Participating")
-          candidate.participatingSkills.push({name: "Vyaktigat Kirtan Gaan", duration: Constants.VyaktigatKirtanGaanDuration, color: Constants.VyaktigatKirtanGaanColor });
-      }
-        
       if(candidate.tedtalk_category != null && candidate.tedtalk_category != undefined) {
         if(candidate.tedtalk_category?.indexOf("TedTalk") == 0)
           candidate.participatingSkills.push({name: "TedTalk", duration: Constants.TedTalkDuration, color: Constants.TedTalkColor });

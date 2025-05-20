@@ -72,11 +72,8 @@ export interface Candidate {
   mandal: string;
   firstLastName_MISID: string;
 
-  sampark_category: string;
   emcee_category: string;
   speech_pravachan_category: string;
-  vyaktigat_kirtan_gaan: string,
-  tedtalk_category: string;
   gender: string;
 
   misId?: string;

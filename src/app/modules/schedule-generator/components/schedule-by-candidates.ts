@@ -55,7 +55,7 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
         <!-- Group Header -->
         <ng-template #groupheader let-item let-rowIndex="rowIndex" let-expanded="expanded">
             <tr pRowGroupHeader>
-                <td colspan="12">
+                <td colspan="9">
                   <button type="button" pButton pRipple text rounded plain class="mr-2"
                       [pRowToggler]="item"
                       [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
@@ -81,19 +81,10 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
             <td valign="top" class= "whitespace-nowrap" style="width:1rem">{{candidate.fullName}}</td>
             <td valign="top" style="width:1rem">{{candidate.gender}}</td>
             <td valign="top" style="text-align:center;width:1rem">
-              <i class="pi pi-check-circle" *ngIf="candidate.sampark_category"></i>
-            </td>
-            <td valign="top" style="text-align:center;width:1rem">
               <i class="pi pi-check-circle" *ngIf="candidate.emcee_category"></i>
             </td>
             <td valign="top" style="text-align:center;width:1rem">
               {{candidate.speech_pravachan_category?.charAt(0)}}
-            </td>
-            <td valign="top" style="text-align:center;width:1rem">
-              <i class="pi pi-check-circle" *ngIf="candidate.vyaktigat_kirtan_gaan == 'Participating'"></i>
-            </td>
-            <td valign="top" style="text-align:center;width:1rem">
-              <i class="pi pi-check-circle" *ngIf="candidate.tedtalk_category"></i>
             </td>
             <td valign="top" style="text-align:center;width:1rem">{{candidate.priority}}</td>
             <td valign="top" >

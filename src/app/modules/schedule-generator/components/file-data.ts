@@ -25,7 +25,7 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
 
     <p-table #dt *ngIf="dataService.candidates.length"
         [value]="dataService.candidates"
-        [globalFilterFields]="['center', 'misId', 'fullName', 'sampark_category', 'emcee_category', 'speech_pravachan_category', 'gender']"
+        [globalFilterFields]="['center', 'misId', 'fullName', 'emcee_category', 'speech_pravachan_category', 'gender']"
         rowGroupMode="subheader" groupRowsBy="center"
         sortField="center" 
 
@@ -40,17 +40,14 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
             <th class="whitespace-nowrap">MIS Id</th>
             <th class="whitespace-nowrap">Full Name</th>
             <th class="whitespace-nowrap">Gender</th>
-            <th class="whitespace-nowrap">Sampark</th>
             <th class="whitespace-nowrap">Emcee</th>
             <th class="whitespace-nowrap">Pravachan</th>
-            <th class="whitespace-nowrap">Kirtan</th>
-            <th class="whitespace-nowrap">Ted Talk</th>
           </tr>
         </ng-template>
         <!-- Group Header -->
         <ng-template #groupheader let-item let-rowIndex="rowIndex" let-expanded="expanded">
             <tr pRowGroupHeader>
-                <td colspan="9">
+                <td colspan="6">
                   <button type="button" pButton pRipple text rounded plain class="mr-2"
                       [pRowToggler]="item"
                       [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
@@ -67,11 +64,8 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
             <td valign="top" style="padding-top:20px;">#{{candidate.misId}}</td>
             <td>{{candidate.fullName}}</td>
             <td>{{candidate.gender}}</td>
-            <td>{{candidate.sampark_category}}</td>
             <td>{{candidate.emcee_category}}</td>
             <td>{{candidate.speech_pravachan_category}}</td>
-            <td>{{candidate.vyaktigat_kirtan_gaan == "Participating" ? "Participating" : ""}}</td>
-            <td>{{candidate.tedtalk_category}}</td>
           </tr>
         </ng-template>
     </p-table>`
