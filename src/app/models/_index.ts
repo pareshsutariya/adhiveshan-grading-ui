@@ -8,4 +8,5 @@ export * from "../models/rolePermissions";
 export * from "../models/skill-category";
 export * from "../models/user";
 export * from "../models/user-judge-import";
+export * from "../models/schedule";
 export * from "../models/_serviceResponse";

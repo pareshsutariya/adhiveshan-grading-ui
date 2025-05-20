@@ -15,6 +15,7 @@ import { Access } from './app/modules/auth/access';
 import { GradedParticipantsList } from './app/modules/graded-participants/graded-participants-list';
 import { AuthGuard } from './app/services/auth.guard';
 import { PermissionsEnum } from './app/services/_index';
+import { ScheduleGenerator } from './app/modules/schedule-generator/schedule-generator';
 
 export const appRoutes: Routes = [
     {
@@ -34,6 +35,8 @@ export const appRoutes: Routes = [
             { path: 'grading-criterias', component: GradingCriteriasList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Questions_View] } },
             { path: 'grading-participants', component: GradingParticipants, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Participants_Search_Participants] } },
             { path: 'graded-participants', component: GradedParticipantsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Grading_Participants_View_Participants_Grade] } },
+
+            { path: 'schedule-generator', component: ScheduleGenerator, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Schedules_View] } },
 
             { path: 'users', component: Users, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Users_NationalAdmins_View, PermissionsEnum.Users_RegionalAdmins_View, PermissionsEnum.Users_Judges_View, PermissionsEnum.Users_CheckIns_View] } },
             { path: 'rolePermissions', component: RolePermissionsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Users_NationalAdmins_View] } },

@@ -1,5 +1,6 @@
-- [ ] Schedule: Include Room Schedule module
-- [ ] Schedule: Saving schedule for a center
+- [ ] Schedule: Include Room Schedule module (1)
+- [ ] Schedule: Saving schedule for a center (2)
+- [ ] Users: Judge room assignment
 
 ## ===== Feedback =====
 
@@ -32,8 +33,8 @@
 ## =====
 - [ ] Schedule: Include Room Schedule module
 - [ ] Schedule: Saving schedule for a center
-
 - [ ] Users: Judge room assignment
+
 - [ ] Users: Pull user info by MISID using external API
 - [ ] Users: Proctor login should be disbled as soon as the event ends
 

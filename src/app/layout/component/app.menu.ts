@@ -57,6 +57,11 @@ export class AppMenu {
         if(this.auth.HasUserPermissions([PermissionsEnum.Grading_Participants_View_Participants_Grade]))
             grading.items?.push({ label: 'View Participants Grades', icon: 'fa-solid fa-graduation-cap', routerLink: ['/graded-participants'] });
 
+        // SCHEDULE GENERATOR
+        let scheduleGenerator: MenuItem = {label: 'Schedule Generator',  items: []};
+        if(this.auth.HasUserPermissions([PermissionsEnum.Schedules_View]))
+            scheduleGenerator.items?.push({ label: 'Schedule', icon: 'fa-solid fa-table-list', routerLink: ['/schedule-generator'] });
+
         // ACCOUNTS
         let accounts: MenuItem = {label: 'Accounts', items: []};
         if(this.auth.HasUserPermissions([PermissionsEnum.Users_NationalAdmins_View, PermissionsEnum.Users_RegionalAdmins_View, PermissionsEnum.Users_Judges_View]))
@@ -85,6 +90,9 @@ export class AppMenu {
 
         if(events!.items!.length > 0)
             this.model.push(events);
+
+        if(scheduleGenerator!.items!.length > 0)
+            this.model.push(scheduleGenerator);
 
         if(grading!.items!.length > 0)
             this.model.push(grading);

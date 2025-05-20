@@ -8,4 +8,7 @@ export * from "./regionCenters.service";
 export * from "./rolePermissions.service";
 export * from "./users.service";
 export * from "./auth.interceptor";
+export * from "./dataService";
+export * from "./fileDataService";
+export * from "./slotsService";
 export * from "../../environments/environment";

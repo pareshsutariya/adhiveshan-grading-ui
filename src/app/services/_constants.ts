@@ -7,6 +7,62 @@ export class Constants {
   public static DateTimeFormat: string = "MM/DD/YYYY HH:mm";
   public static DateTimeFormatShort: string = "MM/DD HH:mm";
 
+  public static ExamDate: string = "06/01/2025";
+
+  public static ExamStartTime: string = "09:00";
+  public static ExamEndTime: string = "18:00";
+
+  public static Break1StartTime: string = "12:00";
+  public static Break1EndTime: string = "13:00";
+
+  public static Break2StartTime: string = "15:00";
+  public static Break2EndTime: string = "15:30";
+
+  public static SamparkAksharDuration: number = 12;
+  public static SamparkBrahmDuration: number = 12;
+  public static SamparkNirgunDuration: number = 7;
+  
+  public static EmceeSahajanandDuration: number = 10;
+  public static EmceeNeelkanthDuration: number = 10;
+  public static EmceeShriHariDuration: number = 10;
+  public static EmceeGhanshyamDuration: number = 7;
+  public static EmceeHariKrishnaDuration: number = 7;
+
+  public static PravachanGhanshyamDuration: number = 8;
+  public static PravachanHarikrishnaDuration: number = 8;
+  public static PravachanNeelkanthDuration: number = 10;
+  public static PravachanShriHariDuration: number = 10;
+  public static PravachanSahajanandDuration: number = 15;
+
+  public static VyaktigatKirtanGaanDuration: number = 10;
+
+  public static TedTalkDuration: number = 10;
+
+  public static SamparkColor: string = "black";
+  public static EmceeColor: string = "navy";
+  public static PravachanColor: string = "green";
+
+  public static VyaktigatKirtanGaanColor: string = "orange";
+
+  public static TedTalkColor: string = "purple";
+
+  // public static GhanshyamColor: string = "brown";
+  // public static NeelkanthColor: string = "orange";
+  // public static HarikrishnaColor: string = "maroon";
+  // public static ShriHariColor: string = "blue";
+  
+  public static MinSpaceBetweenTwoTests: number = 60;
+  public static ExtraSlotsPercentage: number = 500;
+
+  public static timeDiff(startTime: Moment, endTime: Moment) : number {
+    let minutes = moment.duration(endTime.diff(startTime)).asMinutes();
+
+    if(minutes != 0 && !isNaN(minutes))
+      return minutes;
+    
+    return 0;
+  }
+
   get UserStatuses(): any {
     return [
       { label: "Active", value: "Active" },

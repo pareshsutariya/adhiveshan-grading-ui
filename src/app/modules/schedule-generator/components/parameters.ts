@@ -1,0 +1,305 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { InputTextModule } from 'primeng/inputtext';
+import { AccordionModule } from 'primeng/accordion';
+import { Output, EventEmitter } from '@angular/core';
+import { UploadEvent, FileUpload } from "primeng/fileupload";
+import * as XLSX from "xlsx";
+
+import moment, { Moment } from "moment";
+import { CommonModule } from '@angular/common';
+import { TableModule } from 'primeng/table';
+import { ToolbarModule } from 'primeng/toolbar';
+import { AdhiveshanInput, Candidate, Room  } from '../../../models/_index';
+
+import { Constants } from "../../../services/_constants";
+import { SelectModule } from 'primeng/select';
+import { LayoutService } from '../../../layout/service/layout.service';
+import { FileDataService } from '../../../services/fileDataService';
+import { DataService } from '../../../services/dataService';
+import { MessageService } from 'primeng/api';
+import { DatePickerModule } from 'primeng/datepicker';
+import { BaseComponent } from '../../base-component/baseComponent';
+
+@Component({
+    standalone: true,
+    selector: 'app-parameters',
+    imports: [CommonModule,SelectButtonModule, DatePickerModule, FileUpload, SelectModule, FormsModule, ButtonModule, TableModule, ToolbarModule, InputTextModule, AccordionModule],
+    template: `
+     <div class="flex flex-col md:flex-row gap-1">
+        <!-- Schedule -->
+        <div class="md:w-1/3 pt-2">
+          <table width="100%" [cellPadding]="7" [cellSpacing]="7">
+            <tr style="border-bottom: 1px solid lightgray;">
+              <th [colSpan]="2" >
+                <div class="flex items-center justify-center" >
+                  <h5 class="m-0 whitespace-nowrap">Participants File</h5>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Upload</label></td>
+              <td>
+                <p-fileupload name="fileUpload" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" chooseIcon="pi pi-upload"
+                  mode="basic" chooseLabel="" 
+                  [auto]="true" 
+                  [multiple]="false" 
+                  [showUploadButton]="false" 
+                  [showCancelButton]="false" 
+                  (onSelect)="onSelectedFiles($event)" />
+              </td>
+            </tr>           
+            <tr>
+              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Host Center</label></td>
+              <td>
+                <p-select inputId="hostCenter" [options]="input.centers" [showClear]="true" [filter]="true" optionLabel="label" optionValue="value"
+                  [(ngModel)]="input.hostCenter" placeholder="Select Host Center" (onChange)="onHostCenterChanged($event)" />
+              </td>
+            </tr>
+          </table>
+          
+          <!-- Participants Count -->
+          <table width="100%" [cellPadding]="14" [cellSpacing]="7" style="margin-top:130px">
+            <thead>
+              <tr style="border-bottom: 1px solid lightgray;">
+                <th [colSpan]="4" style="padding:5pt">
+                  <div class="flex items-center justify-center" >
+                    <h5 class="m-0 whitespace-nowrap">Participants</h5>
+                  </div>
+                </th>
+              </tr>
+              <tr class="bold">
+                <th style="width: 1rem;" class="text-left">Skill Name</th>
+                <th style="width: 1rem;" class="text-left">Total</th>
+                <th style="width: 1rem;color: green;" class="text-left">Assigned</th>
+                <th style="width: 1rem;color: red" class="text-left">Pending</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let skill of input.skills">
+                <td style="color:{{skill.color}}" class="whitespace-nowrap" >{{skill.name}}</td>
+                <td>{{skill.noOfParticipants}}</td>
+                <td style="color: green">{{skill.noOfAssigned}}</td>
+                <td style="color: red">{{skill.noOfPending}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr style="color:red;border-top: 1px solid lightgray;">
+                <th style="width: 1rem;font-weight:bold;" class="text-left underline whitespace-nowrap">Total Candidates</th>
+                <th class="text-left">{{input.totalCandidate}}</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="md:w-1/2 pt-2 ml-14">
+          <!-- Start Time / End Time -->
+          <table [cellPadding]="7" [cellSpacing]="7">
+            <tr style="border-bottom: 1px solid lightgray;">
+              <th [colSpan]="2">
+                <div class="flex items-center justify-center" >
+                  <h5 class="m-0 whitespace-nowrap">Competition Schedule</h5>
+                </div>
+              </th>
+              <th [colSpan]="1">
+                <p-datepicker [(ngModel)]="input.examDateOnly" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+              </th>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-person-running fa-xl mr-2"></i>Start Time</td>
+              <td>
+                  <!-- <input pInputText id="name3" type="text" [(ngModel)]="input.examStartDate" /> -->    
+                <input pInputText type="time" [(ngModel)]="input.examStartTime" />
+              </td>
+              <td>
+                <!-- <input pInputText id="name3" type="text" [(ngModel)]="input.examEndDate" /> -->
+                <input pInputText type="time" [(ngModel)]="input.examEndTime" />
+              </td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-utensils fa-xl mr-2"></i>Break-1</td>
+              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break1StartTime" /></td>
+              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break1EndTime" /></td>
+            </tr>
+            <tr>
+              <td><i class="fa-solid fa-mug-hot fa-xl mr-2"></i>Break-2</td>
+              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break2StartTime" /></td>
+              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break2EndTime" /></td>
+            </tr>
+            <tr>
+              <th style="font-weight:bold; text-align:left;" colspan=4 class="whitespace-nowrap">
+                Gap between two tests:  <span style="color:navy">{{input.minSpaceBetweenTwoTests}} minutes</span>
+                <!-- <input pInputText type="number" min="1" style="width:60px;" class="ml-2" [(ngModel)]="input.minSpaceBetweenTwoTests" /> -->
+              </th>
+            </tr>
+          </table>
+
+          <!-- Skills Duration -->
+          <table [cellPadding]="5" [cellSpacing]="5" width="100%" class="mt-10">
+            <thead>
+            <tr style="border-bottom: 1px solid lightgray;">
+              <th [colSpan]="3" >
+                <div class="flex items-center justify-start" >
+                  <h5 class="m-0 whitespace-nowrap">Skills/Rooms Configuration</h5>
+                </div>
+              </th>
+              <th [colSpan]="3" >
+                <!-- <p-select [options]="input.skills" [showClear]="true" [filter]="true"  optionLabel="name" optionValue="name"
+                  placeholder="Select a Skill" [ngStyle]="{'width': '190px', 'text-align':'left'}"
+                  [(ngModel)]="selectedSkillToAddRoom"/> -->
+              
+                <p-button label="Add Room" severity="primary" (onClick)="OnRoomAdded($event)" class="ml-3"/>
+              </th>
+            </tr>
+            <tr class="bold">
+              <th style="width: 1rem;" class="whitespace-nowrap text-left">Room Name <p-button icon="fa-solid fa-arrow-up-a-z" [rounded]="true" [text]="true" (onClick)="dataService.SortRoomsByName()" /></th>
+              <th style="width: 1rem;" class="whitespace-nowrap text-left">Start Time</th>
+              <th style="width: 1rem;" class="whitespace-nowrap text-left">End Time</th>
+              <th style="width: 12rem;" class="whitespace-nowrap text-left">Skill Name</th>
+              <th style="width: 1rem;" class="whitespace-nowrap text-left">Skill Duration</th>
+              <th style="width: 1rem;" class="whitespace-nowrap text-left"># Proctors</th>
+              <th>&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let room of dataService.rooms;index as i" [ngStyle]="{'color': room.color}">
+                <td><input pInputText type="text" style="width:100px" class="mr-1" [readOnly]="false" [(ngModel)]="room.roomName" /></td> 
+                <td><input pInputText type="time" [(ngModel)]="room.roomStartTime" /></td>
+                <td><input pInputText type="time" [(ngModel)]="room.roomEndTime" /></td>
+                <td>
+                  <p-select [options]="input.skills" [showClear]="true" [filter]="true"  optionLabel="name" optionValue="name"
+                    placeholder="Select a Skill" [ngStyle]="{'width': '190px', 'text-align':'left'}" (onChange)="OnSkillChanged(room)"
+                    [(ngModel)]="room.skill"/>
+                </td>
+                <td>{{room.duration}} minutes</td>
+                <!-- <td><input pInputText type="number" min="1" style="width:60px" class="mr-1" [readOnly]="false" [(ngModel)]="room.duration" /></td> -->
+                <td>x 2 = {{1 * 2}}</td> 
+                <td>
+                  <p-button [icon]="'pi pi-times'" [rounded]="true" [outlined]="true" severity="danger" (onClick)="OnRoomRemoved(i)" class="ml-3"/>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr style="color:red;border-top: 1px solid lightgray;">
+                <th style="font-weight:bold; text-align:left;" class="underline">Total</th>
+                <th style="font-weight:bold; text-align:left;" class="pl-3 whitespace-nowrap">
+                  {{ dataService.rooms.length }} Rooms
+                </th>
+                <th style="font-weight:bold; text-align:right;" colspan=4 class="whitespace-nowrap">
+                  {{ dataService.rooms.length * 2 }} Proctors
+                </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+    </div>
+  `
+})
+export class Parameters extends BaseComponent implements OnInit {
+  dummy: any = ["dummy-1"];
+
+  input: AdhiveshanInput = {};
+  selectedSkillToAddRoom: string | undefined;
+  //centers: any[]=[];
+ 
+  ngOnInit(): void {
+    //this.generateCandidate(this.input.totalCandidate);
+
+    let storageInput = localStorage.getItem("INPUT");
+    if(storageInput){
+      this.input = JSON.parse(storageInput) as AdhiveshanInput;
+      console.log("INPUT from storage: ", this.input);
+    }
+    else 
+    {
+      this.input = {};
+    }
+
+    let storageCandidates = localStorage.getItem("CANDIDATES");
+    if(storageCandidates){
+      this.dataService.candidates = JSON.parse(storageCandidates) as Candidate[];
+      console.log("CANDIDATES from storage: ", this.dataService.candidates);
+    }
+
+    let storageRooms = localStorage.getItem("ROOMS");
+    if(storageRooms){
+      this.dataService.rooms = JSON.parse(storageRooms) as Room[];
+      console.log("ROOMS from storage: ", this.dataService.rooms);
+    }
+
+    this.fileDataService.populateDataFromFile(this.input);
+  }
+
+  onSelectedFiles(event: any) {
+    this.layoutService.isDataLoading.set(true);
+
+    const file = event.currentFiles[0];
+
+    const fileReader = new FileReader();
+
+    fileReader.onload = (e: any) => {
+      const arrayBuffer = e.target.result;
+      const workbook = XLSX.read(arrayBuffer, { type: "array" });
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+      let jsonData: any[] = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+
+      this.fileDataService.generateFileData(this.input, jsonData);
+
+      this.layoutService.isDataLoading.set(false);
+
+      this.fileDataService.populateDataFromFile(this.input);
+
+      localStorage.setItem("FILE_JSON", JSON.stringify(jsonData));
+      // localStorage.setItem("CANDIDATES", JSON.stringify(this.data.candidates));
+      // localStorage.setItem("ROOMS", JSON.stringify(this.data.rooms));
+      localStorage.setItem("INPUT", JSON.stringify(this.input));
+
+      //console.log("INPUT", this.input);
+      //console.log("INPUT.fileData", this.input.fileData);
+    };
+
+    fileReader.readAsArrayBuffer(file);
+  }
+
+  onHostCenterChanged(event: any){
+    this.fileDataService.populateDataFromFile(this.input);
+
+    localStorage.setItem("INPUT", JSON.stringify(this.input));
+  }
+
+  OnRoomAdded(event: any){
+    // if(!this.selectedSkillToAddRoom){
+    //   this.messageService.add({ severity: "warn", summary: "Validation", detail: "Please select a Skill to add room", life: 3000 });
+    //   return;
+    // }
+
+    this.dataService.addRoom("", this.input);
+
+    this.messageService.add({ severity: "success", summary: "Room Added", detail: `${this.selectedSkillToAddRoom} Room has been added successfully`, life: 3000 });
+  
+    //this.selectedSkillToAddRoom = undefined;
+  }
+
+  OnSkillChanged(room: Room){
+    room = this.dataService.setRoomDurationAndColor(room.skill, room);
+  }
+
+  OnRoomRemoved(index: number){
+    this.dataService.removeRoom(index, this.input);
+  }
+
+  downloadSampleFile(){
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', './public/Adveshan_Participants.xlsx');
+    link.setAttribute('download', `Adveshan_Participants.xlsx`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
+}

@@ -77,6 +77,10 @@ export enum PermissionsEnum {
   Events_Add = "Events: Add",
   Events_Update = "Events: Update",
 
+  Schedules_View = "Schedules: View",
+  Schedules_Add = "Schedules: Add",
+  Schedules_Update = "Schedules: Update",
+
   Grading_Participants_Search_Participants = "Grading Participants: Search Participants",
   Grading_Participants_Grade_Participants = "Grading Participants: Grade Participants",
   Grading_Participants_View_Participants_Grade = "Grading Participants: View Participants Grade",
