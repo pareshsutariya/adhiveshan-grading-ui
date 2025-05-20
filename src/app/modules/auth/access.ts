@@ -7,7 +7,7 @@ import { AppFloatingConfigurator } from '../../layout/component/app.floatingconf
 @Component({
     selector: 'app-access',
     standalone: true,
-    imports: [ButtonModule, RouterModule, RippleModule, AppFloatingConfigurator, ButtonModule],
+    imports: [ButtonModule, RouterModule, RippleModule, ButtonModule],
     template: ` 
         <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">
             <div class="flex flex-col items-center justify-center">

@@ -35,10 +35,10 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.layoutService.isDataLoading.set(true);
 
         // TODO : Get login user roles and assigned skills, and display the tabs accordingly
-        this.usersService.GetById(this.loginUserId).subscribe(user=>{
+        this.usersService.GetById(this.loginUserId).subscribe(response=>{
             this.judgeSkillCategories = [];
-            if(user.assignedSkillCategories){
-                this.judgeSkillCategories = this.constants.SkillCategories.filter((s: { label: string; title: string; })=> user.assignedSkillCategories!.indexOf(s.label) >=0 );
+            if(response.data.assignedSkillCategories){
+                this.judgeSkillCategories = this.constants.SkillCategories.filter((s: { label: string; title: string; })=> response.data.assignedSkillCategories!.indexOf(s.label) >=0 );
             }
 
             this.layoutService.isDataLoading.set(false);
@@ -96,8 +96,8 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     getParticipantGrades(){
         this.layoutService.isDataLoading.set(true);
 
-        this.gradesService.GetForParticipantAndJudge(this.participantBAPSId!, this.selectedSkillCategory!, this.loginUserId).subscribe(data=>{
-            this.participantGrades.set(data);
+        this.gradesService.GetForParticipantAndJudge(this.participantBAPSId!, this.selectedSkillCategory!, this.loginUserId).subscribe(response=>{
+            this.participantGrades.set(response.data);
 
             this.layoutService.isDataLoading.set(false);
         });

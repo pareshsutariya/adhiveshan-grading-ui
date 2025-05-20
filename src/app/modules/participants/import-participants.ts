@@ -45,11 +45,11 @@ export class ImportParticipants extends BaseComponent implements OnInit {
 
   loadData() {
     this.layoutService.isDataLoading.set(true);
-    this.participantsService.GetItems().subscribe(f_data =>{ 
+    this.participantsService.GetItems().subscribe(response =>{ 
       this.layoutService.isDataLoading.set(false);
-      this.data.set(f_data); 
+      this.data.set(response.data); 
 
-      console.log(f_data);
+      console.log(response);
     });
   }
 

@@ -27,8 +27,8 @@ export class RolePermissionsList extends BaseComponent implements OnInit {
   loadData() {
     this.layoutService.isDataLoading.set(true);
 
-    this.rolePermissionsService.GetPivotItems().subscribe(data => { 
-        this.data.set(data);
+    this.rolePermissionsService.GetPivotItems().subscribe(response => { 
+        this.data.set(response.data);
         this.layoutService.isDataLoading.set(false);
       });
   }

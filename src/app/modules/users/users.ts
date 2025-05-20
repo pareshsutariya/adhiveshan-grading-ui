@@ -57,20 +57,20 @@ export class Users extends BaseComponent implements OnInit {
     this.skillCategories.set(this.constants.SkillCategories);
 
     this.layoutService.isDataLoading.set(true);
-    this.eventsService.GetEventsForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(data => { 
-      this.events.set(data);
+    this.eventsService.GetEventsForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(response => { 
+      this.events.set(response.data);
       this.layoutService.isDataLoading.set(false);
     });
 
     this.layoutService.isDataLoading.set(true);
-    this.usersService.GetUsersForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(data => { 
+    this.usersService.GetUsersForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(response => { 
 
       // Filter out National Admin data
       if(!this.authService.HasUserRoles([this.rolesEnum.NationalAdmin])){
-        data = data.filter(d=> d.assignedRoles == null || d.assignedRoles.indexOf(this.rolesEnum.NationalAdmin) <0);
+        response = response.data.filter((d: { assignedRoles: string | RolesEnum[] | null; })=> d.assignedRoles == null || d.assignedRoles.indexOf(this.rolesEnum.NationalAdmin) <0);
       }
 
-      this.data.set(data);
+      this.data.set(response.data);
       this.layoutService.isDataLoading.set(false);
     });
   }
@@ -101,10 +101,10 @@ export class Users extends BaseComponent implements OnInit {
 
     this.layoutService.isDataLoading.set(true);
 
-    this.participantsService.GetByBAPSId(this.addOrEditItem.bapsId).subscribe(participant => {
+    this.participantsService.GetByBAPSId(this.addOrEditItem.bapsId).subscribe(response => {
       this.layoutService.isDataLoading.set(false);
 
-      if(participant == null) {
+      if(response == null) {
 
         this.messageService.add({ severity: "error", summary: "Validation", detail: "Participant not found", life: 3000 });
         
@@ -114,18 +114,18 @@ export class Users extends BaseComponent implements OnInit {
       // Search user gender should match with login user gender
       if(!this.authService.HasUserRoles([RolesEnum.NationalAdmin])){
 
-        console.log(this.authService.GetLoginUser().assignedGenders, participant.gender);
+        console.log(this.authService.GetLoginUser().assignedGenders, response.data.gender);
 
-        if(this.authService.GetLoginUser().assignedGenders!.indexOf(participant.gender) < 0){
+        if(this.authService.GetLoginUser().assignedGenders!.indexOf(response.data.gender) < 0){
           this.messageService.add({ severity: "error", summary: "Validation", detail: "Participant gender is not matching with login user gender", life: 3000 });
         
           return;
         }
       }
 
-      this.addOrEditItem.fullName = participant.fullName;
-      this.addOrEditItem.region = participant.region;
-      this.addOrEditItem.center = participant.center;
+      this.addOrEditItem.fullName = response.data.fullName;
+      this.addOrEditItem.region = response.data.region;
+      this.addOrEditItem.center = response.data.center;
     });
   }
   

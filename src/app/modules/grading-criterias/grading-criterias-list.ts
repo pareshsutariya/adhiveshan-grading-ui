@@ -31,14 +31,14 @@ export class GradingCriteriasList extends BaseComponent implements OnInit {
   loadData() {
 
     this.layoutService.isDataLoading.set(true);
-    this.gradingCriteriasService.GetSkillCategories().subscribe(data => {
-      this.skillCategories.set(data);
+    this.gradingCriteriasService.GetSkillCategories().subscribe(response => {
+      this.skillCategories.set(response.data);
       this.layoutService.isDataLoading.set(false);
     });
 
     this.layoutService.isDataLoading.set(true);
-    this.gradingCriteriasService.GetItems().subscribe(data => { 
-        this.data.set(data);
+    this.gradingCriteriasService.GetItems().subscribe(response => { 
+        this.data.set(response.data);
         this.layoutService.isDataLoading.set(false);
       });
   }
@@ -97,7 +97,7 @@ export class GradingCriteriasList extends BaseComponent implements OnInit {
 
     this.layoutService.isDataLoading.set(true);
 
-    this.gradingCriteriasService.Save(this.addOrEditItem).subscribe(c => {
+    this.gradingCriteriasService.Save(this.addOrEditItem).subscribe(response => {
         this.layoutService.isDataLoading.set(false);
 
         let detail = this.addOrEditItem.gradingCriteriaId ? "Grading Criteria Updated" : "Grading Criteria Created";

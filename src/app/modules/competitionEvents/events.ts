@@ -39,8 +39,8 @@ export class Events extends BaseComponent implements OnInit {
   loadData() {
 
     this.layoutService.isDataLoading.set(true);
-    this.eventsService.GetItems().subscribe(data => { 
-      this.data.set(data);
+    this.eventsService.GetItems().subscribe(response => { 
+      this.data.set(response.data);
       this.layoutService.isDataLoading.set(false);
     });
   }
@@ -83,7 +83,7 @@ export class Events extends BaseComponent implements OnInit {
 
     this.layoutService.isDataLoading.set(true);
 
-    this.eventsService.Save(this.addOrEditItem).subscribe(c => {
+    this.eventsService.Save(this.addOrEditItem).subscribe(response => {
         this.layoutService.isDataLoading.set(false);
 
         let detail = this.addOrEditItem.competitionEventId ? "Event Updated" : "Event Created";

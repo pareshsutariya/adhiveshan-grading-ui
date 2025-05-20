@@ -29,8 +29,8 @@ export class GradedParticipantsList extends BaseComponent implements OnInit {
 
     //let loginUserId = this.authService.GetLoginUserId();
     let loginUserId = 1;
-    this.gradesService.GetGradedParticipantsForJudge(loginUserId).subscribe(data => { 
-        this.data.set(data);
+    this.gradesService.GetGradedParticipantsForJudge(loginUserId).subscribe(response => { 
+        this.data.set(response.data);
         this.layoutService.isDataLoading.set(false);
       });
   }
