@@ -1,27 +1,16 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { InputTextModule } from 'primeng/inputtext';
-import { AccordionModule } from 'primeng/accordion';
-import { Output, EventEmitter } from '@angular/core';
-
+import { Table } from 'primeng/table';
 import moment, { Moment } from "moment";
-import { CommonModule } from '@angular/common';
-import { Table, TableModule } from 'primeng/table';
-import { ToolbarModule } from 'primeng/toolbar';
-import { InputIconModule } from "primeng/inputicon";
-import { IconFieldModule } from "primeng/iconfield";
 
-import { Constants } from '../../../services/_constants';
-import { DataService } from '../../../services/dataService';
-import { AdhiveshanInput } from '../../../models/_index';
 import { BaseComponent } from '../../base-component/baseComponent';
+import { AdhiveshanInput } from '../../../models/_index';
+import { AngularModules } from '../../../models/_angular-imports';
+import { PrimeNgModules } from '../../../models/_prime-ng-imports';
 
 @Component({
     standalone: true,
     selector: 'app-file-data',
-    imports: [CommonModule,SelectButtonModule, InputIconModule, IconFieldModule, FormsModule, ButtonModule, TableModule, ToolbarModule, InputTextModule, AccordionModule],
+    imports: [AngularModules, PrimeNgModules],
     template: `
     <p-toolbar styleClass="mb-1" >
       <ng-template #start>

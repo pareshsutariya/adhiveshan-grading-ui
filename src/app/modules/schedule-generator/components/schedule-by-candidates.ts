@@ -1,26 +1,18 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { InputTextModule } from 'primeng/inputtext';
-import { AccordionModule } from 'primeng/accordion';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 import moment, { Moment } from "moment";
-import { CommonModule } from '@angular/common';
-import { Table, TableModule } from 'primeng/table';
-import { ToolbarModule } from 'primeng/toolbar';
+import { Table } from 'primeng/table';
 import { Constants } from '../../../services/_constants';
 import { AdhiveshanInput, Candidate, Room  } from '../../../models/_index';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
-import { DataService } from '../../../services/dataService';
 import { BaseComponent } from '../../base-component/baseComponent';
+import { AngularModules } from '../../../models/_angular-imports';
+import { PrimeNgModules } from '../../../models/_prime-ng-imports';
 
 @Component({
     standalone: true,
     selector: 'app-schedule-by-candidates',
-    imports: [CommonModule,SelectButtonModule, InputIconModule, IconFieldModule, FormsModule, ButtonModule, TableModule, ToolbarModule, InputTextModule, AccordionModule],
+    imports: [AngularModules, PrimeNgModules],
     template: `
     <p-toolbar styleClass="mb-1" >
       <ng-template #start>

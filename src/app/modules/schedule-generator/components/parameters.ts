@@ -1,32 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { InputTextModule } from 'primeng/inputtext';
-import { AccordionModule } from 'primeng/accordion';
-import { Output, EventEmitter } from '@angular/core';
-import { UploadEvent, FileUpload } from "primeng/fileupload";
 import * as XLSX from "xlsx";
 
 import moment, { Moment } from "moment";
-import { CommonModule } from '@angular/common';
-import { TableModule } from 'primeng/table';
-import { ToolbarModule } from 'primeng/toolbar';
 import { AdhiveshanInput, Candidate, Room  } from '../../../models/_index';
-
-import { Constants } from "../../../services/_constants";
-import { SelectModule } from 'primeng/select';
-import { LayoutService } from '../../../layout/service/layout.service';
-import { FileDataService } from '../../../services/fileDataService';
-import { DataService } from '../../../services/dataService';
-import { MessageService } from 'primeng/api';
-import { DatePickerModule } from 'primeng/datepicker';
 import { BaseComponent } from '../../base-component/baseComponent';
+import { AngularModules } from '../../../models/_angular-imports';
+import { PrimeNgModules } from '../../../models/_prime-ng-imports';
 
 @Component({
     standalone: true,
     selector: 'app-parameters',
-    imports: [CommonModule,SelectButtonModule, DatePickerModule, FileUpload, SelectModule, FormsModule, ButtonModule, TableModule, ToolbarModule, InputTextModule, AccordionModule],
+    imports: [AngularModules, PrimeNgModules],
     template: `
      <div class="flex flex-col md:flex-row gap-1">
         <!-- Schedule -->
@@ -235,13 +219,14 @@ export class Parameters extends BaseComponent implements OnInit {
   }
 
   onSelectedFiles(event: any) {
-    this.layoutService.isDataLoading.set(true);
 
     const file = event.currentFiles[0];
 
     const fileReader = new FileReader();
 
     fileReader.onload = (e: any) => {
+      this.layoutService.isDataLoading.set(true);
+
       const arrayBuffer = e.target.result;
       const workbook = XLSX.read(arrayBuffer, { type: "array" });
       const sheetName = workbook.SheetNames[0];
@@ -250,14 +235,14 @@ export class Parameters extends BaseComponent implements OnInit {
 
       this.fileDataService.generateFileData(this.input, jsonData);
 
-      this.layoutService.isDataLoading.set(false);
-
       this.fileDataService.populateDataFromFile(this.input);
 
       localStorage.setItem("FILE_JSON", JSON.stringify(jsonData));
       // localStorage.setItem("CANDIDATES", JSON.stringify(this.data.candidates));
       // localStorage.setItem("ROOMS", JSON.stringify(this.data.rooms));
       localStorage.setItem("INPUT", JSON.stringify(this.input));
+
+      this.layoutService.isDataLoading.set(false);
 
       //console.log("INPUT", this.input);
       //console.log("INPUT.fileData", this.input.fileData);

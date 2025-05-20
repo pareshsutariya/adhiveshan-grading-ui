@@ -1,36 +1,17 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { InputTextModule } from 'primeng/inputtext';
-import { AccordionModule } from 'primeng/accordion';
-import { CommonModule } from '@angular/common';
-import moment, { Moment } from "moment";
-import { TableModule } from 'primeng/table';
-import { ToolbarModule } from 'primeng/toolbar';
-
 import { ScheduleByCandidates } from "./components/schedule-by-candidates";
 import { Parameters } from "./components/parameters";
-import { Constants } from "../../services/_constants";
-import { LayoutService } from '../../layout/service/layout.service';
-import { MessageService } from 'primeng/api';
-import { TabsModule } from 'primeng/tabs';
-import { BadgeModule } from 'primeng/badge';
-import { AvatarModule } from 'primeng/avatar';
 import { FileData } from "./components/file-data";
-import { ToastModule } from "primeng/toast";
-import { FileDataService } from '../../services/fileDataService';
 import { ScheduleByRooms } from "./components/schedule-by-rooms";
-import { SlotsService } from '../../services/slotsService';
-import { DataService } from '../../services/dataService';
 import { Providers } from '../../models/_providers';
 import { AdhiveshanInput, Candidate } from '../../models/_index';
 import { BaseComponent } from '../base-component/baseComponent';
+import { PrimeNgModules } from '../../models/_prime-ng-imports';
+import { AngularModules } from '../../models/_angular-imports';
 
 @Component({
     selector: 'app-schedule-generator',
-    imports: [CommonModule, TabsModule, ToastModule, BadgeModule, AvatarModule, SelectButtonModule, FormsModule, ButtonModule, TableModule, ToolbarModule, InputTextModule, AccordionModule, 
-        ScheduleByCandidates, ScheduleByRooms, Parameters, FileData],
+    imports: [AngularModules, PrimeNgModules, ScheduleByCandidates, ScheduleByRooms, Parameters, FileData],
     providers: [Providers],
     template: `
     <p-toast />

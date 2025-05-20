@@ -1,4 +1,3 @@
-- [ ] Schedule: Include Room Schedule module (1)
 - [ ] Schedule: Saving schedule for a center (2)
 - [ ] Users: Judge room assignment
 
@@ -25,13 +24,13 @@
 - [x] Users: Add/Edit: show only assigned events
 - [x] Users: Inactive User: shouldn't be able to login
 
-- [x] Users: Bulk Import excel format (0.5)
+- [x] Users: Bulk Import excel format
 - [x] Users: Bulk Import users: Need to set the gender/role based on login user's role
 
 - [x] Events: Region admin should be able to change only Event DateTime field
 
 ## =====
-- [ ] Schedule: Include Room Schedule module
+- [x] Schedule: Include Room Schedule module
 - [ ] Schedule: Saving schedule for a center
 - [ ] Users: Judge room assignment
 
@@ -39,5 +38,5 @@
 - [ ] Users: Proctor login should be disbled as soon as the event ends
 
 - [ ] Grade Topics: editable grid / Section and Attributes
-- [ ] Grading: Provide Submit button (0.5)
+- [ ] Grading: Provide Submit button
 - [ ] Grading: need to decide the grade locking approach

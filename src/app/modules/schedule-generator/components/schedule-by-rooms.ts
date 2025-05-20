@@ -1,26 +1,16 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MenuModule } from 'primeng/menu';
-import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { SelectButtonModule } from 'primeng/selectbutton';
-import { InputTextModule } from 'primeng/inputtext';
-import { AccordionModule } from 'primeng/accordion';
-import { CommonModule } from '@angular/common';
-import { TableModule } from 'primeng/table';
-import { ToolbarModule } from 'primeng/toolbar';
+import { Component, Input, OnInit } from '@angular/core';
 import moment, { Moment } from "moment";
 
-import { Constants } from '../../../services/_constants';
-
-import { DataService } from '../../../services/dataService';
-import { AvatarModule } from 'primeng/avatar';
 import { AdhiveshanInput, TimeSlice } from '../../../models/_index';
 import { BaseComponent } from '../../base-component/baseComponent';
+import { AngularModules } from '../../../models/_angular-imports';
+import { PrimeNgModules } from '../../../models/_prime-ng-imports';
+import { Constants } from '../../../services/_index';
 
 @Component({
     standalone: true,
     selector: 'app-schedule-by-rooms',
-    imports: [CommonModule, SelectButtonModule, AvatarModule, FormsModule, ButtonModule, TableModule, ToolbarModule, InputTextModule, AccordionModule],
+    imports: [AngularModules, PrimeNgModules],
     template: ` 
     <div class="flex flex-col md:flex-row gap-2 mt-1" style="overflow-x: auto;">
         <div *ngFor="let roomGroup of dataService.GroupByRoomName() | keyvalue">
