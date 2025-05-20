@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-import { Participant, Grade, GradingCriteria } from "../../models/_index";
+import { Participant, Grade, GradingCriteria, ServiceResponse } from "../../models/_index";
 
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
@@ -66,31 +66,21 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetParticipantForJudging(this.participantBAPSId, this.loginUserId)
-        .subscribe({
-            next: (data: any) => {
-                
-                this.searchError = undefined;
-                this.layoutService.isDataLoading.set(false);
+        this.participantsService.GetParticipantForJudging(this.participantBAPSId, this.loginUserId).subscribe((response: ServiceResponse) => {
+            
+            this.searchError = undefined;
+            this.layoutService.isDataLoading.set(false);
 
-                this.participant = JSON.parse(data);
-                if(!this.participant){
-                    this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantBAPSId}`, life: 3000 });
-                    return;
-                }
-                else {
-                    //this.getParticipantGrades();
-                }
-            },
-            error: (err) => {
-
-                this.searchError = err.error;
-                console.log(err);
-
-                this.messageService.add({ severity: "error", summary: "Validation", detail: `${err.error}`, life: 3000 });
-                this.layoutService.isDataLoading.set(false);
+            if(response.isSuccessful) { 
+                this.participant = response.data;
+                return;
             }
-          });
+            else {
+                this.searchError = response.errorMessage;
+                this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantBAPSId}`, life: 3000 });
+                return;
+            }
+        });
     }
 
     getParticipantGrades(){

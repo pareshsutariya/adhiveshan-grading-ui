@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../../services/auth.service';
 import { AngularModules } from '../../models/_angular-imports';
 import { PrimeNgModules } from '../../models/_prime-ng-imports';
 import { LayoutService } from '../../layout/service/layout.service';
+import { AuthResponseModel, ServiceResponse } from '../../models/_index';
 
 @Component({
     selector: 'app-login',
@@ -75,27 +75,24 @@ export class Login {
 
     this.layoutService.isDataLoading.set(true);
 
-    this.authService.GetUserByUsernameAndPassword(this.username, this.password)
-    .subscribe({
-        next: (response: any) => {
-            this.layoutService.isDataLoading.set(false);
+    this.authService.login(this.username, this.password)
+    .subscribe((response: ServiceResponse) => {
+        this.layoutService.isDataLoading.set(false);
 
-            let user = JSON.parse(response);
+        if(response.isSuccessful){
 
-            if(user != null) {
-                this.authService.SetLoginUser(user);
-                this.messageService.add({ severity: "success", summary: "Authentication", detail: "Login successfully !!", life: 1000 });
-                this.router.navigate(['dashboard']);
-              }
-              else 
-                this.messageService.add({ severity: "error", summary: "Authentication", detail: "Login failed !!", life: 1000 });
-        },
-        error: (err) => {
+            console.log(response.data);
 
-            this.error = err.error;
-            this.messageService.add({ severity: "error", summary: "Authentication", detail: `${err.error}`, life: 3000 });
-            this.layoutService.isDataLoading.set(false);
+            let authResponse: AuthResponseModel = response.data;
+            this.authService.SetLoginUser(authResponse);
+            this.messageService.add({ severity: "success", summary: "Authentication", detail: "Login successfully !!", life: 3000 });
+            this.router.navigate(['dashboard']);
         }
-      });
+        else {
+            this.error = response.errorMessage!;
+
+            this.messageService.add({ severity: "error", summary: "Authentication", detail: response.errorMessage, life: 3000 });
+        }
+    });
   }
 }

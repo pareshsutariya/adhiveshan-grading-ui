@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from './_index';
-import { User } from '../models/_index';
+import { AuthResponseModel, ServiceResponse, User } from '../models/_index';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,11 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
   }  
 
-  SetLoginUser(user: User) {
+  SetLoginUser(authResponse: AuthResponseModel) {
 
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    console.log(JSON.stringify(authResponse.user));
+    localStorage.setItem("loggedInUser", JSON.stringify(authResponse.user));
+    localStorage.setItem('jwtToken', authResponse.accessToken!);
     //this.loggedInUser = user;
   }
 
@@ -152,7 +154,7 @@ export class AuthService {
     //location.reload();
   }
 
-  GetUserByUsernameAndPassword(username: string, password: string) {
+  login(username: string, password: string): Observable<ServiceResponse> {
     // if(username == "vyom131313") {
     //   return new Observable<User>(observable => {
     //     let user: User = {};
@@ -165,11 +167,10 @@ export class AuthService {
     // }
     // else 
     {
-      return this.http.get(`${environment.WebApiBaseUrl}/users/GetUserByUsernameAndPassword/${username}/${password}`, {responseType: 'text'}).pipe(
-          catchError((error: any) => {
-            throw error;
-          })
-        );
+      let headers = new HttpHeaders({ "Content-Type": "application/json" });
+      let model = { userName: username, password: password };
+
+      return this.http.post<ServiceResponse>(`${environment.WebApiBaseUrl}/auth/login`, JSON.stringify(model), {headers: headers}).pipe();
     }
   }
 }

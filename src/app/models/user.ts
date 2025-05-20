@@ -20,3 +20,18 @@ export interface User {
     assignedEvents?: any[];
     assignedPermissions?: string[];
   }
+
+
+export interface AuthResponseModel {
+
+  //------ USER -------
+  user?: User;
+
+  //------ JWT -------
+  userName?: string;
+  accessToken?: string;
+  expiresInSeconds?: number;
+  expiresInMinutes?: number;
+  expiresAtUtc?: Date;
+  expiresAtEst?: Date;
+}
