@@ -95,6 +95,9 @@ export class ImportParticipants extends BaseComponent implements OnInit {
     const fileReader = new FileReader();
 
     fileReader.onload = (e: any) => {
+
+      this.layoutService.isDataLoading.set(true);
+
       const arrayBuffer = e.target.result;
       const workbook = XLSX.read(arrayBuffer, { type: "array" });
       const sheetName = workbook.SheetNames[0];
@@ -151,7 +154,6 @@ export class ImportParticipants extends BaseComponent implements OnInit {
 
       console.log(importData);
 
-      this.layoutService.isDataLoading.set(true);
 
       if (importData && importData.length > 0) {
         this.participantsService.Import(importData).subscribe((c) => {
@@ -167,6 +169,9 @@ export class ImportParticipants extends BaseComponent implements OnInit {
 
           location.reload();
         });
+      }
+      else {
+        this.layoutService.isDataLoading.set(false);
       }
       //console.log(this.data);
       //this.data = JSON.parse(this.jsonData);
