@@ -1,5 +1,11 @@
-- [ ] Schedule: Saving schedule for a center (2)
-- [ ] Users: Judge room assignment
+- [ ] Schedule: 
+    - [ ] Display event section first (0.5)
+    - [ ] Populate events based on access (1)
+    - [ ] For the selected event's centers, populate candidate data and counts (1)
+    - [ ] Provide Save button to save rooms configuration
+    - [ ] On clicking, save the room configuration
+    - [ ] For the selected event's centers, populate already saved rooms (1)
+- [ ] Schedule: wait indicator
 
 ## ===== Feedback =====
 
@@ -32,7 +38,8 @@
 ## =====
 - [x] Schedule: Include Room Schedule module
 - [ ] Schedule: Saving schedule for a center
-- [ ] Users: Judge room assignment
+- [ ] Schedule: Judge room assignment
+- [ ] Schedule: Schedule report to print out for judges and candidates
 
 - [ ] Users: Pull user info by MISID using external API
 - [ ] Users: Proctor login should be disbled as soon as the event ends
