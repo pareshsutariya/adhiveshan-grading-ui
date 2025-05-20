@@ -4,6 +4,9 @@
 @use 'primeicons/primeicons.css';
 @use './assets/demo/demo.scss';
 
+.p-autocomplete {
+  width: 100%;
+}
 
 .progress-spinner {
     position: fixed;

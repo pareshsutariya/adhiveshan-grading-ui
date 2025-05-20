@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../../services/auth.service';
@@ -6,14 +6,20 @@ import { AngularModules } from '../../models/_angular-imports';
 import { PrimeNgModules } from '../../models/_prime-ng-imports';
 import { LayoutService } from '../../layout/service/layout.service';
 import { AuthResponseModel, ServiceResponse } from '../../models/_index';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { Providers } from '../../models/_providers';
+import { BaseComponent } from '../base-component/baseComponent';
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [AngularModules, PrimeNgModules],
-    providers: [MessageService],
+    imports: [AngularModules, PrimeNgModules, ProgressSpinnerModule],
+    providers: [Providers],
     template: `
         <p-toast />
+        <div class="progress-spinner" *ngIf="layoutService.isDataLoading()">
+            <p-progress-spinner strokeWidth="4" fill="transparent" animationDuration="4s" ariaLabel="loading"/>
+        </div>
         <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">
             <div class="flex flex-col items-center justify-center">
                 <div style="border-radius: 56px; padding: 0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)">
@@ -30,7 +36,7 @@ import { AuthResponseModel, ServiceResponse } from '../../models/_index';
                             <input pInputText id="userName" type="text" placeholder="Username" class="w-full md:w-[30rem] mb-8" [(ngModel)]="username" />
 
                             <label for="password1" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Password</label>
-                            <p-password id="password1" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-4" [fluid]="true" [feedback]="false"></p-password>
+                            <input pInputText type="password" id="password" [(ngModel)]="password" (keyup.enter)="onSubmit()" placeholder="Password"  class="w-full md:w-[30rem] mb-8" />
 
                             <!-- 
                             <div class="flex items-center justify-between mt-2 mb-8 gap-8">
@@ -55,18 +61,12 @@ import { AuthResponseModel, ServiceResponse } from '../../models/_index';
         </div>
     `
 })
-export class Login {
+export class Login extends BaseComponent implements OnInit {
     username: string = '';
     password: string = '';
     error: string = '';
 
-  constructor(
-    private router: Router,        
-    private messageService: MessageService,
-    private layoutService: LayoutService,
-    private authService: AuthService) {
-}
-  ngOnInit(): void {
+  ngOnInit() {
     this.authService.logoutUser();
   }
 

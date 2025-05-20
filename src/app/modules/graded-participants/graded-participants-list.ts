@@ -7,12 +7,13 @@ import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 
 import { Grade } from "../../models/_index";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-graded-participants-list",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "graded-participants-list.html",
 })
 export class GradedParticipantsList extends BaseComponent implements OnInit {

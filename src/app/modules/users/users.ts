@@ -9,12 +9,13 @@ import { BaseComponent } from "../base-component/baseComponent";
 import { User, CompetitionEvent, UserJudgeImport } from "../../models/_index";
 import { RolesEnum } from "../../services/rolePermissions.service";
 import * as XLSX from "xlsx";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-users",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "users.html",
 })
 export class Users extends BaseComponent implements OnInit {

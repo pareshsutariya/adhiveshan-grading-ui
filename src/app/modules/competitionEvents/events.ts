@@ -7,11 +7,12 @@ import { MessageService } from "primeng/api";
 import { CompetitionEvent } from "../../models/_index";
 import { BaseComponent } from "../base-component/baseComponent";
 import { RolesEnum } from "../../services/rolePermissions.service";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-events",
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "events.html",
 })
 export class Events extends BaseComponent implements OnInit {

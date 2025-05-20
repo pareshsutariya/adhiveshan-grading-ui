@@ -7,11 +7,12 @@ import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Table } from "primeng/table";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-grading-participants",
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "grading-participants.html",
 })
 export class GradingParticipants extends BaseComponent implements OnInit {

@@ -7,11 +7,12 @@ import { SkillCategory, GradingCriteria } from "../../models/_index";
 import { MessageService } from "primeng/api";
 import { Table } from "primeng/table";
 import { BaseComponent } from "../base-component/baseComponent";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-grading-criterias-list",
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "grading-criterias-list.html",
 })
 export class GradingCriteriasList extends BaseComponent implements OnInit {

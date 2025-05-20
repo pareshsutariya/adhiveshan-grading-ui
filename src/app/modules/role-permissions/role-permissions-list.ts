@@ -7,12 +7,13 @@ import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 
 import { RolePermissionsPivot } from "../../models/_index";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-role-permissions-list",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "role-permissions-list.html",
 })
 export class RolePermissionsList extends BaseComponent implements OnInit {

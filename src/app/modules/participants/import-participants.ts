@@ -8,11 +8,12 @@ import { Participant, ParticipantUpdateHostCenter } from "../../models/_index";
 
 import * as XLSX from "xlsx";
 import { BaseComponent } from "../base-component/baseComponent";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-import-participants",
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "import-participants.html",
   styles: [ 
     ` 

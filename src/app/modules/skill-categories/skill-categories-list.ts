@@ -7,12 +7,13 @@ import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 
 import { SkillCategory } from "../../models/_index";
+import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-skill-categories-list",
   standalone: true,
   imports: [AngularModules, PrimeNgModules],
-  providers: [MessageService],
+  providers: [Providers],
   templateUrl: "skill-categories-list.html",
 })
 export class SkillCategoriesList extends BaseComponent implements OnInit {
