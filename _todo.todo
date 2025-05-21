@@ -1,9 +1,7 @@
 - [ ] Schedule: 
-    - [ ] On clicking, save the room configuration
-    - [ ] For the selected event's centers, populate already saved rooms (1)
+    - [ ] Emcee/Pravachan icons are not getting displayed
+    - [ ] On event selected, if already saved then generate the schedule
     - [ ] Provide Male/Female option
-    - [ ] Deploy
-- [ ] Schedule: wait indicator
 
 ## ===== Feedback =====
 
