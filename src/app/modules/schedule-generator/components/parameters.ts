@@ -2,7 +2,7 @@ import { Component, Input, OnInit, signal } from '@angular/core';
 import * as XLSX from "xlsx";
 
 import moment, { Moment } from "moment";
-import { AdhiveshanInput, Candidate, CompetitionEvent, Room  } from '../../../models/_index';
+import { AdhiveshanInput, ParticipantForSchedule, CompetitionEvent, Room  } from '../../../models/_index';
 import { BaseComponent } from '../../base-component/baseComponent';
 import { AngularModules } from '../../../models/_angular-imports';
 import { PrimeNgModules } from '../../../models/_prime-ng-imports';
@@ -64,7 +64,7 @@ import { Constants } from '../../../services/_index';
           </table>
           
           <!-- Participants Count -->
-          <table width="100%" [cellPadding]="14" [cellSpacing]="7" >
+          <table width="100%" [cellPadding]="14" [cellSpacing]="7" *ngIf="selectedEvent">
             <thead>
               <tr style="border-bottom: 1px solid lightgray;">
                 <th [colSpan]="4" style="padding:5pt">
@@ -100,38 +100,8 @@ import { Constants } from '../../../services/_index';
         </div>
 
         <div class="md:w-1/2 pt-2 ml-14">
-          <!-- Participants File -->
-          <!-- <table width="100%" [cellPadding]="7" [cellSpacing]="7">
-            <tr style="border-bottom: 1px solid lightgray;">
-              <th [colSpan]="2" >
-                <div class="flex items-center justify-center" >
-                  <h5 class="m-0 whitespace-nowrap">Participants File</h5>
-                </div>
-              </th>
-            </tr>
-            <tr>
-              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Upload</label></td>
-              <td>
-                <p-fileupload name="fileUpload" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" chooseIcon="pi pi-upload"
-                  mode="basic" chooseLabel="" 
-                  [auto]="true" 
-                  [multiple]="false" 
-                  [showUploadButton]="false" 
-                  [showCancelButton]="false" 
-                  (onSelect)="onSelectedFiles($event)" />
-              </td>
-            </tr>           
-            <tr>
-              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Host Center</label></td>
-              <td>
-                <p-select inputId="hostCenter" [options]="input.centers" [showClear]="true" [filter]="true" optionLabel="label" optionValue="value"
-                  [(ngModel)]="input.hostCenter" placeholder="Select Host Center" (onChange)="onHostCenterChanged($event)" />
-              </td>
-            </tr>
-          </table> -->
-
           <!-- Skills Duration -->
-          <table [cellPadding]="5" [cellSpacing]="5" width="100%" class="mt-10">
+          <table [cellPadding]="5" [cellSpacing]="5" width="100%" class="mt-10" *ngIf="selectedEvent">
             <thead>
             <tr style="border-bottom: 1px solid lightgray;">
               <th [colSpan]="3" >
@@ -220,7 +190,7 @@ export class Parameters extends BaseComponent implements OnInit {
 
     let storageCandidates = localStorage.getItem("CANDIDATES");
     if(storageCandidates){
-      this.dataService.candidates = JSON.parse(storageCandidates) as Candidate[];
+      this.dataService.candidates = JSON.parse(storageCandidates) as ParticipantForSchedule[];
       console.log("CANDIDATES from storage: ", this.dataService.candidates);
     }
 
@@ -235,21 +205,24 @@ export class Parameters extends BaseComponent implements OnInit {
 
   onCompetitionEventChange(){
 
-   console.log(this.input.examDateOnly);
+   if(!this.selectedEvent){
+    this.input.hostCenter = undefined;
+    this.input.examDateOnly = undefined;
+    this.input.examStartTime = undefined;
+    this.input.examEndTime = undefined;
+    return;
+   }
 
    this.input.hostCenter = this.selectedEvent?.hostCenter;
-
    this.input.examDateOnly = moment(this.selectedEvent?.startDate).format("MM/DD/yyyy");
-   //this.input.examDateOnly = `${this.selectedEvent?.startDate?.getMonth()}/${this.selectedEvent?.startDate?.getDay()}/${this.selectedEvent?.startDate?.getFullYear()}`;;
+   this.input.examStartTime = moment(this.selectedEvent?.startDate).format("HH:mm");
+   this.input.examEndTime = moment(this.selectedEvent?.endDate).format("HH:mm");
 
-   //console.log(this.input.examDateOnly);
+   this.layoutService.isDataLoading.set(true);
 
-    this.input.examStartTime = moment(this.selectedEvent?.startDate).format("HH:mm");
-    this.input.examEndTime = moment(this.selectedEvent?.endDate).format("HH:mm");
-
-    this.participantsService.GetParticipantsForEvent(this.selectedEvent?.competitionEventId!, "Male").subscribe(response => {
-
-    });
+   this.participantsService.GetParticipantsForEvent(this.selectedEvent?.competitionEventId!, "Male").subscribe(response => {
+    this.layoutService.isDataLoading.set(false);
+   });
   }
 
   /*

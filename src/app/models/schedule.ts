@@ -63,25 +63,37 @@ export interface TimeSlice {
   isLunchBreak?: boolean;
   isTeaBreak?: boolean;
   isSpillOver?: boolean;
-  misId?: string;
+  misId?: number;
 }
 
-export interface Candidate {
-  center: string;
-  registration_Status: string;
-  mandal: string;
-  firstLastName_MISID: string;
+export interface ParticipantForSchedule {
+  misId?: number;
+  bapsId?: string;
+  region?: string;
+  center?: string;
+  hostCenter?: string;
+  zone?: string;
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
+  gender?: string;
+  mandal?: string;
+  category?: string;
 
-  emcee_category: string;
-  speech_pravachan_category: string;
-  gender: string;
+  registrationStatus?: string;
+  language_For_Skill_Competitions?: string;
+  
+  speech_Pravachan?: string;
+  speech_Pravachan_Category?: string;
+  emcee?: string;
+  emcee_Category?: string;
 
-  misId?: string;
   fullName?: string;
+
+  //------
   participatingSkills?: ParticipatingSkill[];
   priority?: number;
   hasHostCenter?: boolean;
-
   pendingAssignment?: boolean;
 }
 

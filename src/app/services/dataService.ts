@@ -3,31 +3,31 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Constants } from "./_constants";
 import moment, { Moment } from "moment";
-import { AdhiveshanInput, Candidate, Room, TimeSlice } from "../models/_index";
+import { AdhiveshanInput, ParticipantForSchedule, Room, TimeSlice } from "../models/_index";
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
 
-    candidates: Candidate[] = [];
+    candidates: ParticipantForSchedule[] = [];
     rooms: Room[] = [];
 
     constructor(private http: HttpClient) {}
 
-    getByMisId(misId:string){
+    getByMisId(misId: number){
         return this.candidates.filter(c=>c.misId == misId)[0];
     }
 
-    getUnassignedPSKs(misId: string){
+    getUnassignedPSKs(misId: number){
         let candidate = this.getByMisId(misId);
         return candidate?.participatingSkills?.filter(s => s.sliceNumber == null || s.sliceNumber == undefined);
     }
 
-    getAssignedPSKs(misId: string){
+    getAssignedPSKs(misId: number){
         let candidate = this.getByMisId(misId);
         return candidate?.participatingSkills?.filter(s => s.sliceNumber != null && s.sliceNumber != undefined);
     }
   
-    getLastAssignedSlot(misId: string){
+    getLastAssignedSlot(misId: number){
         let candidate = this.getByMisId(misId);
         let assignedPSKs = candidate?.participatingSkills?.filter(s => s.sliceNumber != null);
         let lastAssignedSlot = assignedPSKs![assignedPSKs!.length-1];
@@ -52,7 +52,7 @@ export class DataService {
 
     }
 
-    assignSlotToPSK(misId: string, skillName: string, slot?: TimeSlice){
+    assignSlotToPSK(misId: number, skillName: string, slot?: TimeSlice){
 
         if(slot == null || misId == null)
           return null;

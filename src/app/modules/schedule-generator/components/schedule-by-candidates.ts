@@ -4,7 +4,7 @@ import { Output, EventEmitter } from '@angular/core';
 import moment, { Moment } from "moment";
 import { Table } from 'primeng/table';
 import { Constants } from '../../../services/_constants';
-import { AdhiveshanInput, Candidate, Room  } from '../../../models/_index';
+import { AdhiveshanInput, ParticipantForSchedule, Room  } from '../../../models/_index';
 import { BaseComponent } from '../../base-component/baseComponent';
 import { AngularModules } from '../../../models/_angular-imports';
 import { PrimeNgModules } from '../../../models/_prime-ng-imports';
@@ -108,7 +108,7 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
 export class ScheduleByCandidates extends BaseComponent implements OnInit {
 
   @Input() input!: AdhiveshanInput;
-  @Output() candidatesChanges = new EventEmitter<Candidate[]>();
+  @Output() candidatesChanges = new EventEmitter<ParticipantForSchedule[]>();
 
   @ViewChild("dt") dt!: Table;
   globalSearchText: string = "";

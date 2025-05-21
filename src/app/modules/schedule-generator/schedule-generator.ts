@@ -4,7 +4,7 @@ import { Parameters } from "./components/parameters";
 import { FileData } from "./components/file-data";
 import { ScheduleByRooms } from "./components/schedule-by-rooms";
 import { Providers } from '../../models/_providers';
-import { AdhiveshanInput, Candidate } from '../../models/_index';
+import { AdhiveshanInput, ParticipantForSchedule } from '../../models/_index';
 import { BaseComponent } from '../base-component/baseComponent';
 import { PrimeNgModules } from '../../models/_prime-ng-imports';
 import { AngularModules } from '../../models/_angular-imports';
@@ -147,7 +147,7 @@ export class ScheduleGenerator extends BaseComponent implements OnInit, AfterVie
         //this.layoutService.isDataLoading.set(true);
 
         // Iterate over each candidate
-        this.dataService.candidates.forEach((candidate: Candidate) => {
+        this.dataService.candidates.forEach((candidate: ParticipantForSchedule) => {
 
           // Process each candidate
           this.slotsService.processCandidate(this.input, candidate.misId!);

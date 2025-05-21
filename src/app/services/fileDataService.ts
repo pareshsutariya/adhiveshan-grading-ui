@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Constants } from "./_constants";
-import { AdhiveshanInput, Candidate, Skill, TimeSlice } from "../models/_index";
+import { AdhiveshanInput, ParticipantForSchedule, Skill, TimeSlice } from "../models/_index";
 
 import moment, { Moment } from "moment";
 import { DataService } from "./dataService";
@@ -66,17 +66,17 @@ export class FileDataService {
   }
 
   prepareCountsFromFile(input: AdhiveshanInput){
-    let emceeSahajanandCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Sahajanand") >= 0).length;
-    let emceeNeelkanthCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Neelkanth") >= 0).length;
-    let emceeShriHariCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Shri Hari") >= 0).length;
-    let emceeGhanshyamCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Ghanshyam") >= 0).length;
-    let emceeHariKrishnaCount = this.data.candidates?.filter(c => c.emcee_category != null && c.emcee_category != undefined && c.emcee_category.indexOf("Harikrishna") >= 0).length;
+    let emceeSahajanandCount = this.data.candidates?.filter(c => c.emcee_Category != null && c.emcee_Category != undefined && c.emcee_Category.indexOf("Sahajanand") >= 0).length;
+    let emceeNeelkanthCount = this.data.candidates?.filter(c => c.emcee_Category != null && c.emcee_Category != undefined && c.emcee_Category.indexOf("Neelkanth") >= 0).length;
+    let emceeShriHariCount = this.data.candidates?.filter(c => c.emcee_Category != null && c.emcee_Category != undefined && c.emcee_Category.indexOf("Shri Hari") >= 0).length;
+    let emceeGhanshyamCount = this.data.candidates?.filter(c => c.emcee_Category != null && c.emcee_Category != undefined && c.emcee_Category.indexOf("Ghanshyam") >= 0).length;
+    let emceeHariKrishnaCount = this.data.candidates?.filter(c => c.emcee_Category != null && c.emcee_Category != undefined && c.emcee_Category.indexOf("Harikrishna") >= 0).length;
 
-    let ghanshyamCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Ghanshyam") == 0 ).length;
-    let neelkanthCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Neelkanth") == 0 ).length;
-    let sahajanandCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Sahajanand") == 0 ).length;
-    let harikrishnaCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Harikrishna") == 0 ).length;
-    let shriHariCount = this.data.candidates?.filter(c => c.speech_pravachan_category?.indexOf("Shri Hari") == 0 ).length;
+    let ghanshyamCount = this.data.candidates?.filter(c => c.speech_Pravachan_Category?.indexOf("Ghanshyam") == 0 ).length;
+    let neelkanthCount = this.data.candidates?.filter(c => c.speech_Pravachan_Category?.indexOf("Neelkanth") == 0 ).length;
+    let sahajanandCount = this.data.candidates?.filter(c => c.speech_Pravachan_Category?.indexOf("Sahajanand") == 0 ).length;
+    let harikrishnaCount = this.data.candidates?.filter(c => c.speech_Pravachan_Category?.indexOf("Harikrishna") == 0 ).length;
+    let shriHariCount = this.data.candidates?.filter(c => c.speech_Pravachan_Category?.indexOf("Shri Hari") == 0 ).length;
 
     //input.examStartDate = Constants.ExamStartDate;
     //input.examEndDate = Constants.ExamEndDate;
@@ -176,38 +176,38 @@ export class FileDataService {
       }
       */
 
-      if(candidate.emcee_category != null && candidate.emcee_category != undefined) {
-        if(candidate.emcee_category.indexOf("Sahajanand") >= 0)
+      if(candidate.emcee_Category != null && candidate.emcee_Category != undefined) {
+        if(candidate.emcee_Category.indexOf("Sahajanand") >= 0)
           candidate.participatingSkills.push({name: "Emcee: Sahajanand", duration: Constants.EmceeSahajanandDuration, color: Constants.EmceeColor });
 
-        if(candidate.emcee_category.indexOf("Neelkanth") >= 0)
+        if(candidate.emcee_Category.indexOf("Neelkanth") >= 0)
           candidate.participatingSkills.push({name: "Emcee: Neelkanth", duration: Constants.EmceeNeelkanthDuration, color: Constants.EmceeColor });
         
-        if(candidate.emcee_category.indexOf("Shri Hari") >= 0)
+        if(candidate.emcee_Category.indexOf("Shri Hari") >= 0)
           candidate.participatingSkills.push({name: "Emcee: Shri Hari", duration: Constants.EmceeShriHariDuration, color: Constants.EmceeColor });
         
-        if(candidate.emcee_category.indexOf("Ghanshyam") >= 0)
+        if(candidate.emcee_Category.indexOf("Ghanshyam") >= 0)
           candidate.participatingSkills.push({name: "Emcee: Ghanshyam", duration: Constants.EmceeGhanshyamDuration, color: Constants.EmceeColor });
         
-        if(candidate.emcee_category.indexOf("Harikrishna") >= 0)
+        if(candidate.emcee_Category.indexOf("Harikrishna") >= 0)
           candidate.participatingSkills.push({name: "Emcee: Harikrishna", duration: Constants.EmceeHariKrishnaDuration, color: Constants.EmceeColor });
       }
 
-      if(candidate.speech_pravachan_category != null && candidate.speech_pravachan_category != undefined) {
+      if(candidate.speech_Pravachan_Category != null && candidate.speech_Pravachan_Category != undefined) {
 
-        if(candidate.speech_pravachan_category?.indexOf("Ghanshyam") == 0)
+        if(candidate.speech_Pravachan_Category?.indexOf("Ghanshyam") == 0)
           candidate.participatingSkills.push({name: "Pravachan: Ghanshyam", duration: Constants.PravachanGhanshyamDuration, color: Constants.PravachanColor });
 
-        if(candidate.speech_pravachan_category?.indexOf("Neelkanth") == 0)
+        if(candidate.speech_Pravachan_Category?.indexOf("Neelkanth") == 0)
           candidate.participatingSkills.push({name: "Pravachan: Neelkanth", duration: Constants.PravachanNeelkanthDuration, color: Constants.PravachanColor });
         
-        if(candidate.speech_pravachan_category?.indexOf("Sahajanand") == 0)
+        if(candidate.speech_Pravachan_Category?.indexOf("Sahajanand") == 0)
           candidate.participatingSkills.push({name: "Pravachan: Sahajanand", duration: Constants.PravachanSahajanandDuration, color: Constants.PravachanColor });
 
-        if(candidate.speech_pravachan_category?.indexOf("Shri Hari") == 0)
+        if(candidate.speech_Pravachan_Category?.indexOf("Shri Hari") == 0)
           candidate.participatingSkills.push({name: "Pravachan: Shri Hari", duration: Constants.PravachanShriHariDuration, color: Constants.PravachanColor });
 
-        if(candidate.speech_pravachan_category?.indexOf("Harikrishna") == 0)
+        if(candidate.speech_Pravachan_Category?.indexOf("Harikrishna") == 0)
           candidate.participatingSkills.push({name: "Pravachan: Harikrishna", duration: Constants.PravachanHarikrishnaDuration, color: Constants.PravachanColor });
       }
     });

@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { Constants } from "./_constants";
 import moment, { Moment } from "moment";
 import { DataService } from "./dataService";
-import { AdhiveshanInput, Candidate, ParticipatingSkill, Skill, TimeSlice } from "../models/_index";
+import { AdhiveshanInput, ParticipantForSchedule, ParticipatingSkill, Skill, TimeSlice } from "../models/_index";
 
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +15,7 @@ export class SlotsService {
   tabs1: string = "&emsp;"; // /t
   tabs2: string = "&emsp;&emsp;"; // /t\t
 
-  processCandidate(input: AdhiveshanInput, misId: string) {
+  processCandidate(input: AdhiveshanInput, misId: number) {
     let candidateLogs: string[]=[];
     
     // 1. Get candidate by misId
@@ -297,7 +297,7 @@ export class SlotsService {
     return isOverlapping;
   }
 
-  isSatisfyingGapCriteria(candidate: Candidate, roomSlot: TimeSlice, minSpaceBetweenTwoTests?: number, candidateLogs?: string[]){
+  isSatisfyingGapCriteria(candidate: ParticipantForSchedule, roomSlot: TimeSlice, minSpaceBetweenTwoTests?: number, candidateLogs?: string[]){
     let assignedPSKs = this.data.getAssignedPSKs(candidate.misId!);
     //  candidate.participatingSkills?.filter(s => s.sliceNumber != null);
 
