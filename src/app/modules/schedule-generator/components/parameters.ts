@@ -149,7 +149,7 @@ import { Constants } from '../../../services/_index';
               <tr style="color:red;border-top: 1px solid lightgray;">
                 <th style="font-weight:bold; text-align:left;" class="underline">Total</th>
                 <th style="font-weight:bold; text-align:left;" class="pl-3 whitespace-nowrap">
-                  {{ dataService.rooms.length }} Rooms
+                  {{ dataService.GetRoomCount() }} Rooms
                 </th>
                 <th style="font-weight:bold; text-align:right;" colspan=4 class="whitespace-nowrap">
                   {{ dataService.rooms.length * 2 }} Proctors
