@@ -1,5 +1,4 @@
 - [ ] Schedule: 
-    - [ ] Display event section first (0.5)
     - [ ] Populate events based on access (1)
     - [ ] For the selected event's centers, populate candidate data and counts (1)
     - [ ] Provide Save button to save rooms configuration

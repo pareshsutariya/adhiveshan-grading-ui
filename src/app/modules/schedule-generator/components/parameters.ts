@@ -15,73 +15,7 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
      <div class="flex flex-col md:flex-row gap-1">
         <!-- Schedule -->
         <div class="md:w-1/3 pt-2">
-          <table width="100%" [cellPadding]="7" [cellSpacing]="7">
-            <tr style="border-bottom: 1px solid lightgray;">
-              <th [colSpan]="2" >
-                <div class="flex items-center justify-center" >
-                  <h5 class="m-0 whitespace-nowrap">Participants File</h5>
-                </div>
-              </th>
-            </tr>
-            <tr>
-              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Upload</label></td>
-              <td>
-                <p-fileupload name="fileUpload" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" chooseIcon="pi pi-upload"
-                  mode="basic" chooseLabel="" 
-                  [auto]="true" 
-                  [multiple]="false" 
-                  [showUploadButton]="false" 
-                  [showCancelButton]="false" 
-                  (onSelect)="onSelectedFiles($event)" />
-              </td>
-            </tr>           
-            <tr>
-              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Host Center</label></td>
-              <td>
-                <p-select inputId="hostCenter" [options]="input.centers" [showClear]="true" [filter]="true" optionLabel="label" optionValue="value"
-                  [(ngModel)]="input.hostCenter" placeholder="Select Host Center" (onChange)="onHostCenterChanged($event)" />
-              </td>
-            </tr>
-          </table>
-          
-          <!-- Participants Count -->
-          <table width="100%" [cellPadding]="14" [cellSpacing]="7" style="margin-top:130px">
-            <thead>
-              <tr style="border-bottom: 1px solid lightgray;">
-                <th [colSpan]="4" style="padding:5pt">
-                  <div class="flex items-center justify-center" >
-                    <h5 class="m-0 whitespace-nowrap">Participants</h5>
-                  </div>
-                </th>
-              </tr>
-              <tr class="bold">
-                <th style="width: 1rem;" class="text-left">Skill Name</th>
-                <th style="width: 1rem;" class="text-left">Total</th>
-                <th style="width: 1rem;color: green;" class="text-left">Assigned</th>
-                <th style="width: 1rem;color: red" class="text-left">Pending</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let skill of input.skills">
-                <td style="color:{{skill.color}}" class="whitespace-nowrap" >{{skill.name}}</td>
-                <td>{{skill.noOfParticipants}}</td>
-                <td style="color: green">{{skill.noOfAssigned}}</td>
-                <td style="color: red">{{skill.noOfPending}}</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr style="color:red;border-top: 1px solid lightgray;">
-                <th style="width: 1rem;font-weight:bold;" class="text-left underline whitespace-nowrap">Total Candidates</th>
-                <th class="text-left">{{input.totalCandidate}}</th>
-                <td></td>
-                <td></td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-
-        <div class="md:w-1/2 pt-2 ml-14">
-          <!-- Start Time / End Time -->
+            <!-- Event Date / Start Time / End Time -->
           <table [cellPadding]="7" [cellSpacing]="7">
             <tr style="border-bottom: 1px solid lightgray;">
               <th [colSpan]="2">
@@ -119,6 +53,73 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
                 Gap between two tests:  <span style="color:navy">{{input.minSpaceBetweenTwoTests}} minutes</span>
                 <!-- <input pInputText type="number" min="1" style="width:60px;" class="ml-2" [(ngModel)]="input.minSpaceBetweenTwoTests" /> -->
               </th>
+            </tr>
+          </table>
+          
+          <!-- Participants Count -->
+          <table width="100%" [cellPadding]="14" [cellSpacing]="7" >
+            <thead>
+              <tr style="border-bottom: 1px solid lightgray;">
+                <th [colSpan]="4" style="padding:5pt">
+                  <div class="flex items-center justify-center" >
+                    <h5 class="m-0 whitespace-nowrap">Participants</h5>
+                  </div>
+                </th>
+              </tr>
+              <tr class="bold">
+                <th style="width: 1rem;" class="text-left">Skill Name</th>
+                <th style="width: 1rem;" class="text-left">Total</th>
+                <th style="width: 1rem;color: green;" class="text-left">Assigned</th>
+                <th style="width: 1rem;color: red" class="text-left">Pending</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let skill of input.skills">
+                <td style="color:{{skill.color}}" class="whitespace-nowrap" >{{skill.name}}</td>
+                <td>{{skill.noOfParticipants}}</td>
+                <td style="color: green">{{skill.noOfAssigned}}</td>
+                <td style="color: red">{{skill.noOfPending}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr style="color:red;border-top: 1px solid lightgray;">
+                <th style="width: 1rem;font-weight:bold;" class="text-left underline whitespace-nowrap">Total Candidates</th>
+                <th class="text-left">{{input.totalCandidate}}</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="md:w-1/2 pt-2 ml-14">
+          <!-- Participants File -->
+          <table width="100%" [cellPadding]="7" [cellSpacing]="7">
+            <tr style="border-bottom: 1px solid lightgray;">
+              <th [colSpan]="2" >
+                <div class="flex items-center justify-center" >
+                  <h5 class="m-0 whitespace-nowrap">Participants File</h5>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Upload</label></td>
+              <td>
+                <p-fileupload name="fileUpload" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" chooseIcon="pi pi-upload"
+                  mode="basic" chooseLabel="" 
+                  [auto]="true" 
+                  [multiple]="false" 
+                  [showUploadButton]="false" 
+                  [showCancelButton]="false" 
+                  (onSelect)="onSelectedFiles($event)" />
+              </td>
+            </tr>           
+            <tr>
+              <td><label class="flex items-center col-span-12 mb-2 md:col-span-4 md:mb-0 whitespace-nowrap">Host Center</label></td>
+              <td>
+                <p-select inputId="hostCenter" [options]="input.centers" [showClear]="true" [filter]="true" optionLabel="label" optionValue="value"
+                  [(ngModel)]="input.hostCenter" placeholder="Select Host Center" (onChange)="onHostCenterChanged($event)" />
+              </td>
             </tr>
           </table>
 
