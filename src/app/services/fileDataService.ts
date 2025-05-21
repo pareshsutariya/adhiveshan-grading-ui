@@ -11,6 +11,7 @@ import { DataService } from "./dataService";
 export class FileDataService {
   constructor(private http: HttpClient, public data: DataService) {}
 
+  /*
   generateFileData(input: AdhiveshanInput, jsonData: any[]){
 
     let importData: Candidate[] = [];
@@ -23,7 +24,6 @@ export class FileDataService {
                     raw["Emcee Category"] != null && raw["Emcee Category"] != undefined  && raw["Emcee Category"].trim().length > 0;
 
       if(eligible == false){
-        //eligibleData.push(raw);
         continue;
       }
 
@@ -47,6 +47,7 @@ export class FileDataService {
     console.log("importData:", jsonData.length, this.data.candidates);
     console.log("eligibleData:", eligibleData.length, eligibleData);
   }
+  */
 
   populateDataFromFile(input: AdhiveshanInput){
     this.prepareCentersFromFile(input);
@@ -80,10 +81,10 @@ export class FileDataService {
     //input.examStartDate = Constants.ExamStartDate;
     //input.examEndDate = Constants.ExamEndDate;
 
-    input.examDateOnly = Constants.ExamDate;
+    //input.examDateOnly = Constants.ExamDate;
 
-    input.examStartTime = Constants.ExamStartTime;
-    input.examEndTime = Constants.ExamEndTime;
+    //input.examStartTime = Constants.ExamStartTime;
+    //input.examEndTime = Constants.ExamEndTime;
 
     input.break1StartTime = Constants.Break1StartTime;
     input.break1EndTime = Constants.Break1EndTime;

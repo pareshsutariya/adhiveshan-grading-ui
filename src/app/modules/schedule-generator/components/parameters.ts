@@ -31,6 +31,12 @@ import { Constants } from '../../../services/_index';
               </th>
             </tr>
             <tr>
+              <td><i class="fa-solid fa-gopuram mr-2"></i>Host Center</td>
+              <td colspan="2">
+                <span style="color:navy">{{input.hostCenter}}</span>
+              </td>
+            </tr>
+            <tr>
               <td><i class="fa-solid fa-person-running fa-xl mr-2"></i>Start Time</td>
               <td>
                 <span style="color:navy">{{input.examStartTime}}</span>
@@ -50,10 +56,10 @@ import { Constants } from '../../../services/_index';
               <td><span style="color:navy">{{input.break2EndTime}}</span></td>
             </tr>
             <tr>
-              <th style="font-weight:bold; text-align:left;" colspan=4 class="whitespace-nowrap">
-                Gap between two tests:  <span style="color:navy">{{input.minSpaceBetweenTwoTests}} minutes</span>
-                <!-- <input pInputText type="number" min="1" style="width:60px;" class="ml-2" [(ngModel)]="input.minSpaceBetweenTwoTests" /> -->
-              </th>
+              <td colspan="2"><i class="fa-solid fa-stopwatch-20 mr-2"></i>Gap between two tests</td>
+              <td>
+                <span style="color:navy">{{input.minSpaceBetweenTwoTests}} minutes</span>
+              </td>
             </tr>
           </table>
           
@@ -95,7 +101,7 @@ import { Constants } from '../../../services/_index';
 
         <div class="md:w-1/2 pt-2 ml-14">
           <!-- Participants File -->
-          <table width="100%" [cellPadding]="7" [cellSpacing]="7">
+          <!-- <table width="100%" [cellPadding]="7" [cellSpacing]="7">
             <tr style="border-bottom: 1px solid lightgray;">
               <th [colSpan]="2" >
                 <div class="flex items-center justify-center" >
@@ -122,7 +128,7 @@ import { Constants } from '../../../services/_index';
                   [(ngModel)]="input.hostCenter" placeholder="Select Host Center" (onChange)="onHostCenterChanged($event)" />
               </td>
             </tr>
-          </table>
+          </table> -->
 
           <!-- Skills Duration -->
           <table [cellPadding]="5" [cellSpacing]="5" width="100%" class="mt-10">
@@ -231,6 +237,8 @@ export class Parameters extends BaseComponent implements OnInit {
 
    console.log(this.input.examDateOnly);
 
+   this.input.hostCenter = this.selectedEvent?.hostCenter;
+
    this.input.examDateOnly = moment(this.selectedEvent?.startDate).format("MM/DD/yyyy");
    //this.input.examDateOnly = `${this.selectedEvent?.startDate?.getMonth()}/${this.selectedEvent?.startDate?.getDay()}/${this.selectedEvent?.startDate?.getFullYear()}`;;
 
@@ -238,8 +246,13 @@ export class Parameters extends BaseComponent implements OnInit {
 
     this.input.examStartTime = moment(this.selectedEvent?.startDate).format("HH:mm");
     this.input.examEndTime = moment(this.selectedEvent?.endDate).format("HH:mm");
+
+    this.participantsService.GetParticipantsForEvent(this.selectedEvent?.competitionEventId!, "Male").subscribe(response => {
+
+    });
   }
 
+  /*
   onSelectedFiles(event: any) {
 
     const file = event.currentFiles[0];
@@ -260,18 +273,14 @@ export class Parameters extends BaseComponent implements OnInit {
       this.fileDataService.populateDataFromFile(this.input);
 
       localStorage.setItem("FILE_JSON", JSON.stringify(jsonData));
-      // localStorage.setItem("CANDIDATES", JSON.stringify(this.data.candidates));
-      // localStorage.setItem("ROOMS", JSON.stringify(this.data.rooms));
       localStorage.setItem("INPUT", JSON.stringify(this.input));
 
       this.layoutService.isDataLoading.set(false);
-
-      //console.log("INPUT", this.input);
-      //console.log("INPUT.fileData", this.input.fileData);
     };
 
     fileReader.readAsArrayBuffer(file);
   }
+  */
 
   onHostCenterChanged(event: any){
     this.fileDataService.populateDataFromFile(this.input);

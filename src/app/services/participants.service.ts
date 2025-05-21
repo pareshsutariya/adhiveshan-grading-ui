@@ -20,6 +20,10 @@ export class ParticipantsService {
     return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/Participants/getByBAPSId/${bapsId}`);
   }
 
+  GetParticipantsForEvent(eventId: number, gender: string): Observable<ServiceResponse> {
+    return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/Participants/GetParticipantsForEvent/${eventId}/${gender}`);
+  }
+
   GetParticipantForJudging(bapsId: string, loginUserId: number) {
     return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/Participants/GetParticipantForJudging/${bapsId}/${loginUserId}`).pipe()
   }

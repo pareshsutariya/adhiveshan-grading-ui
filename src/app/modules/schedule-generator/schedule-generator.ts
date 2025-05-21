@@ -119,7 +119,6 @@ export class ScheduleGenerator extends BaseComponent implements OnInit, AfterVie
         this.input.examStartDate = `${this.input.examDateOnly} ${this.input.examStartTime}`;
         this.input.examEndDate = `${this.input.examDateOnly} ${this.input.examEndTime}`;
 
-
         this.appFileData.input = this.input;
 
         // Generate Room and timeslices
