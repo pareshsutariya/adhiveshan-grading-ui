@@ -105,14 +105,6 @@ export class FileDataService {
       { name: "Pravachan: Sahajanand", duration: Constants.PravachanSahajanandDuration, color: Constants.PravachanColor, noOfParticipants: sahajanandCount, noOfRooms: 1 },
       { name: "Pravachan: Harikrishna", duration: Constants.PravachanHarikrishnaDuration, color: Constants.PravachanColor, noOfParticipants: harikrishnaCount, noOfRooms: 1 },
       { name: "Pravachan: Shri Hari", duration: Constants.PravachanShriHariDuration, color: Constants.PravachanColor, noOfParticipants: shriHariCount, noOfRooms: 1 },
-
-      // { name: "Sampark: Akshar", duration: Constants.SamparkAksharDuration, color: Constants.SamparkColor, noOfParticipants: samparkAksharCount, noOfRooms: 1 },
-      // { name: "Sampark: Brahm", duration: Constants.SamparkBrahmDuration, color: Constants.SamparkColor, noOfParticipants: samparkBrahmCount, noOfRooms: 1 },
-      // { name: "Sampark: Nirgun", duration: Constants.SamparkNirgunDuration, color: Constants.SamparkColor, noOfParticipants: samparkNirgunCount, noOfRooms: 1 },
-
-      // { name: "TedTalk", duration: Constants.TedTalkDuration, color: Constants.TedTalkColor, noOfParticipants: tedTalkCount, noOfRooms: 1 },
-
-      // { name: "Vyaktigat Kirtan Gaan", duration: Constants.VyaktigatKirtanGaanDuration, color: Constants.VyaktigatKirtanGaanColor, noOfParticipants: vyaktigatKirtanGaanCount, noOfRooms: 1 },
     ];
 
     this.data.rooms = [];
@@ -128,28 +120,6 @@ export class FileDataService {
     this.data.addRoom("Pravachan: Sahajanand", input, true);
     this.data.addRoom("Pravachan: Harikrishna", input, true);
     this.data.addRoom("Pravachan: Shri Hari", input, true);
-
-    /*
-    this.data.addRoom("Sampark: Akshar", input, true);
-    this.data.addRoom("Sampark: Brahm", input, true);
-    this.data.addRoom("Sampark: Nirgun", input, true);
-
-    this.data.addRoom("TedTalk", input, true);
-
-    this.data.addRoom("Vyaktigat Kirtan Gaan", input, true);
-    */
-
-    /*
-    this.data.rooms = [
-      { roomNumber: 1 * 1000, skill: "Sampark", duration: Constants.SamparkDuration, color: Constants.SamparkColor, defaultRoom: true, startTime: input.examStartDate, slots: []},
-      { roomNumber: 1 * 2000, skill: "Emcee", duration: Constants.EMCeeDuration, color: Constants.EmceeColor, defaultRoom: true, startTime: input.examStartDate, slots: []},
-      { roomNumber: 1 * 3000, skill: "Ghanshyam", duration: Constants.GhanshyamDuration, color: Constants.GhanshyamColor, defaultRoom: true, startTime: input.examStartDate, slots: []},
-      { roomNumber: 1 * 4000, skill: "Neelkanth", duration: Constants.NeelkanthDuration, color: Constants.NeelkanthColor, defaultRoom: true, startTime: input.examStartDate, slots: []},
-      { roomNumber: 1 * 5000, skill: "Sahajanand", duration: Constants.SahajanandDuration, color: Constants.SahajanandColor, defaultRoom: true, startTime: input.examStartDate, slots: []},
-      { roomNumber: 1 * 6000, skill: "Harikrishna", duration: Constants.HarikrishnaDuration, color: Constants.HarikrishnaColor, defaultRoom: true, startTime: input.examStartDate, slots: []},
-      { roomNumber: 1 * 7000, skill: "Shri Hari", duration: Constants.ShriHariDuration, color: Constants.ShriHariColor, defaultRoom: true, startTime: input.examStartDate, slots: []},
-    ];
-    */
   }
 
   prepareCandidatesParticipationSkills(input: AdhiveshanInput){

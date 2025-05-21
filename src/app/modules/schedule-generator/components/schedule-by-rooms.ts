@@ -84,31 +84,7 @@ export class ScheduleByRooms extends BaseComponent implements OnInit {
         if(!this.input || !this.input.skills)
             return;
 
-        this.generateRooms();
-
         this.generateTimeSlices();
-    }
-
-    generateRooms(){
-        /*
-        let roomNumber = 0;
-
-        this.input.skills!.forEach(skill=>{
-
-            // Generate rooms
-            for (let index = 0; index < skill.noOfRooms!; index++) {
-                roomNumber++;
-                this.data.rooms.push(
-                { 
-                    roomNumber: roomNumber * 1000, 
-                    skill: skill.name, 
-                    duration: skill.duration, 
-                    color: skill.color, 
-                    startTime: this.input.examStartDate, 
-                    slots: [] 
-                });
-            }
-        });*/
     }
 
     generateTimeSlices(){
@@ -123,16 +99,11 @@ export class ScheduleByRooms extends BaseComponent implements OnInit {
 
             let skill = this.input.skills!.filter((s: { name: string; })=>s.name == room.skill)[0];
 
-            //let noOfParticipantsPerRoom = skill.noOfParticipants!/skill.noOfRooms!;
-            //while (slots.length < noOfParticipantsPerRoom + (Constants.ExtraSlotsPercentage * noOfParticipantsPerRoom/100) ) {
-            //while (slots.length < noOfParticipantsPerRoom) {
-            
             let sliceEnd = moment(currentTime).add(room.duration, "minutes");
 
             while (sliceEnd <= spillOverTime) {
                 sliceEnd = moment(currentTime).add(room.duration, "minutes");
         
-                //if (currentTime.isSameOrAfter(breakEnd) || currentTime.isBefore(breakStart)) 
                 let break1Start = moment(`${this.input.examDateOnly} ${this.input.break1StartTime}`);
                 let break1End = moment(`${this.input.examDateOnly} ${this.input.break1EndTime}`);
                 let break2Start = moment(`${this.input.examDateOnly} ${this.input.break2StartTime}`);
@@ -159,20 +130,6 @@ export class ScheduleByRooms extends BaseComponent implements OnInit {
             }
         
             room.timeSlices = timeSlices;
-        });
-
-        //this.CalculateRequiredSlotsPerRoom();
-    }
-
-    CalculateRequiredSlotsPerRoom(){
-        this.input.skills!.forEach((skill: { name: string; })=>{
-            // Calculate Slots per room
-            let room = this.dataService.rooms.filter(c=>c.skill == skill.name)[0];
-            if(room){
-                //skill.slotsPerRoom = room.slots.length;
-                //skill.requiredRooms = Math.round(skill.noOfParticipants!/skill.slotsPerRoom);
-            }
-            // Calculate required rooms
         });
     }
 }

@@ -227,10 +227,13 @@ export class Parameters extends BaseComponent implements OnInit {
     return;
    }
 
+   this.input.eventId = this.selectedEvent.competitionEventId;
    this.input.hostCenter = this.selectedEvent?.hostCenter;
    this.input.examDateOnly = moment(this.selectedEvent?.startDate).format("MM/DD/yyyy");
    this.input.examStartTime = moment(this.selectedEvent?.startDate).format("HH:mm");
    this.input.examEndTime = moment(this.selectedEvent?.endDate).format("HH:mm");
+   this.input.examStartDate = `${this.input.examDateOnly} ${this.input.examStartTime}`;
+   this.input.examEndDate = `${this.input.examDateOnly} ${this.input.examEndTime}`;
 
    this.layoutService.isDataLoading.set(true);
 
@@ -242,21 +245,21 @@ export class Parameters extends BaseComponent implements OnInit {
       this.layoutService.isDataLoading.set(true);
       this.fileDataService.populateDataFromFile(this.input);
       this.layoutService.isDataLoading.set(false);
+
+      this.eventSchedulesService.GetByEventId(this.input.eventId!).subscribe(response=>{
+        if(response.isSuccessful == true && response.data){
+          this.dataService.rooms = response.data.rooms;
+          //this.appScheduleByRooms.generateRoomsAndTimeSlices(this.input);
+        }
+      });
    });
   }
 
-
   OnRoomAdded(event: any){
-    // if(!this.selectedSkillToAddRoom){
-    //   this.messageService.add({ severity: "warn", summary: "Validation", detail: "Please select a Skill to add room", life: 3000 });
-    //   return;
-    // }
 
     this.dataService.addRoom("", this.input);
 
     this.messageService.add({ severity: "success", summary: "Room Added", detail: `${this.selectedSkillToAddRoom} Room has been added successfully`, life: 3000 });
-  
-    //this.selectedSkillToAddRoom = undefined;
   }
 
   OnSkillChanged(room: Room){
