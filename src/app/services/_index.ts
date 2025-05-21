@@ -11,4 +11,5 @@ export * from "./auth.interceptor";
 export * from "./dataService";
 export * from "./fileDataService";
 export * from "./slotsService";
+export * from "./event-schedules.service";
 export * from "../../environments/environment";

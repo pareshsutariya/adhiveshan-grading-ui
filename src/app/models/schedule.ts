@@ -2,6 +2,8 @@ import { Time } from "@angular/common";
 import moment, { Moment } from "moment";
 
 export interface AdhiveshanInput {
+  eventId?: number;
+
   centers?: any[];
   hostCenter?: string;
   
@@ -108,4 +110,10 @@ export interface ParticipatingSkill {
   sliceStart?: string;
   sliceEnd?: string;
   sliceNumber?: number;
+}
+
+export interface EventSchedule {
+  eventId?: number;
+  rooms?: Room[];
+  participants?: ParticipantForSchedule[];
 }

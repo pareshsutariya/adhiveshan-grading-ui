@@ -29,7 +29,7 @@ import { AngularModules } from '../../models/_angular-imports';
             <p-tab value="1" [disabled]="this.dataService.candidates.length == 0">
               <p-avatar image="https://static.thenounproject.com/png/1194546-512.png" size="large"/>
                 <!-- <p-avatar image="https://static.thenounproject.com/png/532076-512.png" size="large"/> -->
-                <span class="font-bold whitespace-nowrap" style="font-size: medium">File Data</span>
+                <span class="font-bold whitespace-nowrap" style="font-size: medium">Participants</span>
             </p-tab>
             <p-tab value="2" [disabled]="this.dataService.candidates.length == 0">
                 <!-- <p-avatar image="https://static.thenounproject.com/png/7644636-512.png" size="large"/> -->
@@ -113,7 +113,18 @@ export class ScheduleGenerator extends BaseComponent implements OnInit, AfterVie
     }
 
     OnSave() {
-      
+      let eventSchedule = {
+        eventId: this.input.eventId,
+        rooms: this.dataService.rooms,
+        participants: this.dataService.candidates,
+      }
+
+      this.eventSchedulesService.Save(eventSchedule).subscribe(response => {
+        if(response.isSuccessful == true)
+          this.messageService.add({ severity: "success", summary: "Schedule", detail: "Schedule saved successfully", life: 3000 });
+        else 
+          this.messageService.add({ severity: "danger", summary: "Schedule", detail: "Schedule didn't saved successfully", life: 3000 });
+      });
     }
 
     generateAsync(){
