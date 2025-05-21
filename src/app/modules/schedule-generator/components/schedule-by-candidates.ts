@@ -37,13 +37,11 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
           <tr>
             <th class="whitespace-nowrap">Center</th>
             <th class="whitespace-nowrap">MIS Id</th>
+            <th class="whitespace-nowrap">BAPS Id</th>
             <th class="whitespace-nowrap">Full Name</th>
             <th class="whitespace-nowrap">Gender</th>
-            <th class="whitespace-nowrap" style="text-align:center;">Sampark</th>
             <th class="whitespace-nowrap" style="text-align:center;">Emcee</th>
             <th class="whitespace-nowrap" style="text-align:center;">Pravachan</th>
-            <th class="whitespace-nowrap" style="text-align:center;">Vyaktigat Kirtan</th>
-            <th class="whitespace-nowrap" style="text-align:center;">Ted Talk</th>
             <th class="whitespace-nowrap" style="text-align:center;color:brown">Priority</th>
             <th class="whitespace-nowrap" style="font-weight: bold; color:brown">Skill and it's time assignment 
             </th>
@@ -55,7 +53,7 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
         <!-- Group Header -->
         <ng-template #groupheader let-item let-rowIndex="rowIndex" let-expanded="expanded">
             <tr pRowGroupHeader>
-                <td colspan="9">
+                <td colspan="10">
                   <button type="button" pButton pRipple text rounded plain class="mr-2"
                       [pRowToggler]="item"
                       [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'">
@@ -78,6 +76,7 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
           <tr>
             <td valign="top" style="width:150px" class="no-wrap">{{candidate.center}}</td>
             <td valign="top" style="width:1rem">#{{candidate.misId}}</td>
+            <td valign="top" style="width:1rem">#{{candidate.bapsId}}</td>
             <td valign="top" class= "whitespace-nowrap" style="width:1rem">{{candidate.fullName}}</td>
             <td valign="top" style="width:1rem">{{candidate.gender}}</td>
             <td valign="top" style="text-align:center;width:1rem">

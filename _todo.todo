@@ -1,5 +1,4 @@
 - [ ] Schedule: 
-    - [ ] For the selected event's centers, populate candidate data and counts (1)
     - [ ] Provide Save button to save rooms configuration
     - [ ] On clicking, save the room configuration
     - [ ] For the selected event's centers, populate already saved rooms (1)

@@ -221,39 +221,15 @@ export class Parameters extends BaseComponent implements OnInit {
    this.layoutService.isDataLoading.set(true);
 
    this.participantsService.GetParticipantsForEvent(this.selectedEvent?.competitionEventId!, "Male").subscribe(response => {
-    this.layoutService.isDataLoading.set(false);
+      this.layoutService.isDataLoading.set(false);
+      
+      this.dataService.candidates = response.data;
+
+      this.layoutService.isDataLoading.set(true);
+      this.fileDataService.populateDataFromFile(this.input);
+      this.layoutService.isDataLoading.set(false);
    });
   }
-
-  /*
-  onSelectedFiles(event: any) {
-
-    const file = event.currentFiles[0];
-
-    const fileReader = new FileReader();
-
-    fileReader.onload = (e: any) => {
-      this.layoutService.isDataLoading.set(true);
-
-      const arrayBuffer = e.target.result;
-      const workbook = XLSX.read(arrayBuffer, { type: "array" });
-      const sheetName = workbook.SheetNames[0];
-      const worksheet = workbook.Sheets[sheetName];
-      let jsonData: any[] = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-
-      this.fileDataService.generateFileData(this.input, jsonData);
-
-      this.fileDataService.populateDataFromFile(this.input);
-
-      localStorage.setItem("FILE_JSON", JSON.stringify(jsonData));
-      localStorage.setItem("INPUT", JSON.stringify(this.input));
-
-      this.layoutService.isDataLoading.set(false);
-    };
-
-    fileReader.readAsArrayBuffer(file);
-  }
-  */
 
   onHostCenterChanged(event: any){
     this.fileDataService.populateDataFromFile(this.input);
