@@ -54,10 +54,10 @@ import { AngularModules } from '../../models/_angular-imports';
             <p-tabpanel value="0">
                 <app-parameters #appParameters></app-parameters>
                 <!-- Submit & Reset -->
-                <div class="flex justify-end items-center gap-2 mt-3">
-                  <p-button label="Generate Schedule" severity="primary" (onClick)="OnGenerate()" [disabled]="dataService.candidates.length==0" />
-                  <!-- <p-button label="Assign Time Slices" severity="primary" (onClick)="OnAssignTimeSlices()" /> -->
+                <div class="flex justify-end items-center gap-2 mt-3" *ngIf="dataService.candidates.length > 0">
+                  <p-button label="Generate Schedule" severity="primary" (onClick)="OnGenerate()" />
                   <p-button label="Reset" severity="secondary" (onClick)="reset()" />
+                  <p-button label="Save Schedule" severity="warn" (onClick)="OnSave()"/>
                 </div>
             </p-tabpanel>
             <p-tabpanel value="1">
@@ -100,7 +100,6 @@ export class ScheduleGenerator extends BaseComponent implements OnInit, AfterVie
     }
 
     reset() {
-      localStorage.clear();
       window.location.reload();
     }
     
@@ -111,6 +110,10 @@ export class ScheduleGenerator extends BaseComponent implements OnInit, AfterVie
         this.generateAsync();
         this.layoutService.isDataLoading.set(false);
       }, 1000);
+    }
+
+    OnSave() {
+      
     }
 
     generateAsync(){
