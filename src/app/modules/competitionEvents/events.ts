@@ -57,8 +57,8 @@ export class Events extends BaseComponent implements OnInit {
 
   openEdit(item: CompetitionEvent) {    
     this.addOrEditItem = { ...item };
-    this.startDateValue = new Date(this.addOrEditItem.startDate);
-    this.endDateValue = new Date(this.addOrEditItem.endDate);
+    this.startDateValue = new Date(this.addOrEditItem.startDate!);
+    this.endDateValue = new Date(this.addOrEditItem.endDate!);
 
     this.dialog = true;
 

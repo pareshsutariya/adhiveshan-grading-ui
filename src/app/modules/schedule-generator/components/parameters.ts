@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import * as XLSX from "xlsx";
 
 import moment, { Moment } from "moment";
-import { AdhiveshanInput, Candidate, Room  } from '../../../models/_index';
+import { AdhiveshanInput, Candidate, CompetitionEvent, Room  } from '../../../models/_index';
 import { BaseComponent } from '../../base-component/baseComponent';
 import { AngularModules } from '../../../models/_angular-imports';
 import { PrimeNgModules } from '../../../models/_prime-ng-imports';
+import { Constants } from '../../../services/_index';
 
 @Component({
     standalone: true,
@@ -18,35 +19,35 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
             <!-- Event Date / Start Time / End Time -->
           <table [cellPadding]="7" [cellSpacing]="7">
             <tr style="border-bottom: 1px solid lightgray;">
-              <th [colSpan]="2">
-                <div class="flex items-center justify-center" >
-                  <h5 class="m-0 whitespace-nowrap">Competition Schedule</h5>
+              <th [colSpan]="1">
+                <div class="flex" >
+                  <h5 class="m-0 whitespace-nowrap">Event</h5>
                 </div>
               </th>
-              <th [colSpan]="1">
-                <p-datepicker [(ngModel)]="input.examDateOnly" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" />
+              <th [colSpan]="2">
+                <p-select inputId="region" [options]="events()" optionLabel="regionalHostCenterDate"
+                        [(ngModel)]="selectedEvent" placeholder="Select an Event" [showClear]="true"
+                        (onChange)="onCompetitionEventChange()" [ngStyle]="{'width': '300px'}" />
               </th>
             </tr>
             <tr>
               <td><i class="fa-solid fa-person-running fa-xl mr-2"></i>Start Time</td>
               <td>
-                  <!-- <input pInputText id="name3" type="text" [(ngModel)]="input.examStartDate" /> -->    
-                <input pInputText type="time" [(ngModel)]="input.examStartTime" />
+                <span style="color:navy">{{input.examStartTime}}</span>
               </td>
               <td>
-                <!-- <input pInputText id="name3" type="text" [(ngModel)]="input.examEndDate" /> -->
-                <input pInputText type="time" [(ngModel)]="input.examEndTime" />
+                <span style="color:navy">{{input.examEndTime}}</span>
               </td>
             </tr>
             <tr>
               <td><i class="fa-solid fa-utensils fa-xl mr-2"></i>Break-1</td>
-              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break1StartTime" /></td>
-              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break1EndTime" /></td>
+              <td><span style="color:navy">{{input.break1StartTime}}</span>
+              <td><span style="color:navy">{{input.break1EndTime}}</span><td> 
             </tr>
             <tr>
               <td><i class="fa-solid fa-mug-hot fa-xl mr-2"></i>Break-2</td>
-              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break2StartTime" /></td>
-              <td><input pInputText id="name3" type="time" [(ngModel)]="input.break2EndTime" /></td>
+              <td><span style="color:navy">{{input.break2StartTime}}</span>
+              <td><span style="color:navy">{{input.break2EndTime}}</span></td>
             </tr>
             <tr>
               <th style="font-weight:bold; text-align:left;" colspan=4 class="whitespace-nowrap">
@@ -187,12 +188,19 @@ import { PrimeNgModules } from '../../../models/_prime-ng-imports';
 export class Parameters extends BaseComponent implements OnInit {
   dummy: any = ["dummy-1"];
 
+  events = signal<CompetitionEvent[]>([]);
+  selectedEvent: CompetitionEvent | undefined;
+  
   input: AdhiveshanInput = {};
   selectedSkillToAddRoom: string | undefined;
   //centers: any[]=[];
  
   ngOnInit(): void {
-    //this.generateCandidate(this.input.totalCandidate);
+
+     this.eventsService.GetEventsForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(response => { 
+      this.events.set(response.data);
+      this.layoutService.isDataLoading.set(false);
+    });
 
     let storageInput = localStorage.getItem("INPUT");
     if(storageInput){
@@ -217,6 +225,19 @@ export class Parameters extends BaseComponent implements OnInit {
     }
 
     this.fileDataService.populateDataFromFile(this.input);
+  }
+
+  onCompetitionEventChange(){
+
+   console.log(this.input.examDateOnly);
+
+   this.input.examDateOnly = moment(this.selectedEvent?.startDate).format("MM/DD/yyyy");
+   //this.input.examDateOnly = `${this.selectedEvent?.startDate?.getMonth()}/${this.selectedEvent?.startDate?.getDay()}/${this.selectedEvent?.startDate?.getFullYear()}`;;
+
+   //console.log(this.input.examDateOnly);
+
+    this.input.examStartTime = moment(this.selectedEvent?.startDate).format("HH:mm");
+    this.input.examEndTime = moment(this.selectedEvent?.endDate).format("HH:mm");
   }
 
   onSelectedFiles(event: any) {
