@@ -17,7 +17,7 @@ import { Constants } from '../../../services/_index';
         <!-- Schedule -->
         <div class="md:w-1/3 pt-2">
             <!-- Event Date / Start Time / End Time -->
-          <table [cellPadding]="7" [cellSpacing]="7">
+          <table [cellPadding]="10" [cellSpacing]="7">
             <tr style="border-bottom: 1px solid lightgray;">
               <th [colSpan]="1">
                 <div class="flex" >
@@ -32,8 +32,21 @@ import { Constants } from '../../../services/_index';
             </tr>
             <tr>
               <td><i class="fa-solid fa-gopuram mr-2"></i>Host Center</td>
-              <td colspan="2">
+              <td>
                 <span style="color:navy">{{input.hostCenter}}</span>
+              </td>
+              <td>
+                <p-button label="Guest Centers" (click)="showGuestCenters=true" 
+                          [badge]="selectedEvent?.centers!.length.toString()"
+                          severity="primary" [size]="'small'"
+                          badgeSeverity="contrast" styleClass="m-0"/>
+                <p-dialog [modal]="true" [(visible)]="showGuestCenters" header="Guest Centers" [style]="{ width: '15vw' }">
+                    <ol>
+                        <li *ngFor="let center of selectedEvent?.centers;index as i">
+                          {{i+1}}. {{center}}
+                        </li>
+                    </ol>
+                </p-dialog>
               </td>
             </tr>
             <tr>
@@ -64,7 +77,7 @@ import { Constants } from '../../../services/_index';
           </table>
           
           <!-- Participants Count -->
-          <table width="100%" [cellPadding]="14" [cellSpacing]="7" *ngIf="selectedEvent">
+          <table width="100%" [cellPadding]="10" [cellSpacing]="7" *ngIf="selectedEvent">
             <thead>
               <tr style="border-bottom: 1px solid lightgray;">
                 <th [colSpan]="4" style="padding:5pt">
@@ -101,7 +114,7 @@ import { Constants } from '../../../services/_index';
 
         <div class="md:w-1/2 pt-2 ml-14">
           <!-- Skills Duration -->
-          <table [cellPadding]="5" [cellSpacing]="5" width="100%" class="mt-10" *ngIf="selectedEvent">
+          <table [cellPadding]="5" [cellSpacing]="5" width="100%" *ngIf="selectedEvent">
             <thead>
             <tr style="border-bottom: 1px solid lightgray;">
               <th [colSpan]="3" >
@@ -166,6 +179,7 @@ export class Parameters extends BaseComponent implements OnInit {
 
   events = signal<CompetitionEvent[]>([]);
   selectedEvent: CompetitionEvent | undefined;
+  showGuestCenters: boolean = false;
   
   input: AdhiveshanInput = {};
   selectedSkillToAddRoom: string | undefined;
@@ -231,11 +245,6 @@ export class Parameters extends BaseComponent implements OnInit {
    });
   }
 
-  onHostCenterChanged(event: any){
-    this.fileDataService.populateDataFromFile(this.input);
-
-    localStorage.setItem("INPUT", JSON.stringify(this.input));
-  }
 
   OnRoomAdded(event: any){
     // if(!this.selectedSkillToAddRoom){
