@@ -18,4 +18,5 @@ export interface Grade {
   color?: string,
   skillWithCategory?: string;
   judgeName?: string,
+  judgeBAPSId?: string,
 }

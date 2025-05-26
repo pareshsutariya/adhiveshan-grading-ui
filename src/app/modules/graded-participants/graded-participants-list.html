@@ -27,6 +27,9 @@
                 <p-sortIcon field="skillWithCategory" />
             </th>
             <th class="whitespace-nowrap">
+                Section
+            </th>
+            <th class="whitespace-nowrap">
                 Topic
             </th>
             <th>
@@ -55,9 +58,10 @@
         <tr>
             <!-- <td class="whitespace-nowrap align-top">{{ item.participant.fullName }}</td> -->
             <td class="whitespace-nowrap align-top">{{ item.skillWithCategory }}</td>
+            <td class="whitespace-nowrap align-top">{{ item.sectionName }}</td>
             <td class="whitespace-nowrap align-top">{{ item.topicName }}</td>
             <td class="whitespace-nowrap align-top">{{ item.marks }}</td>
-            <td class="whitespace-nowrap align-top">{{ item.judgeName }}</td>
+            <td class="whitespace-nowrap align-top">{{ item.judgeName }} ({{ item.judgeBAPSId }})</td>
         </tr>
     </ng-template>
 </p-table>
