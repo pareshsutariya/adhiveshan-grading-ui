@@ -197,25 +197,23 @@ export class ImportParticipants extends BaseComponent implements OnInit {
     });
   }
 
-   searchCenter(event: AutoCompleteCompleteEvent): any {
-      let query = event.query;
-      this.filteredCentersWithRegion = [];
+  searchCenter(event: AutoCompleteCompleteEvent): any {
+    let query = event.query;
+    this.filteredCentersWithRegion = [];
 
-       for (let optgroup of this.regionsService.Regions) {
+      for (let optgroup of this.regionsService.Regions) {
 
-        console.log(optgroup);
+          let filteredSubOptions = this.filterService.filter(optgroup.centers, ['label'], query, "contains");
+          if (filteredSubOptions && filteredSubOptions.length) {
+              this.filteredCentersWithRegion.push({
+                  label: optgroup.label,
+                  value: optgroup.value,
+                  color: optgroup.color,
+                  items: filteredSubOptions
+              });
+          }
+      }
 
-            let filteredSubOptions = this.regionsService.Regions.filter(optgroup.centers, ['label'], query, "contains");
-            if (filteredSubOptions && filteredSubOptions.length) {
-                this.filteredCentersWithRegion.push({
-                    label: optgroup.label,
-                    value: optgroup.value,
-                    items: filteredSubOptions
-                });
-            }
-        }
-
-        console.log(this.filteredCentersWithRegion);
-
-    }
+      console.log(this.filteredCentersWithRegion);
+  }
 }

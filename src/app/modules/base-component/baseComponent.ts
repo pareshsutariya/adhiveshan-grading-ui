@@ -1,5 +1,5 @@
 import { Router } from "@angular/router";
-import { MessageService } from "primeng/api";
+import { FilterService, MessageService } from "primeng/api";
 import { Directive } from "@angular/core";
 import { LayoutService } from "../../layout/service/layout.service";
 import { AuthService, CompetitionEventsService, Constants, DataService, EventSchedulesService, FileDataService, GradesService, GradingCriteriasService, ParticipantsService, PermissionsEnum, RegionCenterService, RolePermissionsService, RolesEnum, SlotsService, UsersService } from "../../services/_index";
@@ -25,7 +25,8 @@ export abstract class BaseComponent {
 
         public fileDataService: FileDataService,
         public slotsService: SlotsService,
-        public dataService: DataService
+        public dataService: DataService,
+        public filterService: FilterService,
     ) {}
 
     public permissionsEnum: typeof PermissionsEnum = PermissionsEnum;
