@@ -2,7 +2,7 @@
 <!-- Import -->
 <p-toolbar styleClass="mb-2">
     <ng-template #start>
-        <div class="font-semibold mr-5" style="font-size:1.5rem">Import Participants</div>
+        <div class="font-semibold mr-5" style="font-size:1.5rem">Participants</div>
 
         <input type="file" (change)="onFileChange($event)"
             *ngIf="this.authService.HasUserPermissions([permissionsEnum.Participants_Import])" />
@@ -54,12 +54,12 @@
                     field="language_For_Skill_Competitions" />
                 <p-columnFilter type="text" field="language_For_Skill_Competitions" display="menu" />
             </th>
-            <th class="whitespace-nowrap" pSortableColumn="emcee_Category">Emcee <p-sortIcon field="emcee_Category" />
-                <p-columnFilter type="text" field="emcee_Category" display="menu" />
-            </th>
             <th class="whitespace-nowrap" pSortableColumn="speech_Pravachan_Category">Pravachan <p-sortIcon
                     field="speech_Pravachan_Category" />
                 <p-columnFilter type="text" field="speech_Pravachan_Category" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="emcee_Category">Emcee <p-sortIcon field="emcee_Category" />
+                <p-columnFilter type="text" field="emcee_Category" display="menu" />
             </th>
             <th class="whitespace-nowrap" pSortableColumn="hostCenter">Host Center <p-sortIcon field="hostCenter" />
                 <p-columnFilter type="text" field="hostCenter" display="menu" />
@@ -96,8 +96,8 @@
             <td>{{candidate.gender}}</td>
             <td>{{candidate.mandal}}</td>
             <td>{{candidate.language_For_Skill_Competitions}}</td>
-            <td>{{candidate.emcee_Category}}</td>
             <td>{{candidate.speech_Pravachan_Category}}</td>
+            <td>{{candidate.emcee_Category}}</td>
             <td class="no-wrap">{{candidate.hostCenter}}</td>
         </tr>
     </ng-template>
