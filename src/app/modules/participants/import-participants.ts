@@ -1,5 +1,6 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { Table } from "primeng/table";
+import { AutoComplete } from 'primeng/autocomplete';
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
@@ -17,7 +18,7 @@ interface AutoCompleteCompleteEvent {
 
 @Component({
   selector: "app-import-participants",
-  imports: [AngularModules, PrimeNgModules],
+  imports: [AngularModules, PrimeNgModules, AutoComplete],
   providers: [Providers],
   templateUrl: "import-participants.html",
   styles: [ 
@@ -43,7 +44,6 @@ export class ImportParticipants extends BaseComponent implements OnInit {
   dialog: boolean = false;
   addOrEditItem!: Participant;
   submitted: boolean = false;
-  centersWithRegion: any[] = this.regionsService.Canada_Centers;
   filteredCentersWithRegion: any[] | undefined;
 
   ngOnInit() {
@@ -200,11 +200,22 @@ export class ImportParticipants extends BaseComponent implements OnInit {
    searchCenter(event: AutoCompleteCompleteEvent): any {
       let query = event.query;
       this.filteredCentersWithRegion = [];
-      for (let i = 0; i < this.centersWithRegion.length; i++) {
-          let country = this.centersWithRegion[i];
-          if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-              this.filteredCentersWithRegion.push(country);
-          }
-      }
+
+       for (let optgroup of this.regionsService.Regions) {
+
+        console.log(optgroup);
+
+            let filteredSubOptions = this.regionsService.Regions.filter(optgroup.centers, ['label'], query, "contains");
+            if (filteredSubOptions && filteredSubOptions.length) {
+                this.filteredCentersWithRegion.push({
+                    label: optgroup.label,
+                    value: optgroup.value,
+                    items: filteredSubOptions
+                });
+            }
+        }
+
+        console.log(this.filteredCentersWithRegion);
+
     }
 }

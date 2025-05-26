@@ -199,9 +199,15 @@
                 <div class=" col-span-6">
                     <!-- <input pInputText type="text" id="hostCenter" [(ngModel)]="addOrEditItem.hostCenter"
                         placeholder="Host Center" fluid /> -->
-                    <p-autocomplete [(ngModel)]="addOrEditItem.hostCenter" [dropdown]="true" optionLabel="label"
-                        optionValue="value" (completeMethod)="searchCenter($event)"
-                        [suggestions]="filteredCentersWithRegion!" />
+                    <p-autocomplete [(ngModel)]="addOrEditItem.hostCenter" [group]="true"
+                        (completeMethod)="searchCenter($event)" [suggestions]="filteredCentersWithRegion!">
+                        <ng-template let-group #group>
+                            <div class="flex items-center">
+                                <i class="pi pi-map mr-2"></i>{{ group.value }}
+                                <span>{{ group.label }}</span>
+                            </div>
+                        </ng-template>
+                    </p-autocomplete>
 
                 </div>
                 <div class="col-span-1">
