@@ -47,7 +47,7 @@
         </tr>
     </ng-template>
 
-    <!-- List View Row -->
+    <!-- List View Data -->
     <ng-template #body let-item>
         <tr>
             <td class="no-wrap">{{item.participant.region}}</td>
@@ -58,69 +58,50 @@
             <td>{{item.participant.language_For_Skill_Competitions}}</td>
             <td>
                 <p-button *ngIf="item.pravachanGrades?.length>0" icon="pi pi-eye" class="mr-2" [rounded]="true"
-                    [outlined]="true" />
+                    [severity]="'success'" [outlined]="true" (click)="openPravachanGrades(item)" />
             </td>
             <td>
                 <p-button *ngIf="item.emceeGrades?.length>0" icon="pi pi-eye" class="mr-2" [rounded]="true"
-                    [outlined]="true" />
+                    [severity]="'info'" [outlined]="true" (click)="openEmceeGrades(item)" />
             </td>
         </tr>
     </ng-template>
-
-    <!-- <ng-template #header>
-        <tr>
-            <th class="whitespace-nowrap">
-                Section
-            </th>
-            <th class="whitespace-nowrap">
-                Topic
-            </th>
-            <th>
-                Marks
-            </th>
-            <th>
-                Judge
-            </th>
-        </tr>
-    </ng-template> -->
-
-    <!-- List View Group -->
-    <!-- <ng-template #groupheader let-item>
-        <tr pRowGroupHeader>
-            <td colspan="8">
-                <div class="grid grid-cols-12 gap-2">
-                    <div class="col-span-12">
-                        <span class="font-bold">
-                            <i class="fa-solid fa-graduation-cap mr-1"></i>
-                            {{ item.participant.fullName }}
-                        </span>
-                        <span class="font-bold ml-2">
-                            <p-tag [value]="item.participant.bapsId" [severity]="'info'"
-                                styleClass="dark:!bg-surface-900" [ngClass]="'whitespace-nowrap'" />
-                        </span>
-                        <span class="font-bold ml-2">
-                            <i class="pi pi-building-columns mr-1"></i>
-                            {{ item.participant.center }}
-                        </span>
-                        <span class="font-bold ml-2">
-                            <i class="fa-solid fa-kitchen-set mr-1"></i>
-                            {{ item.skillWithCategory }}
-                        </span>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </ng-template> -->
-
-    <!-- List View Data -->
-    <!-- 
-    <ng-template #body let-item>
-        <tr>
-            <td class="whitespace-nowrap align-top">{{ item.sectionName }}</td>
-            <td class="whitespace-nowrap align-top">{{ item.topicName }}</td>
-            <td class="whitespace-nowrap align-top">{{ item.marks }}</td>
-            <td class="whitespace-nowrap align-top">{{ item.judgeName }} ({{ item.judgeBAPSId }})</td>
-        </tr>
-    </ng-template> 
-    -->
 </p-table>
+
+<p-dialog [(visible)]="dialog" [style]="{ width: 'auto', height: 'auto' }" [modal]="true">
+    <ng-template #header>
+        <h5>
+            <span class="underline">{{selectedParticipant!.fullName}}</span>'s Grade for <span
+                class="ml-1">{{selectedSkillCategory}}</span>
+        </h5>
+    </ng-template>
+    <p-table [value]="selectedGrades" showGridlines [rowHover]="true" [scrollable]="true">
+        <!-- Grading Criterias List View Header -->
+        <ng-template #header>
+            <tr>
+                <th class="whitespace-nowrap">
+                    Section
+                </th>
+                <th class="whitespace-nowrap">
+                    Topic
+                </th>
+                <th class="whitespace-nowrap" style="width: 200px;">
+                    Marks
+                </th>
+                <th class="whitespace-nowrap" style="width: 200px;">
+                    Maximum Allowed Marks
+                </th>
+            </tr>
+        </ng-template>
+
+        <!-- Grading Criterias List View Data -->
+        <ng-template #body let-item>
+            <tr [style]="{'color': item.color}">
+                <td class="whitespace-nowrap">{{ item.sectionName }}</td>
+                <td class="whitespace-nowrap">{{ item.topicName }}</td>
+                <td class="whitespace-nowrap">{{ item.marks }}</td>
+                <td class="whitespace-nowrap">{{ item.maximumMarks }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-dialog>

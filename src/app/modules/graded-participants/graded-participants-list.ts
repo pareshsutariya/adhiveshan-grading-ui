@@ -6,8 +6,9 @@ import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 
-import { Grade } from "../../models/_index";
+import { Grade, Participant } from "../../models/_index";
 import { Providers } from "../../models/_providers";
+import { ParticipantGrades } from "../../models/participant-grades";
 
 @Component({
   selector: "app-graded-participants-list",
@@ -20,6 +21,10 @@ export class GradedParticipantsList extends BaseComponent implements OnInit {
   @ViewChild("dt") dt!: Table;
 
   data = signal<Grade[]>([]);
+  dialog: boolean = false;
+  selectedParticipant: Participant| undefined;
+  selectedSkillCategory: string| undefined;
+  selectedGrades: Grade[] = [];
 
   ngOnInit() {
     this.loadData();
@@ -41,5 +46,19 @@ export class GradedParticipantsList extends BaseComponent implements OnInit {
 
   clearGlobalFilter(){
     this.dt.filterGlobal("", 'contains');
+  }
+
+  openPravachanGrades(item: ParticipantGrades) {
+    this.selectedParticipant = item.participant;
+    this.selectedGrades = item.pravachanGrades!;
+    this.selectedSkillCategory = item.pravachanSkill + ": " + item.pravachanCategory;
+    this.dialog = true;
+  }
+
+  openEmceeGrades(item: ParticipantGrades) {
+    this.selectedParticipant = item.participant;
+    this.selectedGrades = item.emceeGrades!;
+    this.selectedSkillCategory = item.emceeSkill + ": " + item.emceeCategory;
+    this.dialog = true;
   }
 }
