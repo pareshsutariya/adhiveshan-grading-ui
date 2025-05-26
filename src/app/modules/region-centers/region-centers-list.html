@@ -35,10 +35,11 @@
     <!-- List View Data -->
     <ng-template #body let-item>
         <tr>
-            <td class="whitespace-nowrap" [vAlign]="'top'"> {{ item.label }}</td>
+            <td class="whitespace-nowrap" [vAlign]="'top'" [ngStyle]="{'color': item.color}"> {{
+                item.label }}</td>
             <td>
                 <ul>
-                    <li class="mb-2" *ngFor="let center of item.centers">
+                    <li class="mb-2" *ngFor="let center of item.centers" [ngStyle]="{'color': center.color}">
                         {{center.label}}</li>
                 </ul>
             </td>
