@@ -35,7 +35,7 @@ export class AppMenu {
         let participants: MenuItem = {label: 'Participants',  items: []};
         
         if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
-            participants.items?.push({ label: 'Import / View', icon: 'fa-solid fa-upload', routerLink: ['/import-participants'] });
+            participants.items?.push({ label: 'Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/import-participants'] });
         
         if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
             participants.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
@@ -80,7 +80,7 @@ export class AppMenu {
         if(this.auth.HasUserPermissions([PermissionsEnum.Reports_Check_In_Report]))
             reports.items?.push({ label: 'Check In Report', icon: 'fa-solid fa-user-check', routerLink: ['/check-in-report'] });
         if(this.auth.HasUserPermissions([PermissionsEnum.Reports_Grading_Report]))
-            reports.items?.push({ label: 'Grading Report', icon: 'fa-solid fa-graduation-cap', routerLink: ['/gradeing-report'] });
+            reports.items?.push({ label: 'Grading Report', icon: 'fa-solid fa-square-poll-vertical', routerLink: ['/gradeing-report'] });
 
         if(home!.items!.length > 0)
             this.model.push(home);
