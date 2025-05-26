@@ -27,8 +27,8 @@ export const appRoutes: Routes = [
 
             //{ path: 'import-participants', component: ImportParticipants, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_View] } },
             { path: 'import-participants', component: ImportParticipants },
-            { path: 'skill-categories', component: SkillCategoriesList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_Import] } },
-            { path: 'region-centers', component: RegionCentersList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_Import] } },
+            { path: 'skill-categories', component: SkillCategoriesList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View] } },
+            { path: 'region-centers', component: RegionCentersList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View] } },
             
             { path: 'events', component: Events, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Events_View] } },
 
