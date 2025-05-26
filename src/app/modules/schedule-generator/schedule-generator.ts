@@ -11,7 +11,7 @@ import { AngularModules } from '../../models/_angular-imports';
 
 @Component({
     selector: 'app-schedule-generator',
-    imports: [AngularModules, PrimeNgModules, ScheduleByCandidates, ScheduleByRooms, Parameters, FileData],
+    imports: [AngularModules, PrimeNgModules, ScheduleByCandidates, ScheduleByRooms, Parameters],
     providers: [Providers],
     template: `
     <p-toast />

@@ -40,7 +40,7 @@ export class Events extends BaseComponent implements OnInit {
   loadData() {
 
     this.layoutService.isDataLoading.set(true);
-    this.eventsService.GetItems().subscribe(response => { 
+    this.eventsService.GetEventsForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(response => { 
       this.data.set(response.data);
       this.layoutService.isDataLoading.set(false);
     });
