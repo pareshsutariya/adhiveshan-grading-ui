@@ -10,6 +10,11 @@ import * as XLSX from "xlsx";
 import { BaseComponent } from "../base-component/baseComponent";
 import { Providers } from "../../models/_providers";
 
+interface AutoCompleteCompleteEvent {
+    originalEvent: Event;
+    query: string;
+}
+
 @Component({
   selector: "app-import-participants",
   imports: [AngularModules, PrimeNgModules],
@@ -38,6 +43,8 @@ export class ImportParticipants extends BaseComponent implements OnInit {
   dialog: boolean = false;
   addOrEditItem!: Participant;
   submitted: boolean = false;
+  centersWithRegion: any[] = this.regionsService.Canada_Centers;
+  filteredCentersWithRegion: any[] | undefined;
 
   ngOnInit() {
 
@@ -189,4 +196,15 @@ export class ImportParticipants extends BaseComponent implements OnInit {
         this.loadData();
     });
   }
+
+   searchCenter(event: AutoCompleteCompleteEvent): any {
+      let query = event.query;
+      this.filteredCentersWithRegion = [];
+      for (let i = 0; i < this.centersWithRegion.length; i++) {
+          let country = this.centersWithRegion[i];
+          if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+              this.filteredCentersWithRegion.push(country);
+          }
+      }
+    }
 }

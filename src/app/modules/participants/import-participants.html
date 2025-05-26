@@ -104,7 +104,8 @@
 </p-table>
 
 <!-- View Dialog -->
-<p-dialog [(visible)]="dialog" [style]="{ width: '400px', height: 'auto' }" header="Participant Details" [modal]="true">
+<p-dialog [(visible)]="dialog" [style]="{ width: '400px', height: '600px' }" header="Participant Details"
+    [modal]="true">
     <ng-template #content>
         <div class="flex flex-col gap-2">
 
@@ -196,8 +197,12 @@
                 <label for="hostCenter" class="flex font-bold items-center col-span-3 whitespace-nowrap">Host
                     Center</label>
                 <div class=" col-span-6">
-                    <input pInputText type="text" id="hostCenter" [(ngModel)]="addOrEditItem.hostCenter"
-                        placeholder="Host Center" fluid />
+                    <!-- <input pInputText type="text" id="hostCenter" [(ngModel)]="addOrEditItem.hostCenter"
+                        placeholder="Host Center" fluid /> -->
+                    <p-autocomplete [(ngModel)]="addOrEditItem.hostCenter" [dropdown]="true" optionLabel="label"
+                        optionValue="value" (completeMethod)="searchCenter($event)"
+                        [suggestions]="filteredCentersWithRegion!" />
+
                 </div>
                 <div class="col-span-1">
                     <p-button label="Update" icon="pi pi-check" (click)="updateHostCenter()" />
