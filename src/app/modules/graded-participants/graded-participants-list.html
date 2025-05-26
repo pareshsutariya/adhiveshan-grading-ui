@@ -46,8 +46,21 @@
     <ng-template #groupheader let-item>
         <tr pRowGroupHeader>
             <td colspan="8">
-                <div class="flex items-center gap-2">
-                    <span class="font-bold">{{ item.participant.fullName }}</span>
+                <div class="grid grid-cols-12 gap-2">
+                    <div class="col-span-12">
+                        <span class="font-bold">
+                            <i class="fa-solid fa-graduation-cap mr-1"></i>
+                            {{ item.participant.fullName }}
+                        </span>
+                        <span class="font-bold ml-2">
+                            <p-tag [value]="item.participant.bapsId" [severity]="'info'"
+                                styleClass="dark:!bg-surface-900" [ngClass]="'whitespace-nowrap'" />
+                        </span>
+                        <span class="font-bold ml-2">
+                            <i class="pi pi-building-columns mr-1"></i>
+                            {{ item.participant.center }}
+                        </span>
+                    </div>
                 </div>
             </td>
         </tr>
