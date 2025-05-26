@@ -102,12 +102,12 @@ export class Users extends BaseComponent implements OnInit {
 
     this.layoutService.isDataLoading.set(true);
 
-    this.participantsService.GetByBAPSId(this.addOrEditItem.bapsId).subscribe(response => {
+    this.usersService.GetByBAPSIdToAddAsUser(this.addOrEditItem.bapsId, this.authService.GetLoginUserBAPSId()).subscribe(response => {
       this.layoutService.isDataLoading.set(false);
 
-      if(response == null) {
+      if(response.isSuccessful == false) {
 
-        this.messageService.add({ severity: "error", summary: "Validation", detail: "Participant not found", life: 3000 });
+        this.messageService.add({ severity: "error", summary: "Validation", detail: response.errorMessage, life: 10000 });
         
         return;
       }

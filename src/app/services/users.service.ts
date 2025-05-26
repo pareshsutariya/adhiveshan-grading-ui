@@ -12,6 +12,10 @@ export class UsersService {
     return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + "/Users/GetUsersForLoginUser/" + loginUserBapsId);
   }
 
+  GetByBAPSIdToAddAsUser(participantBapsId: string, loginUserBapsId: string): Observable<ServiceResponse> {
+    return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + "/Users/GetByBAPSIdToAddAsUser/" + participantBapsId + "/" + loginUserBapsId);
+  }
+
   GetById(id: number): Observable<ServiceResponse> {
     return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + "/Users/" + id);
   }
