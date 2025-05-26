@@ -20,7 +20,6 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     judgeSkillCategories: any[] = [];
     participantBAPSId: string | undefined = "AL6415001";
     participant: Participant | undefined;
-    loginUserId: number = 1;
     searchError: string | undefined;
     selectedSkillCategory: string | undefined;
     selectedSkillCategoryColor: string | undefined;
@@ -36,7 +35,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.layoutService.isDataLoading.set(true);
 
         // TODO : Get login user roles and assigned skills, and display the tabs accordingly
-        this.usersService.GetById(this.loginUserId).subscribe(response=>{
+        this.usersService.GetById(this.authService.GetLoginUserId()).subscribe(response=>{
             this.judgeSkillCategories = [];
             if(response.data.assignedSkillCategories){
                 this.judgeSkillCategories = this.constants.SkillCategories.filter((s: { label: string; title: string; })=> response.data.assignedSkillCategories!.indexOf(s.label) >=0 );
@@ -67,7 +66,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetParticipantForJudging(this.participantBAPSId, this.loginUserId).subscribe((response: ServiceResponse) => {
+        this.participantsService.GetParticipantForJudging(this.participantBAPSId, this.authService.GetLoginUserId()).subscribe((response: ServiceResponse) => {
             
             this.searchError = undefined;
             this.layoutService.isDataLoading.set(false);
@@ -78,7 +77,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
             }
             else {
                 this.searchError = response.errorMessage;
-                this.messageService.add({ severity: "error", summary: "Validation", detail: `Participant not found for the given MIS Id:${this.participantBAPSId}`, life: 3000 });
+                this.messageService.add({ severity: "error", summary: "Validation", detail: this.searchError, life: 3000 });
                 return;
             }
         });
@@ -87,7 +86,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     getParticipantGrades(){
         this.layoutService.isDataLoading.set(true);
 
-        this.gradesService.GetForParticipantAndJudge(this.participantBAPSId!, this.selectedSkillCategory!, this.loginUserId).subscribe(response=>{
+        this.gradesService.GetForParticipantAndJudge(this.participantBAPSId!, this.selectedSkillCategory!, this.authService.GetLoginUserId()).subscribe(response=>{
             this.participantGrades.set(response.data);
 
             this.layoutService.isDataLoading.set(false);
@@ -135,7 +134,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.layoutService.isDataLoading.set(true);
 
         model.bapsId = this.participantBAPSId;
-        model.judgeUserId= this.loginUserId;
+        model.judgeUserId= this.authService.GetLoginUserId();
         
         this.gradesService.Save(model).subscribe(data=>{
             this.layoutService.isDataLoading.set(false);
