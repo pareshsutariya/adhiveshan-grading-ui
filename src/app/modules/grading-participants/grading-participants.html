@@ -164,7 +164,10 @@
         <ng-template #header>
             <tr>
                 <th class="whitespace-nowrap">
-                    Topic Name
+                    Section
+                </th>
+                <th class="whitespace-nowrap">
+                    Topic
                 </th>
                 <th class="whitespace-nowrap" style="width: 200px;">
                     Marks
@@ -178,6 +181,7 @@
         <!-- Grading Criterias List View Data -->
         <ng-template #body let-item>
             <tr [style]="{'color': item.color}">
+                <td class="whitespace-nowrap">{{ item.sectionName }}</td>
                 <td class="whitespace-nowrap">{{ item.topicName }}</td>
                 <td>
                     <input pInputText type="number" [(ngModel)]="item.marks" (change)="onGradeChanged(item)" min="0"

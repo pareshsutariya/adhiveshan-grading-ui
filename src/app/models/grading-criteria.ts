@@ -1,6 +1,7 @@
 export interface GradingCriteria {
     gradingCriteriaId?: number;
     skillCategoryId?: number;
+    section?: string,
     name?: string,
     description?: string,
     sequence?: number;

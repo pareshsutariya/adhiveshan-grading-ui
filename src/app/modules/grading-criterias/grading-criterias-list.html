@@ -23,13 +23,13 @@
     <ng-template #header>
         <tr>
             <th style="width: 1rem"></th>
-            <th pSortableColumn="skillWithCategory" class="whitespace-nowrap">
-                Skill Category
-                <p-sortIcon field="skillWithCategory" />
+            <th pSortableColumn="section" class="whitespace-nowrap">
+                Section
+                <p-sortIcon field="section" />
             </th>
             <th style="width: 1rem">#</th>
             <th pSortableColumn="name" class="whitespace-nowrap">
-                Topic Name
+                Topic
                 <p-sortIcon field="name" />
             </th>
             <th class="whitespace-nowrap">
@@ -60,7 +60,7 @@
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" (click)="openEdit(item)"
                     *ngIf="this.authService.HasUserPermissions([permissionsEnum.Grading_Questions_Update])" />
             </td>
-            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.skillWithCategory }}</td>
+            <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.section }}</td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.sequence }}</td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top">{{ item.name }}</td>
             <td [vAlign]="'top'" class="whitespace-nowrap align-top"> {{ item.maximumMarks }}</td>
@@ -97,6 +97,17 @@
                     <input pInputText type="number" id="sequence" [(ngModel)]="addOrEditItem.sequence"
                         placeholder="Topic Sequence" fluid />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.sequence">Sequence is
+                        required.</small>
+                </div>
+            </div>
+
+            <!-- Section -->
+            <div class="grid grid-cols-12 gap-2">
+                <label for="section" class="flex font-bold items-center col-span-4">Section Name*</label>
+                <div class="col-span-8">
+                    <input pInputText type="text" id="section" [(ngModel)]="addOrEditItem.section"
+                        placeholder="Section Name" fluid />
+                    <small class="text-red-500" *ngIf="submitted && !addOrEditItem.section">Section is
                         required.</small>
                 </div>
             </div>

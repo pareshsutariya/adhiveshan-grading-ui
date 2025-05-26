@@ -9,6 +9,7 @@ export interface Grade {
 
   // ----------
   participant?: Participant,
+  sectionName?: string,
   topicName?: string,
   sequence?: number;
   maximumMarks?: number;
