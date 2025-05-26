@@ -9,18 +9,6 @@
     </ng-template>
 </p-toolbar>
 
-<p-toolbar styleClass="mb-1">
-    <ng-template #start>
-        <p-iconfield>
-            <p-inputicon styleClass="pi pi-search" />
-            <input pInputText type="text" placeholder="Search..." [(ngModel)]="globalSearchText"
-                (input)="onGlobalFilter($event)" />
-        </p-iconfield>
-        <p-button icon="fa-solid fa-text-slash" class="ml-2 mr-2" [rounded]="true" [outlined]="true"
-            [severity]="globalSearchText.length > 0 ? 'contrast' : 'secondary'" (click)="clearGlobalFilter()" />
-    </ng-template>
-</p-toolbar>
-
 <p-table #dt [value]="data()"
     [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'emcee_Category', 'speech_Pravachan_Category', 'gender']"
     sortField="center" sortMode="multiple" [scrollable]="true" [showCurrentPageReport]="true" [rowHover]="true"
