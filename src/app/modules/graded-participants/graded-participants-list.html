@@ -1,7 +1,7 @@
 <!-- Toolbar -->
 <p-toolbar styleClass="mb-2">
     <ng-template #start>
-        <div class="font-semibold mr-5" style="font-size:1.5rem">Skills and Categories</div>
+        <div class="font-semibold mr-5" style="font-size:1.5rem">Graded Participants</div>
         <p-iconfield>
             <p-inputicon styleClass="pi pi-search" />
             <input pInputText type="text" placeholder="Search..." (input)="onGlobalFilter(dt, $event)" />
@@ -12,11 +12,62 @@
 </p-toolbar>
 
 <!-- List View -->
-<p-table #dt dataKey="id" [value]="data()" [globalFilterFields]="['fullName', 'skill', 'category']" [rowHover]="true"
-    [paginator]="false" [scrollable]="true" rowGroupMode="subheader" groupRowsBy="participant.bapsId">
+<p-table #dt dataKey="id" [value]="data()" [rowHover]="true" [paginator]="false" [scrollable]="true"
+    rowGroupMode="subheader" groupRowsBy="participant.bapsId">
 
     <!-- List View Header -->
     <ng-template #header>
+        <tr>
+            <th class="whitespace-nowrap" pSortableColumn="participant.region">Region <p-sortIcon
+                    field="participant.region" />
+                <p-columnFilter type="text" field="participant.region" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="participant.center">Center <p-sortIcon
+                    field="participant.center" />
+                <p-columnFilter type="text" field="participant.center" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="participant.bapsId">BAPS Id <p-sortIcon
+                    field="participant.bapsId" />
+                <p-columnFilter type="text" field="participant.bapsId" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="participant.fullName">Full Name <p-sortIcon
+                    field="participant.fullName" />
+                <p-columnFilter type="text" field="participant.fullName" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="participant.gender">Gender <p-sortIcon
+                    field="participant.gender" />
+                <p-columnFilter type="text" field="participant.gender" display="menu" />
+            </th>
+            <th class="whitespace-nowrap" pSortableColumn="participant.language_For_Skill_Competitions">Language
+                <p-sortIcon field="participant.language_For_Skill_Competitions" />
+                <p-columnFilter type="text" field="participant.language_For_Skill_Competitions" display="menu" />
+            </th>
+            <th class="whitespace-nowrap">Pravachan Grades</th>
+            <th class="whitespace-nowrap">Emcee Grades</th>
+        </tr>
+    </ng-template>
+
+    <!-- List View Row -->
+    <ng-template #body let-item>
+        <tr>
+            <td class="no-wrap">{{item.participant.region}}</td>
+            <td class="no-wrap">{{item.participant.center}}</td>
+            <td>{{item.participant.bapsId}}</td>
+            <td>{{item.participant.fullName}}</td>
+            <td>{{item.participant.gender}}</td>
+            <td>{{item.participant.language_For_Skill_Competitions}}</td>
+            <td>
+                <p-button *ngIf="item.pravachanGrades?.length>0" icon="pi pi-eye" class="mr-2" [rounded]="true"
+                    [outlined]="true" />
+            </td>
+            <td>
+                <p-button *ngIf="item.emceeGrades?.length>0" icon="pi pi-eye" class="mr-2" [rounded]="true"
+                    [outlined]="true" />
+            </td>
+        </tr>
+    </ng-template>
+
+    <!-- <ng-template #header>
         <tr>
             <th class="whitespace-nowrap">
                 Section
@@ -31,10 +82,10 @@
                 Judge
             </th>
         </tr>
-    </ng-template>
+    </ng-template> -->
 
     <!-- List View Group -->
-    <ng-template #groupheader let-item>
+    <!-- <ng-template #groupheader let-item>
         <tr pRowGroupHeader>
             <td colspan="8">
                 <div class="grid grid-cols-12 gap-2">
@@ -59,9 +110,10 @@
                 </div>
             </td>
         </tr>
-    </ng-template>
+    </ng-template> -->
 
     <!-- List View Data -->
+    <!-- 
     <ng-template #body let-item>
         <tr>
             <td class="whitespace-nowrap align-top">{{ item.sectionName }}</td>
@@ -69,5 +121,6 @@
             <td class="whitespace-nowrap align-top">{{ item.marks }}</td>
             <td class="whitespace-nowrap align-top">{{ item.judgeName }} ({{ item.judgeBAPSId }})</td>
         </tr>
-    </ng-template>
+    </ng-template> 
+    -->
 </p-table>
