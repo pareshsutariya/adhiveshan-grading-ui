@@ -34,8 +34,8 @@ interface AutoCompleteCompleteEvent {
             top: 0px; 
         } 
     } 
-`, 
-],
+  `, 
+  ],
 })
 export class ImportParticipants extends BaseComponent implements OnInit {
   globalSearchText: string = "";

@@ -210,7 +210,7 @@
                             </div>
                         </ng-template>
                         <ng-template let-center #item>
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-2" [ngStyle]="{'color': center.color}">
                                 <i class="pi pi-building-columns"></i>
                                 {{ center.label }}
                             </div>
