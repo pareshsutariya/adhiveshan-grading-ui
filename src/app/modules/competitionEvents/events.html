@@ -177,7 +177,7 @@
                 <ng-template #body let-center>
                     <tr>
                         <td>
-                            <p-tableCheckbox ngDefaultControl [value]="center.value" />
+                            <p-tableCheckbox ngDefaultControl [value]="center.value" [disabled]="disableCenters" />
                         </td>
                         <td class="whitespace-nowrap"> {{ center.label }}</td>
                     </tr>

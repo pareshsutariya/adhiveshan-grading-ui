@@ -28,11 +28,13 @@ export class Events extends BaseComponent implements OnInit {
   public startDateValue: Date = new Date();
   public endDateValue: Date = new Date();
   public disabledDays: number[] = [];
+  public disableCenters: boolean = true;
 
   ngOnInit() {
 
     // Other than national admin, disable dates to be changed
     this.disabledDays = !this.authService.HasUserRoles([RolesEnum.NationalAdmin]) ? [0,1,2,3,4,5,6] : [];
+    this.disableCenters = !this.authService.HasUserRoles([RolesEnum.NationalAdmin]);
 
     this.loadData();
   }
