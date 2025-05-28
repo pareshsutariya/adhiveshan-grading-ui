@@ -13,7 +13,7 @@ import { Providers } from "../../models/_providers";
 @Component({
   selector: "app-grading-participants",
   imports: [AngularModules, PrimeNgModules, ConfirmDialog],
-  providers: [Providers, ConfirmationService],
+  providers: [Providers],
   templateUrl: "grading-participants.html",
 })
 export class GradingParticipants extends BaseComponent implements OnInit {
