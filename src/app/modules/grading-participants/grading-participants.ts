@@ -2,8 +2,9 @@ import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { Participant, Grade, GradingCriteria, ServiceResponse } from "../../models/_index";
+import { ConfirmDialog } from 'primeng/confirmdialog';
 
-import { MessageService } from "primeng/api";
+import { ConfirmationService, MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Table } from "primeng/table";
@@ -11,8 +12,8 @@ import { Providers } from "../../models/_providers";
 
 @Component({
   selector: "app-grading-participants",
-  imports: [AngularModules, PrimeNgModules],
-  providers: [Providers],
+  imports: [AngularModules, PrimeNgModules, ConfirmDialog],
+  providers: [Providers, ConfirmationService],
   templateUrl: "grading-participants.html",
 })
 export class GradingParticipants extends BaseComponent implements OnInit {
@@ -28,7 +29,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     dialog: boolean = false;
     gradedTopicCounts: number = 0;
     topicsCounts: number = 0;
-
+    
     ngOnInit() {
         this.loadData();
     }
@@ -116,8 +117,30 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.getParticipantGrades();
     }
 
-    hideDialog() {
-        this.dialog = false;
+    onDialogHide($event: Event) {
+        if (this.gradedTopicCounts < this.topicsCounts) {
+            $event.stopPropagation();
+
+            // Prevents PrimeNG to close dialog by intercepting event
+            this.confirmationService.confirm({
+                //target: event.target as EventTarget,
+                message: 'Are you sure that you want to proceed?',
+                header: `Graded ${this.gradedTopicCounts} of ${this.topicsCounts} topics`,
+                closable: true,
+                closeOnEscape: true,
+                icon: 'pi pi-exclamation-triangle',
+                rejectButtonProps: { label: 'Cancel', severity: 'secondary', outlined: true },
+                acceptButtonProps: { label: 'Continue', severity: 'danger',  },
+                accept: () => {
+                    this.dialog = false;
+                    // this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
+                },
+                reject: () => {
+                    this.dialog = true;
+                    // this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+                },
+            });
+        }
     }
 
     isRoundedToHalf(num: number): boolean {

@@ -152,7 +152,12 @@
     </p-card>
 </div>
 
-<p-dialog [(visible)]="dialog" [style]="{ width: 'auto', height: 'auto' }" [modal]="true">
+<p-confirmdialog />
+
+<p-dialog [(visible)]="dialog" [style]="{ width: 'auto', height: 'auto' }" [modal]="true" closeOnEscape="false">
+    <ng-template pTemplate="closeicon">
+        <i class="pi pi-times" (click)="onDialogHide($event)"></i>
+    </ng-template>
     <ng-template #header>
         <div class="grid grid-cols-12 gap-2">
             <div class="col-span-6">
@@ -163,7 +168,7 @@
             </div>
             <div class="col-span-5 text-right">
                 <h5>
-                    Completed: {{gradedTopicCounts}} / {{topicsCounts}}
+                    Graded {{gradedTopicCounts}} of {{topicsCounts}} topics
                 </h5>
             </div>
         </div>
