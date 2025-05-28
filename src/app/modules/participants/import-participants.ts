@@ -53,7 +53,7 @@ export class ImportParticipants extends BaseComponent implements OnInit {
 
   loadData() {
     this.layoutService.isDataLoading.set(true);
-    this.participantsService.GetItems().subscribe(response =>{ 
+    this.participantsService.GetItemsForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(response =>{ 
       this.layoutService.isDataLoading.set(false);
       this.data.set(response.data); 
 

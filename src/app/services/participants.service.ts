@@ -12,6 +12,10 @@ export class ParticipantsService {
     return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + "/Participants");
   }
 
+  GetItemsForLoginUser(loginUserBapsId: string): Observable<ServiceResponse> {
+    return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + "/Participants/GetParticipantsForLoginUser/" + loginUserBapsId);
+  }
+
   GetByMisId(misId: number): Observable<ServiceResponse> {
     return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/Participants/getByMisId/${misId}`);
   }
