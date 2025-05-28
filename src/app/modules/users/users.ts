@@ -5,6 +5,7 @@ import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
 import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
+import { Tooltip } from 'primeng/tooltip';
 
 import { User, CompetitionEvent, UserJudgeImport } from "../../models/_index";
 import { RolesEnum } from "../../services/rolePermissions.service";
@@ -14,7 +15,7 @@ import { Providers } from "../../models/_providers";
 @Component({
   selector: "app-users",
   standalone: true,
-  imports: [AngularModules, PrimeNgModules],
+  imports: [AngularModules, PrimeNgModules, Tooltip],
   providers: [Providers],
   templateUrl: "users.html",
 })

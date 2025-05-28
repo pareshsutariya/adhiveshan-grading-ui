@@ -36,12 +36,8 @@
     <ng-template #header>
         <tr>
             <th style="width: 1rem"></th>
-            <th pSortableColumn="region" class="whitespace-nowrap">
-                Region-Center
-                <p-sortIcon field="region" />
-            </th>
             <th pSortableColumn="fullName" class="whitespace-nowrap">
-                Fullname
+                User
                 <p-sortIcon field="fullName" />
             </th>
             <!-- <th pSortableColumn="password" class="whitespace-nowrap" >
@@ -74,9 +70,9 @@
                 <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" (click)="openEdit(item)"
                     *ngIf="this.authService.HasUserPermissions([permissionsEnum.Users_NationalAdmins_Update, permissionsEnum.Users_RegionalAdmins_Update, permissionsEnum.Users_Judges_Update, permissionsEnum.Users_CheckIns_Update])" />
             </td>
-            <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.region }} - {{ item.center }}</td>
             <td class="whitespace-nowrap" [vAlign]="'top'">{{ item.fullName }} <br>
-                #{{ item.bapsId }}
+                <i class="fa-solid fa-home fa-xs"></i> {{ item.region }} - {{ item.center }} <br>
+                <i class="fa-solid fa-hashtag fa-xs"></i> {{ item.bapsId }}
             </td>
             <td [vAlign]="'top'">
                 <p-tag [value]="item.status" [severity]="constants.GetStatusTag(item.status)"
@@ -110,7 +106,19 @@
                 <table [cellPadding]="5">
                     <tr class="mb-2 whitespace-nowrap" *ngFor="let item of item.assignedEvents">
                         <td>
-                            <i class="pi pi-map"></i> {{item.region}} - {{item.hostCenter}}
+                            <span [pTooltip]="tooltipContent" tooltipPosition="bottom">
+                                <i class="pi pi-map"></i>
+                                {{item.region}} - {{item.hostCenter}}
+                            </span>
+                            <ng-template #tooltipContent>
+                                <div class="flex items-center">
+                                    <ol>
+                                        <li *ngFor="let center of item.centers;index as i">
+                                            {{i+1}}. {{center}}
+                                        </li>
+                                    </ol>
+                                </div>
+                            </ng-template>
                         </td>
                         <td>
                             <i class="fa-regular fa-calendar-days"></i> {{ item.startDate | date:'MM/dd/yyyy hh:mm a'}}
