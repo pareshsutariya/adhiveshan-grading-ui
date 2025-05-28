@@ -65,6 +65,7 @@ export enum PermissionsEnum {
   Grading_Questions_Add = "Grading Questions: Add",
   Grading_Questions_Update = "Grading Questions: Update",
 
+  Regions_Centers_View = "Regions And Centers: View",
   Skill_Categories_View = "Skill Categories: View",
 
   Participants_View = "Participants: View",

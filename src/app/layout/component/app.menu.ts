@@ -34,13 +34,13 @@ export class AppMenu {
         // PARTICIPANTS
         let participants: MenuItem = {label: 'Participants',  items: []};
         
-        if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
+        if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View]))
             participants.items?.push({ label: 'Participants', icon: 'fa-solid fa-graduation-cap', routerLink: ['/import-participants'] });
         
-        if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
+        if(this.auth.HasUserPermissions([PermissionsEnum.Regions_Centers_View]))
             participants.items?.push({ label: 'Region and Centers (View)', icon: 'pi pi-building-columns', routerLink: ['/region-centers'] });
         
-        if(this.auth.HasUserPermissions([PermissionsEnum.Participants_Import, PermissionsEnum.Participants_View,]))
+        if(this.auth.HasUserPermissions([PermissionsEnum.Skill_Categories_View ]))
             participants.items?.push({ label: 'Skill and Categories (View)', icon: 'fa-solid fa-kitchen-set', routerLink: ['/skill-categories'] });
 
         // EVENTS
