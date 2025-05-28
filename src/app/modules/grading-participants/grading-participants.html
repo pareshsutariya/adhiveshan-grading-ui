@@ -154,10 +154,19 @@
 
 <p-dialog [(visible)]="dialog" [style]="{ width: 'auto', height: 'auto' }" [modal]="true">
     <ng-template #header>
-        <h5>
-            Grading <span class="underline">{{participant!.fullName}}</span> for <span class="ml-1"
-                [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span>
-        </h5>
+        <div class="grid grid-cols-12 gap-2">
+            <div class="col-span-6">
+                <h5>
+                    Grading <span class="underline">{{participant!.fullName}}</span> for <span class="ml-1"
+                        [style]="{'color': selectedSkillCategoryColor}">{{selectedSkillCategory}}</span>
+                </h5>
+            </div>
+            <div class="col-span-5 text-right">
+                <h5>
+                    Completed: {{gradedTopicCounts}} / {{topicsCounts}}
+                </h5>
+            </div>
+        </div>
     </ng-template>
     <p-table [value]="participantGrades()" showGridlines [rowHover]="true" [scrollable]="true">
         <!-- Grading Criterias List View Header -->

@@ -24,8 +24,10 @@ export class GradingParticipants extends BaseComponent implements OnInit {
     selectedSkillCategory: string | undefined;
     selectedSkillCategoryColor: string | undefined;
     participantGrades = signal<Grade[]>([]);
-    gradingCriterias = signal<GradingCriteria[]>([]);
+    //gradingCriterias = signal<GradingCriteria[]>([]);
     dialog: boolean = false;
+    gradedTopicCounts: number = 0;
+    topicsCounts: number = 0;
 
     ngOnInit() {
         this.loadData();
@@ -90,7 +92,14 @@ export class GradingParticipants extends BaseComponent implements OnInit {
             this.participantGrades.set(response.data);
 
             this.layoutService.isDataLoading.set(false);
+
+            this.performCount();
         });
+    }
+
+    performCount(){
+        this.topicsCounts = this.participantGrades().length;
+        this.gradedTopicCounts = this.participantGrades().filter(c=>c.marks && c.marks > 0).length;
     }
 
     startGrading(skill: string, category: string) {
@@ -139,6 +148,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.gradesService.Save(model).subscribe(data=>{
             this.layoutService.isDataLoading.set(false);
             this.messageService.add({ severity: "success", summary: "Success", detail: "Grade updated successfully", life: 3000 });
+            this.performCount();
         });
     }
 }
