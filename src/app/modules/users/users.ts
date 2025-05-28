@@ -69,7 +69,7 @@ export class Users extends BaseComponent implements OnInit {
 
       // Filter out National Admin data
       if(!this.authService.HasUserRoles([this.rolesEnum.NationalAdmin])){
-        response = response.data.filter((d: { assignedRoles: string | RolesEnum[] | null; })=> d.assignedRoles == null || d.assignedRoles.indexOf(this.rolesEnum.NationalAdmin) <0);
+        response.data = response.data.filter((d: any)=> d.bapsId != this.authService.GetLoginUserBAPSId() && (d.assignedRoles == null || d.assignedRoles.indexOf(this.rolesEnum.NationalAdmin) < 0));
       }
 
       this.data.set(response.data);
