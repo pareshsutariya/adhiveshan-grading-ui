@@ -97,7 +97,7 @@
                 <div class="col-span-8">
                     <p-select inputId="region" [options]="regionsService.Regions" optionLabel="label"
                         optionValue="value" [(ngModel)]="addOrEditItem.region" placeholder="Select a Region"
-                        (onChange)="getCentersForRegion()" fluid />
+                        (onChange)="getCentersForRegion()" [disabled]="disableCenters" fluid />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Region is
                         required.</small>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="col-span-8">
                     <p-select inputId="hostCenter" [options]="regionsService.GetCentersForRegion(addOrEditItem.region)"
                         optionLabel="label" optionValue="value" [(ngModel)]="addOrEditItem.hostCenter"
-                        placeholder="Select a Center" fluid />
+                        [disabled]="disableCenters" placeholder="Select a Center" fluid />
                     <small class="text-red-500" *ngIf="submitted && !addOrEditItem.region">Host Center is
                         required.</small>
                 </div>
