@@ -19,7 +19,7 @@ import { Providers } from "../../models/_providers";
 export class GradingParticipants extends BaseComponent implements OnInit {
 
     judgeSkillCategories: any[] = [];
-    participantBAPSId: string | undefined = "AL6415001";
+    participantBAPSId: string | undefined;
     participant: Participant | undefined;
     searchError: string | undefined;
     selectedSkillCategory: string | undefined;
@@ -63,7 +63,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.participant = {};
 
         if(!this.participantBAPSId){
-            this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid MIS Id", life: 3000 });
+            this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid BAPS Id", life: 3000 });
             return;
         }
 
