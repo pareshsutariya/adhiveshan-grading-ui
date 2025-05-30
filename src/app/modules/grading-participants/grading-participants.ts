@@ -153,8 +153,16 @@ export class GradingParticipants extends BaseComponent implements OnInit {
 
     onGradeChanged(model: Grade){
 
-        if(model.marks! < 0 || model.marks! > model.maximumMarks!)
+        if(model.marks! < 0 || model.marks! > model.maximumMarks!){
+
+            model.marks = 0;
+
+            this.messageService.add({ severity: "error", summary: "Error", detail: "Invalid marks", life: 3000 });
+
+            this.performCount();
+
             return;
+        }
 
         // if(!this.isRoundedToHalf(model.marks!)) {
         //     this.messageService.add({ severity: "error", summary: "Validation", detail: `${model.marks} is not a valid number`, life: 3000 });
@@ -166,7 +174,7 @@ export class GradingParticipants extends BaseComponent implements OnInit {
         this.layoutService.isDataLoading.set(true);
 
         model.bapsId = this.participantBAPSId;
-        model.judgeUserId= this.authService.GetLoginUserId();
+        model.judgeUserId = this.authService.GetLoginUserId();
         
         this.gradesService.Save(model).subscribe(data=>{
             this.layoutService.isDataLoading.set(false);
