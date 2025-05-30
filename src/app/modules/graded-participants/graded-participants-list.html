@@ -2,12 +2,6 @@
 <p-toolbar styleClass="mb-2">
     <ng-template #start>
         <div class="font-semibold mr-5" style="font-size:1.5rem">Graded Participants</div>
-        <p-iconfield>
-            <p-inputicon styleClass="pi pi-search" />
-            <input pInputText type="text" placeholder="Search..." (input)="onGlobalFilter(dt, $event)" />
-        </p-iconfield>
-        <p-button icon="fa-solid fa-text-slash" class="ml-2" [rounded]="true" [outlined]="true" severity="contrast"
-            (click)="clearGlobalFilter()" />
     </ng-template>
 </p-toolbar>
 
@@ -70,11 +64,21 @@
 
 <p-dialog [(visible)]="dialog" [style]="{ width: 'auto', height: 'auto' }" [modal]="true">
     <ng-template #header>
-        <h5>
-            <span class="underline">{{selectedParticipant!.fullName}}</span>'s Grade for <span
-                class="ml-1">{{selectedSkillCategory}}</span>
-        </h5>
+        <div class="grid grid-cols-12 gap-2">
+            <div class="col-span-6">
+                <h5>
+                    <span class="underline">{{selectedParticipant!.fullName}}</span>'s Grade for <span
+                        class="ml-1">{{selectedSkillCategory}}</span>
+                </h5>
+            </div>
+            <div class="col-span-5 text-right">
+                <h5>
+                    Graded {{gradedTopicCounts}} of {{topicsCounts}} topics
+                </h5>
+            </div>
+        </div>
     </ng-template>
+
     <p-table [value]="selectedGrades" showGridlines [rowHover]="true" [scrollable]="true">
         <!-- Grading Criterias List View Header -->
         <ng-template #header>

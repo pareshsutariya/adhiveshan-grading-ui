@@ -3,7 +3,6 @@ import { Table } from "primeng/table";
 
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-import { MessageService } from "primeng/api";
 import { BaseComponent } from "../base-component/baseComponent";
 
 import { Grade, Participant } from "../../models/_index";
@@ -25,6 +24,8 @@ export class GradedParticipantsList extends BaseComponent implements OnInit {
   selectedParticipant: Participant| undefined;
   selectedSkillCategory: string| undefined;
   selectedGrades: Grade[] = [];
+  gradedTopicCounts: number = 0;
+  topicsCounts: number = 0;
 
   ngOnInit() {
     this.loadData();
@@ -53,6 +54,7 @@ export class GradedParticipantsList extends BaseComponent implements OnInit {
     this.selectedGrades = item.pravachanGrades!;
     this.selectedSkillCategory = item.pravachanSkill + ": " + item.pravachanCategory;
     this.dialog = true;
+    this.performCount();
   }
 
   openEmceeGrades(item: ParticipantGrades) {
@@ -60,5 +62,11 @@ export class GradedParticipantsList extends BaseComponent implements OnInit {
     this.selectedGrades = item.emceeGrades!;
     this.selectedSkillCategory = item.emceeSkill + ": " + item.emceeCategory;
     this.dialog = true;
+    this.performCount();
+  }
+
+  performCount(){
+      this.topicsCounts = this.selectedGrades.length;
+      this.gradedTopicCounts = this.selectedGrades.filter(c=>c.marks && c.marks > 0).length;
   }
 }
