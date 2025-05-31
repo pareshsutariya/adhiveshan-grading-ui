@@ -106,6 +106,7 @@
 - [x] UI: Design Login screen
 - [x] API: Implement an endpoint to authenticate user for given username/password
 - [x] API: Implement Jwt token approach
+- [ ] Users: Proctor login should be disbled as soon as the event ends
 
 ### Authorization:
 

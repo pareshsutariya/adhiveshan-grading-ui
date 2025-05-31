@@ -1,3 +1,11 @@
+## ====== CHECK IN JUDGES AND PARTICIPANTS =====:
+
+- [ ] UI: Menu: Add "Check In" menu in navigation panel
+- [ ] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
+- [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
+- [ ] UI: Provide a button to check in for the found participant or judge for the given MIS ID or BAPS ID
+- [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
+
 - [ ] Schedule: 
     - [ ] Emcee/Pravachan icons are not geting displayed
     - [ ] On event selected, if already saved then generate the schedule (1)
@@ -7,7 +15,8 @@
     - [ ] Schedule: Export Schedules for judges
     - [ ] Schedule: Export Schedules for participants
 
-- [ ] Not more than 2 Judges can grade for a participant
+- [ ] Grade Topics: for Emcee
+
 - [x] End points for ADV portal
     - [x] Candidate Competition status
     - [x] Get User For BAPS ID
@@ -15,11 +24,6 @@
 
 - [x] Judge should not be able to search himself while grading
 ## =====
-
-- [x] Users: Pull user info by MISID using external API
-- [ ] Users: Proctor login should be disbled as soon as the event ends
-
-- [ ] Grade Topics: editable grid / Section and Attributes
-- [ ] Grading: Provide Submit button
-- [ ] Grading: need to decide the grade locking approach
 - [ ] Adhiveshan Portal Endpoints/Page: need to encrypt/decrypt BAPS ID
+- [ ] Not more than 2 Judges can grade for a participant
+- [ ] Users: Proctor login should be disbled as soon as the event ends
