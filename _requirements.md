@@ -48,14 +48,6 @@
 - [x] UI: List Page: Apply standard sorting and searching
 - [x] UI: Add Page: Design UI to Add or Edit record, and call API
 
-### Region and Centers Schema:
-
-- [ ] API: "Center" table schema (Id, Region Name, Center Name)
-- [ ] API: Implement an endpoint to return list centers from table "Centers"
-- [ ] UI: Add menu in navigation panel: "Region Centers"
-- [ ] UI: Make an API call and display list of region centers
-- [ ] UI: Apply standard sorting and searching on list view
-
 ## ====== COMPETITION EVENTS =====:
 
 - [x] API: "CompetitionEvents", Table schema: (Id, Event Name, Event Start Date Time, Event End Date Time, Region, Centers[], IsActive)
@@ -113,8 +105,7 @@
 
 - [x] UI: Design Login screen
 - [x] API: Implement an endpoint to authenticate user for given username/password
-- [ ] API: Implement Jwt token approach
-- [ ] Participant BAPS ID authentication API using encode/decode BAPS ID
+- [x] API: Implement Jwt token approach
 
 ### Authorization:
 
@@ -131,17 +122,19 @@
 ### Search Candidate by judge for BAPS ID and Skill Name:
 
 - [x] API: Implement an endpoint to search candidate for the given BAPS ID and Skill name
-  - Note: The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the judge’s allowed access
+      Note: The delegate will only be shown if they have participated in the selected competition (based on the tab) and if the competition category aligns with the judge’s allowed access
 - [x] UI: Design UI to Search Candidate for BAPS ID and Skill Name
-  - Note: A text input field and QR scan option, like the satsang mukhpath, will appear on the screen
+      Note: A text input field and QR scan option, like the satsang mukhpath, will appear on the screen
+- [ ] QR code scan
+- [ ] Not more than 2 Judges can grade for a participant
 
 ### Display list of skill topics to grade:
 
 - [x] API: Implement an endpoint to return skill topics for the give skill
 - [x] UI: Design UI to display list of topics for the givek skill
-  - Note:
-    - Once judge clicks start judging, the judge will be shown a series of question topics
-    - Display topics along with weitage option to grade
+      Note:
+      Once judge clicks start judging, the judge will be shown a series of question topics
+      Display topics along with weitage option to grade
 
 ### Grade candidate for list of skill topics:
 
@@ -155,13 +148,11 @@
 - [x] UI: Design UI to display candidate grades for the given candidate/Skill/judge
       Note: - Allow edit option to change the grade - Once event time is over, NO ONE should be able to change the grade
 
-### Candidate Status:
+### Adhiveshan Portal Endpoints Candidate Status:
 
-- [ ] API: Implement an endpoint to return status of candidate's each skill competition status (PENDING / COMPLETED)
-
-  - Note: return COMPLETED if all the topic has been graded else PENDING
-
-- TBD: at a time only x judges should be able to access or grade the candidate
+- [x] API: Implement an endpoint to return status of candidate's each skill competition status (PENDING / COMPLETED)
+      Note: return COMPLETED if all the topic has been graded else PENDING
+- [ ] Adhiveshan Portal Endpoints/Page: need to encrypt/decrypt BAPS ID
 
 ## ====== SCHEDULING PARTICIPANTS =====:
 
@@ -207,9 +198,3 @@
 
 - Icons for each skill
 - Activity tracking
-
-## ===== ACTIVITY TRACKING =====:
-
-- DB: Schema (TableName, RecordId, Activity, Activity By, Activity On)
-- API:
-- UI:

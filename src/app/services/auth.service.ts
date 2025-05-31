@@ -173,4 +173,11 @@ export class AuthService {
       return this.http.post<ServiceResponse>(`${environment.WebApiBaseUrl}/auth/login`, JSON.stringify(model), {headers: headers}).pipe();
     }
   }
+
+  loginForAdhiveshanPortal(username: string): Observable<ServiceResponse> {
+      let headers = new HttpHeaders({ "Content-Type": "application/json" });
+      let model = { userName: username };
+
+      return this.http.post<ServiceResponse>(`${environment.WebApiBaseUrl}/auth/login-adhivehshan-portal`, JSON.stringify(model), {headers: headers}).pipe();
+  }
 }

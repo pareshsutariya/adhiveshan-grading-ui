@@ -1,4 +1,4 @@
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, FilterService, MessageService } from "primeng/api";
 import { Directive } from "@angular/core";
 import { LayoutService } from "../../layout/service/layout.service";
@@ -8,6 +8,7 @@ import { AuthService, CompetitionEventsService, Constants, DataService, EventSch
 export abstract class BaseComponent {
     constructor(
         public router: Router,
+        public route: ActivatedRoute,
         public messageService: MessageService,
         public layoutService: LayoutService,
 

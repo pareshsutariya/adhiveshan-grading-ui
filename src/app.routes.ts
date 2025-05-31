@@ -16,6 +16,7 @@ import { GradedParticipantsList } from './app/modules/graded-participants/graded
 import { AuthGuard } from './app/services/auth.guard';
 import { PermissionsEnum } from './app/services/_index';
 import { ScheduleGenerator } from './app/modules/schedule-generator/schedule-generator';
+import { LoginAdhiveshanPortal } from './app/modules/auth/login-adhiveshan-portal';
 
 export const appRoutes: Routes = [
     {
@@ -44,8 +45,9 @@ export const appRoutes: Routes = [
             //{ path: '**', component: Notfound }
         ]
     },
-    { path: 'login', component: Login  },
-    { path: 'access', component: Access  },
+    { path: 'login', component: Login },
+    { path: 'login-adhiveshan-portal/:bapsId', component: LoginAdhiveshanPortal },
+    { path: 'access', component: Access },
     { path: 'notfound', component: Notfound },
 
     //{ path: 'auth', loadChildren: () => import('./app/modules/auth/auth.routes') },

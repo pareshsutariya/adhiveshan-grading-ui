@@ -8,17 +8,18 @@
     - [ ] Schedule: Export Schedules for participants
 
 - [ ] Not more than 2 Judges can grade for a participant
-- [ ] End points for ADV portal
-    - [ ] Candidate Competition status
-    - [ ] Is Candidate is a proctor
-    - [ ] Judge redirect endpoint
+- [x] End points for ADV portal
+    - [x] Candidate Competition status
+    - [x] Get User For BAPS ID
+    - [x] Judge login/redirect url
 
 - [x] Judge should not be able to search himself while grading
 ## =====
 
-- [ ] Users: Pull user info by MISID using external API
+- [x] Users: Pull user info by MISID using external API
 - [ ] Users: Proctor login should be disbled as soon as the event ends
 
 - [ ] Grade Topics: editable grid / Section and Attributes
 - [ ] Grading: Provide Submit button
 - [ ] Grading: need to decide the grade locking approach
+- [ ] Adhiveshan Portal Endpoints/Page: need to encrypt/decrypt BAPS ID
