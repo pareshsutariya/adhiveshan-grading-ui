@@ -79,9 +79,18 @@ export class CheckIn extends BaseComponent implements OnInit {
         model.loginUserId = this.authService.GetLoginUserId();
         model.eventId = this.selectedEventId;
         
-        this.eventCheckInService.CheckIn(model).subscribe(data=>{
+        this.eventCheckInService.CheckIn(model).subscribe(response=>{
             this.layoutService.isDataLoading.set(false);
-            this.messageService.add({ severity: "success", summary: "Success", detail: "Participant Checked In successfully", life: 3000 });
+
+             if(response.isSuccessful) { 
+                this.messageService.add({ severity: "success", summary: "Success", detail: "Participant Checked In successfully", life: 3000 });
+                return;
+            }
+            else {
+                this.searchError = response.errorMessage;
+                this.messageService.add({ severity: "error", summary: "Validation", detail: this.searchError, life: 3000 });
+                return;
+            }
         });
     }
 }

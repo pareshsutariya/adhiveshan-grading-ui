@@ -141,5 +141,15 @@
                 </div>
             </div>
         </div>
+
+        <ng-template #footer>
+            <div class="flex justify-end">
+                <p-button type="button" *ngIf="!participant.checkInAtUtc" label="Check In" [rounded]="true"
+                    icon="fa-solid fa-user-check" iconPos="right" severity="warn" (onClick)="onCheckIn()" />
+                <p-message severity="error" *ngIf="participant.checkInAtUtc">Participant is already checked
+                    in</p-message>
+
+            </div>
+        </ng-template>
     </p-card>
 </div>

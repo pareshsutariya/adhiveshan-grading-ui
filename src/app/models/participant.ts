@@ -21,4 +21,6 @@ export interface Participant {
   emcee_Category?: string;
 
   fullName?: string;
+  checkInAtUtc?: Date;
+  checkedInByUserId?: number;
 }
