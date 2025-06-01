@@ -12,4 +12,5 @@ export * from "./dataService";
 export * from "./fileDataService";
 export * from "./slotsService";
 export * from "./event-schedules.service";
+export * from "./event-check-in.service";
 export * from "../../environments/environment";

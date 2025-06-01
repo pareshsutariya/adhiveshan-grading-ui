@@ -2,7 +2,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmationService, FilterService, MessageService } from "primeng/api";
 import { Directive } from "@angular/core";
 import { LayoutService } from "../../layout/service/layout.service";
-import { AuthService, CompetitionEventsService, Constants, DataService, EventSchedulesService, FileDataService, GradesService, GradingCriteriasService, ParticipantsService, PermissionsEnum, RegionCenterService, RolePermissionsService, RolesEnum, SlotsService, UsersService } from "../../services/_index";
+import { AuthService, CompetitionEventsService, Constants, DataService, EventCheckInService, EventSchedulesService, FileDataService, GradesService, GradingCriteriasService, ParticipantsService, PermissionsEnum, RegionCenterService, RolePermissionsService, RolesEnum, SlotsService, UsersService } from "../../services/_index";
 
 @Directive({ selector: "base-component" })
 export abstract class BaseComponent {
@@ -23,6 +23,7 @@ export abstract class BaseComponent {
         public participantsService: ParticipantsService,
         public gradingCriteriasService: GradingCriteriasService,
         public gradesService: GradesService,
+        public eventCheckInService: EventCheckInService,
 
         public fileDataService: FileDataService,
         public slotsService: SlotsService,

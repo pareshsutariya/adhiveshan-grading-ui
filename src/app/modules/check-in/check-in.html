@@ -1,0 +1,126 @@
+<p-toast />
+
+<!-- Toolbar -->
+<p-toolbar styleClass="mb-2">
+    <ng-template #start>
+        <div class="font-semibold mr-5" style="font-size:1.5rem">Check In Participants</div>
+    </ng-template>
+</p-toolbar>
+<div class="card">
+    <!-- Search By BAPS Id -->
+    <div class="grid grid-cols-12 gap-2" style="font-size:1rem">
+        <label for="hostCenter" class="flex font-bold items-center col-span-3">Search Participant by BAPS ID</label>
+
+        <div class="col-span-9">
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class=" fa-solid fa-hashtag"></i>
+                </p-inputgroup-addon>
+                <input pInputText type="text" id="participantBAPSId" [(ngModel)]="participantBAPSId"
+                    placeholder="BAPS Id" (ngModelChange)="onChangeCandidateBAPSId($event)" required autofocus fluid />
+                <p-inputgroup-addon>
+                    <p-button icon="pi pi-search" (onClick)="searchParticipant()" />
+                </p-inputgroup-addon>
+            </p-inputgroup>
+        </div>
+    </div>
+
+    <!-- Error message -->
+    <p-message severity="secondary" *ngIf="participantBAPSId && searchError" size="large">
+        BAPS Id: {{participantBAPSId}} <br><br>
+        <span style="color:red">{{searchError}}</span>
+    </p-message>
+</div>
+
+<div class="flex flex-col" *ngIf="participant && participant.misId">
+    <!-- Participant Details -->
+    <p-card class="card" [style]="{border: '0.1rem solid silver'}">
+
+        <ng-template #title>
+            Participant Details for BAPS ID <span class="underline">{{participantBAPSId}}</span>
+        </ng-template>
+
+        <!-- Region -->
+        <div class="grid grid-cols-12 gap-2 mt-5 mb-2">
+            <label class="flex font-bold items-center col-span-2">Region</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="fullName" [(ngModel)]="participant.region" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Center -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Center</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="center" [(ngModel)]="participant.center" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- MIS ID -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">MIS Id</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.misId" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- BAPS ID -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">BAPS Id</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.bapsId" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Full Name</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="fullName" [(ngModel)]="participant.fullName" [readonly]="true"
+                    fluid />
+            </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Gender</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.gender" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Mandal -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Mandal</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.mandal" [readonly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Emcee Category -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Emcee</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.emcee_Category" [readOnly]="true" fluid />
+            </div>
+        </div>
+
+        <!-- Speech Pravachan Category -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Pravachan</label>
+            <div class="col-span-4">
+                <input pInputText type="text" [(ngModel)]="participant.speech_Pravachan_Category" [readOnly]="true"
+                    fluid />
+            </div>
+        </div>
+
+        <!-- Host Center -->
+        <div class="grid grid-cols-12 gap-2 mb-1">
+            <label class="flex font-bold items-center col-span-2">Host Center</label>
+            <div class="col-span-4">
+                <input pInputText type="text" id="hostCenter" [(ngModel)]="participant.hostCenter" [readonly]="true"
+                    fluid />
+            </div>
+        </div>
+    </p-card>
+</div>

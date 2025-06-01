@@ -10,3 +10,4 @@ export * from "../models/user";
 export * from "../models/user-judge-import";
 export * from "../models/schedule";
 export * from "../models/_serviceResponse";
+export * from "../models/event-check-in";

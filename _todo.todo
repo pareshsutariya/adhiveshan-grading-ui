@@ -1,7 +1,9 @@
+- [ ] Grade Topics: for Emcee
+
 ## ====== CHECK IN JUDGES AND PARTICIPANTS =====:
 
 - [ ] UI: Menu: Add "Check In" menu in navigation panel
-- [ ] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
+- [ ] UI: Page: Design UI to search by BAPS ID, and make an API call, and Display found result
 - [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
 - [ ] UI: Provide a button to check in for the found participant or judge for the given MIS ID or BAPS ID
 - [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
@@ -14,8 +16,6 @@
     - [ ] Schedule: Judge room assignment
     - [ ] Schedule: Export Schedules for judges
     - [ ] Schedule: Export Schedules for participants
-
-- [ ] Grade Topics: for Emcee
 
 - [x] End points for ADV portal
     - [x] Candidate Competition status
