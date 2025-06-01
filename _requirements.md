@@ -25,7 +25,7 @@
 
 - [x] BAPS ID: add this field once added to PBI
 - [x] Participation center (can be different that center of candidate)
-- [ ] Checkin field
+- [x] Checkin field
 
 ## ====== GRADING TOPICS =====:
 
@@ -155,6 +155,14 @@
       Note: return COMPLETED if all the topic has been graded else PENDING
 - [ ] Adhiveshan Portal Endpoints/Page: need to encrypt/decrypt BAPS ID
 
+## ====== CHECK IN JUDGES AND PARTICIPANTS =====:
+
+- [x] UI: Menu: Add "Check In" menu in navigation panel
+- [x] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
+- [x] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
+- [x] UI: Provide a button to check in for the found participant or judge for the given MIS ID or BAPS ID
+- [x] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
+
 ## ====== SCHEDULING PARTICIPANTS =====:
 
 - [ ] Generate schedule for given cluster file
@@ -162,14 +170,6 @@
 - [ ] View Saved cluster schedule
 - [ ] Export cluster schedule
 - [ ] API: Get a schedule for a candidate (API can be called from mySatsangApp or Adhiveshan portal)
-
-## ====== CHECK IN JUDGES AND PARTICIPANTS =====:
-
-- [ ] UI: Menu: Add "Check In" menu in navigation panel
-- [ ] UI: Page: Design UI to search by MIS ID or BAPS ID, and make an API call, and Display found result
-- [ ] API: Implement an endpoint to search by MIS ID or BAPS ID from Participats AND Users
-- [ ] UI: Provide a button to check in for the found participant or judge for the given MIS ID or BAPS ID
-- [ ] API: Implement an endpoint to Check in by MIS ID or BAPS ID in Participats AND Users
 
 ## ===== REPORTS =====
 
