@@ -32,8 +32,8 @@ export class ParticipantsService {
     return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/Participants/GetParticipantForJudging/${bapsId}/${loginUserId}`).pipe()
   }
 
-  GetParticipantForCheckIn(bapsId: string, loginUserId: number) {
-    return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/Participants/GetParticipantForCheckIn/${bapsId}/${loginUserId}`).pipe()
+  GetParticipantForCheckIn(bapsId: string, selectedEventId: number, loginUserId: number) {
+    return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/Participants/GetParticipantForCheckIn/${bapsId}/${selectedEventId}/${loginUserId}`).pipe()
   }
 
   UpdateHostCenter(item: ParticipantUpdateHostCenter) {

@@ -48,7 +48,7 @@ export class CheckIn extends BaseComponent implements OnInit {
 
         this.layoutService.isDataLoading.set(true);
 
-        this.participantsService.GetParticipantForCheckIn(this.participantBAPSId, this.authService.GetLoginUserId()).subscribe((response: ServiceResponse) => {
+        this.participantsService.GetParticipantForCheckIn(this.participantBAPSId, this.selectedEventId, this.authService.GetLoginUserId()).subscribe((response: ServiceResponse) => {
             
             this.searchError = undefined;
             this.layoutService.isDataLoading.set(false);
