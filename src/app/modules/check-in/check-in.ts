@@ -84,6 +84,7 @@ export class CheckIn extends BaseComponent implements OnInit {
 
              if(response.isSuccessful) { 
                 this.messageService.add({ severity: "success", summary: "Success", detail: "Participant Checked In successfully", life: 3000 });
+                this.participant = {};
                 return;
             }
             else {

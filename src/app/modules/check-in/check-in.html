@@ -51,7 +51,7 @@
             Participant Details for BAPS ID <span class="underline">{{participantBAPSId}}</span>
         </ng-template>
 
-        <div class="flex flex-col md:flex-row gap-1">
+        <div class="flex flex-col md:flex-row gap-1 mt-3">
             <div class="md:w-1/2">
                 <!-- Region -->
                 <div class="grid grid-cols-12 gap-2 mb-2">
@@ -148,7 +148,6 @@
                     icon="fa-solid fa-user-check" iconPos="right" severity="warn" (onClick)="onCheckIn()" />
                 <p-message severity="error" *ngIf="participant.checkInAtUtc">Participant is already checked
                     in</p-message>
-
             </div>
         </ng-template>
     </p-card>
