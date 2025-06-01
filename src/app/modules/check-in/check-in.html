@@ -9,8 +9,19 @@
 <div class="card">
     <!-- Search By BAPS Id -->
     <div class="grid grid-cols-12 gap-2" style="font-size:1rem">
-        <label for="hostCenter" class="flex font-bold items-center col-span-3">Search Participant by BAPS ID</label>
+        <label for="hostCenter" class="flex font-bold items-center col-span-3">Event</label>
+        <div class="col-span-9">
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <i class="fa-solid fa-calendar-days"></i>
+                </p-inputgroup-addon>
+                <p-select inputId="selectedEventId" [options]="events()" optionLabel="regionalHostCenterDate"
+                    [(ngModel)]="selectedEventId" optionValue="competitionEventId" placeholder="Select an Event"
+                    [ngStyle]="{'z-index': 100}" fluid />
+            </p-inputgroup>
+        </div>
 
+        <label for="hostCenter" class="flex font-bold items-center col-span-3">Search Participant by BAPS ID</label>
         <div class="col-span-9">
             <p-inputgroup>
                 <p-inputgroup-addon>

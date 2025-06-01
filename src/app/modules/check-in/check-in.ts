@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, ViewChild } from "@angular/core";
 import { AngularModules } from "../../models/_angular-imports";
 import { PrimeNgModules } from "../../models/_prime-ng-imports";
-import { Participant, EventCheckIn, ServiceResponse } from "../../models/_index";
+import { Participant, EventCheckIn, ServiceResponse, CompetitionEvent } from "../../models/_index";
 
 import { BaseComponent } from "../base-component/baseComponent";
 import { Table } from "primeng/table";
@@ -15,11 +15,22 @@ import { Providers } from "../../models/_providers";
 })
 export class CheckIn extends BaseComponent implements OnInit {
 
+    events = signal<CompetitionEvent[]>([]);
     participantBAPSId: string | undefined;
+    selectedEventId: number | undefined;
     participant: Participant | undefined;
     searchError: string | undefined;
     
     ngOnInit() {
+        this.loadData();
+    }
+
+    loadData() {
+        this.layoutService.isDataLoading.set(true);
+        this.eventsService.GetEventsForLoginUser(this.authService.GetLoginUserBAPSId()).subscribe(response => { 
+            this.events.set(response.data);
+            this.layoutService.isDataLoading.set(false);
+        });
     }
 
     onChangeCandidateBAPSId($event: any) {
@@ -30,8 +41,8 @@ export class CheckIn extends BaseComponent implements OnInit {
 
         this.participant = {};
 
-        if(!this.participantBAPSId){
-            this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid BAPS Id", life: 3000 });
+        if(!this.participantBAPSId || !this.selectedEventId){
+            this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid BAPS Id and select an event", life: 3000 });
             return;
         }
 
@@ -56,12 +67,17 @@ export class CheckIn extends BaseComponent implements OnInit {
 
     onCheckIn(){
 
+        if(!this.participantBAPSId || !this.selectedEventId){
+            this.messageService.add({ severity: "error", summary: "Validation", detail: "Please enter valid BAPS Id and select an event", life: 3000 });
+            return;
+        }
+
         this.layoutService.isDataLoading.set(true);
 
         let model: EventCheckIn = {};
         model.participantBAPSId = this.participantBAPSId;
         model.loginUserId = this.authService.GetLoginUserId();
-        model.participantBAPSId = this.participantBAPSId;
+        model.eventId = this.selectedEventId;
         
         this.eventCheckInService.CheckIn(model).subscribe(data=>{
             this.layoutService.isDataLoading.set(false);
