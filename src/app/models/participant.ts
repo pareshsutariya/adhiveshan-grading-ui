@@ -23,4 +23,5 @@ export interface Participant {
   fullName?: string;
   checkInAtUtc?: Date;
   checkedInByUserId?: number;
+  checkedInByBAPSId?: string;
 }

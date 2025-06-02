@@ -25,7 +25,7 @@
 
 
 <p-table #dt [value]="participants()"
-    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'emcee_Category', 'speech_Pravachan_Category', 'gender']"
+    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'emcee_Category', 'speech_Pravachan_Category', 'gender', 'checkedInByBAPSId']"
     sortField="center" sortMode="multiple" [scrollable]="true" [showCurrentPageReport]="true" [rowHover]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users" [paginator]="true" [rows]="10"
     [rowsPerPageOptions]="[10, 25, 50, 75, 100]" scrollHeight="550px">
@@ -66,6 +66,10 @@
             <th class="whitespace-nowrap" pSortableColumn="hostCenter">Host Center <p-sortIcon field="hostCenter" />
                 <p-columnFilter type="text" field="hostCenter" display="menu" />
             </th>
+            <th class="whitespace-nowrap" pSortableColumn="checkedInByBAPSId">Checked-In By <p-sortIcon
+                    field="checkedInByBAPSId" />
+                <p-columnFilter type="text" field="checkedInByBAPSId" display="menu" />
+            </th>
         </tr>
     </ng-template>
 
@@ -83,6 +87,7 @@
             <td>{{candidate.speech_Pravachan_Category}}</td>
             <td>{{candidate.emcee_Category}}</td>
             <td class="no-wrap">{{candidate.hostCenter}}</td>
+            <td class="no-wrap">{{candidate.checkedInByBAPSId}}</td>
         </tr>
     </ng-template>
 </p-table>
