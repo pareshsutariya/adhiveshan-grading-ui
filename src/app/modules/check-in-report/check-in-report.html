@@ -3,42 +3,27 @@
 <!-- Toolbar -->
 <p-toolbar styleClass="mb-2">
     <ng-template #start>
-        <div class="font-semibold mr-5" style="font-size:1.5rem">Check In Participants Report</div>
+        <div class="font-semibold mr-5 whitespace-nowrap" style="font-size:1.5rem">Check In Report</div>
+
+        <p-inputgroup>
+            <p-inputgroup-addon>
+                <i class="fa-solid fa-calendar-days"></i>
+            </p-inputgroup-addon>
+            <p-select inputId="selectedEventId" [options]="events()" optionLabel="regionalHostCenterDate"
+                [(ngModel)]="selectedEventId" optionValue="competitionEventId" (onChange)="onEventChange($event)"
+                placeholder="Select an Event" [ngStyle]="{'z-index': 100, 'width': '300px'}" fluid />
+        </p-inputgroup>
     </ng-template>
 </p-toolbar>
-<div class="card">
-    <!-- Search By BAPS Id -->
-    <div class="grid grid-cols-12 gap-2 mb-5" style="font-size:1rem">
-        <label for="hostCenter" class="flex font-bold items-center col-span-3">Event</label>
-        <div class="col-span-9">
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <i class="fa-solid fa-calendar-days"></i>
-                </p-inputgroup-addon>
-                <p-select inputId="selectedEventId" [options]="events()" optionLabel="regionalHostCenterDate"
-                    [(ngModel)]="selectedEventId" optionValue="competitionEventId" (onChange)="onEventChange($event)"
-                    placeholder="Select an Event" [ngStyle]="{'z-index': 100}" fluid />
-            </p-inputgroup>
-        </div>
-    </div>
-</div>
 
-
-<p-table #dt [value]="participants()"
-    [globalFilterFields]="['region', 'center', 'misId', 'fullName', 'emcee_Category', 'speech_Pravachan_Category', 'gender', 'checkedInByBAPSId']"
-    sortField="center" sortMode="multiple" [scrollable]="true" [showCurrentPageReport]="true" [rowHover]="true"
+<p-table #dt [value]="participants()" sortField="center" sortMode="multiple" [scrollable]="true"
+    [showCurrentPageReport]="true" [rowHover]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Users" [paginator]="true" [rows]="10"
     [rowsPerPageOptions]="[10, 25, 50, 75, 100]" scrollHeight="550px">
     <ng-template #header>
         <tr>
-            <th class="whitespace-nowrap" pSortableColumn="region">Region <p-sortIcon field="region" />
-                <p-columnFilter type="text" field="region" display="menu" />
-            </th>
-            <th class="whitespace-nowrap" pSortableColumn="center">Center <p-sortIcon field="center" />
+            <th class="whitespace-nowrap" pSortableColumn="center">Region/Center <p-sortIcon field="center" />
                 <p-columnFilter type="text" field="center" display="menu" />
-            </th>
-            <th class="whitespace-nowrap" pSortableColumn="misId">MIS Id <p-sortIcon field="misId" />
-                <p-columnFilter type="text" field="misId" display="menu" />
             </th>
             <th class="whitespace-nowrap" pSortableColumn="bapsId">BAPS Id <p-sortIcon field="bapsId" />
                 <p-columnFilter type="text" field="bapsId" display="menu" />
@@ -49,22 +34,12 @@
             <th class="whitespace-nowrap" pSortableColumn="gender">Gender <p-sortIcon field="gender" />
                 <p-columnFilter type="text" field="gender" display="menu" />
             </th>
-            <th class="whitespace-nowrap" pSortableColumn="mandal">Mandal <p-sortIcon field="mandal" />
-                <p-columnFilter type="text" field="mandal" display="menu" />
-            </th>
-            <th class="whitespace-nowrap" pSortableColumn="language_For_Skill_Competitions">Language <p-sortIcon
-                    field="language_For_Skill_Competitions" />
-                <p-columnFilter type="text" field="language_For_Skill_Competitions" display="menu" />
-            </th>
             <th class="whitespace-nowrap" pSortableColumn="speech_Pravachan_Category">Pravachan <p-sortIcon
                     field="speech_Pravachan_Category" />
                 <p-columnFilter type="text" field="speech_Pravachan_Category" display="menu" />
             </th>
             <th class="whitespace-nowrap" pSortableColumn="emcee_Category">Emcee <p-sortIcon field="emcee_Category" />
                 <p-columnFilter type="text" field="emcee_Category" display="menu" />
-            </th>
-            <th class="whitespace-nowrap" pSortableColumn="hostCenter">Host Center <p-sortIcon field="hostCenter" />
-                <p-columnFilter type="text" field="hostCenter" display="menu" />
             </th>
             <th class="whitespace-nowrap" pSortableColumn="checkedInByBAPSId">Checked-In By <p-sortIcon
                     field="checkedInByBAPSId" />
@@ -76,17 +51,13 @@
     <!-- Expanded row -->
     <ng-template #body let-candidate>
         <tr>
-            <td class="no-wrap">{{candidate.region}}</td>
-            <td class="no-wrap">{{candidate.center}}</td>
-            <td>{{candidate.misId}}</td>
+            <td class="no-wrap">{{candidate.region}}: {{candidate.center}} {{candidate.hostCenter ? "(" +
+                candidate.hostCenter + ")" : ""}}</td>
             <td>{{candidate.bapsId}}</td>
-            <td>{{candidate.fullName}}</td>
+            <td class="no-wrap">{{candidate.fullName}}</td>
             <td>{{candidate.gender}}</td>
-            <td>{{candidate.mandal}}</td>
-            <td>{{candidate.language_For_Skill_Competitions}}</td>
             <td>{{candidate.speech_Pravachan_Category}}</td>
             <td>{{candidate.emcee_Category}}</td>
-            <td class="no-wrap">{{candidate.hostCenter}}</td>
             <td class="no-wrap">{{candidate.checkedInByBAPSId}}</td>
         </tr>
     </ng-template>
