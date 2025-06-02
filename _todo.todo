@@ -9,9 +9,10 @@
     - [ ] Schedule: Export Schedules for judges
     - [ ] Schedule: Export Schedules for participants
 
+- [x] Check In Module
 - [x] End points for ADV portal
     - [x] Candidate Competition status
-    - [x] Get User For BAPS ID
+    - [x] Get User (Judge) details For BAPS ID
     - [x] Judge login/redirect url
 
 - [x] Judge should not be able to search himself while grading
@@ -19,3 +20,4 @@
 - [ ] Adhiveshan Portal Endpoints/Page: need to encrypt/decrypt BAPS ID
 - [ ] Not more than 2 Judges can grade for a participant
 - [ ] Users: Proctor login should be disbled as soon as the event ends
+- [ ] Time Zone
