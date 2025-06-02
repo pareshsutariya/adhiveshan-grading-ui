@@ -18,6 +18,7 @@ import { PermissionsEnum } from './app/services/_index';
 import { ScheduleGenerator } from './app/modules/schedule-generator/schedule-generator';
 import { LoginAdhiveshanPortal } from './app/modules/auth/login-adhiveshan-portal';
 import { CheckIn } from './app/modules/check-in/check-in';
+import { CheckInReport } from './app/modules/check-in-report/check-in-report';
 
 export const appRoutes: Routes = [
     {
@@ -41,6 +42,7 @@ export const appRoutes: Routes = [
             { path: 'schedule-generator', component: ScheduleGenerator, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Schedules_View] } },
 
             { path: 'check-in', component: CheckIn, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.CheckIn_View, PermissionsEnum.CheckIn_Update] } },
+            { path: 'check-in-report', component: CheckInReport, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Reports_Check_In_Report] } },
             
             { path: 'users', component: Users, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Users_NationalAdmins_View, PermissionsEnum.Users_RegionalAdmins_View, PermissionsEnum.Users_Judges_View, PermissionsEnum.Users_CheckIns_View] } },
             { path: 'rolePermissions', component: RolePermissionsList, canActivate: [AuthGuard], data: { permissions: [PermissionsEnum.Users_NationalAdmins_View] } },

@@ -15,4 +15,8 @@ export class EventCheckInService {
     .post<ServiceResponse>(environment.WebApiBaseUrl + "/EventCheckIn", JSON.stringify(model), { headers: headers })
     .pipe();
   }
+
+  GetCheckedInParticipants(selectedEventId: number) {
+    return this.http.get<ServiceResponse>(environment.WebApiBaseUrl + `/EventCheckIn/GetCheckedInParticipants/${selectedEventId}`).pipe()
+  }
 }
